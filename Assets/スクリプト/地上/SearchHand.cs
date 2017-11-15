@@ -5,12 +5,12 @@ using VRTK;
 
 public class SearchHand : MonoBehaviour
 {
-    public bool _SearchUP, _SearchDown;
+    public bool _SearchUP, _SearchDown,_SearchItem;
     // Use this for initialization
     void Start()
     {
         _SearchUP = _SearchDown = false;
-
+        _SearchItem = false;
     }
 
     // Update is called once per frame
@@ -30,7 +30,14 @@ public class SearchHand : MonoBehaviour
         if (collider.gameObject.name == "SkillZone2")
         {
             _SearchDown = true;
-            Debug.Log("おてて");
+            //Debug.Log("おてて");
+
+        }
+        if (collider.gameObject.name == "WaistItem")
+        {
+            _SearchItem = true;
+           Debug.Log("腰アイテム");
+
         }
     }
 
@@ -45,6 +52,16 @@ public class SearchHand : MonoBehaviour
             _SearchDown = false;
             //Debug.Log("おてて");
         }
+        if (collider.gameObject.name == "WaistItem")
+        {
+            _SearchItem = false;
+            //Debug.Log("おてて");
+        }
+    }
+
+    public bool IsRangeItem()
+    {
+        return _SearchItem;
     }
 
 }

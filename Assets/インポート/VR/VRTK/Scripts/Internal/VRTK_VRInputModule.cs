@@ -52,6 +52,11 @@
 
             List<RaycastResult> raycasts = new List<RaycastResult>();
             eventSystem.RaycastAll(pointer.pointerEventData, raycasts);
+            for (int i = raycasts.Count - 1; i >= 0; i--)
+            {
+                if (raycasts[i].distance > VRTK.VRTK_MyUIPointer.distance)
+                    raycasts.RemoveAt(i);
+            }
             return raycasts;
         }
 

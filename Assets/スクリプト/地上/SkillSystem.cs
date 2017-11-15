@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRTK;
 
 public class SkillSystem : MonoBehaviour
 {
@@ -27,23 +28,30 @@ public class SkillSystem : MonoBehaviour
     private float Interval;//スキルのCT
 
     private SearchHand whereHand1, whereHand2;
+    //private VRTK_ControllerReference controllerReference;
 
     // Use this for initialization
     void Start()
     {
         whereHand1 = SkillZone1.GetComponent<SearchHand>();
         whereHand2 = SkillZone2.GetComponent<SearchHand>();
-
+     
     }
 
     // Update is called once per frame
     void Update()
     {
+
         //下側スキル範囲
         SkillZone2.transform.position = new Vector3(transform.position.x, 0.6f, transform.position.z);
-
+        
     }
 
-
+    public void PuleseFunc()
+    {
+      //  SteamVR_TrackedObject trackedObject = (rightorleft == 1 ? rightcontroller : leftcontroller).GetComponent<SteamVR_TrackedObject>();
+       // var device = SteamVR_Controller.Input((int)trackedObject.index);
+      //  device.TriggerHapticPulse(2000);        //コントローラの振動
+    }
 }
 

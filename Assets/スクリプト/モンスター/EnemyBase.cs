@@ -25,7 +25,7 @@ public abstract class EnemyBase : MonoBehaviour {
     protected Vector3 []freemovepos=new Vector3[4];     //4角形に自由に動く位置
     protected float freeposdistance;            //自動移動目的地までの距離
     protected float playerdistance;            //追跡移動時プレイヤーまでの距離
-    protected Animator animator;            //アニメーターインスタンス
+    public Animator animator;            //アニメーターインスタンス
     protected float atkspeedcount;            //攻撃速度用カウンター
     protected int moveno = 0;     //自動移動目的地の番号
     protected const int stopdistance = 2;     //攻撃離れてる距離  speedよりも大きい数字
@@ -135,7 +135,7 @@ public abstract class EnemyBase : MonoBehaviour {
     private void OnCollisionEnter(Collision collision)
     {
         var collisionForce = GetCollisionForce(collision);
-
+        Debug.Log(collision.gameObject.name);
         if (collisionForce > 0)
         {
             hp -= 1;
@@ -148,6 +148,7 @@ public abstract class EnemyBase : MonoBehaviour {
             if ((collision.collider.name.Contains("Sword") && collision.collider.GetComponent<VRTK.Examples.Sword>().CollisionForce() > breakForce))
             {
                 return collision.collider.GetComponent<VRTK.Examples.Sword>().CollisionForce() * 1.2f;
+          
             }
 
             if (collision.collider.name.Contains("Arrow"))

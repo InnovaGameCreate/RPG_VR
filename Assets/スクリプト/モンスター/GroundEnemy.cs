@@ -22,7 +22,7 @@ public class GroundEnemy : EnemyBase
     protected override void Update()
     {
         base.Update();
-        if (findplayer)
+        if (findplayer&& player != null)
         {
             playerdistance = Vector3.Distance(transform.position, player.transform.position);
 

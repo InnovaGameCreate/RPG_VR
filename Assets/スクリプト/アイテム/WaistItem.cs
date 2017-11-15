@@ -12,10 +12,27 @@ public class WaistItem : MonoBehaviour
     private GameObject waistmultiItem;
     private Transform itemTrans;
     public WaistItem grippedOther;          //逆のコントローラを握ったかどうか
+    public Transform HeadPos;
+    public GameObject Head;
+    private SearchHand rangeWaistItem;
+    private bool exist;
+    private GameObject test;
 
+    private void Awake()
+    {
+       // rangeWaistItem = waistItem.GetComponent<SearchHand>();
+
+    }
     void Start()
     {
+       
+        
+        rangeWaistItem = Head.GetComponent<SearchHand>();
+       // print(Head.GetComponent <SearchHand>()._SearchItem);
+        exist = true;
         waistItem = GameObject.Find("WaistItem");
+        rangeWaistItem = waistItem.GetComponent<SearchHand>();
+
         if (gameObject.name == "RightController")
             grippedOther = GameObject.Find("[VRTK_Scripts]/LeftController").GetComponent<WaistItem>();
         else
@@ -45,9 +62,16 @@ public class WaistItem : MonoBehaviour
     private void GripPressedHandler(object sender, ControllerInteractionEventArgs e)
     {
         gripped = true;
-        Instantiate(waistItem,itemTrans);
-        waistmultiItem = GameObject.Find("WaistItem");
-        Destroy(waistItem);
+        //Instantiate(waistItem,itemTrans);
+        // waistmultiItem = GameObject.Find("WaistItem");
+
+        print(rangeWaistItem._SearchItem);
+        if (rangeWaistItem._SearchItem)
+        {//アイテムの範囲内であれば
+            Destroy(waistItem);
+            print("アイテム使用");
+        }
+       // exist = false;
         //if(/*コントローラーの位置がアイテムの範囲内ならば*/1)
         //{
         //    //Destroy()
@@ -56,7 +80,7 @@ public class WaistItem : MonoBehaviour
 
     private void GripReleasedHandler(object sender, ControllerInteractionEventArgs e)
     {
-        Instantiate(waistmultiItem);
+      //  Instantiate(waistmultiItem);
         gripped = false;
 
     }
@@ -66,8 +90,15 @@ public class WaistItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        waistItem.transform.position= GameObject.Find("[VRTK_Scripts]/SkillZone2").transform.position;
-        itemTrans = waistItem.transform;
+        // waistItem.transform.position= GameObject.Find("[VRTK_Scripts]/SkillZone2").transform.position;
+        //  itemTrans = waistItem.transform;
+       // print(exist);
+        if (grippedOther.gripped || gripped)
+        {
+            exist = false;
+        }
+        if(exist)
+        waistItem.transform.position = new Vector3(0.15f + HeadPos.transform.position.x, 1.0f, HeadPos.transform.position.z);
 
         if (gripped)
         {
