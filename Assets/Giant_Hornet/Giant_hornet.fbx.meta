@@ -1,0 +1,1956 @@
+fileFormatVersion: 2
+guid: f499050b1810cd147a65df29ed7aa18f
+timeCreated: 1461087334
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Abdomen
+    100002: Abdomen_a
+    100004: Abdomen_b
+    100006: //RootNode
+    100008: Head
+    100010: hornet_mesh
+    100012: L_antenna
+    100014: L_antenna_a
+    100016: L_antenna_b
+    100018: L_antenna_c
+    100020: L_claw
+    100022: L_claw_a
+    100024: L_leg_back
+    100026: L_leg_back_a
+    100028: L_leg_back_b
+    100030: L_leg_back_c
+    100032: L_leg_back_d
+    100034: L_leg_front
+    100036: L_leg_front_a
+    100038: L_leg_front_b
+    100040: L_leg_front_c
+    100042: L_leg_mid
+    100044: L_leg_mid_a
+    100046: L_leg_mid_b
+    100048: L_leg_mid_c
+    100050: L_leg_mid_d
+    100052: L_wing_big
+    100054: L_wing_big_a
+    100056: L_wing_big_b
+    100058: L_wing_small
+    100060: L_wing_small_a
+    100062: L_wing_small_b
+    100064: R_antenna
+    100066: R_antenna_a
+    100068: R_antenna_b
+    100070: R_antenna_c
+    100072: R_claw
+    100074: R_claw_a
+    100076: R_leg_back
+    100078: R_leg_back_a
+    100080: R_leg_back_b
+    100082: R_leg_back_c
+    100084: R_leg_back_d
+    100086: R_leg_front
+    100088: R_leg_front_a
+    100090: R_leg_front_b
+    100092: R_leg_front_c
+    100094: R_leg_mid
+    100096: R_leg_mid_a
+    100098: R_leg_mid_b
+    100100: R_leg_mid_c
+    100102: R_leg_mid_d
+    100104: R_wing_big
+    100106: R_wing_big_a
+    100108: R_wing_big_b
+    100110: R_wing_small
+    100112: R_wing_small_a
+    100114: R_wing_small_b
+    100116: root
+    400000: Abdomen
+    400002: Abdomen_a
+    400004: Abdomen_b
+    400006: //RootNode
+    400008: Head
+    400010: hornet_mesh
+    400012: L_antenna
+    400014: L_antenna_a
+    400016: L_antenna_b
+    400018: L_antenna_c
+    400020: L_claw
+    400022: L_claw_a
+    400024: L_leg_back
+    400026: L_leg_back_a
+    400028: L_leg_back_b
+    400030: L_leg_back_c
+    400032: L_leg_back_d
+    400034: L_leg_front
+    400036: L_leg_front_a
+    400038: L_leg_front_b
+    400040: L_leg_front_c
+    400042: L_leg_mid
+    400044: L_leg_mid_a
+    400046: L_leg_mid_b
+    400048: L_leg_mid_c
+    400050: L_leg_mid_d
+    400052: L_wing_big
+    400054: L_wing_big_a
+    400056: L_wing_big_b
+    400058: L_wing_small
+    400060: L_wing_small_a
+    400062: L_wing_small_b
+    400064: R_antenna
+    400066: R_antenna_a
+    400068: R_antenna_b
+    400070: R_antenna_c
+    400072: R_claw
+    400074: R_claw_a
+    400076: R_leg_back
+    400078: R_leg_back_a
+    400080: R_leg_back_b
+    400082: R_leg_back_c
+    400084: R_leg_back_d
+    400086: R_leg_front
+    400088: R_leg_front_a
+    400090: R_leg_front_b
+    400092: R_leg_front_c
+    400094: R_leg_mid
+    400096: R_leg_mid_a
+    400098: R_leg_mid_b
+    400100: R_leg_mid_c
+    400102: R_leg_mid_d
+    400104: R_wing_big
+    400106: R_wing_big_a
+    400108: R_wing_big_b
+    400110: R_wing_small
+    400112: R_wing_small_a
+    400114: R_wing_small_b
+    400116: root
+    4300000: hornet_mesh
+    7400000: All
+    7400002: Ground_Run/walk
+    7400004: Ground_Eating
+    7400006: Ground_attack_bite
+    7400008: Ground_idle
+    7400010: Fly_up/Fly_down
+    7400012: Fly_idle
+    7400014: Fly_attack_sting
+    7400016: Fly_hit
+    7400018: Fly_dead
+    7400020: Ground_hit
+    7400022: Ground_dead
+    9500000: //RootNode
+    13700000: hornet_mesh
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: All
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 312
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: hornet_mesh
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/Abdomen
+        weight: 1
+      - path: root/Abdomen/Abdomen_a
+        weight: 1
+      - path: root/Abdomen/Abdomen_a/Abdomen_b
+        weight: 1
+      - path: root/Head
+        weight: 1
+      - path: root/Head/L_antenna
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a/L_antenna_b
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a/L_antenna_b/L_antenna_c
+        weight: 1
+      - path: root/Head/L_claw
+        weight: 1
+      - path: root/Head/L_claw/L_claw_a
+        weight: 1
+      - path: root/Head/R_antenna
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a/R_antenna_b
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a/R_antenna_b/R_antenna_c
+        weight: 1
+      - path: root/Head/R_claw
+        weight: 1
+      - path: root/Head/R_claw/R_claw_a
+        weight: 1
+      - path: root/L_leg_back
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b/L_leg_back_c
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b/L_leg_back_c/L_leg_back_d
+        weight: 1
+      - path: root/L_leg_front
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a/L_leg_front_b
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a/L_leg_front_b/L_leg_front_c
+        weight: 1
+      - path: root/L_leg_mid
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b/L_leg_mid_c
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b/L_leg_mid_c/L_leg_mid_d
+        weight: 1
+      - path: root/L_wing_big
+        weight: 1
+      - path: root/L_wing_big/L_wing_big_a
+        weight: 1
+      - path: root/L_wing_big/L_wing_big_a/L_wing_big_b
+        weight: 1
+      - path: root/L_wing_small
+        weight: 1
+      - path: root/L_wing_small/L_wing_small_a
+        weight: 1
+      - path: root/L_wing_small/L_wing_small_a/L_wing_small_b
+        weight: 1
+      - path: root/R_leg_back
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b/R_leg_back_c
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b/R_leg_back_c/R_leg_back_d
+        weight: 1
+      - path: root/R_leg_front
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a/R_leg_front_b
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a/R_leg_front_b/R_leg_front_c
+        weight: 1
+      - path: root/R_leg_mid
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b/R_leg_mid_c
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b/R_leg_mid_c/R_leg_mid_d
+        weight: 1
+      - path: root/R_wing_big
+        weight: 1
+      - path: root/R_wing_big/R_wing_big_a
+        weight: 1
+      - path: root/R_wing_big/R_wing_big_a/R_wing_big_b
+        weight: 1
+      - path: root/R_wing_small
+        weight: 1
+      - path: root/R_wing_small/R_wing_small_a
+        weight: 1
+      - path: root/R_wing_small/R_wing_small_a/R_wing_small_b
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Ground_Run/walk
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 41
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: hornet_mesh
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/Abdomen
+        weight: 1
+      - path: root/Abdomen/Abdomen_a
+        weight: 1
+      - path: root/Abdomen/Abdomen_a/Abdomen_b
+        weight: 1
+      - path: root/Head
+        weight: 1
+      - path: root/Head/L_antenna
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a/L_antenna_b
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a/L_antenna_b/L_antenna_c
+        weight: 1
+      - path: root/Head/L_claw
+        weight: 1
+      - path: root/Head/L_claw/L_claw_a
+        weight: 1
+      - path: root/Head/R_antenna
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a/R_antenna_b
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a/R_antenna_b/R_antenna_c
+        weight: 1
+      - path: root/Head/R_claw
+        weight: 1
+      - path: root/Head/R_claw/R_claw_a
+        weight: 1
+      - path: root/L_leg_back
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b/L_leg_back_c
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b/L_leg_back_c/L_leg_back_d
+        weight: 1
+      - path: root/L_leg_front
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a/L_leg_front_b
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a/L_leg_front_b/L_leg_front_c
+        weight: 1
+      - path: root/L_leg_mid
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b/L_leg_mid_c
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b/L_leg_mid_c/L_leg_mid_d
+        weight: 1
+      - path: root/L_wing_big
+        weight: 1
+      - path: root/L_wing_big/L_wing_big_a
+        weight: 1
+      - path: root/L_wing_big/L_wing_big_a/L_wing_big_b
+        weight: 1
+      - path: root/L_wing_small
+        weight: 1
+      - path: root/L_wing_small/L_wing_small_a
+        weight: 1
+      - path: root/L_wing_small/L_wing_small_a/L_wing_small_b
+        weight: 1
+      - path: root/R_leg_back
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b/R_leg_back_c
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b/R_leg_back_c/R_leg_back_d
+        weight: 1
+      - path: root/R_leg_front
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a/R_leg_front_b
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a/R_leg_front_b/R_leg_front_c
+        weight: 1
+      - path: root/R_leg_mid
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b/R_leg_mid_c
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b/R_leg_mid_c/R_leg_mid_d
+        weight: 1
+      - path: root/R_wing_big
+        weight: 1
+      - path: root/R_wing_big/R_wing_big_a
+        weight: 1
+      - path: root/R_wing_big/R_wing_big_a/R_wing_big_b
+        weight: 1
+      - path: root/R_wing_small
+        weight: 1
+      - path: root/R_wing_small/R_wing_small_a
+        weight: 1
+      - path: root/R_wing_small/R_wing_small_a/R_wing_small_b
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Ground_Eating
+      takeName: Take 001
+      firstFrame: 60
+      lastFrame: 97
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: hornet_mesh
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/Abdomen
+        weight: 1
+      - path: root/Abdomen/Abdomen_a
+        weight: 1
+      - path: root/Abdomen/Abdomen_a/Abdomen_b
+        weight: 1
+      - path: root/Head
+        weight: 1
+      - path: root/Head/L_antenna
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a/L_antenna_b
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a/L_antenna_b/L_antenna_c
+        weight: 1
+      - path: root/Head/L_claw
+        weight: 1
+      - path: root/Head/L_claw/L_claw_a
+        weight: 1
+      - path: root/Head/R_antenna
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a/R_antenna_b
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a/R_antenna_b/R_antenna_c
+        weight: 1
+      - path: root/Head/R_claw
+        weight: 1
+      - path: root/Head/R_claw/R_claw_a
+        weight: 1
+      - path: root/L_leg_back
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b/L_leg_back_c
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b/L_leg_back_c/L_leg_back_d
+        weight: 1
+      - path: root/L_leg_front
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a/L_leg_front_b
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a/L_leg_front_b/L_leg_front_c
+        weight: 1
+      - path: root/L_leg_mid
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b/L_leg_mid_c
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b/L_leg_mid_c/L_leg_mid_d
+        weight: 1
+      - path: root/L_wing_big
+        weight: 1
+      - path: root/L_wing_big/L_wing_big_a
+        weight: 1
+      - path: root/L_wing_big/L_wing_big_a/L_wing_big_b
+        weight: 1
+      - path: root/L_wing_small
+        weight: 1
+      - path: root/L_wing_small/L_wing_small_a
+        weight: 1
+      - path: root/L_wing_small/L_wing_small_a/L_wing_small_b
+        weight: 1
+      - path: root/R_leg_back
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b/R_leg_back_c
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b/R_leg_back_c/R_leg_back_d
+        weight: 1
+      - path: root/R_leg_front
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a/R_leg_front_b
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a/R_leg_front_b/R_leg_front_c
+        weight: 1
+      - path: root/R_leg_mid
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b/R_leg_mid_c
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b/R_leg_mid_c/R_leg_mid_d
+        weight: 1
+      - path: root/R_wing_big
+        weight: 1
+      - path: root/R_wing_big/R_wing_big_a
+        weight: 1
+      - path: root/R_wing_big/R_wing_big_a/R_wing_big_b
+        weight: 1
+      - path: root/R_wing_small
+        weight: 1
+      - path: root/R_wing_small/R_wing_small_a
+        weight: 1
+      - path: root/R_wing_small/R_wing_small_a/R_wing_small_b
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Ground_attack_bite
+      takeName: Take 001
+      firstFrame: 97
+      lastFrame: 110
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: hornet_mesh
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/Abdomen
+        weight: 1
+      - path: root/Abdomen/Abdomen_a
+        weight: 1
+      - path: root/Abdomen/Abdomen_a/Abdomen_b
+        weight: 1
+      - path: root/Head
+        weight: 1
+      - path: root/Head/L_antenna
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a/L_antenna_b
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a/L_antenna_b/L_antenna_c
+        weight: 1
+      - path: root/Head/L_claw
+        weight: 1
+      - path: root/Head/L_claw/L_claw_a
+        weight: 1
+      - path: root/Head/R_antenna
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a/R_antenna_b
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a/R_antenna_b/R_antenna_c
+        weight: 1
+      - path: root/Head/R_claw
+        weight: 1
+      - path: root/Head/R_claw/R_claw_a
+        weight: 1
+      - path: root/L_leg_back
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b/L_leg_back_c
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b/L_leg_back_c/L_leg_back_d
+        weight: 1
+      - path: root/L_leg_front
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a/L_leg_front_b
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a/L_leg_front_b/L_leg_front_c
+        weight: 1
+      - path: root/L_leg_mid
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b/L_leg_mid_c
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b/L_leg_mid_c/L_leg_mid_d
+        weight: 1
+      - path: root/L_wing_big
+        weight: 1
+      - path: root/L_wing_big/L_wing_big_a
+        weight: 1
+      - path: root/L_wing_big/L_wing_big_a/L_wing_big_b
+        weight: 1
+      - path: root/L_wing_small
+        weight: 1
+      - path: root/L_wing_small/L_wing_small_a
+        weight: 1
+      - path: root/L_wing_small/L_wing_small_a/L_wing_small_b
+        weight: 1
+      - path: root/R_leg_back
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b/R_leg_back_c
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b/R_leg_back_c/R_leg_back_d
+        weight: 1
+      - path: root/R_leg_front
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a/R_leg_front_b
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a/R_leg_front_b/R_leg_front_c
+        weight: 1
+      - path: root/R_leg_mid
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b/R_leg_mid_c
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b/R_leg_mid_c/R_leg_mid_d
+        weight: 1
+      - path: root/R_wing_big
+        weight: 1
+      - path: root/R_wing_big/R_wing_big_a
+        weight: 1
+      - path: root/R_wing_big/R_wing_big_a/R_wing_big_b
+        weight: 1
+      - path: root/R_wing_small
+        weight: 1
+      - path: root/R_wing_small/R_wing_small_a
+        weight: 1
+      - path: root/R_wing_small/R_wing_small_a/R_wing_small_b
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Ground_idle
+      takeName: Take 001
+      firstFrame: 120
+      lastFrame: 127
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: hornet_mesh
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/Abdomen
+        weight: 1
+      - path: root/Abdomen/Abdomen_a
+        weight: 1
+      - path: root/Abdomen/Abdomen_a/Abdomen_b
+        weight: 1
+      - path: root/Head
+        weight: 1
+      - path: root/Head/L_antenna
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a/L_antenna_b
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a/L_antenna_b/L_antenna_c
+        weight: 1
+      - path: root/Head/L_claw
+        weight: 1
+      - path: root/Head/L_claw/L_claw_a
+        weight: 1
+      - path: root/Head/R_antenna
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a/R_antenna_b
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a/R_antenna_b/R_antenna_c
+        weight: 1
+      - path: root/Head/R_claw
+        weight: 1
+      - path: root/Head/R_claw/R_claw_a
+        weight: 1
+      - path: root/L_leg_back
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b/L_leg_back_c
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b/L_leg_back_c/L_leg_back_d
+        weight: 1
+      - path: root/L_leg_front
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a/L_leg_front_b
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a/L_leg_front_b/L_leg_front_c
+        weight: 1
+      - path: root/L_leg_mid
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b/L_leg_mid_c
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b/L_leg_mid_c/L_leg_mid_d
+        weight: 1
+      - path: root/L_wing_big
+        weight: 1
+      - path: root/L_wing_big/L_wing_big_a
+        weight: 1
+      - path: root/L_wing_big/L_wing_big_a/L_wing_big_b
+        weight: 1
+      - path: root/L_wing_small
+        weight: 1
+      - path: root/L_wing_small/L_wing_small_a
+        weight: 1
+      - path: root/L_wing_small/L_wing_small_a/L_wing_small_b
+        weight: 1
+      - path: root/R_leg_back
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b/R_leg_back_c
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b/R_leg_back_c/R_leg_back_d
+        weight: 1
+      - path: root/R_leg_front
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a/R_leg_front_b
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a/R_leg_front_b/R_leg_front_c
+        weight: 1
+      - path: root/R_leg_mid
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b/R_leg_mid_c
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b/R_leg_mid_c/R_leg_mid_d
+        weight: 1
+      - path: root/R_wing_big
+        weight: 1
+      - path: root/R_wing_big/R_wing_big_a
+        weight: 1
+      - path: root/R_wing_big/R_wing_big_a/R_wing_big_b
+        weight: 1
+      - path: root/R_wing_small
+        weight: 1
+      - path: root/R_wing_small/R_wing_small_a
+        weight: 1
+      - path: root/R_wing_small/R_wing_small_a/R_wing_small_b
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Fly_up/Fly_down
+      takeName: Take 001
+      firstFrame: 130
+      lastFrame: 155
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: hornet_mesh
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/Abdomen
+        weight: 1
+      - path: root/Abdomen/Abdomen_a
+        weight: 1
+      - path: root/Abdomen/Abdomen_a/Abdomen_b
+        weight: 1
+      - path: root/Head
+        weight: 1
+      - path: root/Head/L_antenna
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a/L_antenna_b
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a/L_antenna_b/L_antenna_c
+        weight: 1
+      - path: root/Head/L_claw
+        weight: 1
+      - path: root/Head/L_claw/L_claw_a
+        weight: 1
+      - path: root/Head/R_antenna
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a/R_antenna_b
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a/R_antenna_b/R_antenna_c
+        weight: 1
+      - path: root/Head/R_claw
+        weight: 1
+      - path: root/Head/R_claw/R_claw_a
+        weight: 1
+      - path: root/L_leg_back
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b/L_leg_back_c
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b/L_leg_back_c/L_leg_back_d
+        weight: 1
+      - path: root/L_leg_front
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a/L_leg_front_b
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a/L_leg_front_b/L_leg_front_c
+        weight: 1
+      - path: root/L_leg_mid
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b/L_leg_mid_c
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b/L_leg_mid_c/L_leg_mid_d
+        weight: 1
+      - path: root/L_wing_big
+        weight: 1
+      - path: root/L_wing_big/L_wing_big_a
+        weight: 1
+      - path: root/L_wing_big/L_wing_big_a/L_wing_big_b
+        weight: 1
+      - path: root/L_wing_small
+        weight: 1
+      - path: root/L_wing_small/L_wing_small_a
+        weight: 1
+      - path: root/L_wing_small/L_wing_small_a/L_wing_small_b
+        weight: 1
+      - path: root/R_leg_back
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b/R_leg_back_c
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b/R_leg_back_c/R_leg_back_d
+        weight: 1
+      - path: root/R_leg_front
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a/R_leg_front_b
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a/R_leg_front_b/R_leg_front_c
+        weight: 1
+      - path: root/R_leg_mid
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b/R_leg_mid_c
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b/R_leg_mid_c/R_leg_mid_d
+        weight: 1
+      - path: root/R_wing_big
+        weight: 1
+      - path: root/R_wing_big/R_wing_big_a
+        weight: 1
+      - path: root/R_wing_big/R_wing_big_a/R_wing_big_b
+        weight: 1
+      - path: root/R_wing_small
+        weight: 1
+      - path: root/R_wing_small/R_wing_small_a
+        weight: 1
+      - path: root/R_wing_small/R_wing_small_a/R_wing_small_b
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Fly_idle
+      takeName: Take 001
+      firstFrame: 150
+      lastFrame: 166
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: hornet_mesh
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/Abdomen
+        weight: 1
+      - path: root/Abdomen/Abdomen_a
+        weight: 1
+      - path: root/Abdomen/Abdomen_a/Abdomen_b
+        weight: 1
+      - path: root/Head
+        weight: 1
+      - path: root/Head/L_antenna
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a/L_antenna_b
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a/L_antenna_b/L_antenna_c
+        weight: 1
+      - path: root/Head/L_claw
+        weight: 1
+      - path: root/Head/L_claw/L_claw_a
+        weight: 1
+      - path: root/Head/R_antenna
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a/R_antenna_b
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a/R_antenna_b/R_antenna_c
+        weight: 1
+      - path: root/Head/R_claw
+        weight: 1
+      - path: root/Head/R_claw/R_claw_a
+        weight: 1
+      - path: root/L_leg_back
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b/L_leg_back_c
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b/L_leg_back_c/L_leg_back_d
+        weight: 1
+      - path: root/L_leg_front
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a/L_leg_front_b
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a/L_leg_front_b/L_leg_front_c
+        weight: 1
+      - path: root/L_leg_mid
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b/L_leg_mid_c
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b/L_leg_mid_c/L_leg_mid_d
+        weight: 1
+      - path: root/L_wing_big
+        weight: 1
+      - path: root/L_wing_big/L_wing_big_a
+        weight: 1
+      - path: root/L_wing_big/L_wing_big_a/L_wing_big_b
+        weight: 1
+      - path: root/L_wing_small
+        weight: 1
+      - path: root/L_wing_small/L_wing_small_a
+        weight: 1
+      - path: root/L_wing_small/L_wing_small_a/L_wing_small_b
+        weight: 1
+      - path: root/R_leg_back
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b/R_leg_back_c
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b/R_leg_back_c/R_leg_back_d
+        weight: 1
+      - path: root/R_leg_front
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a/R_leg_front_b
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a/R_leg_front_b/R_leg_front_c
+        weight: 1
+      - path: root/R_leg_mid
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b/R_leg_mid_c
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b/R_leg_mid_c/R_leg_mid_d
+        weight: 1
+      - path: root/R_wing_big
+        weight: 1
+      - path: root/R_wing_big/R_wing_big_a
+        weight: 1
+      - path: root/R_wing_big/R_wing_big_a/R_wing_big_b
+        weight: 1
+      - path: root/R_wing_small
+        weight: 1
+      - path: root/R_wing_small/R_wing_small_a
+        weight: 1
+      - path: root/R_wing_small/R_wing_small_a/R_wing_small_b
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Fly_attack_sting
+      takeName: Take 001
+      firstFrame: 170
+      lastFrame: 200
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: hornet_mesh
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/Abdomen
+        weight: 1
+      - path: root/Abdomen/Abdomen_a
+        weight: 1
+      - path: root/Abdomen/Abdomen_a/Abdomen_b
+        weight: 1
+      - path: root/Head
+        weight: 1
+      - path: root/Head/L_antenna
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a/L_antenna_b
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a/L_antenna_b/L_antenna_c
+        weight: 1
+      - path: root/Head/L_claw
+        weight: 1
+      - path: root/Head/L_claw/L_claw_a
+        weight: 1
+      - path: root/Head/R_antenna
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a/R_antenna_b
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a/R_antenna_b/R_antenna_c
+        weight: 1
+      - path: root/Head/R_claw
+        weight: 1
+      - path: root/Head/R_claw/R_claw_a
+        weight: 1
+      - path: root/L_leg_back
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b/L_leg_back_c
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b/L_leg_back_c/L_leg_back_d
+        weight: 1
+      - path: root/L_leg_front
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a/L_leg_front_b
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a/L_leg_front_b/L_leg_front_c
+        weight: 1
+      - path: root/L_leg_mid
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b/L_leg_mid_c
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b/L_leg_mid_c/L_leg_mid_d
+        weight: 1
+      - path: root/L_wing_big
+        weight: 1
+      - path: root/L_wing_big/L_wing_big_a
+        weight: 1
+      - path: root/L_wing_big/L_wing_big_a/L_wing_big_b
+        weight: 1
+      - path: root/L_wing_small
+        weight: 1
+      - path: root/L_wing_small/L_wing_small_a
+        weight: 1
+      - path: root/L_wing_small/L_wing_small_a/L_wing_small_b
+        weight: 1
+      - path: root/R_leg_back
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b/R_leg_back_c
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b/R_leg_back_c/R_leg_back_d
+        weight: 1
+      - path: root/R_leg_front
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a/R_leg_front_b
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a/R_leg_front_b/R_leg_front_c
+        weight: 1
+      - path: root/R_leg_mid
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b/R_leg_mid_c
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b/R_leg_mid_c/R_leg_mid_d
+        weight: 1
+      - path: root/R_wing_big
+        weight: 1
+      - path: root/R_wing_big/R_wing_big_a
+        weight: 1
+      - path: root/R_wing_big/R_wing_big_a/R_wing_big_b
+        weight: 1
+      - path: root/R_wing_small
+        weight: 1
+      - path: root/R_wing_small/R_wing_small_a
+        weight: 1
+      - path: root/R_wing_small/R_wing_small_a/R_wing_small_b
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Fly_hit
+      takeName: Take 001
+      firstFrame: 200
+      lastFrame: 220
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: hornet_mesh
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/Abdomen
+        weight: 1
+      - path: root/Abdomen/Abdomen_a
+        weight: 1
+      - path: root/Abdomen/Abdomen_a/Abdomen_b
+        weight: 1
+      - path: root/Head
+        weight: 1
+      - path: root/Head/L_antenna
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a/L_antenna_b
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a/L_antenna_b/L_antenna_c
+        weight: 1
+      - path: root/Head/L_claw
+        weight: 1
+      - path: root/Head/L_claw/L_claw_a
+        weight: 1
+      - path: root/Head/R_antenna
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a/R_antenna_b
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a/R_antenna_b/R_antenna_c
+        weight: 1
+      - path: root/Head/R_claw
+        weight: 1
+      - path: root/Head/R_claw/R_claw_a
+        weight: 1
+      - path: root/L_leg_back
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b/L_leg_back_c
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b/L_leg_back_c/L_leg_back_d
+        weight: 1
+      - path: root/L_leg_front
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a/L_leg_front_b
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a/L_leg_front_b/L_leg_front_c
+        weight: 1
+      - path: root/L_leg_mid
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b/L_leg_mid_c
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b/L_leg_mid_c/L_leg_mid_d
+        weight: 1
+      - path: root/L_wing_big
+        weight: 1
+      - path: root/L_wing_big/L_wing_big_a
+        weight: 1
+      - path: root/L_wing_big/L_wing_big_a/L_wing_big_b
+        weight: 1
+      - path: root/L_wing_small
+        weight: 1
+      - path: root/L_wing_small/L_wing_small_a
+        weight: 1
+      - path: root/L_wing_small/L_wing_small_a/L_wing_small_b
+        weight: 1
+      - path: root/R_leg_back
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b/R_leg_back_c
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b/R_leg_back_c/R_leg_back_d
+        weight: 1
+      - path: root/R_leg_front
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a/R_leg_front_b
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a/R_leg_front_b/R_leg_front_c
+        weight: 1
+      - path: root/R_leg_mid
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b/R_leg_mid_c
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b/R_leg_mid_c/R_leg_mid_d
+        weight: 1
+      - path: root/R_wing_big
+        weight: 1
+      - path: root/R_wing_big/R_wing_big_a
+        weight: 1
+      - path: root/R_wing_big/R_wing_big_a/R_wing_big_b
+        weight: 1
+      - path: root/R_wing_small
+        weight: 1
+      - path: root/R_wing_small/R_wing_small_a
+        weight: 1
+      - path: root/R_wing_small/R_wing_small_a/R_wing_small_b
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Fly_dead
+      takeName: Take 001
+      firstFrame: 225
+      lastFrame: 255
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: hornet_mesh
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/Abdomen
+        weight: 1
+      - path: root/Abdomen/Abdomen_a
+        weight: 1
+      - path: root/Abdomen/Abdomen_a/Abdomen_b
+        weight: 1
+      - path: root/Head
+        weight: 1
+      - path: root/Head/L_antenna
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a/L_antenna_b
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a/L_antenna_b/L_antenna_c
+        weight: 1
+      - path: root/Head/L_claw
+        weight: 1
+      - path: root/Head/L_claw/L_claw_a
+        weight: 1
+      - path: root/Head/R_antenna
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a/R_antenna_b
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a/R_antenna_b/R_antenna_c
+        weight: 1
+      - path: root/Head/R_claw
+        weight: 1
+      - path: root/Head/R_claw/R_claw_a
+        weight: 1
+      - path: root/L_leg_back
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b/L_leg_back_c
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b/L_leg_back_c/L_leg_back_d
+        weight: 1
+      - path: root/L_leg_front
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a/L_leg_front_b
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a/L_leg_front_b/L_leg_front_c
+        weight: 1
+      - path: root/L_leg_mid
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b/L_leg_mid_c
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b/L_leg_mid_c/L_leg_mid_d
+        weight: 1
+      - path: root/L_wing_big
+        weight: 1
+      - path: root/L_wing_big/L_wing_big_a
+        weight: 1
+      - path: root/L_wing_big/L_wing_big_a/L_wing_big_b
+        weight: 1
+      - path: root/L_wing_small
+        weight: 1
+      - path: root/L_wing_small/L_wing_small_a
+        weight: 1
+      - path: root/L_wing_small/L_wing_small_a/L_wing_small_b
+        weight: 1
+      - path: root/R_leg_back
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b/R_leg_back_c
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b/R_leg_back_c/R_leg_back_d
+        weight: 1
+      - path: root/R_leg_front
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a/R_leg_front_b
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a/R_leg_front_b/R_leg_front_c
+        weight: 1
+      - path: root/R_leg_mid
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b/R_leg_mid_c
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b/R_leg_mid_c/R_leg_mid_d
+        weight: 1
+      - path: root/R_wing_big
+        weight: 1
+      - path: root/R_wing_big/R_wing_big_a
+        weight: 1
+      - path: root/R_wing_big/R_wing_big_a/R_wing_big_b
+        weight: 1
+      - path: root/R_wing_small
+        weight: 1
+      - path: root/R_wing_small/R_wing_small_a
+        weight: 1
+      - path: root/R_wing_small/R_wing_small_a/R_wing_small_b
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Ground_hit
+      takeName: Take 001
+      firstFrame: 265
+      lastFrame: 277
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: hornet_mesh
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/Abdomen
+        weight: 1
+      - path: root/Abdomen/Abdomen_a
+        weight: 1
+      - path: root/Abdomen/Abdomen_a/Abdomen_b
+        weight: 1
+      - path: root/Head
+        weight: 1
+      - path: root/Head/L_antenna
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a/L_antenna_b
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a/L_antenna_b/L_antenna_c
+        weight: 1
+      - path: root/Head/L_claw
+        weight: 1
+      - path: root/Head/L_claw/L_claw_a
+        weight: 1
+      - path: root/Head/R_antenna
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a/R_antenna_b
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a/R_antenna_b/R_antenna_c
+        weight: 1
+      - path: root/Head/R_claw
+        weight: 1
+      - path: root/Head/R_claw/R_claw_a
+        weight: 1
+      - path: root/L_leg_back
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b/L_leg_back_c
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b/L_leg_back_c/L_leg_back_d
+        weight: 1
+      - path: root/L_leg_front
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a/L_leg_front_b
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a/L_leg_front_b/L_leg_front_c
+        weight: 1
+      - path: root/L_leg_mid
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b/L_leg_mid_c
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b/L_leg_mid_c/L_leg_mid_d
+        weight: 1
+      - path: root/L_wing_big
+        weight: 1
+      - path: root/L_wing_big/L_wing_big_a
+        weight: 1
+      - path: root/L_wing_big/L_wing_big_a/L_wing_big_b
+        weight: 1
+      - path: root/L_wing_small
+        weight: 1
+      - path: root/L_wing_small/L_wing_small_a
+        weight: 1
+      - path: root/L_wing_small/L_wing_small_a/L_wing_small_b
+        weight: 1
+      - path: root/R_leg_back
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b/R_leg_back_c
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b/R_leg_back_c/R_leg_back_d
+        weight: 1
+      - path: root/R_leg_front
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a/R_leg_front_b
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a/R_leg_front_b/R_leg_front_c
+        weight: 1
+      - path: root/R_leg_mid
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b/R_leg_mid_c
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b/R_leg_mid_c/R_leg_mid_d
+        weight: 1
+      - path: root/R_wing_big
+        weight: 1
+      - path: root/R_wing_big/R_wing_big_a
+        weight: 1
+      - path: root/R_wing_big/R_wing_big_a/R_wing_big_b
+        weight: 1
+      - path: root/R_wing_small
+        weight: 1
+      - path: root/R_wing_small/R_wing_small_a
+        weight: 1
+      - path: root/R_wing_small/R_wing_small_a/R_wing_small_b
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Ground_dead
+      takeName: Take 001
+      firstFrame: 280
+      lastFrame: 312
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: hornet_mesh
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/Abdomen
+        weight: 1
+      - path: root/Abdomen/Abdomen_a
+        weight: 1
+      - path: root/Abdomen/Abdomen_a/Abdomen_b
+        weight: 1
+      - path: root/Head
+        weight: 1
+      - path: root/Head/L_antenna
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a/L_antenna_b
+        weight: 1
+      - path: root/Head/L_antenna/L_antenna_a/L_antenna_b/L_antenna_c
+        weight: 1
+      - path: root/Head/L_claw
+        weight: 1
+      - path: root/Head/L_claw/L_claw_a
+        weight: 1
+      - path: root/Head/R_antenna
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a/R_antenna_b
+        weight: 1
+      - path: root/Head/R_antenna/R_antenna_a/R_antenna_b/R_antenna_c
+        weight: 1
+      - path: root/Head/R_claw
+        weight: 1
+      - path: root/Head/R_claw/R_claw_a
+        weight: 1
+      - path: root/L_leg_back
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b/L_leg_back_c
+        weight: 1
+      - path: root/L_leg_back/L_leg_back_a/L_leg_back_b/L_leg_back_c/L_leg_back_d
+        weight: 1
+      - path: root/L_leg_front
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a/L_leg_front_b
+        weight: 1
+      - path: root/L_leg_front/L_leg_front_a/L_leg_front_b/L_leg_front_c
+        weight: 1
+      - path: root/L_leg_mid
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b/L_leg_mid_c
+        weight: 1
+      - path: root/L_leg_mid/L_leg_mid_a/L_leg_mid_b/L_leg_mid_c/L_leg_mid_d
+        weight: 1
+      - path: root/L_wing_big
+        weight: 1
+      - path: root/L_wing_big/L_wing_big_a
+        weight: 1
+      - path: root/L_wing_big/L_wing_big_a/L_wing_big_b
+        weight: 1
+      - path: root/L_wing_small
+        weight: 1
+      - path: root/L_wing_small/L_wing_small_a
+        weight: 1
+      - path: root/L_wing_small/L_wing_small_a/L_wing_small_b
+        weight: 1
+      - path: root/R_leg_back
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b/R_leg_back_c
+        weight: 1
+      - path: root/R_leg_back/R_leg_back_a/R_leg_back_b/R_leg_back_c/R_leg_back_d
+        weight: 1
+      - path: root/R_leg_front
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a/R_leg_front_b
+        weight: 1
+      - path: root/R_leg_front/R_leg_front_a/R_leg_front_b/R_leg_front_c
+        weight: 1
+      - path: root/R_leg_mid
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b/R_leg_mid_c
+        weight: 1
+      - path: root/R_leg_mid/R_leg_mid_a/R_leg_mid_b/R_leg_mid_c/R_leg_mid_d
+        weight: 1
+      - path: root/R_wing_big
+        weight: 1
+      - path: root/R_wing_big/R_wing_big_a
+        weight: 1
+      - path: root/R_wing_big/R_wing_big_a/R_wing_big_b
+        weight: 1
+      - path: root/R_wing_small
+        weight: 1
+      - path: root/R_wing_small/R_wing_small_a
+        weight: 1
+      - path: root/R_wing_small/R_wing_small_a/R_wing_small_b
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
