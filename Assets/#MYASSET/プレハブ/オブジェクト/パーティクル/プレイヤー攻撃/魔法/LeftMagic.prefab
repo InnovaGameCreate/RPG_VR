@@ -41,9 +41,10 @@ GameObject:
   - component: {fileID: 198295970649668328}
   - component: {fileID: 199791354056275352}
   - component: {fileID: 114995535942665866}
+  - component: {fileID: 114999607276291286}
   m_Layer: 0
   m_Name: Projectile_01 Noise
-  m_TagString: Untagged
+  m_TagString: Magic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -625,7 +626,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b06cb8f33acabf4f86af46fc01fb49d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usehand: 0
 --- !u!114 &114253188902539914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -695,6 +695,17 @@ MonoBehaviour:
   x: 0
   y: 0
   z: 0
+--- !u!114 &114999607276291286
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1181185656529208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e24b0b20aba3cd2448e021335a0d87cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135057658125991868
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -3078,9 +3089,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 3
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -3224,7 +3235,7 @@ ParticleSystem:
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 1
   TriggerModule:

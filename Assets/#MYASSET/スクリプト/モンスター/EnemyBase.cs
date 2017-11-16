@@ -143,6 +143,18 @@ public abstract class EnemyBase : MonoBehaviour {
         }
     }
 
+    void OnParticleCollision(GameObject obj)
+    {
+
+        //処理内容
+        if (obj.gameObject.tag == "Magic")
+        {
+            hp -= 1;
+            animator.SetTrigger("Damage");
+            Debug.Log("aaaaaaa");
+        }
+    }
+
     private float GetCollisionForce(Collision collision)
         {
             if ((collision.collider.name.Contains("Sword") && collision.collider.GetComponent<VRTK.Examples.Sword>().CollisionForce() > breakForce))

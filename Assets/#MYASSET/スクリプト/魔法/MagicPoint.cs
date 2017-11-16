@@ -20,7 +20,6 @@ public class MagicPoint : MonoBehaviour {
     }
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log(other.gameObject);
         if (other.CompareTag("MagicHand"))
         {
             if((other.gameObject.name== "MagicAttackpointL"&& usehand==USEHAND.Left)|| (other.gameObject.name == "MagicAttackpointR" && usehand == USEHAND.Right))

@@ -34,8 +34,7 @@ public class FlyToUnder : MonoBehaviour
             }
              
         }
-        Debug.Log("time:" +time);
-        Debug.Log("aaaaaa:" + goupdown.undertofly);
+      
 
     }
     private void OnTriggerEnter(Collider other)
