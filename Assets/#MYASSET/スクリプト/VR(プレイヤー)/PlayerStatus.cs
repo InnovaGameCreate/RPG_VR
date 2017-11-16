@@ -17,6 +17,5 @@ public class PlayerStatus : MonoBehaviour {
     public void damaged(int atk)
     {
         hp -= atk;
-        Debug.Log(hp);
     }
 }

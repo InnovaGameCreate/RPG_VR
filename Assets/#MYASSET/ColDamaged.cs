@@ -12,7 +12,7 @@ public class ColDamaged : MonoBehaviour {
     private void OnCollisionEnter(Collision collision)
     {
         var collisionForce = GetCollisionForce(collision);
-        Debug.Log(collision.gameObject.name);
+        Debug.Log("aaaaaaaaaaaa");
         if (collisionForce > 0)
         {
          

@@ -4,9 +4,9 @@
 
     public class Sword : VRTK_InteractableObject
     {
-        private float impactMagnifier = 120f;
+        private float impactMagnifier = 240f;//120f;
         private float collisionForce = 0f;
-        private float maxCollisionForce = 4000f;
+        private float maxCollisionForce = 2000f;//4000f;
         private VRTK_ControllerReference controllerReference;
 
         public float CollisionForce()

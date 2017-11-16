@@ -60,8 +60,8 @@ public abstract class EnemyBase : MonoBehaviour {
         animator = GetComponent<Animator>();
 
         StartCoroutine("freeMove");
+        GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.Continuous;
 
-    
     }
 
     // Update is called once per frame
@@ -147,7 +147,7 @@ public abstract class EnemyBase : MonoBehaviour {
         {
             if ((collision.collider.name.Contains("Sword") && collision.collider.GetComponent<VRTK.Examples.Sword>().CollisionForce() > breakForce))
             {
-                return collision.collider.GetComponent<VRTK.Examples.Sword>().CollisionForce() * 1.2f;
+            return collision.collider.GetComponent<VRTK.Examples.Sword>().CollisionForce() * 1.2f;
           
             }
 

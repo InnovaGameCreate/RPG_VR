@@ -292,20 +292,24 @@ public class GoUpDown : MonoBehaviour
     //タッチパッド押した
     protected virtual void DoTouchpadClicked(object sender, ControllerInteractionEventArgs e)
     {
-        for (int i = 0; i < events.Length; i++)
-        {
-            if (sender == events[i])
-                axisx[i] = e.touchpadAxis.x;
-        }
+        //for (int i = 0; i < events.Length; i++)
+        //{
+        //    if (sender == events[i])
+        //        axisx[i] = e.touchpadAxis.x;
+        //}
+        if (sender == events[0])
+                axisx[0] = e.touchpadAxis.x;
     }
     //タッチパッド離した
     protected virtual void DoTouchpadUnclicked(object sender, ControllerInteractionEventArgs e)
     {
-        for (int i = 0; i < events.Length; i++)
-        {
-            if (sender == events[i])
-                axisx[i] = 0;
-        }
+        //for (int i = 0; i < events.Length; i++)
+        //{
+        //    if (sender == events[i])
+        //        axisx[i] = 0;
+        //}
+        if (sender == events[0])
+            axisx[0] = 0;
     }
     //タッチパッド触れた
     protected virtual void DoTouchpadTouched(object sender, ControllerInteractionEventArgs e)
