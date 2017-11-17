@@ -41,7 +41,6 @@ GameObject:
   - component: {fileID: 198295970649668328}
   - component: {fileID: 199791354056275352}
   - component: {fileID: 114995535942665866}
-  - component: {fileID: 114999607276291286}
   m_Layer: 0
   m_Name: Projectile_01 Noise
   m_TagString: Magic
@@ -102,21 +101,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1471524876313752
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4974053605593416}
-  m_Layer: 0
-  m_Name: Right
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1481478077293112
 GameObject:
   m_ObjectHideFlags: 1
@@ -142,7 +126,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4032998477736672}
-  - component: {fileID: 114181514812867482}
+  - component: {fileID: 114753252598016962}
   m_Layer: 0
   m_Name: LeftMagic
   m_TagString: Untagged
@@ -232,8 +216,24 @@ GameObject:
   - component: {fileID: 4642687779227234}
   - component: {fileID: 198578970121774206}
   - component: {fileID: 199302434525873902}
+  - component: {fileID: 114288537265602584}
   m_Layer: 0
   m_Name: particle slave birth instant
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1967544821066150
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4703192455405712}
+  m_Layer: 0
+  m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -250,7 +250,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4342723436324102}
-  - {fileID: 4974053605593416}
+  - {fileID: 4703192455405712}
   - {fileID: 4637197935054194}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -378,6 +378,19 @@ Transform:
   m_Father: {fileID: 4342723436324102}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4703192455405712
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1967544821066150}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.6774509, y: -0.07872963, z: -0.19558203}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4032998477736672}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4769821675618348
 Transform:
   m_ObjectHideFlags: 1
@@ -406,19 +419,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4342723436324102}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4974053605593416
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1471524876313752}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.1565894, y: 0.6767802, z: -1.2106133}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4032998477736672}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23085011085811514
 MeshRenderer:
@@ -615,17 +615,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1093085154508502}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114181514812867482
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1594965344106252}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b06cb8f33acabf4f86af46fc01fb49d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114253188902539914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -637,6 +626,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a0087707282d254d8ce0d4bdeb5e069, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114288537265602584
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1944861891217754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e24b0b20aba3cd2448e021335a0d87cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atk: 10
 --- !u!114 &114480093209453480
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -646,6 +647,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a0087707282d254d8ce0d4bdeb5e069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114753252598016962
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1594965344106252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b06cb8f33acabf4f86af46fc01fb49d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114773889870544990
@@ -695,17 +707,6 @@ MonoBehaviour:
   x: 0
   y: 0
   z: 0
---- !u!114 &114999607276291286
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1181185656529208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e24b0b20aba3cd2448e021335a0d87cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &135057658125991868
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -825,7 +826,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1451849389
+  randomSeed: -171207227
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3089,7 +3090,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 3
     type: 1
     collisionMode: 0
@@ -6267,9 +6268,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 3
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -6413,7 +6414,7 @@ ParticleSystem:
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 1
   TriggerModule:
@@ -10532,7 +10533,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -1523428053
+  randomSeed: -811144102
   InitialModule:
     serializedVersion: 3
     enabled: 1

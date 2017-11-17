@@ -145,14 +145,17 @@ public abstract class EnemyBase : MonoBehaviour {
 
     void OnParticleCollision(GameObject obj)
     {
+        //ここではなぜかobjのタグがUntaggedになっている
 
-        //処理内容
-        if (obj.gameObject.tag == "Magic")
-        {
-            hp -= 1;
-            animator.SetTrigger("Damage");
-            Debug.Log("aaaaaaa");
-        }
+        ////処理内容
+        //if (obj.gameObject.tag == "Magic")
+        //{
+        //    Debug.Log("bbbbbbb");
+        //    hp -= 1;
+        //    animator.SetTrigger("Damage");
+        //    Destroy(obj);
+        //    Destroy(this.gameObject);
+        //}
     }
 
     private float GetCollisionForce(Collision collision)
