@@ -6,11 +6,22 @@
 
     public class RPGItemObject : VRTK_InteractableObject
     {
-        protected GameObject ParticleObject;
+        /*
+         *  アイテムスーパークラス
+         *  
+         */
+        protected GameObject ParticleObject;//パーティクルオブジェクト
         [SerializeField]
         private GameObject rightcontroller;       //右コントローラ
         [SerializeField]
         private GameObject leftcontroller;       //左コントローラ
+
+        public int ID;//アイテムID
+        public bool CanStack;//アイテムがスタック可能かどうか
+        public float ObjectBreakTime;//フィールドのアイテムが消える時間
+        public string FlavorText;//説明文
+        
+
 
         // Use this for initialization
         void Start()

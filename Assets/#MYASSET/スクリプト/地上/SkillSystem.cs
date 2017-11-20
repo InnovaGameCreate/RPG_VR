@@ -26,6 +26,7 @@ public class SkillSystem : MonoBehaviour
     private float Tame;//発動までのため時間
     [SerializeField]
     private float Interval;//スキルのCT
+    List<>
 
     private SearchHand whereHand1, whereHand2;
     //private VRTK_ControllerReference controllerReference;
