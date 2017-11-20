@@ -21,7 +21,7 @@ public class RPGItemUsing : MonoBehaviour {
     public float IntervalTime;  //使用クールタイム
     public bool CanSetWaist;    //腰に装備可能かどうか
     public bool CanThrowAway;   //捨てれるかどうか
-    public 
+    
 
     // Use this for initialization
     void Start () {
