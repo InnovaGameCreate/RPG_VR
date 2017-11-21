@@ -5,12 +5,13 @@ using VRTK;
 
 public class SearchHand : MonoBehaviour
 {
-    public bool _SearchUP, _SearchDown,_SearchItem;
+    public bool _SearchUP, _SearchDown,_SearchItem,_SearchShoulder;
     // Use this for initialization
     void Start()
     {
         _SearchUP = _SearchDown = false;
-        _SearchItem = false;
+        _SearchItem = _SearchShoulder = false;
+
     }
 
     // Update is called once per frame
@@ -39,6 +40,12 @@ public class SearchHand : MonoBehaviour
            Debug.Log("腰アイテム");
 
         }
+        if (collider.gameObject.name == "Shoulder")
+        {
+            _SearchShoulder = true;
+            Debug.Log("抜剣可");
+
+        }
     }
 
     public void OnTriggerEnter(Collider collider)
@@ -56,6 +63,26 @@ public class SearchHand : MonoBehaviour
         {
             _SearchItem = false;
             //Debug.Log("おてて");
+        }
+        if (collider.gameObject.name == "Shoulder")
+        {
+            _SearchShoulder = false;
+           // Debug.Log("おてて");
+        }
+
+      
+}
+    public void OnTriggerExit(Collider collider)
+    {
+        if (collider.gameObject.name == "WaistItem")
+        {
+            _SearchItem = false;
+            //Debug.Log("おてて");
+        }
+        if (collider.gameObject.name == "Shoulder")
+        {
+            _SearchShoulder = false;
+            // Debug.Log("おてて");
         }
     }
 

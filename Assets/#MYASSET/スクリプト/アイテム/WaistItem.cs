@@ -5,7 +5,6 @@ using VRTK;
 
 public class WaistItem : MonoBehaviour
 {
-
     public bool gripped; //握ったかどうか
     private Transform waist; //腰の位置
     private GameObject waistItem; //腰にあるアイテム
@@ -17,6 +16,7 @@ public class WaistItem : MonoBehaviour
     private SearchHand rangeWaistItem;
     private bool exist;
     private GameObject test;
+    private bool oneTimeGrab;
 
     private void Awake()
     {
@@ -62,6 +62,7 @@ public class WaistItem : MonoBehaviour
     private void GripPressedHandler(object sender, ControllerInteractionEventArgs e)
     {
         gripped = true;
+       
         //Instantiate(waistItem,itemTrans);
         // waistmultiItem = GameObject.Find("WaistItem");
 
