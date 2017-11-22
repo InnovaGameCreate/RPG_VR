@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRTK;
 
 public class SkillPoint : MonoBehaviour {
 
@@ -18,7 +19,13 @@ public class SkillPoint : MonoBehaviour {
     {
         if (coll.gameObject.GetComponent<SkillSystem>() != null)
         {
-            gameobject.enable;
+            SkillSystem _sys = coll.gameObject.GetComponent<SkillSystem>();
+            if(_sys.Trajectory[0] == gameObject)
+            {
+                _sys.Trajectory.RemoveAt(0);//0番から順に消す
+                this.gameObject.SetActive(false);
+            }
+            
         }
     }
 }

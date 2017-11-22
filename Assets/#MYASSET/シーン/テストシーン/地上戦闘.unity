@@ -1203,7 +1203,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 143055054}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -2636,6 +2636,7 @@ GameObject:
   - component: {fileID: 337984578}
   - component: {fileID: 337984577}
   - component: {fileID: 337984576}
+  - component: {fileID: 337984579}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -2707,6 +2708,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 337984574}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &337984579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 337984574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 186c7d258210fd04c8a4e2097bd92b97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &356334454
 GameObject:
   m_ObjectHideFlags: 0
@@ -3566,7 +3578,6 @@ GameObject:
   m_Component:
   - component: {fileID: 467700632}
   - component: {fileID: 467700633}
-  - component: {fileID: 467700634}
   m_Layer: 0
   m_Name: Headset
   m_TagString: Untagged
@@ -3612,26 +3623,6 @@ MonoBehaviour:
   smoothsScale: 0
   maxAllowedPerFrameSizeDifference: 0.003
   _moment: 2
---- !u!114 &467700634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 467700631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aad2106264772544d964115e6d59c807, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HandL: {fileID: 631567796}
-  HandR: {fileID: 751854330}
-  SkillZone1: {fileID: 143055054}
-  SkillZone2: {fileID: 516093160}
-  CanSlowy: 0
-  Atk: 0
-  Tame: 0
-  Interval: 0
-  Trajectory: []
 --- !u!1 &475926975
 GameObject:
   m_ObjectHideFlags: 0
@@ -3862,6 +3853,7 @@ GameObject:
   - component: {fileID: 502006042}
   - component: {fileID: 502006041}
   - component: {fileID: 502006040}
+  - component: {fileID: 502006043}
   m_Layer: 0
   m_Name: Sphere (1)
   m_TagString: Untagged
@@ -3933,6 +3925,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 502006038}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &502006043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 502006038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 186c7d258210fd04c8a4e2097bd92b97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &503679707
 GameObject:
   m_ObjectHideFlags: 0
@@ -4234,7 +4237,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 516093160}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -5097,7 +5100,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &591414495
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5454,7 +5457,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 594207872}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1e135ae359e9034c9255b893df77923, type: 3}
   m_Name: 
@@ -7647,7 +7650,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 799000503}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1e135ae359e9034c9255b893df77923, type: 3}
   m_Name: 
@@ -10913,6 +10916,7 @@ GameObject:
   - component: {fileID: 1187237025}
   - component: {fileID: 1187237024}
   - component: {fileID: 1187237023}
+  - component: {fileID: 1187237026}
   m_Layer: 0
   m_Name: Sphere (2)
   m_TagString: Untagged
@@ -10984,6 +10988,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1187237021}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1187237026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1187237021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 186c7d258210fd04c8a4e2097bd92b97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1191151626
 GameObject:
   m_ObjectHideFlags: 0
@@ -15773,8 +15788,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1625117488}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.7503366, y: 3.9676557, z: 3.2122908}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.09, y: 1.11, z: 3.2122908}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 337984575}
@@ -17568,15 +17583,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aad2106264772544d964115e6d59c807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eye: {fileID: 0}
   HandL: {fileID: 0}
   HandR: {fileID: 0}
   SkillZone1: {fileID: 0}
   SkillZone2: {fileID: 0}
   CanSlowy: 0
   Atk: 0
-  Tame: 0
+  Time: 0
   Interval: 0
-  Trajectory: []
+  Trajectory:
+  - {fileID: 337984574}
+  - {fileID: 502006038}
+  - {fileID: 1187237021}
 --- !u!1 &1885796146
 GameObject:
   m_ObjectHideFlags: 0
