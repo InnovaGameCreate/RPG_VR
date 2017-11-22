@@ -13,10 +13,10 @@ public class SkillSystem : MonoBehaviour
         Passive,
         Non
     }
-    [SerializeField]
-    private GameObject HandL, HandR;
-    [SerializeField]
-    private GameObject SkillZone1, SkillZone2;//スキル発動位置
+    //[SerializeField]
+    public GameObject HandL, HandR;
+    //[SerializeField]
+    public GameObject SkillZone1, SkillZone2;//スキル発動位置
 
     [SerializeField]
     private bool CanSlowy;//使用時遅くなるかどうか
@@ -26,7 +26,8 @@ public class SkillSystem : MonoBehaviour
     private float Tame;//発動までのため時間
     [SerializeField]
     private float Interval;//スキルのCT
-    //List<>
+    [SerializeField]
+    private List<GameObject> Trajectory = new List<GameObject>();//スキルの起動表示のためのリスト
 
     private SearchHand whereHand1, whereHand2;
     //private VRTK_ControllerReference controllerReference;
@@ -37,6 +38,14 @@ public class SkillSystem : MonoBehaviour
         whereHand1 = SkillZone1.GetComponent<SearchHand>();
         whereHand2 = SkillZone2.GetComponent<SearchHand>();
      
+    }
+
+    private void Awake()
+    {
+        HandL = GameObject.Find("[VRTK_Scripts]/LeftController");
+        HandR = GameObject.Find("[VRTK_Scripts]/RightController");
+        SkillZone1 = GameObject.Find("[VRTK_Scripts]/Headset/SkillZone1");
+        SkillZone2 = GameObject.Find("[VRTK_Scripts]/SkillZone2");
     }
 
     // Update is called once per frame
