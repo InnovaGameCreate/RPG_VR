@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRTK;
+using VRTK.Examples;
 
-public class RPGItemUsing : MonoBehaviour {
+public class RPGItemUsing : RPGItemObject
+{
 
     /*
      *  アイテムサブクラス
-     *  実装時にはこちらをアタッチ
+     *  実装時にはこちらをアタッチ(ひな形)
      */
     public enum ItemType
     {
@@ -29,7 +32,51 @@ public class RPGItemUsing : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	//void Update () {
 		
-	}
+	//}
+
+    /*トリガー*/
+    protected override void TriggerPressedHandler(object sender, ControllerInteractionEventArgs e)//トリガーを押したとき
+    {
+        triggerd = true;
+
+
+    }
+
+    protected override void TriggerReleasedHandler(object sender, ControllerInteractionEventArgs e)//トリガーを離したとき
+    {
+        triggerd = false;
+
+
+    }
+    /*タッチパッド*/
+    protected override void TouchPadPressedHandler(object sender, ControllerInteractionEventArgs e)//タッチパッドを押したとき
+    {
+        Touched = true;
+
+
+    }
+
+    protected override void TouchPadReleasedHandler(object sender, ControllerInteractionEventArgs e)//タッチパッドを離したとき
+    {
+        Touched = false;
+
+
+    }
+
+    /*グリップ*/
+    protected override void GripPressedHandler(object sender, ControllerInteractionEventArgs e)//グリップを押したとき
+    {
+        Griped = true;
+
+
+    }
+
+    protected override void GripReleasedHandler(object sender, ControllerInteractionEventArgs e)//グリップを離したとき
+    {
+        Griped = false;
+
+
+    }
 }

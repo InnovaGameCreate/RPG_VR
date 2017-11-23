@@ -55,6 +55,23 @@
             GetComponent<VRTK_ControllerEvents>().GripReleased += GripReleasedHandler;
         }
 
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            if (GetComponent<VRTK_ControllerEvents>() == null)
+                return;
+            // イベントハンドラの解除 
+            //トリガー
+            GetComponent<VRTK_ControllerEvents>().TriggerPressed -= TriggerPressedHandler;
+            GetComponent<VRTK_ControllerEvents>().TriggerReleased -= TriggerReleasedHandler;
+            //タッチパッド
+            GetComponent<VRTK_ControllerEvents>().TouchpadPressed -= TouchPadPressedHandler;
+            GetComponent<VRTK_ControllerEvents>().TouchpadReleased -= TouchPadReleasedHandler;
+            //グリップ
+            GetComponent<VRTK_ControllerEvents>().GripPressed -= GripPressedHandler;
+            GetComponent<VRTK_ControllerEvents>().GripReleased -= GripReleasedHandler;
+        }
+
         protected override void Awake()
         {
             base.Awake();
@@ -70,45 +87,45 @@
 
         // イベントハンドラ
         /*トリガー*/
-        protected void TriggerPressedHandler(object sender, ControllerInteractionEventArgs e)//トリガーを押したとき
+        protected virtual void TriggerPressedHandler(object sender, ControllerInteractionEventArgs e)//トリガーを押したとき
         {
-            triggerd = true;
+            //triggerd = true;
 
             
         }
 
-        protected void TriggerReleasedHandler(object sender, ControllerInteractionEventArgs e)//トリガーを離したとき
+        protected virtual void TriggerReleasedHandler(object sender, ControllerInteractionEventArgs e)//トリガーを離したとき
         {
-            triggerd = false;
+            //triggerd = false;
             
 
         }
         /*タッチパッド*/
-        protected void TouchPadPressedHandler(object sender, ControllerInteractionEventArgs e)//タッチパッドを押したとき
+        protected virtual void TouchPadPressedHandler(object sender, ControllerInteractionEventArgs e)//タッチパッドを押したとき
         {
-            Touched = true;
+            //Touched = true;
 
 
         }
 
-        protected void TouchPadReleasedHandler(object sender, ControllerInteractionEventArgs e)//タッチパッドを離したとき
+        protected virtual void TouchPadReleasedHandler(object sender, ControllerInteractionEventArgs e)//タッチパッドを離したとき
         {
-            Touched = false;
+            //Touched = false;
 
             
         }
 
         /*グリップ*/
-        protected void GripPressedHandler(object sender, ControllerInteractionEventArgs e)//グリップを押したとき
+        protected virtual void GripPressedHandler(object sender, ControllerInteractionEventArgs e)//グリップを押したとき
         {
-            Griped = true;
+            //Griped = true;
 
 
         }
 
-        protected void GripReleasedHandler(object sender, ControllerInteractionEventArgs e)//グリップを離したとき
+        protected virtual void GripReleasedHandler(object sender, ControllerInteractionEventArgs e)//グリップを離したとき
         {
-            Griped = false;
+            //Griped = false;
 
 
         }
