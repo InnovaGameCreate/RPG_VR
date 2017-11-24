@@ -5,6 +5,10 @@ using VRTK;
 
 public class SkillSystem : MonoBehaviour
 {
+    /*
+        スキルスーパークラス
+            
+     */
 
     private enum skillType
     {//スキルの種類
