@@ -98,32 +98,33 @@ public class SearchHand : MonoBehaviour
         return _SearchItem;
     }
 
-    private IEnumerator StayHand_UP(float SkillTime)//スキル発動までのタメ
-    {
-        if(running || SkillAwake)//稼働中なら２つ目以降は破棄
-            yield break;
+    //public IEnumerator StayHand_UP(float SkillTime)//スキル発動までのタメ
+    //{
+    //    if(running || SkillAwake)//稼働中なら２つ目以降は破棄
+    //        yield break;
 
-        if (_SearchUP)
-        {
-            if (SkillTime <= timer)//タメ時間経過なら
-            {
+    //    if (_SearchUP)
+    //    {
+    //        if (SkillTime <= timer)//タメ時間経過なら
+    //        {
 
-                SkillAwake = true;
-            }
-            timer++;
-            yield return new WaitForSeconds(1.0f);//まだならカウントを位置増やしもう一度
-        }
-        else//範囲外に出たなら初期化
-        {
-            running = false;
-            SkillAwake = false;
-            timer = 0;
-            yield break;
-        }
-    }
+    //            SkillAwake = true;
+    //        }
+    //        Debug.Log("Stay");
+    //        timer++;
+    //        yield return new WaitForSeconds(1.0f);//まだならカウントを位置増やしもう一度
+    //    }
+    //    else//範囲外に出たなら初期化
+    //    {
+    //        running = false;
+    //        SkillAwake = false;
+    //        timer = 0;
+    //        yield break;
+    //    }
+    //}
 
-    public bool IsSkillAwakeing()
-    {
-        return SkillAwake;
-    }
+    //public bool IsSkillAwakeing()
+    //{
+    //    return SkillAwake;
+    //}
 }

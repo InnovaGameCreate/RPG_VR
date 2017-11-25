@@ -79,6 +79,7 @@ public class SkillSystem : MonoBehaviour
             Debug.Log("defgderh");
             if (whereHand1._SearchUP && SkillTYPE == skillType.Up)//上側
             {
+                //StartCoroutine("whereHand1.StayHand_UP",3.0f);
                 AwakeSkillUP();
             }
             if (whereHand2._SearchDown && SkillTYPE == skillType.Under)//下側
