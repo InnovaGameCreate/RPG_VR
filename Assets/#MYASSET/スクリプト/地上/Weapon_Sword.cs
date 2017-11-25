@@ -4,6 +4,7 @@ using UnityEngine;
 using VRTK;
 using VRTK.Examples;
 
+[RequireComponent(typeof(SkillSystem))]
 public class Weapon_Sword : RPGItemObject
 {
     /*

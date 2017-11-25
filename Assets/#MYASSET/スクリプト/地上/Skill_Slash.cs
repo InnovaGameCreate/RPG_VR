@@ -9,14 +9,14 @@ public class Skill_Slash : SkillSystem
 
 
 	// Use this for initialization
-	void Start () {
+	//void Start () {
 		
-	}
+	//}
 	
 	// Update is called once per frame
-	void Update () {
+	//void Update () {
 		
-	}
+	//}
 
     protected override void AwakeSkillUP()//実際に発動するスキル内容の関数(上側) オーバーライド
     {

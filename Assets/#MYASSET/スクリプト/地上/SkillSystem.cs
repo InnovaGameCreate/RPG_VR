@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using VRTK;
+using VRTK.Examples;
 
 public class SkillSystem : MonoBehaviour
 {
@@ -45,43 +46,49 @@ public class SkillSystem : MonoBehaviour
     {
         whereHand1 = SkillZone1.GetComponent<SearchHand>();
         whereHand2 = SkillZone2.GetComponent<SearchHand>();
-        eye = GameObject.Find("[VRTK_SDKManager]/SDKSetups/SteamVR/[CameraRig]/Camera (head)").transform;
 
-
+        //eye = GameObject.Find("[VRTK_SDKManager]/SDKSetups/SteamVR/[CameraRig]/Camera (head)/Camera (eye)").transform;
+        //eye = GameObject.Find("[VRTK_Scripts]/Headset").transform;
+        //SkillZone2.transform.parent = eye;
     }
 
     private void Awake()
     {
-        
+        //eye = GameObject.Find("[VRTK_SDKManager]/SDKSetups/SteamVR/[CameraRig]/Camera (eye)").transform;
         HandL = GameObject.Find("[VRTK_Scripts]/LeftController");
         HandR = GameObject.Find("[VRTK_Scripts]/RightController");
         SkillZone1 = GameObject.Find("[VRTK_Scripts]/Headset/SkillZone1");
         SkillZone2 = GameObject.Find("[VRTK_Scripts]/SkillZone2");
 
-        
+        if (Trajectory.Count == 0)
+        {
+            Debug.Log("スキルの軌道ノードを確認してください");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
         //下側スキル範囲
-        SkillZone2.transform.position = new Vector3(eye.transform.position.x, 0.6f, eye.transform.position.z);
-        //if (whereHand1 == null)
-        //{
-        //    Debug.Log("aaaaaaaaaaaaaaaa");
-        //}
-        if (whereHand1._SearchUP && SkillTYPE == skillType.Up)//上側
-        {
-            AwakeSkillUP();
-        }
-        if (whereHand2._SearchDown && SkillTYPE == skillType.Under)//下側
-        {
-            AwakeSkillDOWN();
-        }
-        if (SkillTYPE == skillType.Passive)
-        {
-            AwakeSkillPASSIVE();
+        SkillZone2.transform.position = new Vector3(eye.transform.position.x, 0.6f, eye.transform.position.z);//将来的にはCamera(eye)を参照に座標を決めたい
+
+
+
+        if (GetComponent<RPGItemObject>() == null) {
+            Debug.Log("defgderh");
+            if (whereHand1._SearchUP && SkillTYPE == skillType.Up)//上側
+            {
+                AwakeSkillUP();
+            }
+            if (whereHand2._SearchDown && SkillTYPE == skillType.Under)//下側
+            {
+                AwakeSkillDOWN();
+            }
+            if (SkillTYPE == skillType.Passive)
+            {
+                AwakeSkillPASSIVE();
+            }
         }
     }
 

@@ -6,18 +6,25 @@ using VRTK;
 public class SearchHand : MonoBehaviour
 {
     public bool _SearchUP, _SearchDown,_SearchItem,_SearchShoulder;
+    private bool running;
+    private bool SkillAwake;
+    private float timer;
+
     // Use this for initialization
     void Start()
     {
         _SearchUP = _SearchDown = false;
         _SearchItem = _SearchShoulder = false;
 
+        running = false;
+        SkillAwake = false;
+        timer = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log("mmmmmmmmaammmmmmmmmmmmmmaaaaaaaaaaaa");
+        
     }
 
     public void OnTriggerStay(Collider collider)
@@ -91,4 +98,32 @@ public class SearchHand : MonoBehaviour
         return _SearchItem;
     }
 
+    private IEnumerator StayHand_UP(float SkillTime)//スキル発動までのタメ
+    {
+        if(running || SkillAwake)//稼働中なら２つ目以降は破棄
+            yield break;
+
+        if (_SearchUP)
+        {
+            if (SkillTime <= timer)//タメ時間経過なら
+            {
+
+                SkillAwake = true;
+            }
+            timer++;
+            yield return new WaitForSeconds(1.0f);//まだならカウントを位置増やしもう一度
+        }
+        else//範囲外に出たなら初期化
+        {
+            running = false;
+            SkillAwake = false;
+            timer = 0;
+            yield break;
+        }
+    }
+
+    public bool IsSkillAwakeing()
+    {
+        return SkillAwake;
+    }
 }
