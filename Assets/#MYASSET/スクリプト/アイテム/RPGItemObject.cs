@@ -8,7 +8,7 @@
     {
         /*
          *  アイテムスーパークラス
-         *  
+         *  11/25現在右のみイベントを受け取れる状態
          */
         protected GameObject ParticleObject;//パーティクルオブジェクト
         [SerializeField]
@@ -25,90 +25,92 @@
         public bool triggerd;
         public bool Touched;
         public bool Griped;
-        public RPGItemObject triggerdother;
+        //public RPGItemObject triggerdother;
 
 
         // Use this for initialization
-        void Start()
+        protected virtual void Start()
         {
-            //base.Start();//継承元
-            if (gameObject.name == "RightController")
-                triggerdother = GameObject.Find("[VRTK_Scripts]/LeftController").GetComponent<RPGItemObject>();
-            else
-                triggerdother = GameObject.Find("[VRTK_Scripts]/RightController").GetComponent<RPGItemObject>();
+            //leftcontroller = GameObject.Find("[VRTK_Scripts]/LeftController").gameObject;
+            //rightcontroller = GameObject.Find("[VRTK_Scripts]/RightController").gameObject;
         }
 
         protected override void OnEnable()
         {
             base.OnEnable();
-            if (GetComponent<VRTK_ControllerEvents>() == null)
+            if (rightcontroller.GetComponent<VRTK_ControllerEvents>() == null)
+            {
+                Debug.Log("dsfgvrgber");
                 return;
+            }
             // イベントハンドラの登録
             //トリガー
-            GetComponent<VRTK_ControllerEvents>().TriggerPressed += TriggerPressedHandler;
-            GetComponent<VRTK_ControllerEvents>().TriggerReleased += TriggerReleasedHandler;
+            rightcontroller.GetComponent<VRTK_ControllerEvents>().TriggerPressed += TriggerPressedHandler2;
+            rightcontroller.GetComponent<VRTK_ControllerEvents>().TriggerReleased += TriggerReleasedHandler2;
             //タッチパッド
-            GetComponent<VRTK_ControllerEvents>().TouchpadPressed += TouchPadPressedHandler;
-            GetComponent<VRTK_ControllerEvents>().TouchpadReleased += TouchPadReleasedHandler;
+            rightcontroller.GetComponent<VRTK_ControllerEvents>().TouchpadPressed += TouchPadPressedHandler2;
+            rightcontroller.GetComponent<VRTK_ControllerEvents>().TouchpadReleased += TouchPadReleasedHandler2;
             //グリップ
-            GetComponent<VRTK_ControllerEvents>().GripPressed += GripPressedHandler;
-            GetComponent<VRTK_ControllerEvents>().GripReleased += GripReleasedHandler;
+            rightcontroller.GetComponent<VRTK_ControllerEvents>().GripPressed += GripPressedHandler2;
+            rightcontroller.GetComponent<VRTK_ControllerEvents>().GripReleased += GripReleasedHandler2;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
-            if (GetComponent<VRTK_ControllerEvents>() == null)
+            if (rightcontroller.GetComponent<VRTK_ControllerEvents>() == null)
                 return;
             // イベントハンドラの解除 
             //トリガー
-            GetComponent<VRTK_ControllerEvents>().TriggerPressed -= TriggerPressedHandler;
-            GetComponent<VRTK_ControllerEvents>().TriggerReleased -= TriggerReleasedHandler;
+            rightcontroller.GetComponent<VRTK_ControllerEvents>().TriggerPressed -= TriggerPressedHandler2;
+            rightcontroller.GetComponent<VRTK_ControllerEvents>().TriggerReleased -= TriggerReleasedHandler2;
             //タッチパッド
-            GetComponent<VRTK_ControllerEvents>().TouchpadPressed -= TouchPadPressedHandler;
-            GetComponent<VRTK_ControllerEvents>().TouchpadReleased -= TouchPadReleasedHandler;
+            rightcontroller.GetComponent<VRTK_ControllerEvents>().TouchpadPressed -= TouchPadPressedHandler2;
+            rightcontroller.GetComponent<VRTK_ControllerEvents>().TouchpadReleased -= TouchPadReleasedHandler2;
             //グリップ
-            GetComponent<VRTK_ControllerEvents>().GripPressed -= GripPressedHandler;
-            GetComponent<VRTK_ControllerEvents>().GripReleased -= GripReleasedHandler;
+            rightcontroller.GetComponent<VRTK_ControllerEvents>().GripPressed -= GripPressedHandler2;
+            rightcontroller.GetComponent<VRTK_ControllerEvents>().GripReleased -= GripReleasedHandler2;
         }
 
         protected override void Awake()
         {
             base.Awake();
-            rightcontroller = GameObject.Find("/[VRTK_SDKManager] /SDKSetups/SteamVR/[CameraRig]/Controller (right)");
-            leftcontroller = GameObject.Find("/[VRTK_SDKManager] /SDKSetups/SteamVR/[CameraRig]/Controller (left)");
+            //rightcontroller = GameObject.Find("/[VRTK_SDKManager] /SDKSetups/SteamVR/[CameraRig]/Controller (right)");
+            //leftcontroller = GameObject.Find("/[VRTK_SDKManager] /SDKSetups/SteamVR/[CameraRig]/Controller (left)");
+            leftcontroller = GameObject.Find("[VRTK_Scripts]/LeftController").gameObject;
+            rightcontroller = GameObject.Find("[VRTK_Scripts]/RightController").gameObject;
         }
 
         // Update is called once per frame
-        void Update()
-        {
+        //void Update()
+        //{
 
-        }
+        //}
 
         // イベントハンドラ
         /*トリガー*/
-        protected virtual void TriggerPressedHandler(object sender, ControllerInteractionEventArgs e)//トリガーを押したとき
+        protected virtual void TriggerPressedHandler2(object sender, ControllerInteractionEventArgs e)//トリガーを押したとき
         {
             //triggerd = true;
 
             
         }
 
-        protected virtual void TriggerReleasedHandler(object sender, ControllerInteractionEventArgs e)//トリガーを離したとき
+        protected virtual void TriggerReleasedHandler2(object sender, ControllerInteractionEventArgs e)//トリガーを離したとき
         {
             //triggerd = false;
             
 
         }
         /*タッチパッド*/
-        protected virtual void TouchPadPressedHandler(object sender, ControllerInteractionEventArgs e)//タッチパッドを押したとき
+        protected virtual void TouchPadPressedHandler2(object sender, ControllerInteractionEventArgs e)//タッチパッドを押したとき
         {
             //Touched = true;
 
 
         }
 
-        protected virtual void TouchPadReleasedHandler(object sender, ControllerInteractionEventArgs e)//タッチパッドを離したとき
+        protected virtual void TouchPadReleasedHandler2(object sender, ControllerInteractionEventArgs e)//タッチパッドを離したとき
         {
             //Touched = false;
 
@@ -116,14 +118,14 @@
         }
 
         /*グリップ*/
-        protected virtual void GripPressedHandler(object sender, ControllerInteractionEventArgs e)//グリップを押したとき
+        protected virtual void GripPressedHandler2(object sender, ControllerInteractionEventArgs e)//グリップを押したとき
         {
             //Griped = true;
 
 
         }
 
-        protected virtual void GripReleasedHandler(object sender, ControllerInteractionEventArgs e)//グリップを離したとき
+        protected virtual void GripReleasedHandler2(object sender, ControllerInteractionEventArgs e)//グリップを離したとき
         {
             //Griped = false;
 

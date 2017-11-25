@@ -1129,6 +1129,7 @@ GameObject:
   - component: {fileID: 143055058}
   - component: {fileID: 143055057}
   - component: {fileID: 143055056}
+  - component: {fileID: 143055060}
   m_Layer: 0
   m_Name: SkillZone1
   m_TagString: ExcludeTeleport
@@ -1215,6 +1216,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 143055054}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &143055060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 143055054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e592d257c852bb4e887a7b9786e9f33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _SearchUP: 0
+  _SearchDown: 0
+  _SearchItem: 0
+  _SearchShoulder: 0
 --- !u!1001 &146240003
 Prefab:
   m_ObjectHideFlags: 0
@@ -4163,6 +4179,7 @@ GameObject:
   - component: {fileID: 516093164}
   - component: {fileID: 516093163}
   - component: {fileID: 516093162}
+  - component: {fileID: 516093166}
   m_Layer: 0
   m_Name: SkillZone2
   m_TagString: ExcludeTeleport
@@ -4249,6 +4266,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 516093160}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &516093166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 516093160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e592d257c852bb4e887a7b9786e9f33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _SearchUP: 0
+  _SearchDown: 0
+  _SearchItem: 0
+  _SearchShoulder: 0
 --- !u!1 &516712608
 GameObject:
   m_ObjectHideFlags: 0
@@ -17439,6 +17471,7 @@ GameObject:
   - component: {fileID: 1869895616}
   - component: {fileID: 1869895615}
   - component: {fileID: 1869895614}
+  - component: {fileID: 1869895619}
   - component: {fileID: 1869895613}
   - component: {fileID: 1869895612}
   - component: {fileID: 1869895611}
@@ -17503,7 +17536,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1869895610}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2283b752a0364e546bc919b3d4caaffa, type: 3}
   m_Name: 
@@ -17583,6 +17616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aad2106264772544d964115e6d59c807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SkillTYPE: 0
   eye: {fileID: 0}
   HandL: {fileID: 0}
   HandR: {fileID: 0}
@@ -17596,6 +17630,47 @@ MonoBehaviour:
   - {fileID: 337984574}
   - {fileID: 502006038}
   - {fileID: 1187237021}
+--- !u!114 &1869895619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1869895610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b97463c5e6459694eac365638d9deb90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableWhenIdle: 1
+  touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  allowedTouchControllers: 0
+  ignoredColliders: []
+  isGrabbable: 1
+  holdButtonToGrab: 0
+  stayGrabbedOnTeleport: 1
+  validDrop: 1
+  grabOverrideButton: 0
+  allowedGrabControllers: 0
+  grabAttachMechanicScript: {fileID: 0}
+  secondaryGrabActionScript: {fileID: 0}
+  isUsable: 1
+  holdButtonToUse: 1
+  useOnlyIfGrabbed: 1
+  pointerActivatesUseAction: 0
+  useOverrideButton: 0
+  allowedUseControllers: 0
+  usingState: 0
+  rightcontroller: {fileID: 0}
+  leftcontroller: {fileID: 0}
+  ID: 0
+  CanStack: 0
+  ObjectBreakTime: 0
+  FlavorText: 
+  triggerd: 0
+  Touched: 0
+  Griped: 0
+  triggerdother: {fileID: 0}
+  Atk: 0
 --- !u!1 &1885796146
 GameObject:
   m_ObjectHideFlags: 0
