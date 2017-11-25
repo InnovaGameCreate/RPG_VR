@@ -67,7 +67,10 @@ public class SkillSystem : MonoBehaviour
 
         //下側スキル範囲
         SkillZone2.transform.position = new Vector3(eye.transform.position.x, 0.6f, eye.transform.position.z);
-
+        //if (whereHand1 == null)
+        //{
+        //    Debug.Log("aaaaaaaaaaaaaaaa");
+        //}
         if (whereHand1._SearchUP && SkillTYPE == skillType.Up)//上側
         {
             AwakeSkillUP();

@@ -64,7 +64,12 @@ public class Weapon_Sword : RPGItemObject
     protected override void GripReleasedHandler(object sender, ControllerInteractionEventArgs e)//グリップを離したとき
     {
         Griped = false;
+        
 
+    }
 
+    public override void StartUsing(GameObject currentUsingObject)
+    {
+        Debug.Log("aaaaaaaaaaaaaaaa");
     }
 }
