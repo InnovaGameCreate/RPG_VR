@@ -10,6 +10,8 @@ public class SearchHand : MonoBehaviour
     private bool SkillAwake;
     private float timer;
 
+    private List<bool> SkillFlags = new List<bool>();
+
     // Use this for initialization
     void Start()
     {
