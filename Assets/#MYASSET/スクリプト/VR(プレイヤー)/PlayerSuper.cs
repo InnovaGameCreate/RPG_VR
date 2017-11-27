@@ -8,7 +8,7 @@ public class PlayerSuper : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        gameobject aa;
+        
 	}
 	
 	// Update is called once per frame
