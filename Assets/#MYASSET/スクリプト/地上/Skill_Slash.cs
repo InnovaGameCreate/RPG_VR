@@ -5,8 +5,8 @@ using VRTK;
 
 public class Skill_Slash : SkillSystem
 {
-    //スキルクラス
-
+    //スキルサブクラス
+    //スキルはタッチパッド
 
 	// Use this for initialization
 	//void Start () {
