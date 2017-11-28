@@ -5,6 +5,8 @@ using VRTK;
 
 public class SkillPoint : MonoBehaviour {
 
+    //剣が触れたらノードを消すクラス
+
 	// Use this for initialization
 	void Start () {
 		

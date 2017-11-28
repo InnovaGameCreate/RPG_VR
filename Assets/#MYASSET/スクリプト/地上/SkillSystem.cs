@@ -34,12 +34,18 @@ public class SkillSystem : MonoBehaviour
     private float Time;//発動までのため時間
     [SerializeField]
     private float Interval;//スキルのCT
+    [SerializeField]
+    private float Consumption;//消費パラメータ量　ステータス完成次第触ること　いい単語わからんかった
 
     //public GameObject NodeList;//スキル用のノードの親
     public List<GameObject> Trajectory = new List<GameObject>();//スキルの起動表示のためのリスト
 
     private SearchHand whereHand1, whereHand2;
-    //private VRTK_ControllerReference controllerReference;
+
+    //スキル移植用
+    private bool running;
+    private bool SkillAwake;
+    private float timer;
 
     // Use this for initialization
     void Start()
@@ -50,6 +56,11 @@ public class SkillSystem : MonoBehaviour
         //eye = GameObject.Find("[VRTK_SDKManager]/SDKSetups/SteamVR/[CameraRig]/Camera (head)/Camera (eye)").transform;
         //eye = GameObject.Find("[VRTK_Scripts]/Headset").transform;
         //SkillZone2.transform.parent = eye;
+
+        //スキル用フラグ初期化
+        running = false;
+        SkillAwake = false;
+        timer = 0;
     }
 
     private void Awake()
@@ -76,7 +87,7 @@ public class SkillSystem : MonoBehaviour
 
 
         if (GetComponent<RPGItemObject>() == null) {
-            Debug.Log("defgderh");
+            //Debug.Log("defgderh");
             if (whereHand1._SearchUP && SkillTYPE == skillType.Up)//上側
             {
                 //StartCoroutine("whereHand1.StayHand_UP",3.0f);
@@ -95,7 +106,7 @@ public class SkillSystem : MonoBehaviour
 
     protected virtual void AwakeSkillUP()//実際に発動するスキル内容の関数(上側) オーバーライド用
     {
-
+        StartCoroutine("StayHand_UP", Time);//テスト用要テスト
     }
 
     protected virtual void AwakeSkillDOWN()//実際に発動するスキル内容の関数(下側) オーバーライド用
@@ -113,6 +124,34 @@ public class SkillSystem : MonoBehaviour
       //  SteamVR_TrackedObject trackedObject = (rightorleft == 1 ? rightcontroller : leftcontroller).GetComponent<SteamVR_TrackedObject>();
        // var device = SteamVR_Controller.Input((int)trackedObject.index);
       //  device.TriggerHapticPulse(2000);        //コントローラの振動
+    }
+
+    public IEnumerator StayHand_UP(float SkillTime)//次イノベで確認すべき
+    {
+        if (running /*|| SkillAwake*/)//稼働中なら２つ目以降は破棄(現在解除中)
+            yield break;
+
+        running = true;
+
+        if (whereHand1._SearchUP)
+        {
+            timer += 1.0f;
+            Debug.Log(timer + ":SKILL!!!!!!");
+            yield return new WaitForSeconds(1.0f);//まだならカウントを位置増やしもう一度
+        }
+        else
+        {
+            timer = 0;
+            running = false;
+            SkillAwake = false;
+            yield break;
+        }
+
+    }
+
+    public bool IsSkillAwakeing()
+    {
+        return SkillAwake;
     }
 }
 

@@ -6,9 +6,9 @@ using VRTK;
 public class SearchHand : MonoBehaviour
 {
     public bool _SearchUP, _SearchDown,_SearchItem,_SearchShoulder;
-    private bool running;
-    private bool SkillAwake;
-    private float timer;
+    //private bool running;
+    //private bool SkillAwake;
+    //private float timer;
 
     private List<bool> SkillFlags = new List<bool>();
 
@@ -18,9 +18,9 @@ public class SearchHand : MonoBehaviour
         _SearchUP = _SearchDown = false;
         _SearchItem = _SearchShoulder = false;
 
-        running = false;
-        SkillAwake = false;
-        timer = 0;
+        //running = false;
+        //SkillAwake = false;
+        //timer = 0;
     }
 
     // Update is called once per frame
@@ -62,6 +62,7 @@ public class SearchHand : MonoBehaviour
         if (collider.gameObject.name == "SkillZone1")
         {
             _SearchUP = false;
+            //StartCoroutine("StayHand_UP", 引数に渡す値);
         }
         if (collider.gameObject.name == "SkillZone2")
         {
@@ -100,30 +101,31 @@ public class SearchHand : MonoBehaviour
         return _SearchItem;
     }
 
-    //public IEnumerator StayHand_UP(float SkillTime)//スキル発動までのタメ
+    //スキルスーパークラスで移植できてしまったので凍結
+    //public IEnumerator StayHand_UP(float SkillTime)//次イノベで確認すべき
     //{
-    //    if(running || SkillAwake)//稼働中なら２つ目以降は破棄
+    //    if (running /*|| SkillAwake*/)//稼働中なら２つ目以降は破棄(現在解除中)
     //        yield break;
+
+    //    running = true;
 
     //    if (_SearchUP)
     //    {
-    //        if (SkillTime <= timer)//タメ時間経過なら
-    //        {
-
-    //            SkillAwake = true;
-    //        }
-    //        Debug.Log("Stay");
-    //        timer++;
+    //        timer += 1.0f;
+    //        Debug.Log(timer + ":SKILL!!!!!!");
     //        yield return new WaitForSeconds(1.0f);//まだならカウントを位置増やしもう一度
     //    }
-    //    else//範囲外に出たなら初期化
+    //    else
     //    {
+    //        timer = 0;
     //        running = false;
     //        SkillAwake = false;
-    //        timer = 0;
     //        yield break;
     //    }
+
     //}
+
+
 
     //public bool IsSkillAwakeing()
     //{
