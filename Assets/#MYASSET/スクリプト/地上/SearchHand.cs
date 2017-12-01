@@ -5,7 +5,7 @@ using VRTK;
 
 public class SearchHand : MonoBehaviour
 {
-    public bool _SearchUP, _SearchDown,_SearchItem,_SearchShoulder;
+    public bool _SearchR, _SearchL, _SearchItem,_SearchShoulder;
     //private bool running;
     //private bool SkillAwake;
     //private float timer;
@@ -15,7 +15,7 @@ public class SearchHand : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        _SearchUP = _SearchDown = false;
+        _SearchR = _SearchL = false;
         _SearchItem = _SearchShoulder = false;
 
         //running = false;
@@ -29,18 +29,18 @@ public class SearchHand : MonoBehaviour
         
     }
 
-    public void OnTriggerStay(Collider collider)
+    public void OnTriggerEnter(Collider collider)
     {
-        //Debug.Log(collider.gameObject.name);
-        if (collider.gameObject.name == "SkillZone1")
+        //右側
+        if (collider.gameObject.name == "GroundAttackpointR")
         {
-            _SearchUP = true;
-            //Debug.Log("おてて");
+            _SearchR = true;
+            
         }
-        if (collider.gameObject.name == "SkillZone2")
+        if (collider.gameObject.name == "GroundAttackpointL")
         {
-            _SearchDown = true;
-            //Debug.Log("おてて");
+            _SearchL = true;
+            
 
         }
         if (collider.gameObject.name == "WaistItem")
@@ -57,16 +57,16 @@ public class SearchHand : MonoBehaviour
         }
     }
 
-    public void OnTriggerEnter(Collider collider)
+    public void OnTriggerExit(Collider collider)
     {
-        if (collider.gameObject.name == "SkillZone1")
+        if (collider.gameObject.name == "GroundAttackpointR")
         {
-            _SearchUP = false;
-            //StartCoroutine("StayHand_UP", 引数に渡す値);
+            _SearchR = false;
+            
         }
-        if (collider.gameObject.name == "SkillZone2")
+        if (collider.gameObject.name == "GroundAttackpointL")
         {
-            _SearchDown = false;
+            _SearchL = false;
             //Debug.Log("おてて");
         }
         if (collider.gameObject.name == "WaistItem")
@@ -82,19 +82,19 @@ public class SearchHand : MonoBehaviour
 
       
 }
-    public void OnTriggerExit(Collider collider)
-    {
-        if (collider.gameObject.name == "WaistItem")
-        {
-            _SearchItem = false;
-            //Debug.Log("おてて");
-        }
-        if (collider.gameObject.name == "Shoulder")
-        {
-            _SearchShoulder = false;
-            // Debug.Log("おてて");
-        }
-    }
+    //public void OnTriggerExit(Collider collider)
+    //{
+    //    if (collider.gameObject.name == "WaistItem")
+    //    {
+    //        _SearchItem = false;
+    //        //Debug.Log("おてて");
+    //    }
+    //    if (collider.gameObject.name == "Shoulder")
+    //    {
+    //        _SearchShoulder = false;
+    //        // Debug.Log("おてて");
+    //    }
+    //}
 
     public bool IsRangeItem()
     {

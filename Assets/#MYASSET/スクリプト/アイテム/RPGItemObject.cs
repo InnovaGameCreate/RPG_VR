@@ -26,7 +26,7 @@
         public bool Touched;
         public bool Griped;
         //public RPGItemObject triggerdother;
-
+        private VRTK_ControllerReference controllerReference;
 
         // Use this for initialization
         protected virtual void Start()
@@ -53,6 +53,9 @@
             //グリップ
             rightcontroller.GetComponent<VRTK_ControllerEvents>().GripPressed += GripPressedHandler2;
             rightcontroller.GetComponent<VRTK_ControllerEvents>().GripReleased += GripReleasedHandler2;
+            //振動用
+            controllerReference = null;
+            interactableRigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
         }
 
         protected override void OnDisable()
@@ -131,5 +134,25 @@
 
 
         }
+
+        public void EasyPulseFunc(float farce)
+        {
+            //100でもまあまあ強い
+            VRTK_ControllerHaptics.TriggerHapticPulse(controllerReference, farce);
+        }
+
+        /*振動用ハンドラ？*/
+        public override void Grabbed(VRTK_InteractGrab grabbingObject)
+        {
+            base.Grabbed(grabbingObject);
+            controllerReference = VRTK_ControllerReference.GetControllerReference(grabbingObject.controllerEvents.gameObject);
+        }
+
+        public override void Ungrabbed(VRTK_InteractGrab previousGrabbingObject)
+        {
+            base.Ungrabbed(previousGrabbingObject);
+            controllerReference = null;
+        }
+        /*ここまで*/
     }
 }

@@ -13,7 +13,7 @@ public class Weapon_Sword : RPGItemObject
      */
 
     public float Atk;
-
+    
 
     // Use this for initialization
     //protected override void Start () {
@@ -25,24 +25,24 @@ public class Weapon_Sword : RPGItemObject
     {
         if (triggerd)
         {
-            Debug.Log("triggggg");
+            //Debug.Log("triggggg");
         }
+        if (Griped)
+        {
+            
+        }
+        //if (Touched)
+        //{
+        //    GetComponent<SkillSystem>().enabled = true;
+        //}
+        //else
+        //{
+        //    GetComponent<SkillSystem>().enabled = false;
+        //}
     }
 
-    //protected override void OnEnable()
-    //{
-    //    base.OnEnable();
-    //}
+    
 
-    //protected override void OnDisable()
-    //{
-    //    base.OnDisable();
-    //}
-
-    //protected override void Awake()
-    //{
-    //    base.Awake();
-    //}
 
     /*トリガー*/
     protected override void TriggerPressedHandler2(object sender, ControllerInteractionEventArgs e)//トリガーを押したとき
@@ -88,8 +88,4 @@ public class Weapon_Sword : RPGItemObject
         
     }
 
-    public override void StartUsing(GameObject currentUsingObject)
-    {
-        Debug.Log("aaaaaaaaaaaaaaaa");
-    }
 }
