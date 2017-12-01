@@ -9,7 +9,8 @@ public class MagicPattern : MonoBehaviour
     private int[] nowpoint = new int[2];      //現在の発動フラグ接触数 
     private Transform eye;
     private bool magic;
-
+    public float maginfinishtime = 1;   //魔法が終わるまでの時間
+    public bool startmagic;    //魔法が再生されたかどうか
     public enum USEHAND
     {
         Left,
@@ -120,8 +121,9 @@ public class MagicPattern : MonoBehaviour
     // 魔法コルーチン  
     IEnumerator Magic()
     {
+        startmagic = true;
         leftright[2].GetComponent<ParticleSystem>().Play();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(maginfinishtime);
         leftright[2].GetComponent<ParticleSystem>().Stop();
         Destroy(this.gameObject);
     }

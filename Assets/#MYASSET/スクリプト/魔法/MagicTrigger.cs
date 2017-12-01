@@ -71,7 +71,7 @@ public class MagicTrigger : MonoBehaviour
     private void TriggerReleasedHandler(object sender, ControllerInteractionEventArgs e)
     {
         triggerd = false;
-        if (magicpattern != null)
+        if (magicpattern != null && !magicpatternobj.GetComponent<MagicPattern>().startmagic)
             Destroy(magicpatternobj);
      
     }
