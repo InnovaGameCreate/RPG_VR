@@ -27,6 +27,10 @@ public class SkillSystem : MonoBehaviour
     public GameObject SkillZone1, SkillZone2;//スキル発動位置
 
     [SerializeField]
+    protected GameObject _Particle;//手動設定
+    [SerializeField]
+    protected Transform MakeParticlePos;
+    [SerializeField]
     private bool CanSlowy;//使用時遅くなるかどうか
     [SerializeField]
     private float Atk;//スキルの攻撃力
@@ -37,8 +41,10 @@ public class SkillSystem : MonoBehaviour
     [SerializeField]
     private float Consumption;//消費パラメータ量　ステータス完成次第触ること　いい単語わからんかった
 
-    //public GameObject NodeList;//スキル用のノードの親
+    public GameObject NodePrefabs;//手動設定(プレハブ)
+    protected GameObject Node_Ins;//インスタンス
     public List<GameObject> Trajectory = new List<GameObject>();//スキルの起動表示のためのリスト
+    
 
     private SearchHand whereHand1, whereHand2;
     protected RPGItemObject _weapon;
@@ -56,14 +62,14 @@ public class SkillSystem : MonoBehaviour
 
         _weapon = GetComponent<RPGItemObject>();
 
+        
+        //T_parent = Trajectory[0].transform.parent.gameObject;
+
         //eye = GameObject.Find("[VRTK_SDKManager]/SDKSetups/SteamVR/[CameraRig]/Camera (head)/Camera (eye)").transform;
         //eye = GameObject.Find("[VRTK_Scripts]/Headset").transform;
         //SkillZone2.transform.parent = eye;
 
-        //スキル用フラグ初期化
-        running = false;
-        SkillAwake = false;
-        timer = 0;
+        
     }
 
     private void Awake()
@@ -74,10 +80,9 @@ public class SkillSystem : MonoBehaviour
         SkillZone1 = GameObject.Find("[VRTK_Scripts]/Headset/SkillZone1");
         SkillZone2 = GameObject.Find("[VRTK_Scripts]/SkillZone2");
 
-        //if (Trajectory.Count == 0)
-        //{
-        //    Debug.Log("スキルの軌道ノードを確認してください");
-        //}
+        //スキル用フラグ初期化
+        InitSkill();
+        //NodePrefabs.transform.parent = eye;
     }
 
     // Update is called once per frame
@@ -95,7 +100,7 @@ public class SkillSystem : MonoBehaviour
         {
             if (IsSkillAwakeing())
             {
-                Trajectory[0].transform.parent.gameObject.SetActive(true);//軌道可視化
+                Node_Ins.SetActive(true);//軌道可視化
                 _weapon.EasyPulseFunc(120.0f);
                 AwakeSkillUP();
                 return;
@@ -118,7 +123,7 @@ public class SkillSystem : MonoBehaviour
         }
         else
         {
-            Trajectory[0].transform.parent.gameObject.SetActive(false);//軌道可視化
+            Node_Ins.SetActive(false);//軌道可視化
         }
         //}
 
@@ -162,9 +167,7 @@ public class SkillSystem : MonoBehaviour
         }
         else
         {
-            timer = 0;
-            running = false;
-            SkillAwake = false;
+            InitSkill();
             yield break;
         }
 
@@ -174,5 +177,21 @@ public class SkillSystem : MonoBehaviour
     {
         return SkillAwake;
     }
+
+    protected void InitSkill()
+    {
+        Node_Ins = Instantiate(NodePrefabs, eye);
+        foreach (Transform Node_Ins in Node_Ins.transform)
+        {
+            Trajectory.Add(Node_Ins.gameObject);
+        }
+        Node_Ins.SetActive(false);
+
+        timer = 0;
+        running = false;
+        SkillAwake = false;
+
+    }
+
 }
 
