@@ -1,20 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //プレイヤーに対する影響はすべてこのクラスで関数化して利用すること
 //シーン上にプレイヤーステータスコントローラ専用のオブジェクトを配置する
 public class PlayerStatus : MonoBehaviour {
     //一時的ステータス向上時に対応させるため base....の変数を用意
-
+    [SerializeField]
+    private Slider slider;      //体力バー
     private int hp;     //現状体力
 
     private int nowmaxhp;     //現状最大体力
     private int basemaxhp = 100;    //最大体力      
     private bool hpuped;   //HP上昇系がついてるかどうか
 
-    private int nowatk;     //現状攻撃力
-   private int baseatk =  10;  //基礎攻撃力
+    private int nowatk=50;
+    //現状攻撃力
+    public int Atk {
+        get {return nowatk;}
+        private set { nowatk = value; }
+    }   
+    private int baseatk =  10;  //基礎攻撃力
     private bool atkuped;   //攻撃力上昇系がついてるかどうか
 
     private int lv = 1; //レベル
@@ -22,13 +29,26 @@ public class PlayerStatus : MonoBehaviour {
     private const int expmax = 1000;        //経験値最大量
 
 
+
     // Use this for initialization
     void Start () {
-        hp = basemaxhp;
+        hp = nowmaxhp = basemaxhp;
 	}
 
+    private void Update()
+    {
+        float varhp = hp / (float)nowmaxhp;
+        if (varhp > 1)
+        {
+            // 最大を超えたら0に戻す
+            varhp = 0;
+        }
+        if(slider!=null)
+        // HPゲージに値を設定
+        slider.value = varhp;
+    }
     //アイテムなどによる一時的攻撃力上昇
-	public void atkUp(int plusatk, int time)
+    public void atkUp(int plusatk, int time)
     {
         if (atkuped)
             return;
@@ -96,7 +116,7 @@ public class PlayerStatus : MonoBehaviour {
     public void damaged(int atk)
     {
         hp -= atk;
-
+        Debug.Log(hp);
         if (hp < 0)
             ;//ゲームオーバーシーンへ
     }
