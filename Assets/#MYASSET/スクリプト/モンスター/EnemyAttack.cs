@@ -1,0 +1,69 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnemyAttack : MonoBehaviour {
+    //アニメーションイベント用　敵の攻撃
+    private PlayerStatus player;        //プレイヤー
+    [SerializeField, TooltipAttribute("体力")]
+    public int hp = 100;        //体力
+    [SerializeField, TooltipAttribute("攻撃力")]
+    public int atk = 10;        //攻撃力
+    private const float breakForce = 150f;      //HP減少に必要な剣を振る速さ.
+    private Animator animator;            //アニメーターインスタンス
+    protected bool deaded = false;          //死んだかどうか
+
+    void Start()
+    {
+        player = GameObject.Find("プレイヤーステータス管理").GetComponent<PlayerStatus>();
+        animator = GetComponent<Animator>();
+    }
+    private void Update()
+    {
+        if (hp <= 0)
+        {
+            animator.SetTrigger("Dead");
+            return;
+        }
+    }
+     void dead()//死亡
+    {
+     
+        if (!deaded)
+        {
+            Destroy(this.gameObject);
+            deaded = true;
+        }
+    }
+
+    void attack()
+    {
+        player.damaged(atk);
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        var collisionForce = GetCollisionForce(collision);
+        Debug.Log(collision.gameObject.name);
+        if (collisionForce > 0)
+        {
+            hp -= player.Atk;
+            GetComponent<Animator>().SetTrigger("Damage");
+        }
+    }
+
+    private float GetCollisionForce(Collision collision)
+    {
+        if ((collision.collider.name.Contains("Sword") && collision.collider.GetComponent<VRTK.Examples.Sword>().CollisionForce() > breakForce))
+        {
+            return collision.collider.GetComponent<VRTK.Examples.Sword>().CollisionForce() * 1.2f;
+
+        }
+
+        if (collision.collider.name.Contains("Arrow"))
+        {
+            return 500f;
+        }
+
+        return 0f;
+    }
+}
