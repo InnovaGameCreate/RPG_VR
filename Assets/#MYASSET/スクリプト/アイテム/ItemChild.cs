@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ItemChild : ItemBase
 {
+
+    //各々のenumのサブクラスを利用すること　　没スクリプト
     /*
   *  アイテムサブクラス
   *  実装時にはこちらをアタッチ(ひな形)
@@ -18,8 +20,8 @@ public class ItemChild : ItemBase
     };
     [SerializeField, TooltipAttribute("Healing : 回復アイテム\nStatusUp : ステータスアップアイテム\nEquipment : 装備アイテム\nImportant : 鍵等の進行系アイテム")]
     public ItemType Kind;
-    [SerializeField, TooltipAttribute("効果量")]
-    public float Effct;         //効果量
+
+
     [SerializeField, TooltipAttribute("使用クールタイム")]
     public float IntervalTime;  //使用クールタイム
     [SerializeField, TooltipAttribute("腰に装備可能かどうか")]
@@ -28,7 +30,8 @@ public class ItemChild : ItemBase
     public bool CanThrowAway;   //捨てれるかどうか
 
     //回復アイテム　ステータスアップ
-    protected override void ItemUse()
+    protected override bool ItemUse()
     {
+        return true;
     }
 }

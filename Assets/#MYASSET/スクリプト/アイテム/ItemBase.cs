@@ -3,15 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class ItemBase : MonoBehaviour {
+    [SerializeField, TooltipAttribute("アイテムID")]
     public int ID;//アイテムID
+    [SerializeField, TooltipAttribute("スタック可能かどうか")]
     public bool CanStack;//アイテムがスタック可能かどうか
-    public float ObjectBreakTime;//フィールドのアイテムが消える時間
+
+    private const float ObjectBreakTime = 5;//フィールドのアイテムが消える時間
+
+    [SerializeField, TooltipAttribute("説明文")]
+    [Multiline]
     public string FlavorText;//説明文
-    protected PlayerStatus player;  //プレイヤーステータスのインスタンス
+    [SerializeField, TooltipAttribute("プレイヤーステータスのインスタンス")]
+    protected PlayerStatus playerstatus;  //プレイヤーステータスのインスタンス
+
     virtual protected void Start()
     {
-        player = GameObject.Find("プレイヤーステータス管理").GetComponent<PlayerStatus>();
+        playerstatus = GameObject.Find("プレイヤーステータス管理").GetComponent<PlayerStatus>();
     }
     // Use this for initialization
-    protected abstract void ItemUse();  
+    protected abstract bool ItemUse();  //使ったらtrueを返す
 }
