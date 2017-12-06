@@ -26,19 +26,19 @@ public abstract class SkillSystem : MonoBehaviour
     //[SerializeField]
     public GameObject SkillZone1, SkillZone2;//スキル発動位置
 
-    [SerializeField,TooltipAttribute("出現パーティクルプレハブ設定")]
+    [SerializeField, Tooltip("出現パーティクルプレハブ設定")]
     protected GameObject _Particle;//手動設定
-    [SerializeField, TooltipAttribute("パーティクルの出現位置設定")]
+    [SerializeField, Tooltip("パーティクルの出現位置設定")]
     protected Transform MakeParticlePos;
-    [SerializeField,TooltipAttribute("スキル使用時周りを遅くすることができるようになるかも")]
+    [SerializeField, Tooltip("スキル使用時周りを遅くすることができるようになるかも")]
     private bool CanSlowy;//使用時遅くなるかどうか
     [SerializeField]
     private float Atk;//スキルの攻撃力
-    [SerializeField,TooltipAttribute("スキル発動までのタメ(秒)")]
+    [SerializeField, Tooltip("スキル発動までのタメ(秒)")]
     protected float _Time;//発動までのため時間
-    [SerializeField,TooltipAttribute("スキルのクールタイム(秒) 未実装")]
+    [SerializeField, Tooltip("スキルのクールタイム(秒) 未実装")]
     private float Interval;//スキルのCT
-    [SerializeField, TooltipAttribute("消費パラメータ量 未実装")]
+    [SerializeField, Tooltip("消費パラメータ量 未実装")]
     private float Consumption;//消費パラメータ量　ステータス完成次第触ること　いい単語わからんかった
 
     public GameObject NodePrefabs;//手動設定(プレハブ)
