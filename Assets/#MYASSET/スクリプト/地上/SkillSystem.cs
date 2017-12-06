@@ -4,7 +4,7 @@ using UnityEngine;
 using VRTK;
 using VRTK.Examples;
 
-public class SkillSystem : MonoBehaviour
+public abstract class SkillSystem : MonoBehaviour
 {
     /*
         スキルスーパークラス
@@ -50,7 +50,7 @@ public class SkillSystem : MonoBehaviour
     protected RPGItemObject _weapon;
 
     //スキル移植用
-    private bool running;
+    //private bool running;
     private bool SkillAwake;
     private float timer;
 
@@ -102,23 +102,25 @@ public class SkillSystem : MonoBehaviour
             {
                 Node_Ins.SetActive(true);//軌道可視化
                 _weapon.EasyPulseFunc(120.0f);
-                AwakeSkillUP();
+                AwakeSkill();
                 return;
             }
 
-            if ((whereHand1._SearchR || whereHand1._SearchL) && SkillTYPE == skillType.Up)//上側
+            if ((whereHand1._SearchR /*|| whereHand1._SearchL*/) && SkillTYPE == skillType.Up)//上側
             {
                 //Debug.Log("vvvvv");
                 _weapon.EasyPulseFunc(100.0f);
-                StartCoroutine("StayHand_UP", _Time);//テスト用要テスト
+                StartCoroutine("StayHand", _Time);//テスト用要テスト
             }
-            if ((whereHand1._SearchR || whereHand1._SearchL) && SkillTYPE == skillType.Under)//下側
+            if ((whereHand1._SearchR /*|| whereHand1._SearchL*/) && SkillTYPE == skillType.Under)//下側
             {
-                AwakeSkillDOWN();
+                //AwakeSkillDOWN();
+                StartCoroutine("StayHand", _Time);
             }
             if (SkillTYPE == skillType.Passive)
             {
-                AwakeSkillPASSIVE();
+                //AwakeSkillPASSIVE();
+                StartCoroutine("StayHand", _Time);
             }
         }
         else
@@ -130,30 +132,28 @@ public class SkillSystem : MonoBehaviour
         
     }
 
-    protected virtual void AwakeSkillUP()//実際に発動するスキル内容の関数(上側) オーバーライド用
-    {
-        
-    }
-
-    protected virtual void AwakeSkillDOWN()//実際に発動するスキル内容の関数(下側) オーバーライド用
-    {
-
-    }
-
-    protected virtual void AwakeSkillPASSIVE()//実際に発動するスキル内容の関数(常時) オーバーライド用
-    {
-
-    }
+    protected abstract void AwakeSkill();//実際に発動するスキル内容の関数 オーバーライド用
 
 
-    public IEnumerator StayHand_UP(float SkillTime)//次イノベで確認すべき
+    //protected virtual void AwakeSkillDOWN()//実際に発動するスキル内容の関数(下側) オーバーライド用
+    //{
+
+    //}
+
+    //protected virtual void AwakeSkillPASSIVE()//実際に発動するスキル内容の関数(常時) オーバーライド用
+    //{
+
+    //}
+
+
+    public IEnumerator StayHand(float SkillTime)//
     {
         if (/*running || */SkillAwake)//稼働中なら２つ目以降は破棄(現在解除中)
             yield break;
 
-        running = true;
+        //running = true;
 
-        if (whereHand1._SearchR || whereHand1._SearchL)
+        if (whereHand1._SearchR/* || whereHand1._SearchL*/)
         {
             timer += Time.deltaTime;
             //Debug.Log((int)timer + ":SKILL!!!!!!");
@@ -188,7 +188,7 @@ public class SkillSystem : MonoBehaviour
         Node_Ins.SetActive(false);
 
         timer = 0;
-        running = false;
+        //running = false;
         SkillAwake = false;
 
     }
