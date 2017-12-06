@@ -10,6 +10,7 @@ public class _Sword : MonoBehaviour {
     public GameObject head;
    // public GameObject hand;
     public GameObject rightHand;
+    public GameObject Sword;
     // private VRTK.Examples.Sword flag;
 
     public GameObject gripEve;
@@ -32,7 +33,7 @@ public class _Sword : MonoBehaviour {
 
         print(once);
 
-        if (GetComponent<VRTK.Examples.Sword>().enabled == true && Wherehand._SearchShoulder == true && gripEve.GetComponent<WaistItem>().gripped)
+        if (GetComponent<VRTK.Examples.Sword>().enabled == true && Wherehand._SearchShoulder == true/* && gripEve.GetComponent<WaistItem>().gripped*/)
         {
             GetComponent<VRTK.Examples.Sword>().enabled = false;
             Destroy(GetComponent<FixedJoint>());

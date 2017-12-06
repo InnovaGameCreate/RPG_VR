@@ -66,7 +66,7 @@ public class WaistItem : MonoBehaviour
         //Instantiate(waistItem,itemTrans);
         // waistmultiItem = GameObject.Find("WaistItem");
 
-        print(rangeWaistItem._SearchItem);
+        //print(rangeWaistItem._SearchItem);
         if (rangeWaistItem._SearchItem)
         {//アイテムの範囲内であれば
             Destroy(waistItem);
