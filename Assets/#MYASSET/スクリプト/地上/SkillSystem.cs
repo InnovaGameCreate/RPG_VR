@@ -18,7 +18,7 @@ public abstract class SkillSystem : MonoBehaviour
         Passive,
         Non
     }
-    [SerializeField]
+    [SerializeField,TooltipAttribute("スキルタイプ設定")]
     private skillType SkillTYPE;
     public Transform eye;
     //[SerializeField]
@@ -26,19 +26,19 @@ public abstract class SkillSystem : MonoBehaviour
     //[SerializeField]
     public GameObject SkillZone1, SkillZone2;//スキル発動位置
 
-    [SerializeField]
+    [SerializeField,TooltipAttribute("出現パーティクルプレハブ設定")]
     protected GameObject _Particle;//手動設定
-    [SerializeField]
+    [SerializeField, TooltipAttribute("パーティクルの出現位置設定")]
     protected Transform MakeParticlePos;
-    [SerializeField]
+    [SerializeField,TooltipAttribute("スキル使用時周りを遅くすることができるようになるかも")]
     private bool CanSlowy;//使用時遅くなるかどうか
     [SerializeField]
     private float Atk;//スキルの攻撃力
-    [SerializeField]
+    [SerializeField,TooltipAttribute("スキル発動までのタメ(秒)")]
     protected float _Time;//発動までのため時間
-    [SerializeField]
+    [SerializeField,TooltipAttribute("スキルのクールタイム(秒) 未実装")]
     private float Interval;//スキルのCT
-    [SerializeField]
+    [SerializeField, TooltipAttribute("消費パラメータ量 未実装")]
     private float Consumption;//消費パラメータ量　ステータス完成次第触ること　いい単語わからんかった
 
     public GameObject NodePrefabs;//手動設定(プレハブ)
@@ -49,9 +49,9 @@ public abstract class SkillSystem : MonoBehaviour
     private SearchHand whereHand1, whereHand2;
     protected RPGItemObject _weapon;
 
-    //スキル移植用
-    //private bool running;
+    //スキル関係
     private bool SkillAwake;
+    protected bool SkillCoolTimeFlag;
     private float timer;
 
     // Use this for initialization
@@ -62,14 +62,14 @@ public abstract class SkillSystem : MonoBehaviour
 
         _weapon = GetComponent<RPGItemObject>();
 
-        
+        SkillCoolTimeFlag = false;//ここで初期化
         //T_parent = Trajectory[0].transform.parent.gameObject;
 
         //eye = GameObject.Find("[VRTK_SDKManager]/SDKSetups/SteamVR/[CameraRig]/Camera (head)/Camera (eye)").transform;
         //eye = GameObject.Find("[VRTK_Scripts]/Headset").transform;
         //SkillZone2.transform.parent = eye;
 
-        
+
     }
 
     private void Awake()
@@ -92,9 +92,20 @@ public abstract class SkillSystem : MonoBehaviour
         //下側スキル範囲
         SkillZone2.transform.position = new Vector3(eye.transform.position.x, 0.6f, eye.transform.position.z);//将来的にはCamera(eye)を参照に座標を決めたい
 
+        if (SkillCoolTimeFlag)//クールタイム発生なら
+        {
+            timer += Time.deltaTime;
+            if (Interval <= timer)
+            {
+                SkillCoolTimeFlag = false;
+            }
+            else
+            {
+                return;
+            }
+        }
 
-
-        //if (GetComponent<RPGItemObject>() != null) {
+        
         //Debug.Log(whereHand1._SearchUP);
         if (_weapon.Touched)
         {
@@ -127,7 +138,6 @@ public abstract class SkillSystem : MonoBehaviour
         {
             Node_Ins.SetActive(false);//軌道可視化
         }
-        //}
 
         
     }
@@ -188,7 +198,7 @@ public abstract class SkillSystem : MonoBehaviour
         Node_Ins.SetActive(false);
 
         timer = 0;
-        //running = false;
+        
         SkillAwake = false;
 
     }
