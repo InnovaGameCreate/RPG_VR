@@ -7,11 +7,11 @@ public class ItemButton : MonoBehaviour {
     //[System.NonSerialized]
     public GameObject item_prefab;
 
-    private bool isSelected;
+    public ItemBase item { get; set; }//アイテム
+    private bool isSelected;//現在選択されているか
 
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame
