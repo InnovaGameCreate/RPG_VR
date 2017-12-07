@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class BackPack : MonoBehaviour {
     public enum ItemType
@@ -13,7 +14,7 @@ public class BackPack : MonoBehaviour {
         None
     };
     private const int maxhasnum = 99;      //アイテム最大所持数
-    public GameObject[][] item = new GameObject [(int)ItemType.None][];
+    public GameObject[][] item = new GameObject [Enum.GetValues(typeof(ItemType)).Length][];
 
     // Use this for initialization
     void Start () {
