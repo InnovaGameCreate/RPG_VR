@@ -47,7 +47,10 @@ public class UIItemController : MonoBehaviour
     //アイテムをキャンバスに登録する
     private void RegisterItem()
     {
-
+        for(int i = 0; i < ItemOriginal.id_max; i++)
+        {
+            if(BackPack.)
+        }
     }
 
     // Update is called once per frame
