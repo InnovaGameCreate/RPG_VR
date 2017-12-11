@@ -9,8 +9,15 @@ public class HealItem : ItemBase
     [SerializeField, TooltipAttribute("使用クールタイム")]
     public float IntervalTime;  //使用クールタイム
     private float usedtime;
+
+    protected override void Start()
+    {
+        base.Start();
+        item_type = ItemType.Healing;
+    }
+
     //回復アイテム　
-    protected override bool ItemUse()
+    public override bool ItemUse()
     {
         if (usedtime + IntervalTime > Time.deltaTime)
             return false;

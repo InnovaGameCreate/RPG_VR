@@ -3,27 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class BackPack : MonoBehaviour {
-    public enum ItemType
+public class BackPack : MonoBehaviour
+{
+
+
+    struct Item
     {
-        Healing,    //回復アイテム
-        StatusUp,    //ステータスアップアイテム
-        Equipment,  //装備アイテム
-        Important,   //鍵等の進行系アイテム
-        Monster,    //モンスター素材
-        None
-    };
+        public ItemBase item_base;
+        public int num;
+    }
+
     private const int maxhasnum = 99;      //アイテム最大所持数
-    public GameObject[][] item = new GameObject [Enum.GetValues(typeof(ItemType)).Length][];
+    private Item[] has_item = new Item[ItemOriginal.id_max];//所持しているアイテムの情報
+
 
     // Use this for initialization
-    void Start () {
-
+    void Start()
+    {
 
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    //アイテムを獲得する
+    public void AcquireItem(int id)
+    {
+        has_item[id].num++;
+    }
 }

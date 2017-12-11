@@ -30,7 +30,7 @@ public class ItemChild : ItemBase
     public bool CanThrowAway;   //捨てれるかどうか
 
     //回復アイテム　ステータスアップ
-    protected override bool ItemUse()
+    public override bool ItemUse()
     {
         return true;
     }

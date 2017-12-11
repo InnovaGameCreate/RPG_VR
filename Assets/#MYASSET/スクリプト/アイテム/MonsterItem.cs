@@ -7,7 +7,7 @@ public class MonsterItem : ItemBase
     //モンスターからドロップされる素材
 
     //使えない
-    protected override bool ItemUse()
+    public override bool ItemUse()
     {
         return true;
     }

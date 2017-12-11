@@ -8,6 +8,18 @@ public abstract class ItemBase : MonoBehaviour {
     [SerializeField, TooltipAttribute("スタック可能かどうか")]
     public bool CanStack;//アイテムがスタック可能かどうか
 
+    //アイテムの種類
+    public enum ItemType
+    {
+        Healing,    //回復アイテム
+        StatusUp,    //ステータスアップアイテム
+        Equipment,  //装備アイテム
+        Important,   //鍵等の進行系アイテム
+        Monster,    //モンスター素材
+        None
+    };
+    protected ItemType item_type;
+
     private const float ObjectBreakTime = 5;//フィールドのアイテムが消える時間
 
     [SerializeField, TooltipAttribute("説明文")]
@@ -41,7 +53,7 @@ public abstract class ItemBase : MonoBehaviour {
         }
     }
     // Use this for initialization
-    protected abstract bool ItemUse();  //使ったらtrueを返す
+    public abstract bool ItemUse();  //使ったらtrueを返す
 
     //アイテムが回収された
     private void OnTriggerEnter(Collider other)

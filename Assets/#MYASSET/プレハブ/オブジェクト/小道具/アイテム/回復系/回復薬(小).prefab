@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 114914068581082470}
   - component: {fileID: 222651924815456858}
   - component: {fileID: 114759814839183778}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: "\u56DE\u5FA9\u85AC(\u5C0F)"
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,6 +70,7 @@ MonoBehaviour:
   ID: 0
   CanStack: 0
   FlavorText: "\u4F53\u529B\u3092\u5C11\u3057\u56DE\u5FA9\u3059\u308B"
+  droppeditem: 0
   heal: 10
   IntervalTime: 0
 --- !u!222 &222651924815456858

@@ -21,7 +21,7 @@ public class ImportantItem : ItemBase {
     {
 
     }
-    protected override bool ItemUse()
+    public override bool ItemUse()
     {
         //目的地周辺で使用したか
         if (Vector3.Distance(playerpos.position, targetpos.position) > usedistance)

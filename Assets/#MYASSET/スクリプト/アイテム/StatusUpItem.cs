@@ -22,7 +22,7 @@ public class StatusUpItem : ItemBase{
     public float IntervalTime;  //使用クールタイム
     private float usedtime;
     //ステータスアップ
-    protected override bool ItemUse()
+    public override bool ItemUse()
     {
         if (usedtime + IntervalTime > Time.deltaTime)
             return false;

@@ -9,7 +9,7 @@ public class EquipmentItem : ItemBase {
     public int defup;
 
     //装備を装着した
-    protected override bool ItemUse()
+    public override bool ItemUse()
     {
         playerstatus.equipatk = atkup;
         playerstatus.equipdef = defup;
