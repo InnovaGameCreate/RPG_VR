@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 65717652280076346}
   - component: {fileID: 114892762240235224}
   - component: {fileID: 114655945060137982}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: "\u30C6\u30B9\u30C8\u30E2\u30F3\u30B9\u30BF\u30FC\uFF08\u5730\u4E0A\uFF09"
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 33407240451016906}
   - component: {fileID: 23814600046746048}
   - component: {fileID: 114774120895742192}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +255,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
-  atk: 1
+  atk: 10
+  dropitem:
+  - {fileID: 1227717364344042, guid: 7781a8a79ec34f44984bb1987e991737, type: 2}
 --- !u!114 &114774120895742192
 MonoBehaviour:
   m_ObjectHideFlags: 1

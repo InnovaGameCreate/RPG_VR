@@ -22,7 +22,7 @@ public class PlayerStatus : MonoBehaviour
         get { return nowatk; }
         private set { nowatk = value; }
     }
-    private int baseatk = 10;  //基礎攻撃力
+    private int baseatk = 50;  //基礎攻撃力
     [System.NonSerialized]
     public int equipatk;     //装備攻撃力
     private bool atkuped;   //攻撃力上昇系がついてるかどうか

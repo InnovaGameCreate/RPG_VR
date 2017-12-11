@@ -13,13 +13,44 @@ public abstract class ItemBase : MonoBehaviour {
     [SerializeField, TooltipAttribute("説明文")]
     [Multiline]
     public string FlavorText;//説明文
-    [SerializeField, TooltipAttribute("プレイヤーステータスのインスタンス")]
+  
     protected PlayerStatus playerstatus;  //プレイヤーステータスのインスタンス
 
+    //prtected かばんクラス　kaban; //後々のかばんくらす  アイテムが回収された時に増やす
+    [SerializeField, TooltipAttribute("スタック可能かどうか")]
+    public bool droppeditem;   //ステージに生成されたドロップアイテムかどうか    メニュー用とドロップ用で挙動区別するため
+
+    private float time;         //ドロップアイテム回収可能かどうかの時間計測用
+    private bool catch_ok;      //ドロップアイテム回収可能かどうか
     virtual protected void Start()
     {
         playerstatus = GameObject.Find("プレイヤーステータス管理").GetComponent<PlayerStatus>();
     }
+
+    virtual protected void Update()
+    {
+        if (droppeditem)
+        {
+            time += Time.deltaTime;
+            //2秒後に回収可能となる
+            if (time > 2 && !catch_ok)
+            {
+                catch_ok = true;
+            
+            }
+        }
+    }
     // Use this for initialization
     protected abstract bool ItemUse();  //使ったらtrueを返す
+
+    //アイテムが回収された
+    private void OnTriggerEnter(Collider other)
+    {
+        if (catch_ok&& GetComponent<BoxCollider>() != null && other.CompareTag("Player"))
+        {
+            Destroy(this.gameObject);
+            //TODO   カバンクラスにアイテムを足す処理
+
+        }
+    }
 }
