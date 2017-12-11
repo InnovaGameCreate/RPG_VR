@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ImportantItem : ItemBase {
+public class ImportantItem : ItemBase
+{
     [SerializeField, TooltipAttribute("特定の座標付近で使用するものかどうか")]
     public bool mapposuse;  //特定の座標付近で使用するものかどうか
     [SerializeField, TooltipAttribute("アイテムを使う場所")]
@@ -15,7 +16,7 @@ public class ImportantItem : ItemBase {
     {
         base.Start();
         playerpos = playerstatus.Pos;
-  
+        item_type = ItemType.Important;
     }
     private void Update()
     {
@@ -26,7 +27,7 @@ public class ImportantItem : ItemBase {
         //目的地周辺で使用したか
         if (Vector3.Distance(playerpos.position, targetpos.position) > usedistance)
         {
-     
+
             return false;
         }
 

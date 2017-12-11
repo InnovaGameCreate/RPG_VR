@@ -13,7 +13,7 @@ public class BackPack : MonoBehaviour
         public int num;
     }
 
-    private const int maxhasnum = 99;      //アイテム最大所持数
+    private const int MAXHASNUM = 99;      //アイテム最大所持数
     private Item[] has_item = new Item[ItemOriginal.id_max];//所持しているアイテムの情報
 
 

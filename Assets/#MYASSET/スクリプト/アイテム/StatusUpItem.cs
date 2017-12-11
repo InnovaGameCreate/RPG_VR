@@ -21,6 +21,13 @@ public class StatusUpItem : ItemBase{
     [SerializeField, TooltipAttribute("使用クールタイム")]
     public float IntervalTime;  //使用クールタイム
     private float usedtime;
+
+    protected override void Start()
+    {
+        base.Start();
+        item_type = ItemType.StatusUp;
+    }
+
     //ステータスアップ
     public override bool ItemUse()
     {

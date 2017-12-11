@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public abstract class ItemBase : MonoBehaviour {
+public abstract class ItemBase : MonoBehaviour
+{
     [SerializeField, TooltipAttribute("アイテムID")]
     public int ID;//アイテムID
     [SerializeField, TooltipAttribute("スタック可能かどうか")]
@@ -11,13 +13,21 @@ public abstract class ItemBase : MonoBehaviour {
     //アイテムの種類
     public enum ItemType
     {
+        None,
         Healing,    //回復アイテム
         StatusUp,    //ステータスアップアイテム
         Equipment,  //装備アイテム
         Important,   //鍵等の進行系アイテム
         Monster,    //モンスター素材
-        None
     };
+    //アイテムの種類の数
+    public static int ItemTypeTotalNum
+    {
+        get
+        {
+            return Enum.GetValues(typeof(ItemBase.ItemType)).Length - 1;
+        }
+    }
     protected ItemType item_type;
 
     private const float ObjectBreakTime = 5;//フィールドのアイテムが消える時間
@@ -25,7 +35,7 @@ public abstract class ItemBase : MonoBehaviour {
     [SerializeField, TooltipAttribute("説明文")]
     [Multiline]
     public string FlavorText;//説明文
-  
+
     protected PlayerStatus playerstatus;  //プレイヤーステータスのインスタンス
 
     //prtected かばんクラス　kaban; //後々のかばんくらす  アイテムが回収された時に増やす
@@ -37,6 +47,7 @@ public abstract class ItemBase : MonoBehaviour {
     virtual protected void Start()
     {
         playerstatus = GameObject.Find("プレイヤーステータス管理").GetComponent<PlayerStatus>();
+        item_type = ItemType.None;
     }
 
     virtual protected void Update()
@@ -48,7 +59,7 @@ public abstract class ItemBase : MonoBehaviour {
             if (time > 2 && !catch_ok)
             {
                 catch_ok = true;
-            
+
             }
         }
     }
@@ -58,7 +69,7 @@ public abstract class ItemBase : MonoBehaviour {
     //アイテムが回収された
     private void OnTriggerEnter(Collider other)
     {
-        if (catch_ok&& GetComponent<BoxCollider>() != null && other.CompareTag("Player"))
+        if (catch_ok && GetComponent<BoxCollider>() != null && other.CompareTag("Player"))
         {
             Destroy(this.gameObject);
             //TODO   カバンクラスにアイテムを足す処理

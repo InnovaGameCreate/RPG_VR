@@ -8,6 +8,12 @@ public class EquipmentItem : ItemBase {
     [SerializeField, TooltipAttribute("防御力上昇量")]
     public int defup;
 
+    protected override void Start()
+    {
+        base.Start();
+        item_type = ItemType.Equipment;
+    }
+
     //装備を装着した
     public override bool ItemUse()
     {
