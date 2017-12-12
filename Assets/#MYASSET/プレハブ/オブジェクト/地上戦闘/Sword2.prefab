@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 54608217548135580}
   - component: {fileID: 114482291696010522}
   - component: {fileID: 114705605195119178}
+  - component: {fileID: 114610839021629454}
   - component: {fileID: 114110687856810102}
   - component: {fileID: 114560196003874730}
   - component: {fileID: 114756744240455954}
@@ -481,6 +482,8 @@ MonoBehaviour:
   Touched: 0
   Griped: 0
   Atk: 0
+  Skill1: {fileID: 114705605195119178}
+  Skill2: {fileID: 114610839021629454}
 --- !u!114 &114560196003874730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -498,6 +501,33 @@ MonoBehaviour:
   hideDelayOnGrab: 0
   hideControllerOnUse: 0
   hideDelayOnUse: 0
+--- !u!114 &114610839021629454
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1829216984385670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fc5a702cf32ac64fadbcd25183fd1f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillTYPE: 1
+  eye: {fileID: 0}
+  HandL: {fileID: 0}
+  HandR: {fileID: 0}
+  SkillZone1: {fileID: 0}
+  SkillZone2: {fileID: 0}
+  _Particle: {fileID: 1377131978523482, guid: 167f7d1913bd2824db8a984948cd9f1f, type: 2}
+  MakeParticlePos: {fileID: 0}
+  CanSlowy: 1
+  Atk: 0
+  _Time: 2
+  Interval: 0
+  Consumption: 0
+  NodePrefabs: {fileID: 1568341539469010, guid: 06e5e1a4466b9914b98d6d0130fc2d82,
+    type: 2}
+  Trajectory: []
 --- !u!114 &114705605195119178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -520,7 +550,7 @@ MonoBehaviour:
   CanSlowy: 1
   Atk: 0
   _Time: 10
-  Interval: 10
+  Interval: 0
   Consumption: 0
   NodePrefabs: {fileID: 1833005238665762, guid: 34b83aadb81d77a419544c340a055621,
     type: 2}

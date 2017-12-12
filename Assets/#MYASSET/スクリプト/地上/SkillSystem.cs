@@ -11,7 +11,7 @@ public abstract class SkillSystem : MonoBehaviour
             
      */
 
-    private enum skillType
+    public enum skillType
     {//スキルの種類
         Up,
         Under,
@@ -19,7 +19,7 @@ public abstract class SkillSystem : MonoBehaviour
         Non
     }
     [SerializeField,TooltipAttribute("スキルタイプ設定")]
-    private skillType SkillTYPE;
+    public skillType SkillTYPE;
     public Transform eye;
     //[SerializeField]
     public GameObject HandL, HandR;
@@ -31,7 +31,7 @@ public abstract class SkillSystem : MonoBehaviour
     [SerializeField, Tooltip("パーティクルの出現位置設定")]
     protected Transform MakeParticlePos;
     [SerializeField, Tooltip("スキル使用時周りを遅くすることができるようになるかも")]
-    private bool CanSlowy;//使用時遅くなるかどうか
+    protected bool CanSlowy;//使用時遅くなるかどうか
     [SerializeField]
     private float Atk;//スキルの攻撃力
     [SerializeField, Tooltip("スキル発動までのタメ(秒)")]
@@ -46,7 +46,7 @@ public abstract class SkillSystem : MonoBehaviour
     public List<GameObject> Trajectory = new List<GameObject>();//スキルの起動表示のためのリスト
     
 
-    private SearchHand whereHand1, whereHand2;
+    protected SearchHand whereHand1, whereHand2;
     protected RPGItemObject _weapon;
 
     //スキル関係
@@ -86,11 +86,11 @@ public abstract class SkillSystem : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         
         //下側スキル範囲
-        SkillZone2.transform.position = new Vector3(eye.transform.position.x, 0.6f, eye.transform.position.z);//将来的にはCamera(eye)を参照に座標を決めたい
+        SkillZone2.transform.position = new Vector3(eye.transform.position.x, 1.0f, eye.transform.position.z);//将来的にはCamera(eye)を参照に座標を決めたい
 
         if (SkillCoolTimeFlag)//クールタイム発生なら
         {
@@ -106,57 +106,45 @@ public abstract class SkillSystem : MonoBehaviour
             }
         }
 
+        //if (_weapon.Touched)
+        //{
 
-        //Debug.Log(whereHand1._SearchUP);
-        if (_weapon.Touched)
-        {
+        //    if (IsSkillAwakeing())
+        //    {
+        //        Node_Ins.SetActive(true);//軌道可視化
+        //        _weapon.EasyPulseFunc(120.0f);
+        //        AwakeSkill();
+        //        if (CanSlowy && !SkillCoolTimeFlag)
+        //            Time.timeScale = 0.1f;
+        //        return;
+        //    }
 
-            if (IsSkillAwakeing())
-            {
-                Node_Ins.SetActive(true);//軌道可視化
-                _weapon.EasyPulseFunc(120.0f);
-                AwakeSkill();
-                if (CanSlowy && !SkillCoolTimeFlag)
-                    Time.timeScale = 0.1f;
-                return;
-            }
+        //    if ((whereHand1._SearchR /*|| whereHand1._SearchL*/) && SkillTYPE == skillType.Up)//上側
+        //    {
+        //        //Debug.Log("vvvvv");
+        //        _weapon.EasyPulseFunc(100.0f);
+        //        StartCoroutine("StayHand", _Time);//テスト用要テスト
+        //    }
+        //    if ((whereHand2._SearchR /*|| whereHand1._SearchL*/) && SkillTYPE == skillType.Under)//下側
+        //    {
 
-            if ((whereHand1._SearchR /*|| whereHand1._SearchL*/) && SkillTYPE == skillType.Up)//上側
-            {
-                //Debug.Log("vvvvv");
-                _weapon.EasyPulseFunc(100.0f);
-                StartCoroutine("StayHand", _Time);//テスト用要テスト
-            }
-            if ((whereHand1._SearchR /*|| whereHand1._SearchL*/) && SkillTYPE == skillType.Under)//下側
-            {
+        //        StartCoroutine("StayHand", _Time);
+        //    }
+        //    if (SkillTYPE == skillType.Passive)
+        //    {
 
-                StartCoroutine("StayHand", _Time);
-            }
-            if (SkillTYPE == skillType.Passive)
-            {
-
-                StartCoroutine("StayHand", _Time);
-            }
-        }
-        else
-        {
-            Time.timeScale = 1.0f;
-            Node_Ins.SetActive(false);//軌道可視化
-        }
+        //        StartCoroutine("StayHand", _Time);
+        //    }
+        //}
+        //else
+        //{
+        //    Time.timeScale = 1.0f;
+        //    Node_Ins.SetActive(false);//軌道可視化
+        //}
     }
 
     protected abstract void AwakeSkill();//実際に発動するスキル内容の関数 オーバーライド用
 
-
-    //protected virtual void AwakeSkillDOWN()//実際に発動するスキル内容の関数(下側) オーバーライド用
-    //{
-
-    //}
-
-    //protected virtual void AwakeSkillPASSIVE()//実際に発動するスキル内容の関数(常時) オーバーライド用
-    //{
-
-    //}
 
 
     public IEnumerator StayHand(float SkillTime)//
@@ -166,7 +154,7 @@ public abstract class SkillSystem : MonoBehaviour
 
         //running = true;
 
-        if (whereHand1._SearchR/* || whereHand1._SearchL*/)
+        if (whereHand1._SearchR || whereHand2._SearchR)
         {
             timer += Time.deltaTime;
             //Debug.Log((int)timer + ":SKILL!!!!!!");

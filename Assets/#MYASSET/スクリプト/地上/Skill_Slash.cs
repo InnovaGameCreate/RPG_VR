@@ -18,16 +18,41 @@ public class Skill_Slash : SkillSystem
 
     //}
 
-    // Update is called once per frame
-    //void Update () {
+    protected override void Update()
+    {
+        base.Update();
 
-    //}
+        if (_weapon.Touched)
+        {
+
+            if (IsSkillAwakeing())
+            {
+                Node_Ins.SetActive(true);//軌道可視化
+                _weapon.EasyPulseFunc(120.0f);
+                AwakeSkill();
+                if (CanSlowy && !SkillCoolTimeFlag)
+                    Time.timeScale = 0.1f;
+                return;
+            }
+
+            if ((whereHand1._SearchR) && SkillTYPE == skillType.Up)//上側
+            {
+                _weapon.EasyPulseFunc(100.0f);
+                StartCoroutine("StayHand", _Time);//テスト用要テスト
+            }
+        }
+        else
+        {
+            Time.timeScale = 1.0f;
+            Node_Ins.SetActive(false);//軌道可視化
+        }
+    }
 
     protected override void AwakeSkill()//実際に発動するスキル内容の関数(上側) オーバーライド
     {
         try
         {
-            //Debug.Log(Trajectory.Count);
+            
             Node_Ins.transform.parent = eye;//目前に固定
             if (Trajectory.Count == 0 || flags)
             {

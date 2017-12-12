@@ -13,6 +13,37 @@ public class Skill_SwordUpper : SkillSystem
     //スキルサブクラス
     //スキルはタッチパッド
 
+    protected override void Update()
+    {
+        base.Update();
+
+        if (_weapon.Touched)
+        {
+
+            if (IsSkillAwakeing())
+            {
+                Node_Ins.SetActive(true);//軌道可視化
+                _weapon.EasyPulseFunc(120.0f);
+                AwakeSkill();
+                if (CanSlowy && !SkillCoolTimeFlag)
+                    Time.timeScale = 0.1f;
+                return;
+            }
+
+            if ((whereHand2._SearchR) && SkillTYPE == skillType.Under)//上側
+            {
+                _weapon.EasyPulseFunc(100.0f);
+                //Debug.Log("uuuuuuu");
+                StartCoroutine("StayHand", _Time);//テスト用要テスト
+            }
+        }
+        else
+        {
+            Time.timeScale = 1.0f;
+            Node_Ins.SetActive(false);//軌道可視化
+        }
+    }
+
     protected override void AwakeSkill()//実際に発動するスキル内容の関数 オーバーライド
     {
         try

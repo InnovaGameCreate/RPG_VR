@@ -13,7 +13,10 @@ public class Weapon_Sword : RPGItemObject
      */
 
     public float Atk;
-    
+    [SerializeField]
+    SkillSystem Skill1;
+    [SerializeField]
+    SkillSystem Skill2;
 
     // Use this for initialization
     //protected override void Start () {
@@ -39,6 +42,11 @@ public class Weapon_Sword : RPGItemObject
         //{
         //    GetComponent<SkillSystem>().enabled = false;
         //}
+
+        //if (GetComponent<BoxCollider>() )
+        //{
+        //    Debug.Log("afgedghrdh");
+        //}
     }
 
     
@@ -63,7 +71,7 @@ public class Weapon_Sword : RPGItemObject
     {
         Touched = true;
 
-        Debug.Log("tttt");
+        //Debug.Log("tttt");
     }
 
     protected override void TouchPadReleasedHandler2(object sender, ControllerInteractionEventArgs e)//タッチパッドを離したとき
@@ -77,15 +85,23 @@ public class Weapon_Sword : RPGItemObject
     protected override void GripPressedHandler2(object sender, ControllerInteractionEventArgs e)//グリップを押したとき
     {
         Griped = true;
-        Debug.Log("ggg");
+        //Debug.Log("ggg");
+        GetComponent<BoxCollider>().isTrigger = true;
 
     }
 
     protected override void GripReleasedHandler2(object sender, ControllerInteractionEventArgs e)//グリップを離したとき
     {
         Griped = false;
-
         
+        
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+
+        GetComponent<BoxCollider>().isTrigger = false;
     }
 
 }
