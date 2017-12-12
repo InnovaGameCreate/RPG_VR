@@ -44,6 +44,7 @@ public class Skill_Slash : SkillSystem
                     InitFlags();
                     InitSkill();
                     SkillCoolTimeFlag = true;
+                    Time.timeScale = 1.0f;
                 }
             }
         }

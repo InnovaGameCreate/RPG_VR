@@ -79,7 +79,7 @@ public abstract class SkillSystem : MonoBehaviour
         HandR = GameObject.Find("[VRTK_Scripts]/RightController");
         SkillZone1 = GameObject.Find("[VRTK_Scripts]/Headset/SkillZone1");
         SkillZone2 = GameObject.Find("[VRTK_Scripts]/SkillZone2");
-
+        Time.timeScale = 1.0f;
         //スキル用フラグ初期化
         InitSkill();
         //NodePrefabs.transform.parent = eye;
@@ -90,7 +90,7 @@ public abstract class SkillSystem : MonoBehaviour
     {
         
         //下側スキル範囲
-        SkillZone2.transform.position = new Vector3(eye.transform.position.x, 0.0f, eye.transform.position.z);//将来的にはCamera(eye)を参照に座標を決めたい
+        SkillZone2.transform.position = new Vector3(eye.transform.position.x, 0.6f, eye.transform.position.z);//将来的にはCamera(eye)を参照に座標を決めたい
 
         if (SkillCoolTimeFlag)//クールタイム発生なら
         {
@@ -106,15 +106,18 @@ public abstract class SkillSystem : MonoBehaviour
             }
         }
 
-        
+
         //Debug.Log(whereHand1._SearchUP);
         if (_weapon.Touched)
         {
+
             if (IsSkillAwakeing())
             {
                 Node_Ins.SetActive(true);//軌道可視化
                 _weapon.EasyPulseFunc(120.0f);
                 AwakeSkill();
+                if (CanSlowy && !SkillCoolTimeFlag)
+                    Time.timeScale = 0.1f;
                 return;
             }
 
@@ -126,21 +129,20 @@ public abstract class SkillSystem : MonoBehaviour
             }
             if ((whereHand1._SearchR /*|| whereHand1._SearchL*/) && SkillTYPE == skillType.Under)//下側
             {
-                //AwakeSkillDOWN();
+
                 StartCoroutine("StayHand", _Time);
             }
             if (SkillTYPE == skillType.Passive)
             {
-                //AwakeSkillPASSIVE();
+
                 StartCoroutine("StayHand", _Time);
             }
         }
         else
         {
+            Time.timeScale = 1.0f;
             Node_Ins.SetActive(false);//軌道可視化
         }
-
-        
     }
 
     protected abstract void AwakeSkill();//実際に発動するスキル内容の関数 オーバーライド用
@@ -199,7 +201,7 @@ public abstract class SkillSystem : MonoBehaviour
         Node_Ins.SetActive(false);
 
         timer = 0;
-        
+        Time.timeScale = 1.0f;
         SkillAwake = false;
 
     }

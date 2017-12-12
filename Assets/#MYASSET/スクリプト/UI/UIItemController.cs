@@ -49,7 +49,7 @@ public class UIItemController : MonoBehaviour
     {
         for(int i = 0; i < ItemOriginal.id_max; i++)
         {
-            if(BackPack.)
+            //if (BackPack.) ;
         }
     }
 
