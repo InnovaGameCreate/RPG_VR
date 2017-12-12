@@ -31,7 +31,7 @@ public class WaistItem : MonoBehaviour
        // print(Head.GetComponent <SearchHand>()._SearchItem);
         exist = true;
         waistItem = GameObject.Find("WaistItem");
-        rangeWaistItem = waistItem.GetComponent<SearchHand>();
+        //rangeWaistItem = waistItem.GetComponent<SearchHand>();
 
         if (gameObject.name == "RightController")
             grippedOther = GameObject.Find("[VRTK_Scripts]/LeftController").GetComponent<WaistItem>();
@@ -67,11 +67,11 @@ public class WaistItem : MonoBehaviour
         // waistmultiItem = GameObject.Find("WaistItem");
 
         //print(rangeWaistItem._SearchItem);
-        if (rangeWaistItem._SearchItem)
-        {//アイテムの範囲内であれば
-            Destroy(waistItem);
-            print("アイテム使用");
-        }
+        //if (rangeWaistItem._SearchItem)
+        //{//アイテムの範囲内であれば
+        //    Destroy(waistItem);
+        //    print("アイテム使用");
+        //}
        // exist = false;
         //if(/*コントローラーの位置がアイテムの範囲内ならば*/1)
         //{
@@ -93,13 +93,13 @@ public class WaistItem : MonoBehaviour
     {
         // waistItem.transform.position= GameObject.Find("[VRTK_Scripts]/SkillZone2").transform.position;
         //  itemTrans = waistItem.transform;
-       // print(exist);
-        if (grippedOther.gripped || gripped)
+        // print(exist);
+        if (/*grippedOther.gripped || */gripped)
         {
             exist = false;
         }
-        if(exist)
-        waistItem.transform.position = new Vector3(0.15f + HeadPos.transform.position.x, 1.0f, HeadPos.transform.position.z);
+        ////if(exist)
+        ////waistItem.transform.position = new Vector3(0.15f + HeadPos.transform.position.x, 1.0f, HeadPos.transform.position.z);
 
         if (gripped)
         {
