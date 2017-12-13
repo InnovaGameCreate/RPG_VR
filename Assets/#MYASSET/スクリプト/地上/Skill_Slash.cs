@@ -72,7 +72,8 @@ public class Skill_Slash : SkillSystem
                     Time.timeScale = 1.0f;
 
 
-                    OnNasubi.Invoke();//イベントテスト
+                    //
+                    
                 }
             }
         }

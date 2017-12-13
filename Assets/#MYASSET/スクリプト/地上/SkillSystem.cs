@@ -55,7 +55,7 @@ public abstract class SkillSystem : MonoBehaviour
     protected bool SkillCoolTimeFlag;
     private float timer;
 
-    public UnityEvent OnNasubi;
+    //
 
     // Use this for initialization
     void Start()
@@ -197,5 +197,9 @@ public abstract class SkillSystem : MonoBehaviour
 
     }
 
+    public void Aaaaaaaaaaa()
+    {
+        Debug.Log("QWE");
+    }
 }
 
