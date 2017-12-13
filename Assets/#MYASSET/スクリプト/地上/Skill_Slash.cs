@@ -70,6 +70,9 @@ public class Skill_Slash : SkillSystem
                     InitSkill();
                     SkillCoolTimeFlag = true;
                     Time.timeScale = 1.0f;
+
+
+                    OnNasubi.Invoke();//イベントテスト
                 }
             }
         }

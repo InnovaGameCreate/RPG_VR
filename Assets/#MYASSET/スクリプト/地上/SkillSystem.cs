@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using VRTK;
 using VRTK.Examples;
 
@@ -53,6 +54,8 @@ public abstract class SkillSystem : MonoBehaviour
     private bool SkillAwake;
     protected bool SkillCoolTimeFlag;
     private float timer;
+
+    public UnityEvent OnNasubi;
 
     // Use this for initialization
     void Start()
