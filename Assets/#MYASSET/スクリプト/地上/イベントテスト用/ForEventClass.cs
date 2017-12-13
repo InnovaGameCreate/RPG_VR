@@ -11,7 +11,7 @@ public class ForEventClass : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        aaaa;
 	}
 
     public void Masseage()
