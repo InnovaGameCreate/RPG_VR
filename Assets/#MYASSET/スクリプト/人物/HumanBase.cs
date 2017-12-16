@@ -5,12 +5,9 @@ using UnityEngine;
 public class HumanBase : MonoBehaviour {
     //人物スーパークラス
     Status humanstatus;         //ステータス
-    int lv = 1; //レベル
-    int exp;    //現在の経験値
-    const int expmax = 100;        //経験値最大量
     bool is_fly;         //飛んでるか   
     BackPack bag;       //持ち物クラス
-     //TODO   ダメージ計算クラス
+     //TODO   受バフリスト・与バフリスト　格納用　宣言
 
 
 
