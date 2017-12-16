@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Status : MonoBehaviour {
+public class Parameters : MonoBehaviour {
     int hp;     //体力
     int maxhp;  //最大体力
     int mp;     //魔力
@@ -16,7 +16,7 @@ public class Status : MonoBehaviour {
 
     public int HP
     {
-      get { return hp; }
+        get { return hp; }
     }
     public int MAXHP
     {
@@ -55,18 +55,6 @@ public class Status : MonoBehaviour {
         get { return flyspeed; }
     }
 
- 
-    public static Status operator +(Status a, Status b)
-    {
-        return new Status();
-    }
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    //TODO 演算子オーバーロード
+
 }
