@@ -4,9 +4,26 @@ using UnityEngine;
 
 public class Buff : MonoBehaviour
 {
-    Parameters ParaSingle;          //プラス
-    Parameters ParaMagnification;   //倍率
-    int available_seconds;//有効時間
+    //プラス
+    Parameters paraSingle;
+    public Parameters ParaSingle
+    {
+        get { return paraSingle; }
+    }
+    //倍率
+    Parameters paraMagnification;
+    public Parameters ParaMagnification
+    {
+        get { return paraMagnification; }
+    }
+    //有効時間
+    int availableSeconds;
+    public int AvailableSeconds
+    {
+        get { return availableSeconds; }
+        set { availableSeconds = value; }
+    }
+
 
     // Use this for initialization
     void Start()
@@ -23,8 +40,8 @@ public class Buff : MonoBehaviour
     public static Buff operator +(Buff a, Buff b)
     {
         Buff re = new Buff();
-        re.ParaSingle = a.ParaSingle + b.ParaSingle;
-        re.ParaMagnification = a.ParaMagnification * b.ParaMagnification;
+        re.paraSingle = a.paraSingle + b.paraSingle;
+        re.paraMagnification = a.paraMagnification * b.paraMagnification;
         return re;
     }
 }

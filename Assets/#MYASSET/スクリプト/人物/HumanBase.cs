@@ -44,4 +44,22 @@ public class HumanBase : MonoBehaviour
     {
         receiveBuff.AddRange(d.SendBuff);//与バフを受け取る
     }
+
+    //受バフの処理
+    IEnumerator ApplyReceiveBuff()
+    {
+        while (true)
+        {
+            foreach (Buff b in receiveBuff)
+            {
+                //ステータス変更処理
+
+                //有効時間を減らす
+                b.AvailableSeconds--;
+            }
+            //有効時間が切れた要素の削除
+            receiveBuff.RemoveAll(i => i.AvailableSeconds <= 0);
+            yield return new WaitForSeconds(1.0f);
+        }
+    }
 }
