@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Parameters : MonoBehaviour {
     int hp;     //体力残量
     int mp;     //魔力残量
@@ -56,5 +57,13 @@ public class Parameters : MonoBehaviour {
     }
 
     //TODO 演算子オーバーロード
+    public static Parameters operator +(Parameters a, Parameters b)
+    {
+        return new Parameters();
+    }
 
+    public static Parameters operator *(Parameters a, Parameters b)
+    {
+        return new Parameters();
+    }
 }
