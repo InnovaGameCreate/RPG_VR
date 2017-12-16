@@ -6,7 +6,7 @@ public class Buff : MonoBehaviour
 {
     Parameters ParaSingle;          //プラス
     Parameters ParaMagnification;   //倍率
-
+    int available_seconds;//有効時間
 
     // Use this for initialization
     void Start()

@@ -12,8 +12,9 @@ public class HumanBase : MonoBehaviour
     bool is_fly;         //飛んでるか   
     BackPack bag;       //持ち物クラス
 
-    //TODO   与バフクラス・受バフクラス格納用リスト宣言
-
+    //与バフクラス・受バフクラス格納用リスト宣言
+    List<Buff> sendBuff = new List<Buff>();
+    List<Buff> receiveBuff = new List<Buff>();
 
     //TODO   ダメージ計算クラス
 
