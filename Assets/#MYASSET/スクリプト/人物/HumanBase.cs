@@ -13,6 +13,7 @@ public class HumanBase : MonoBehaviour
     List<Buff> sendBuff = new List<Buff>();
     List<Buff> receiveBuff = new List<Buff>();
 
+
     //TODO   ダメージ計算クラス
 
 
@@ -20,5 +21,11 @@ public class HumanBase : MonoBehaviour
     {
         //nullなら非戦闘要員
         humanstatus = GetComponent<Status>();
+    }
+
+    //攻撃を受けたとき
+    public void ReceiveAttack(DamageCalculate d)
+    {
+
     }
 }
