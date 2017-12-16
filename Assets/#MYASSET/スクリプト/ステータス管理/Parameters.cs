@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Parameters : MonoBehaviour {
-    int hp;     //体力
     int maxhp;  //最大体力
-    int mp;     //魔力
     int maxmp;  //最大魔力
     int atk;    //攻撃力
     int def;    //防御力
@@ -14,17 +12,9 @@ public class Parameters : MonoBehaviour {
     float speed;  //移動速度
     float flyspeed;//空中時の移動速度
 
-    public int HP
-    {
-        get { return hp; }
-    }
     public int MAXHP
     {
         get { return maxhp; }
-    }
-    public int MP
-    {
-        get { return mp; }
     }
     public int MAXMP
     {
