@@ -6,11 +6,11 @@ public class HumanBase : MonoBehaviour
 {
     //人物スーパークラス
     Status humanstatus;         //ステータス
-    int lv = 1; //レベル
-    int exp;    //現在の経験値
-    const int expmax = 100;        //経験値最大量
     bool is_fly;         //飛んでるか   
     BackPack bag;       //持ち物クラス
+<<<<<<< HEAD
+     //TODO   受バフリスト・与バフリスト　格納用　宣言
+=======
 
     //与バフクラス・受バフクラス格納用リスト宣言
     List<Buff> sendBuff = new List<Buff>();
@@ -18,6 +18,7 @@ public class HumanBase : MonoBehaviour
 
     //TODO   ダメージ計算クラス
 
+>>>>>>> 03edea8ffc0aac187f9a34016c3b51606c5a226d
 
 
 
