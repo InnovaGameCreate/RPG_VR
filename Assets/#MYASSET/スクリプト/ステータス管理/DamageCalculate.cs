@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class DamageCalculate : MonoBehaviour {
 
+    
     int atksum;     //実際の与ダメ
-    //TODO  人物の与バフリストコピペ用変数宣言
+                    //TODO  人物の与バフリストコピペ用変数宣言
+    private int ATKSUM
+    {
+        get { return atksum; }
+    }
+
+
 
     void atkCalculate(Status status/*,TODO 受バフリスト , 与バフリスト*/ )
     {
