@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Status : MonoBehaviour {
 
-    int Lv;
-    int nowHP;
+    private int Lv
+    {
+        get{ return Lv; }
+    }
+
 
     Parameters baseparameters;
 
