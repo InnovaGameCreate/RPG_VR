@@ -12,7 +12,7 @@ public class HumanBase : MonoBehaviour {
     const int expmax = 100;        //経験値最大量
     bool is_fly;         //飛んでるか   
     BackPack bag;       //持ち物クラス
-     //TODO   与バフクラス・受バフクラス格納用リスト宣言
+     //TODO   ダメージ計算クラス
 
     public int HP
     {
@@ -23,5 +23,9 @@ public class HumanBase : MonoBehaviour {
         get { return mp; }
     }
 
-
+    private void Start()
+    {
+        //nullなら非戦闘要員
+        humanstatus = GetComponent<Status>();
+    }
 }
