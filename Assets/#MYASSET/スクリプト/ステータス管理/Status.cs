@@ -21,15 +21,10 @@ public class Status : MonoBehaviour {
     float NextExperiencePoint;//次のレベルまでの経験値量
     float Experience;//現在経験値
 
+    private void Start()
+    {
+      
+    }
 
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

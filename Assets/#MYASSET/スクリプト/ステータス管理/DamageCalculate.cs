@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DamageCalculate
 {
-
     int _attackPower;     //実際の与ダメ
     List<Buff> _sendBuff;//与バフリスト
     List<Buff> _receiveBuff; //受バフリスト

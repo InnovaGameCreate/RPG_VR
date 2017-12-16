@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class HumanBase : MonoBehaviour
 {
     //人物スーパークラス
@@ -16,11 +17,26 @@ public class HumanBase : MonoBehaviour
 
     //TODO   ダメージ計算クラス
 
+    public delegate void Damaged(DamageCalculate dm);
+    public event Damaged damageEvent;           //ダメージイベント
 
     private void Start()
     {
         //nullなら非戦闘要員
         humanstatus = GetComponent<Status>();
+        damageEvent += damaged;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Sword") || other.CompareTag("FlyAttack"))
+            damageEvent(other.GetComponent<DamageCalculate>());
+    }
+
+    //ダメージを受けた時の処理　 自分のステータス・バフリストを考慮して計算
+    void damaged(DamageCalculate dm)
+    {
+
     }
 
     //攻撃を受けたとき
