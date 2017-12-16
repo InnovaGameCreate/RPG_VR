@@ -42,6 +42,6 @@ public class HumanBase : MonoBehaviour
     //攻撃を受けたとき
     public void ReceiveAttack(DamageCalculate d)
     {
-
+        receiveBuff.AddRange(d.SendBuff);//与バフを受け取る
     }
 }

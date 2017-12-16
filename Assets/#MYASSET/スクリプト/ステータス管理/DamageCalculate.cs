@@ -16,9 +16,9 @@ public class DamageCalculate
     }
 
     //与バフリストを取得
-    public List<Buff> ReceiveBuff
+    public List<Buff> SendBuff
     {
-        get { return _receiveBuff; }
+        get { return _sendBuff; }
     }
 
     //コンストラクタ
