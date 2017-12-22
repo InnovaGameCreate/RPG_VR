@@ -18,6 +18,7 @@ public class Parameters : MonoBehaviour {
     public int HP
     {
         get { return hp; }
+        set {  hp = value; }
     }
     public int MP
     {

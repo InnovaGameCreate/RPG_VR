@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EquipmentItem : ItemBase {
-    [SerializeField, TooltipAttribute("攻撃力上昇量")]
-    public int atkup;
-    [SerializeField, TooltipAttribute("防御力上昇量")]
-    public int defup;
+    [SerializeField, TooltipAttribute("パラメータ上昇量")]
+    Parameters up;
 
     protected override void Start()
     {
@@ -17,15 +15,13 @@ public class EquipmentItem : ItemBase {
     //装備を装着した
     public override bool ItemUse()
     {
-        playerstatus.equipatk = atkup;
-        playerstatus.equipdef = defup;
+      //永続バフリストに追加
         return true;
     }
     //装備を外した
     public bool unEquip()
     {
-        playerstatus.equipatk = 0;
-        playerstatus.equipdef = 0;
+        //永続バフリストから探索して外す
         return true;
     }
 }
