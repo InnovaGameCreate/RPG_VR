@@ -11,7 +11,10 @@ public class Status : MonoBehaviour {
 
 
     Parameters baseparameters;
-
+    public Parameters Parameter
+    {
+        get { return baseparameters; }
+    }
     Buff GivingBuff;
     Buff ReceiveBuff;
 

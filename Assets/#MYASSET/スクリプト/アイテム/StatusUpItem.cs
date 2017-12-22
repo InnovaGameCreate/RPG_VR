@@ -15,6 +15,7 @@ public class StatusUpItem : ItemBase{
         DEF,            //防御影響
         SPEED           //スピード影響
     };
+
     [SerializeField, TooltipAttribute("ステータス影響内容")]
     public StatusUp content;
 

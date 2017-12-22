@@ -44,4 +44,6 @@ public class Buff : MonoBehaviour
         re.paraMagnification = a.paraMagnification * b.paraMagnification;
         return re;
     }
+
+
 }

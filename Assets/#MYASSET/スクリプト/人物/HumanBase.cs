@@ -6,27 +6,40 @@ using UnityEngine;
 public class HumanBase : MonoBehaviour
 {
     //人物スーパークラス
+    bool is_fighter;    //戦闘要員かどうか
     Status humanstatus;         //ステータス
+    public Status Status
+    {
+        get { return humanstatus; }
+    }
+
     bool is_fly;         //飛んでるか   
     BackPack bag;       //持ち物クラス
 
     //受バフリスト・与バフリスト　格納用　宣言
     List<Buff> sendBuff = new List<Buff>();
     List<Buff> receiveBuff = new List<Buff>();
-
+    public List<Buff> SendBuff
+    {
+        get { return sendBuff; }
+    }
+    public List<Buff> ReceiveBuff
+    {
+        get { return receiveBuff; }
+    }
 
     //TODO   ダメージ計算クラス
 
     private void Start()
     {
-        //nullなら非戦闘要員
-        humanstatus = GetComponent<Status>();
+        StartCoroutine("ApplyReceiveBuff");
     }
 
     //攻撃を受けたとき
     public void ReceiveAttack(DamageCalculate d)
     {
         receiveBuff.AddRange(d.SendBuff);//与バフを受け取る
+        hp -= (d.AttackPower);
     }
 
     //受バフの処理
