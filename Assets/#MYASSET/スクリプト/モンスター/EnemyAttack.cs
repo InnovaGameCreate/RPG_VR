@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class EnemyAttack : MonoBehaviour {
-    //アニメーションイベント用　敵の攻撃
-    private PlayerStatus player;        //プレイヤー
     [SerializeField, TooltipAttribute("体力")]
     public int hp = 100;        //体力
     [SerializeField, TooltipAttribute("攻撃力")]
@@ -18,7 +16,7 @@ public class EnemyAttack : MonoBehaviour {
   
     void Start()
     {
-        player = GameObject.Find("プレイヤーステータス管理").GetComponent<PlayerStatus>();
+  
         animator = GetComponent<Animator>();
     
     }
@@ -71,7 +69,7 @@ public class EnemyAttack : MonoBehaviour {
 
     void attack()
     {
-        player.damaged(atk);
+
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -79,7 +77,6 @@ public class EnemyAttack : MonoBehaviour {
         Debug.Log(collision.gameObject.name);
         if (collisionForce > 0)
         {
-            hp -= player.Atk;
             GetComponent<Animator>().SetTrigger("Damage");
         }
     }

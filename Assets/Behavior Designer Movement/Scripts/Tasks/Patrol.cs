@@ -14,6 +14,8 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
         public SharedFloat waypointPauseDuration = 0;
         [Tooltip("The waypoints to move to")]
         public SharedGameObjectList waypoints;
+        [Tooltip("‚Â‚¢‚½‚©‚Ç‚¤‚©")]
+        public SharedBool arrived;
 
         // The current index that we are heading towards within the waypoints array
         private int waypointIndex;
@@ -45,6 +47,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
             if (HasArrived()) {
                 if (waypointReachedTime == -1) {
                     waypointReachedTime = Time.time;
+                    arrived.Value = true;
                 }
                 // wait the required duration before switching waypoints.
                 if (waypointReachedTime + waypointPauseDuration.Value <= Time.time) {
@@ -64,6 +67,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
                     }
                     SetDestination(Target());
                     waypointReachedTime = -1;
+                    arrived.Value = false;
                 }
             }
 

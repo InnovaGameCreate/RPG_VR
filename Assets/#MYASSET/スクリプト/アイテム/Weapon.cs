@@ -10,7 +10,7 @@ public class Weapon :ItemBase
     protected override void Start()
     {
         ItemUse();
-        Debug.Log(parent.SendBuff);
+   //     Debug.Log(parent.SendBuff);
     }
     public int Endurance
     {
@@ -19,7 +19,7 @@ public class Weapon :ItemBase
     }
     public override bool ItemUse()
     {
-        parent.SendBuff.Add(GetComponent<Buff>());
+
         return true;
     }
         

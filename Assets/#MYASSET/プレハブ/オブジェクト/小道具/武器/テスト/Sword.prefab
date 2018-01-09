@@ -42,6 +42,11 @@ GameObject:
   - component: {fileID: 114543348095400316}
   - component: {fileID: 114803335814179044}
   - component: {fileID: 114188811669703028}
+  - component: {fileID: 114879758829584670}
+  - component: {fileID: 114298256583364176}
+  - component: {fileID: 114163475945107066}
+  - component: {fileID: 114169642653209532}
+  - component: {fileID: 114574633090964832}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -134,8 +139,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1019788583037440}
   m_LocalRotation: {x: 0.31313393, y: -0.6080851, z: 0.6726464, w: 0.2823588}
-  m_LocalPosition: {x: 3.9370375, y: -0.16024792, z: 2.1146321}
-  m_LocalScale: {x: 1.0000008, y: 1.0000004, z: 1.0000002}
+  m_LocalPosition: {x: 2.1627579, y: -1.0478425, z: -1.1209}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4347343735875278}
   - {fileID: 4539197337927404}
@@ -338,6 +343,33 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.99999994, y: 1.9999996, z: 1.0000002}
   m_Center: {x: 0.0000005364418, y: 0, z: -0.00000008940697}
+--- !u!114 &114163475945107066
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1019788583037440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b42b749c0afbca40a512d7668b99301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 0
+  CanStack: 0
+  FlavorText: "\u30C6\u30B9\u30C8\u6B66\u5668"
+  droppeditem: 0
+  endurance: 0
+--- !u!114 &114169642653209532
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1019788583037440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83ba27a96c26d7c46b75f997459585da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114188811669703028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -351,10 +383,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hideControllerOnTouch: 0
   hideDelayOnTouch: 0
-  hideControllerOnGrab: 1
+  hideControllerOnGrab: 0
   hideDelayOnGrab: 0
   hideControllerOnUse: 0
   hideDelayOnUse: 0
+--- !u!114 &114298256583364176
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1019788583037440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1394b526acb72b642a4f5b192c1eb5a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 11
+  mp: 22
+  maxhp: 33
+  maxmp: 44
+  atk: 55
+  def: 66
+  magicatk: 77
+  magicdef: 88
+  speed: 99
+  flyspeed: 100
 --- !u!114 &114543348095400316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -367,11 +420,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   precisionGrab: 0
-  rightSnapHandle: {fileID: 4779291691792720}
-  leftSnapHandle: {fileID: 4779291691792720}
+  rightSnapHandle: {fileID: 0}
+  leftSnapHandle: {fileID: 0}
   throwVelocityWithAttachDistance: 0
   throwMultiplier: 1
   onGrabCollisionDelay: 0
+--- !u!114 &114574633090964832
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1019788583037440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76b0d350d063d7c40b4670558036e5c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114601076182389598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -383,18 +447,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 393a6cb30fae3e841bd85dca765098f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 4779291691792720}
-  sdkOverrides:
-  - loadedSDKSetup: {fileID: 0}
-    controllerType: 5
-    position: {x: 0, y: 0.03, z: 0}
-    rotation: {x: 40, y: 0, z: 0}
-    scale: {x: 1, y: 1, z: 1}
-  - loadedSDKSetup: {fileID: 0}
-    controllerType: 4
-    position: {x: 0, y: 0.03, z: 0}
-    rotation: {x: 35, y: 0, z: 0}
-    scale: {x: 1, y: 1, z: 1}
+  target: {fileID: 0}
+  sdkOverrides: []
 --- !u!114 &114789912424426676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -410,16 +464,16 @@ MonoBehaviour:
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
   allowedTouchControllers: 0
   ignoredColliders: []
-  isGrabbable: 1
+  isGrabbable: 0
   holdButtonToGrab: 1
   stayGrabbedOnTeleport: 1
   validDrop: 1
   grabOverrideButton: 0
   allowedGrabControllers: 0
-  grabAttachMechanicScript: {fileID: 114543348095400316}
-  secondaryGrabActionScript: {fileID: 114803335814179044}
+  grabAttachMechanicScript: {fileID: 0}
+  secondaryGrabActionScript: {fileID: 0}
   isUsable: 0
-  holdButtonToUse: 0
+  holdButtonToUse: 1
   useOnlyIfGrabbed: 0
   pointerActivatesUseAction: 0
   useOverrideButton: 0
@@ -436,3 +490,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18055ba762aa3994f9c10208cd088bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114879758829584670
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1019788583037440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1394b526acb72b642a4f5b192c1eb5a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 1
+  mp: 2
+  maxhp: 3
+  maxmp: 4
+  atk: 5
+  def: 6
+  magicatk: 7
+  magicdef: 8
+  speed: 9
+  flyspeed: 10

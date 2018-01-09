@@ -10,7 +10,7 @@ public class MagicTrigger : MonoBehaviour
     private GameObject magicpatternobj;         //生成した魔法陣形
     public bool triggerd;          //トリガーを引いたかどうか
     private bool multitriggerd;
-    public MagicTrigger triggerdother;          //逆のコントローラのトリガーを引いたかどうか
+    private MagicTrigger triggerdother;          //逆のコントローラのトリガーを引いたかどうか
     private void Start()
     {
         if (gameObject.name == "RightController")

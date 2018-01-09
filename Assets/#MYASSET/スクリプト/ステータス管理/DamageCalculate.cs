@@ -13,8 +13,9 @@ public class DamageCalculate : MonoBehaviour
 
     private void Start()
     {
-        is_magic = gameObject.CompareTag("Brade") ? false : true;
+        is_magic = GetComponent<Weapon>() != null ? false : true;
         parent = GetComponentInParent<HumanBase>();
+        copyFromHumanBase();
     }
     //攻撃力を取得
     public int AttackPower
@@ -31,11 +32,18 @@ public class DamageCalculate : MonoBehaviour
     //　[コピー]  剣：当たった時に         魔法：発射したときに
     public void copyFromHumanBase()
     {
+        Buff receive_send = GetComponent<Buff>();        //0番目が受バフ
         _status = parent.Status;
         _sendBuff = parent.SendBuff;
         _receiveBuff = parent.ReceiveBuff;
 
-        _receiveBuff.Add(GetComponent<Buff>());
+        _receiveBuff.Add(receive_send);
+       // _sendBuff.Add(receive_send[1]);
+        Debug.Log("aaaaaaaaaa");
+        //TODO [問題] parent.Status以降が参照できない　null
+        Debug.Log(parent.Status.Parameter.HP);
+        CalculateAttackPower();
+    
     }
     ////コンストラクタ
     //public DamageCalculate(Status status, List<Buff> sendBuff, List<Buff> receiveBuff)
@@ -52,8 +60,6 @@ public class DamageCalculate : MonoBehaviour
         //剣のときコピー
         if (!is_magic)
             copyFromHumanBase();
-
-        CalculateAttackPower();
         collision.gameObject.GetComponent<HumanBase>().ReceiveAttack(this);
     }
 
@@ -62,13 +68,14 @@ public class DamageCalculate : MonoBehaviour
     {
         Buff all_receiveBuff = null;
         foreach (Buff s in _receiveBuff)
-            all_receiveBuff += s;
+           all_receiveBuff += s;
         
         Parameters all_parameters = null;
+
         all_parameters = (_status.Parameter + all_receiveBuff.ParaSingle) * all_receiveBuff.ParaMagnification;
-
-
         _attackPower = is_magic ? all_parameters.MAGICATK : all_parameters.ATK;
+     
+
     }
 
 }

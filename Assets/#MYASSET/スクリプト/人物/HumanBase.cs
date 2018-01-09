@@ -30,16 +30,17 @@ public class HumanBase : MonoBehaviour
 
     //TODO   ダメージ計算クラス
 
-    private void Start()
+    protected virtual void Start()
     {
         StartCoroutine("ApplyReceiveBuff");
+        humanstatus = new Status();
     }
 
     //攻撃を受けたとき
     public void ReceiveAttack(DamageCalculate d)
     {
         receiveBuff.AddRange(d.SendBuff);//与バフを受け取る
-        hp -= (d.AttackPower);
+        Status.Parameter.HP -= (d.AttackPower);
     }
 
     //受バフの処理
