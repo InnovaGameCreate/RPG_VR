@@ -26,7 +26,8 @@ public class Status : MonoBehaviour {
 
     private void Start()
     {
-      
+        baseparameters = new Parameters();
+        Debug.Log("statusStart");
     }
 
 

@@ -14,7 +14,7 @@ public class DamageCalculate : MonoBehaviour
     private void Start()
     {
         is_magic = GetComponent<Weapon>() != null ? false : true;
-        parent = GetComponentInParent<HumanBase>();
+        parent = transform.root.GetComponent<HumanBase>();
         copyFromHumanBase();
     }
     //攻撃力を取得
@@ -39,9 +39,10 @@ public class DamageCalculate : MonoBehaviour
 
         _receiveBuff.Add(receive_send);
        // _sendBuff.Add(receive_send[1]);
-        Debug.Log("aaaaaaaaaa");
+
         //TODO [問題] parent.Status以降が参照できない　null
-        Debug.Log(parent.Status.Parameter.HP);
+        //Ans. newは使えるように見えて使えません 素直にアタッチするかADDしましょう
+
         CalculateAttackPower();
     
     }
