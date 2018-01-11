@@ -11,12 +11,12 @@ public class DamageCalculate : MonoBehaviour
     List<Buff> _receiveBuff; //受バフリスト
     Status _status;//ステータス
 
-    private void Start()
-    {
-        is_magic = GetComponent<Weapon>() != null ? false : true;
-        parent = transform.root.GetComponent<HumanBase>();
-        copyFromHumanBase();
-    }
+    //private void Start()
+    //{
+    //    is_magic = GetComponent<Weapon>() != null ? false : true;
+    //    parent = transform.root.GetComponent<HumanBase>();
+    //    copyFromHumanBase();
+    //}
     //攻撃力を取得
     public int AttackPower
     {
@@ -46,23 +46,23 @@ public class DamageCalculate : MonoBehaviour
         CalculateAttackPower();
     
     }
-    ////コンストラクタ
-    //public DamageCalculate(Status status, List<Buff> sendBuff, List<Buff> receiveBuff)
-    //{
-    //    _status = status;
-    //    _sendBuff = sendBuff;
-    //    _receiveBuff = receiveBuff;
-    //    CalculateAttackPower();//ダメージ計算
-    //}
-
-
-    private void OnCollisionEnter(Collision collision)
+    //コンストラクタ
+    public DamageCalculate(Status status, List<Buff> sendBuff, List<Buff> receiveBuff)
     {
-        //剣のときコピー
-        if (!is_magic)
-            copyFromHumanBase();
-        collision.gameObject.GetComponent<HumanBase>().ReceiveAttack(this);
+        _status = status;
+        _sendBuff = sendBuff;
+        _receiveBuff = receiveBuff;
+        CalculateAttackPower();//ダメージ計算
     }
+
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    //剣のときコピー
+    //    if (!is_magic)
+    //        copyFromHumanBase();
+    //    collision.gameObject.GetComponent<HumanBase>().ReceiveAttack(this);
+    //}
 
     //実ダメージ計算
     private void CalculateAttackPower()

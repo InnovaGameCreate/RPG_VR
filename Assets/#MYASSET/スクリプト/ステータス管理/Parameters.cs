@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Parameters : MonoBehaviour {
+public class Parameters  {
     [SerializeField]
     int hp;     //
     [SerializeField]
