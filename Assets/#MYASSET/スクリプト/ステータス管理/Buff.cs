@@ -41,13 +41,42 @@ public class Buff : MonoBehaviour
 
     }
 
-    public static Buff operator +(Buff a, Buff b)
+    public static Buff operator +(Buff a)//+=用
     {
-        Buff re = new Buff();
-        re.paraSingle = a.paraSingle + b.paraSingle;
-        re.paraMagnification = a.paraMagnification * b.paraMagnification;
+        Buff re = new Buff
+        {
+
+            paraSingle = a.paraSingle,
+            paraMagnification = a.paraMagnification
+        };
         return re;
     }
 
+    public static Buff operator +(Buff a, Buff b)//通常足し算
+    {
+        Buff re = null;
+        if (b != null)
+        {
+            re = new Buff
+            {
+                //Debug.Log(a.paraSingle +"+"+ b.paraSingle);
+                paraSingle = a.paraSingle + b.paraSingle,
+                paraMagnification = a.paraMagnification * b.paraMagnification
+            };
+        }
+        else
+        {
+            re = new Buff
+            {
+                
+                paraSingle = a.paraSingle ,
+                paraMagnification = a.paraMagnification
+            };
+        }
+        
+        return re;
+    }
+
+    
 
 }

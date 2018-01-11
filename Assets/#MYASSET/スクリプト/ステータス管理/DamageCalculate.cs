@@ -41,7 +41,7 @@ public class DamageCalculate : MonoBehaviour
        // _sendBuff.Add(receive_send[1]);
 
         //TODO [問題] parent.Status以降が参照できない　null
-        //Ans. newは使えるように見えて使えません 素直にアタッチするかADDしましょう
+        
 
         CalculateAttackPower();
     
@@ -68,9 +68,12 @@ public class DamageCalculate : MonoBehaviour
     private void CalculateAttackPower()
     {
         Buff all_receiveBuff = null;
+
+
         foreach (Buff s in _receiveBuff)
-           all_receiveBuff += s;
-        
+            all_receiveBuff = s + all_receiveBuff;
+
+
         Parameters all_parameters = null;
 
         all_parameters = (_status.Parameter + all_receiveBuff.ParaSingle) * all_receiveBuff.ParaMagnification;
