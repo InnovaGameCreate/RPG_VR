@@ -22,12 +22,12 @@ public class Tutorial : MonoBehaviour
         text.text = "aaaaaaaaaa";
     }
 
-    IEnumerator StateUpdate()
-    {
-        //1
+    //IEnumerator StateUpdate()
+    //{
+    //    //1
 
-        yield return new WaitUntil(Move);
+    //    yield return new WaitUntil(Move);
 
-        //Application.LoadLevel("maincamera");//LoadSceneが何故か使えないので旧形式で
-    }
+    //    //Application.LoadLevel("maincamera");//LoadSceneが何故か使えないので旧形式で
+    //}
 }
