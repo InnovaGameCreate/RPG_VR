@@ -34,7 +34,8 @@ public class HumanBase : MonoBehaviour
     protected virtual void Start()
     {
         StartCoroutine("ApplyReceiveBuff");
-        //humanstatus = new Status();
+        humanstatus = new Status();
+
         //humanstatus = gameObject.AddComponent<Status>();
 
     }

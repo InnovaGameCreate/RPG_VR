@@ -86,6 +86,23 @@ public class Parameters  {
         return result ;
     }
 
+    //インスペクター用クラスとの和算
+    public static Parameters operator +(Parameters a, DisplayParameters b)
+    {
+        Parameters result = new Parameters();
+        result.hp = a.HP + b.HP;
+        result.mp = a.MP + b.MP;
+        result.maxhp = a.MAXHP + b.MAXHP;
+        result.maxmp = a.MAXMP + b.MAXMP;
+        result.atk = a.ATK + b.ATK;
+        result.def = a.DEF + b.DEF;
+        result.magicatk = a.MAGICDEF + b.MAGICDEF;
+        result.speed = a.SPEED + b.SPEED;
+        result.flyspeed = a.FLYSPEED + b.FLYSPEED;
+
+        return result;
+    }
+
     public static Parameters operator *(Parameters a, Parameters b)
     {
         Parameters result = new Parameters();
