@@ -11,12 +11,12 @@ public class DamageCalculate
     List<Buff> _receiveBuff; //受バフリスト
     Status _status;//ステータス
 
-    //private void Start()
-    //{
-    //    is_magic = GetComponent<Weapon>() != null ? false : true;
-    //    parent = transform.root.GetComponent<HumanBase>();
-    //    copyFromHumanBase();
-    //}
+    private void Start()
+    {
+        is_magic = GetComponent<Weapon>() != null ? false : true;
+        parent = GetComponentInParent<HumanBase>();
+        copyFromHumanBase();
+    }
     //攻撃力を取得
     public int AttackPower
     {
@@ -42,39 +42,35 @@ public class DamageCalculate
        // _sendBuff.Add(receive_send[1]);
 
         //TODO [問題] parent.Status以降が参照できない　null
-        
-
+        Debug.Log(parent.Status.Parameter.HP);
         CalculateAttackPower();
     
     }
-    //コンストラクタ
-    public DamageCalculate(Status status, List<Buff> sendBuff, List<Buff> receiveBuff)
-    {
-        _status = status;
-        _sendBuff = sendBuff;
-        _receiveBuff = receiveBuff;
-        CalculateAttackPower();//ダメージ計算
-    }
-
-
-    //private void OnCollisionEnter(Collision collision)
+    ////コンストラクタ
+    //public DamageCalculate(Status status, List<Buff> sendBuff, List<Buff> receiveBuff)
     //{
-    //    //剣のときコピー
-    //    if (!is_magic)
-    //        copyFromHumanBase();
-    //    collision.gameObject.GetComponent<HumanBase>().ReceiveAttack(this);
+    //    _status = status;
+    //    _sendBuff = sendBuff;
+    //    _receiveBuff = receiveBuff;
+    //    CalculateAttackPower();//ダメージ計算
     //}
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        //剣のときコピー
+        if (!is_magic)
+            copyFromHumanBase();
+        collision.gameObject.GetComponent<HumanBase>().ReceiveAttack(this);
+    }
 
     //実ダメージ計算
     private void CalculateAttackPower()
     {
         Buff all_receiveBuff = null;
-
-
         foreach (Buff s in _receiveBuff)
-            all_receiveBuff = s + all_receiveBuff;
-
-
+           all_receiveBuff += s;
+        
         Parameters all_parameters = null;
 
         all_parameters = (_status.Parameter + all_receiveBuff.ParaSingle) * all_receiveBuff.ParaMagnification;

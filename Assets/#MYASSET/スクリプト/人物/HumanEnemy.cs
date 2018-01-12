@@ -3,14 +3,87 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HumanEnemy : HumanBase {
+    [SerializeField, TooltipAttribute("ドロップアイテム")]
+    public GameObject[] dropitem;
+    private const float breakForce = 150f;      //HP減少に必要な剣を振る速さ.
+  
+    protected bool deaded = false;          //死んだかどうか
+    // Use this for initialization
+    protected override void Start () {
+        base.Start();
+        animator = GetComponent<Animator>();
+    }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    // Update is called once per frame
+    void Update () {
+        if (Status.Parameter.HP <= 0|| Input.GetKeyDown(KeyCode.K))
+        {
+            animator.SetTrigger("Dead");
+            return;
+        }
+    }
+    void dead()//死亡
+    {
+
+        if (!deaded)
+        {
+            Destroy(this.gameObject);
+            deaded = true;
+            dropItem();
+
+        }
+    }
+
+    //ドロップアイテム生成
+    void dropItem()
+    {
+        //var canvasObject = new GameObject("Canvas");
+        //var canvas = canvasObject.AddComponent<Canvas>();
+        //canvasObject.AddComponent<GraphicRaycaster>();
+        //canvas.renderMode = RenderMode.WorldSpace;
+        //canvasObject.transform.position = transform.position;
+
+
+        ////乱数用
+        //int rand = (int)Random.Range(0, dropitem.Length);
+        //if (rand == dropitem.Length)
+        //    rand = 0;
+
+        //// プレハブからインスタンスを生成
+        //GameObject obj = Instantiate(dropitem[rand], Vector3.zero, Quaternion.identity);
+        //obj.GetComponent<ItemBase>().droppeditem = true;
+        //// 作成したオブジェクトを子として登録
+        //obj.transform.parent = canvas.transform;
+
+        //obj.AddComponent<BoxCollider>();
+        //obj.GetComponent<BoxCollider>().size = new Vector3(100, 100, 20);
+        //obj.AddComponent<origingravity>();
+        //canvas.transform.localScale = new Vector3(0.008f, 0.008f, 0.008f);
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        var collisionForce = GetCollisionForce(collision);
+        Debug.Log(collision.gameObject.name);
+        if (collisionForce > 0)
+        {
+            GetComponent<Animator>().SetTrigger("Damage");
+        }
+    }
+
+    private float GetCollisionForce(Collision collision)
+    {
+        if ((collision.collider.name.Contains("Sword") && collision.collider.GetComponent<VRTK.Examples.Sword>().CollisionForce() > breakForce))
+        {
+            return collision.collider.GetComponent<VRTK.Examples.Sword>().CollisionForce() * 1.2f;
+
+        }
+
+        if (collision.collider.name.Contains("Arrow"))
+        {
+            return 500f;
+        }
+
+        return 0f;
+    }
+
 }

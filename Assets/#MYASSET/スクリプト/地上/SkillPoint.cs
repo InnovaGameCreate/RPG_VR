@@ -15,7 +15,6 @@ public class SkillPoint : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        //GetComponentInChildren<SkillPoint>();
     }
 	
 	// Update is called once per frame
