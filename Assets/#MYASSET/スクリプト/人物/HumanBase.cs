@@ -7,8 +7,7 @@ public class HumanBase : MonoBehaviour
 {
     //人物スーパークラス
     bool is_fighter;    //戦闘要員かどうか
-    [SerializeField]
-    private Status humanstatus;         //ステータス
+    Status humanstatus;         //ステータス
     public Status Status
     {
         get { return humanstatus; }
@@ -16,6 +15,7 @@ public class HumanBase : MonoBehaviour
 
     bool is_fly;         //飛んでるか   
     BackPack bag;       //持ち物クラス
+    protected Animator animator;            //アニメーターインスタンス
 
     //受バフリスト・与バフリスト　格納用　宣言
     List<Buff> sendBuff = new List<Buff>();
@@ -34,9 +34,7 @@ public class HumanBase : MonoBehaviour
     protected virtual void Start()
     {
         StartCoroutine("ApplyReceiveBuff");
-        //humanstatus = new Status();
-        //humanstatus = gameObject.AddComponent<Status>();
-
+        humanstatus = new Status();
     }
 
     //攻撃を受けたとき

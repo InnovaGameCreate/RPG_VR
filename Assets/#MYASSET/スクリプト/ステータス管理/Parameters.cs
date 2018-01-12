@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Parameters  {
+public class Parameters {
     [SerializeField]
-    int hp;     //
+    int hp =100;     //
     [SerializeField]
     int mp;     //魔力残量
     [SerializeField]

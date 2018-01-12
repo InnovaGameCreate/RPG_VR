@@ -21,6 +21,16 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
         private int waypointIndex;
         private float waypointReachedTime;
 
+        //à»â∫êVãKí«â¡
+        [Tooltip("The GameObject that the task operates on. If null the task GameObject is used.")]
+        public SharedGameObject targetGameObject;
+        [Tooltip("The name of the parameter")]
+        public SharedString stayparamaterName;
+        public SharedString moveparamaterName;
+
+        private Animator animator;
+        private GameObject prevGameObject;
+
         public override void OnStart()
         {
             base.OnStart();
@@ -36,11 +46,30 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
             }
             waypointReachedTime = -1;
             SetDestination(Target());
+
+            //à»â∫êVãKí«â¡
+            var currentGameObject = GetDefaultGameObject(targetGameObject.Value);
+            if (currentGameObject != prevGameObject)
+            {
+                animator = currentGameObject.GetComponent<Animator>();
+                prevGameObject = currentGameObject;
+            }
+          
         }
 
         // Patrol around the different waypoints specified in the waypoint array. Always return a task status of running. 
         public override TaskStatus OnUpdate()
         {
+            //êVãKí«â¡
+            if (animator == null)
+            {
+                Debug.LogWarning("Animator is null");
+                return TaskStatus.Failure;
+            }
+
+       
+            //Ç±Ç±Ç‹Ç≈
+
             if (waypoints.Value.Count == 0) {
                 return TaskStatus.Failure;
             }
@@ -48,6 +77,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
                 if (waypointReachedTime == -1) {
                     waypointReachedTime = Time.time;
                     arrived.Value = true;
+                    animator.SetTrigger(stayparamaterName.Value);
                 }
                 // wait the required duration before switching waypoints.
                 if (waypointReachedTime + waypointPauseDuration.Value <= Time.time) {
@@ -68,6 +98,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
                     SetDestination(Target());
                     waypointReachedTime = -1;
                     arrived.Value = false;
+                    animator.SetTrigger(moveparamaterName.Value);
                 }
             }
 
