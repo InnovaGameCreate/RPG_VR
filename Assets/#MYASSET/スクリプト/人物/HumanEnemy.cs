@@ -1,37 +1,40 @@
-﻿using System.Collections;
+﻿using BehaviorDesigner.Runtime;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HumanEnemy : HumanBase {
+public class HumanEnemy : HumanBase
+{
     [SerializeField, TooltipAttribute("ドロップアイテム")]
     public GameObject[] dropitem;
     private const float breakForce = 150f;      //HP減少に必要な剣を振る速さ.
-  
+
     protected bool deaded = false;          //死んだかどうか
     // Use this for initialization
-    protected override void Start () {
+    protected override void Start()
+    {
         base.Start();
         animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
-    void Update () {
-        if (Status.Parameter.HP <= 0|| Input.GetKeyDown(KeyCode.K))
+    void Update()
+    {
+        if (Status.Parameter.HP <= 0 || Input.GetKeyDown(KeyCode.K))
         {
             animator.SetTrigger("Dead");
+            Destroy(GetComponent<BehaviorTree>());
+            StartCoroutine("Remove");
             return;
         }
     }
-    void dead()//死亡
+
+    // モデル消滅
+    IEnumerator Remove()
     {
-
-        if (!deaded)
-        {
-            Destroy(this.gameObject);
-            deaded = true;
-            dropItem();
-
-        }
+        yield return new WaitForSeconds(60);
+        Destroy(this.gameObject);
+        dropItem();
     }
 
     //ドロップアイテム生成
