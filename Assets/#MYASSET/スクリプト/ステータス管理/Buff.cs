@@ -30,9 +30,12 @@ public class Buff : MonoBehaviour
     {
         //受バフのみ受け付ける
         //parameterクラスはインスペクター内で上にあるのがプラス
-        Parameters[] inspector_parameters = GetComponents<Parameters>();
-        paraSingle = inspector_parameters[0];
-        paraMagnification = inspector_parameters[1];
+        //Parameters[] inspector_parameters = GetComponents<Parameters>();
+        //paraSingle = inspector_parameters[0];
+        //paraMagnification = inspector_parameters[1];
+
+        paraSingle = new Parameters();
+        paraMagnification = new Parameters();
     }
 
     // Update is called once per frame

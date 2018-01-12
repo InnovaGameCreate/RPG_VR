@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageCalculate : MonoBehaviour
+public class DamageCalculate 
 {
     HumanBase parent;   //HumanBaseインスタンス　    
     bool is_magic;      //魔法攻撃か　剣か
@@ -32,7 +32,8 @@ public class DamageCalculate : MonoBehaviour
     //　[コピー]  剣：当たった時に         魔法：発射したときに
     public void copyFromHumanBase()
     {
-        Buff receive_send = GetComponent<Buff>();        //0番目が受バフ
+        //Buff receive_send = GetComponent<Buff>();        //0番目が受バフ
+        Buff receive_send = new Buff();
         _status = parent.Status;
         _sendBuff = parent.SendBuff;
         _receiveBuff = parent.ReceiveBuff;
@@ -74,7 +75,7 @@ public class DamageCalculate : MonoBehaviour
 
         all_parameters = (_status.Parameter + all_receiveBuff.ParaSingle) * all_receiveBuff.ParaMagnification;
         _attackPower = is_magic ? all_parameters.MAGICATK : all_parameters.ATK;
-     
+        Debug.Log(_attackPower);
 
     }
 

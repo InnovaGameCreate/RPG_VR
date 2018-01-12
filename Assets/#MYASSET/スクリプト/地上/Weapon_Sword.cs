@@ -12,7 +12,7 @@ public class Weapon_Sword : RPGItemObject
         実際に実装する方
      */
 
-    public float Atk;
+    //public float Atk;
     [SerializeField]
     SkillSystem Skill1;
     [SerializeField]
@@ -104,4 +104,12 @@ public class Weapon_Sword : RPGItemObject
         GetComponent<BoxCollider>().isTrigger = false;
     }
 
+    private void OnTriggerEnter(Collider coll)
+    {
+        if (coll.gameObject.tag == "enemy")
+        {
+            //Debug.Log("aaaafojsegj");
+            //DamageCalculate dam = new DamageCalculate();
+        }
+    }
 }

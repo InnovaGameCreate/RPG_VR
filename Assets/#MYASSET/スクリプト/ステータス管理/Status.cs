@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Status{
+public class Status  {
 
     private int Lv
     {
@@ -10,7 +10,7 @@ public class Status{
     }
 
 
-    Parameters baseparameters = new Parameters();
+    Parameters baseparameters;
     public Parameters Parameter
     {
         get { return baseparameters; }
@@ -23,5 +23,19 @@ public class Status{
 
     float NextExperiencePoint;//次のレベルまでの経験値量
     float Experience;//現在経験値
+
+    //private void Start()
+    //{
+    //    baseparameters = new Parameters();
+    //    Debug.Log("statusStart");
+    //}
+
+    //コンストラクタ
+    public Status()
+    {
+        baseparameters = new Parameters();
+        Debug.Log("statusStart");
+    }
+
 
 }
