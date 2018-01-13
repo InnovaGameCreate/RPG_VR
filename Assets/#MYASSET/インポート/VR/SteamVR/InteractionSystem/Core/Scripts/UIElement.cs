@@ -9,7 +9,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using System;
 
-namespace Valve.VR.InteractionSystem
+namespace valve.VR.InteractionSystem
 {
 	//-------------------------------------------------------------------------
 	[RequireComponent( typeof( Interactable ) )]
@@ -35,7 +35,7 @@ namespace Valve.VR.InteractionSystem
 		{
 			currentHand = hand;
 			InputModule.instance.HoverBegin( gameObject );
-			ControllerButtonHints.ShowButtonHint( hand, Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger );
+			ControllerButtonHints.ShowButtonHint( hand, valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger );
 		}
 
 
@@ -43,7 +43,7 @@ namespace Valve.VR.InteractionSystem
 		private void OnHandHoverEnd( Hand hand )
 		{
 			InputModule.instance.HoverEnd( gameObject );
-			ControllerButtonHints.HideButtonHint( hand, Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger );
+			ControllerButtonHints.HideButtonHint( hand, valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger );
 			currentHand = null;
 		}
 
@@ -54,7 +54,7 @@ namespace Valve.VR.InteractionSystem
 			if ( hand.GetStandardInteractionButtonDown() )
 			{
 				InputModule.instance.Submit( gameObject );
-				ControllerButtonHints.HideButtonHint( hand, Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger );
+				ControllerButtonHints.HideButtonHint( hand, valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger );
 			}
 		}
 

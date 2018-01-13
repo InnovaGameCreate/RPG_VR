@@ -8,7 +8,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
 
-namespace Valve.VR.InteractionSystem
+namespace valve.VR.InteractionSystem
 {
 	//-------------------------------------------------------------------------
 	public class InputModule : BaseInputModule

@@ -8,7 +8,7 @@
 using UnityEngine;
 using System.Collections;
 
-namespace Valve.VR.InteractionSystem
+namespace valve.VR.InteractionSystem
 {
 	//-------------------------------------------------------------------------
 	public class IgnoreTeleportTrace : MonoBehaviour

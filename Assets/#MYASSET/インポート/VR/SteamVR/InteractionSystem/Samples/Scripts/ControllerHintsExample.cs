@@ -6,9 +6,9 @@
 
 using UnityEngine;
 using System.Collections;
-using Valve.VR;
+using valve.VR;
 
-namespace Valve.VR.InteractionSystem
+namespace valve.VR.InteractionSystem
 {
 	//-------------------------------------------------------------------------
 	public class ControllerHintsExample : MonoBehaviour

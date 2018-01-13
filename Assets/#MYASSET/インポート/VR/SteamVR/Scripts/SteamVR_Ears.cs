@@ -5,7 +5,7 @@
 //=============================================================================
 
 using UnityEngine;
-using Valve.VR;
+using valve.VR;
 
 [RequireComponent(typeof(AudioListener))]
 public class SteamVR_Ears : MonoBehaviour

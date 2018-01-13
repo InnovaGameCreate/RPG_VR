@@ -6,7 +6,7 @@
 
 using UnityEngine;
 using System.Collections;
-using Valve.VR;
+using valve.VR;
 
 public class SteamVR_Render : MonoBehaviour
 {

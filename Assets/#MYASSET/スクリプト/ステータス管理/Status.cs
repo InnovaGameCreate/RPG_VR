@@ -14,6 +14,7 @@ public class Status  {
     public Parameters Parameter
     {
         get { return baseparameters; }
+        set { baseparameters = value; }
     }
     Buff GivingBuff;
     Buff ReceiveBuff;

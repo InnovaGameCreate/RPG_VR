@@ -7,7 +7,7 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 using System.Collections;
-using Valve.VR;
+using valve.VR;
 
 [ExecuteInEditMode, RequireComponent(typeof(MeshRenderer), typeof(MeshFilter))]
 public class SteamVR_PlayArea : MonoBehaviour

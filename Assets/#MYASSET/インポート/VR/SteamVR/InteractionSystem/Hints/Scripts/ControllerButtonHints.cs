@@ -9,7 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-namespace Valve.VR.InteractionSystem
+namespace valve.VR.InteractionSystem
 {
 	//-------------------------------------------------------------------------
 	public class ControllerButtonHints : MonoBehaviour
@@ -265,12 +265,12 @@ namespace Valve.VR.InteractionSystem
 						offsetType = OffsetType.Right;
 					}
 					break;
-				case Valve.VR.EVRButtonId.k_EButton_Grip:
+				case valve.VR.EVRButtonId.k_EButton_Grip:
 					{
 						offsetType = OffsetType.Forward;
 					}
 					break;
-				case Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad:
+				case valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad:
 					{
 						offsetType = OffsetType.Up;
 					}

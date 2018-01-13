@@ -7,9 +7,9 @@
 
 using System;
 using System.Runtime.InteropServices;
-using Valve.VR;
+using valve.VR;
 
-namespace Valve.VR
+namespace valve.VR
 {
 
 [StructLayout(LayoutKind.Sequential)]

@@ -2,7 +2,7 @@
 namespace VRTK
 {
 #if VRTK_DEFINE_SDK_STEAMVR
-    using Valve.VR;
+    using valve.VR;
 #endif
 
     /// <summary>

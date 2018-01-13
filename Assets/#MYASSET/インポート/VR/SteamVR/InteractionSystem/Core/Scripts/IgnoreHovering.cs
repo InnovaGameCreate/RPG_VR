@@ -6,7 +6,7 @@
 
 using UnityEngine;
 
-namespace Valve.VR.InteractionSystem
+namespace valve.VR.InteractionSystem
 {
 	//-------------------------------------------------------------------------
 	public class IgnoreHovering : MonoBehaviour

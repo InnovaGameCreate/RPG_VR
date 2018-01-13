@@ -33,38 +33,47 @@ public class Parameters {
     public int MP
     {
         get { return mp; }
+        set { mp = value > 0 ? maxmp > mp ? value : maxmp : 0; }
     }
     public int MAXHP
     {
         get { return maxhp; }
+        
     }
     public int MAXMP
     {
         get { return maxmp; }
+        
     }
     public int ATK
     {
         get { return atk; }
+        set { atk = value; }
     }
     public int DEF
     {
         get { return def; }
+        set { def = value; }
     }
     public int MAGICATK
     {
         get { return magicatk; }
+        set { magicatk = value; }
     }
     public int MAGICDEF
     {
         get { return magicdef; }
+        set { magicdef = value; }
     }
     public float SPEED
     {
         get { return speed; }
+        set { speed = value; }
     }
     public float FLYSPEED
     {
         get { return flyspeed; }
+        set { flyspeed = value; }
     }
     
 

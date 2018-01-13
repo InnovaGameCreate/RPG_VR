@@ -19,7 +19,7 @@
 
 using UnityEngine;
 using UnityEngine.Events;
-using Valve.VR;
+using valve.VR;
 
 public static class SteamVR_Events
 {

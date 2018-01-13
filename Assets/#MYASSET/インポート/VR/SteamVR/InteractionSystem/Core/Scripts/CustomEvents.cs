@@ -7,7 +7,7 @@
 using UnityEngine.Events;
 using System;
 
-namespace Valve.VR.InteractionSystem
+namespace valve.VR.InteractionSystem
 {
 	//-------------------------------------------------------------------------
 	public static class CustomEvents
