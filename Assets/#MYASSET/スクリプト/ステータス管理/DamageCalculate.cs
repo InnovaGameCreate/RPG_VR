@@ -69,11 +69,14 @@ public class DamageCalculate
     private void CalculateAttackPower()
     {
         Buff all_receiveBuff = new Buff();
-        if (!all_receiveBuff)
-            Debug.Log("ALL");
-
+        all_receiveBuff = _receiveBuff[0];
         foreach (Buff s in _receiveBuff)
+        {
+            if (s == _receiveBuff[0])
+                continue;
             all_receiveBuff = s + all_receiveBuff;
+        }
+            
 
 
         Parameters all_parameters = null;
