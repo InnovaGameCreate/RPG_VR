@@ -47,6 +47,8 @@ public class Buff : MonoBehaviour
     public static Buff operator +(Buff a, Buff b)
     {
         Buff re = new Buff();
+        if (!b)
+            Debug.Log("b");
         re.paraSingle = a.paraSingle + b.paraSingle;
         re.paraMagnification = a.paraMagnification * b.paraMagnification;
         return re;

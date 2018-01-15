@@ -35,7 +35,7 @@ public class HumanBase : MonoBehaviour
     {
         StartCoroutine("ApplyReceiveBuff");
         humanstatus = new Status();
-        humanstatus.Parameter = humanstatus.Parameter + GetComponent<DisplayParameters>();//パラメータ代入
+        humanstatus.Parameter = humanstatus.Parameter + GetComponentInChildren<DisplayParameters>();//パラメータ代入
     }
 
     //攻撃を受けたとき

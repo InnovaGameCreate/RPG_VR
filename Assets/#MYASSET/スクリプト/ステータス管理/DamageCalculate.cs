@@ -68,8 +68,9 @@ public class DamageCalculate
     //実ダメージ計算
     private void CalculateAttackPower()
     {
-        Buff all_receiveBuff = null;
-
+        Buff all_receiveBuff = new Buff();
+        if (!all_receiveBuff)
+            Debug.Log("ALL");
 
         foreach (Buff s in _receiveBuff)
             all_receiveBuff = s + all_receiveBuff;
