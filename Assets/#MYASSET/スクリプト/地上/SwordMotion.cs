@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwordMotion : MonoBehaviour {
+public class SwordMotion : MonoBehaviour
+{
     public GameObject Sword;
     private SearchHand Wherehand;
     public GameObject gripEve;
     private bool isEquip;
+    public bool IsEquip { get { return isEquip; } }
     private int coolTime;
     private Weapon_Sword swordSystem;
     private Transform initSwordTrans;//剣の初期位置
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
 
         Wherehand = GetComponent<SearchHand>();
         swordSystem = GetComponent<Weapon_Sword>();
@@ -26,7 +29,7 @@ public class SwordMotion : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update ()
+    void Update()
     {
         //print(swordSystem.validDrop);
         //print(coolTime);
@@ -56,7 +59,7 @@ public class SwordMotion : MonoBehaviour {
 
         //離すときだけは肩の範囲を採用少しだけクールタイムでゴリ押し
         if (Wherehand._SearchShoulder && gripEve.GetComponent<WaistItem>().gripped && coolTime == 100)
-        { 
+        {
             if (isEquip)
             {
                 //肩で押したら離す
@@ -75,19 +78,19 @@ public class SwordMotion : MonoBehaviour {
         }
 
 
-            if (!isEquip)
-            {
+        if (!isEquip)
+        {
 
-                Sword.transform.position = initSwordTrans.position;
-                Sword.transform.rotation = initSwordTrans.rotation;
-            }
+            Sword.transform.position = initSwordTrans.position;
+            Sword.transform.rotation = initSwordTrans.rotation;
+        }
 
         if (coolTime != 100)
             coolTime++;//着脱出来るまでのクールタイム（要はゴリ押し）
 
 
-        
-        if(coolTime != 100 && !isEquip)
+
+        if (coolTime != 100 && !isEquip)
         {
             //Sword.SetActive(false);
             //クールタイム中は掴めない
