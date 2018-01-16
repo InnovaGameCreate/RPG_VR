@@ -11,12 +11,12 @@ public class DamageCalculate
     List<Buff> _receiveBuff; //受バフリスト
     Status _status;//ステータス
 
-    private void Start()
-    {
-        is_magic = GetComponent<Weapon>() != null ? false : true;
-        parent = GetComponentInParent<HumanBase>();
-        copyFromHumanBase();
-    }
+    //private void Start()
+    //{
+    //    is_magic = GetComponent<Weapon>() != null ? false : true;
+    //    parent = GetComponentInParent<HumanBase>();
+    //    copyFromHumanBase();
+    //}
     //攻撃力を取得
     public int AttackPower
     {

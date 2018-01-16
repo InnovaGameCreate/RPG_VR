@@ -34,7 +34,6 @@ public class Status  {
     public Status()
     {
         baseparameters = new Parameters();
-        Debug.Log("statusStart");
     }
 
 
