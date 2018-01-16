@@ -7,7 +7,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Runtime.InteropServices;
-using Valve.VR;
+using valve.VR;
 
 public static class SteamVR_Utils
 {

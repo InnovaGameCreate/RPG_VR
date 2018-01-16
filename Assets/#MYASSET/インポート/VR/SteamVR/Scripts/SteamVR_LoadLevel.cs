@@ -6,7 +6,7 @@
 
 using UnityEngine;
 using System.Collections;
-using Valve.VR;
+using valve.VR;
 using System.IO;
 
 public class SteamVR_LoadLevel : MonoBehaviour

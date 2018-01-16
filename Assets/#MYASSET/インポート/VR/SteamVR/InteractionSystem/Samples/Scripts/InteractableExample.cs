@@ -7,7 +7,7 @@
 using UnityEngine;
 using System.Collections;
 
-namespace Valve.VR.InteractionSystem
+namespace valve.VR.InteractionSystem
 {
 	//-------------------------------------------------------------------------
 	[RequireComponent( typeof( Interactable ) )]
@@ -52,7 +52,7 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		private void HandHoverUpdate( Hand hand )
 		{
-			if ( hand.GetStandardInteractionButtonDown() || ( ( hand.controller != null ) && hand.controller.GetPressDown( Valve.VR.EVRButtonId.k_EButton_Grip ) ) )
+			if ( hand.GetStandardInteractionButtonDown() || ( ( hand.controller != null ) && hand.controller.GetPressDown( valve.VR.EVRButtonId.k_EButton_Grip ) ) )
 			{
 				if ( hand.currentAttachedObject != gameObject )
 				{

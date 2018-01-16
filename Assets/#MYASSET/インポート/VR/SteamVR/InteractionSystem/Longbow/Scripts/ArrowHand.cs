@@ -9,7 +9,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Valve.VR.InteractionSystem
+namespace valve.VR.InteractionSystem
 {
 	//-------------------------------------------------------------------------
 	public class ArrowHand : MonoBehaviour

@@ -6,7 +6,7 @@
 
 using UnityEngine;
 using UnityEngine.Rendering;
-using Valve.VR;
+using valve.VR;
 
 public class SteamVR_ExternalCamera : MonoBehaviour
 {

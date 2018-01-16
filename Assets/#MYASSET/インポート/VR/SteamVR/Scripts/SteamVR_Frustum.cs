@@ -5,7 +5,7 @@
 //=============================================================================
 
 using UnityEngine;
-using Valve.VR;
+using valve.VR;
 
 [ExecuteInEditMode, RequireComponent(typeof(MeshRenderer), typeof(MeshFilter))]
 public class SteamVR_Frustum : MonoBehaviour

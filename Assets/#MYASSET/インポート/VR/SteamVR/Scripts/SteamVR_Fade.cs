@@ -21,7 +21,7 @@
 //=============================================================================
 
 using UnityEngine;
-using Valve.VR;
+using valve.VR;
 
 public class SteamVR_Fade : MonoBehaviour
 {

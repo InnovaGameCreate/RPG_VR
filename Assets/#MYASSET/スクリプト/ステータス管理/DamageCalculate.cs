@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageCalculate 
+public class DamageCalculate
 {
     HumanBase parent;   //HumanBaseインスタンス　    
     bool is_magic;      //魔法攻撃か　剣か
@@ -14,7 +14,7 @@ public class DamageCalculate
     //private void Start()
     //{
     //    is_magic = GetComponent<Weapon>() != null ? false : true;
-    //    parent = GetComponentInParent<HumanBase>();
+    //    parent = transform.root.GetComponent<HumanBase>();
     //    copyFromHumanBase();
     //}
     //攻撃力を取得
@@ -39,43 +39,54 @@ public class DamageCalculate
         _receiveBuff = parent.ReceiveBuff;
 
         _receiveBuff.Add(receive_send);
-       // _sendBuff.Add(receive_send[1]);
+        // _sendBuff.Add(receive_send[1]);
 
         //TODO [問題] parent.Status以降が参照できない　null
-        Debug.Log(parent.Status.Parameter.HP);
+
+
         CalculateAttackPower();
-    
+
     }
-    ////コンストラクタ
-    //public DamageCalculate(Status status, List<Buff> sendBuff, List<Buff> receiveBuff)
-    //{
-    //    _status = status;
-    //    _sendBuff = sendBuff;
-    //    _receiveBuff = receiveBuff;
-    //    CalculateAttackPower();//ダメージ計算
-    //}
-
-
-    private void OnCollisionEnter(Collision collision)
+    //コンストラクタ
+    public DamageCalculate(Status status, List<Buff> sendBuff, List<Buff> receiveBuff)
     {
-        //剣のときコピー
-        if (!is_magic)
-            copyFromHumanBase();
-        collision.gameObject.GetComponent<HumanBase>().ReceiveAttack(this);
+        _status = status;
+        //この時点では値が入っている(_status.Parameter.ATK)
+        _sendBuff = sendBuff;
+        _receiveBuff = receiveBuff;
+        CalculateAttackPower();//ダメージ計算
     }
+
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    //剣のときコピー
+    //    if (!is_magic)
+    //        copyFromHumanBase();
+    //    collision.gameObject.GetComponent<HumanBase>().ReceiveAttack(this);
+    //}
 
     //実ダメージ計算
     private void CalculateAttackPower()
     {
-        Buff all_receiveBuff = null;
+        Buff all_receiveBuff = new Buff();
+        all_receiveBuff = _receiveBuff[0];
         foreach (Buff s in _receiveBuff)
-           all_receiveBuff += s;
-        
-        Parameters all_parameters = null;
+        {
+            if (s == _receiveBuff[0])
+                continue;
+            all_receiveBuff = s + all_receiveBuff;
+        }
+            
+
+
+        Parameters all_parameters = new Parameters();
 
         all_parameters = (_status.Parameter + all_receiveBuff.ParaSingle) * all_receiveBuff.ParaMagnification;
+        //Debug.Log("ATK" + all_receiveBuff.ParaMagnification.ATK);
         _attackPower = is_magic ? all_parameters.MAGICATK : all_parameters.ATK;
-        Debug.Log(_attackPower);
+        
+        Debug.Log("ALLATK"+_attackPower);
 
     }
 

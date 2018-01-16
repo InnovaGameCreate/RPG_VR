@@ -6,7 +6,7 @@
 
 using UnityEngine;
 
-namespace Valve.VR.InteractionSystem
+namespace valve.VR.InteractionSystem
 {
 	//-------------------------------------------------------------------------
 	public abstract class TeleportMarkerBase : MonoBehaviour

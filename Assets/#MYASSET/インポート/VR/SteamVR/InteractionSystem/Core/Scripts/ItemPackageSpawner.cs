@@ -13,7 +13,7 @@ using UnityEngine.Events;
 using UnityEditor;
 #endif
 
-namespace Valve.VR.InteractionSystem
+namespace valve.VR.InteractionSystem
 {
 	//-------------------------------------------------------------------------
 	[RequireComponent( typeof( Interactable ) )]
@@ -177,7 +177,7 @@ namespace Valve.VR.InteractionSystem
 
 			if ( requireTriggerPressToTake && showTriggerHint )
 			{
-				ControllerButtonHints.ShowTextHint( hand, Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger, "PickUp" );
+				ControllerButtonHints.ShowTextHint( hand, valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger, "PickUp" );
 			}
 		}
 
@@ -234,7 +234,7 @@ namespace Valve.VR.InteractionSystem
 		{
 			if ( !justPickedUpItem && requireTriggerPressToTake && showTriggerHint )
 			{
-				ControllerButtonHints.HideTextHint( hand, Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger );
+				ControllerButtonHints.HideTextHint( hand, valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger );
 			}
 
 			justPickedUpItem = false;
@@ -293,7 +293,7 @@ namespace Valve.VR.InteractionSystem
 
 			if ( showTriggerHint )
 			{
-				ControllerButtonHints.HideTextHint( hand, Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger );
+				ControllerButtonHints.HideTextHint( hand, valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger );
 			}
 
 			if ( itemPackage.otherHandItemPrefab != null )

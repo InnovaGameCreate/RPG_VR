@@ -8,7 +8,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Valve.VR.InteractionSystem
+namespace valve.VR.InteractionSystem
 {
 	//-------------------------------------------------------------------------
 	// Singleton representing the local VR player/user, with methods for getting

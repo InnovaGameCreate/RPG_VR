@@ -6,7 +6,7 @@
 
 using UnityEngine;
 using System.Collections.Generic;
-using Valve.VR;
+using valve.VR;
 
 public class SteamVR_TestController : MonoBehaviour
 {

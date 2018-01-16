@@ -8,7 +8,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-namespace Valve.VR.InteractionSystem
+namespace valve.VR.InteractionSystem
 {
 	//-------------------------------------------------------------------------
 	[RequireComponent( typeof( Interactable ) )]

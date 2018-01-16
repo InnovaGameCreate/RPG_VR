@@ -10,7 +10,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace Valve.VR.InteractionSystem
+namespace valve.VR.InteractionSystem
 {
 	//-------------------------------------------------------------------------
 	// Links with an appropriate SteamVR controller and facilitates
@@ -430,9 +430,9 @@ namespace Valve.VR.InteractionSystem
 					// No left/right relationship. Just wait for a connection
 
 					var vr = SteamVR.instance;
-					for ( int i = 0; i < Valve.VR.OpenVR.k_unMaxTrackedDeviceCount; i++ )
+					for ( int i = 0; i < valve.VR.OpenVR.k_unMaxTrackedDeviceCount; i++ )
 					{
-						if ( vr.hmd.GetTrackedDeviceClass( (uint)i ) != Valve.VR.ETrackedDeviceClass.Controller )
+						if ( vr.hmd.GetTrackedDeviceClass( (uint)i ) != valve.VR.ETrackedDeviceClass.Controller )
 						{
 							//Debug.Log( string.Format( "Hand - device {0} is not a controller", i ) );
 							continue;
@@ -754,10 +754,10 @@ namespace Valve.VR.InteractionSystem
 				SteamVR vr = SteamVR.instance;
 				if ( vr != null )
 				{
-					var pose = new Valve.VR.TrackedDevicePose_t();
-					var gamePose = new Valve.VR.TrackedDevicePose_t();
+					var pose = new valve.VR.TrackedDevicePose_t();
+					var gamePose = new valve.VR.TrackedDevicePose_t();
 					var err = vr.compositor.GetLastPoseForTrackedDeviceIndex( controller.index, ref pose, ref gamePose );
-					if ( err == Valve.VR.EVRCompositorError.None )
+					if ( err == valve.VR.EVRCompositorError.None )
 					{
 						var t = new SteamVR_Utils.RigidTransform( gamePose.mDeviceToAbsoluteTracking );
 						transform.localPosition = t.pos;

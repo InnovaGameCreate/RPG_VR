@@ -18,6 +18,9 @@ public class Weapon_Sword : RPGItemObject
     [SerializeField]
     SkillSystem Skill2;
 
+    private List<Buff> _send = new List<Buff>();
+    private List<Buff> _receive = new List<Buff>();
+
     // Use this for initialization
     //protected override void Start () {
     //       base.Start();
@@ -109,7 +112,13 @@ public class Weapon_Sword : RPGItemObject
         if (coll.gameObject.tag == "enemy")
         {
             //Debug.Log("aaaafojsegj");
-            //DamageCalculate dam = new DamageCalculate();
+            Status st = GetComponentInParent<HumanBase>().Status;
+
+            if (!GetComponent<Buff>())
+                Debug.Log("fbvgsureiuheirhghhhh");
+
+            _send.Add(GetComponent<Buff>());
+            DamageCalculate dam = new DamageCalculate(st, _send, _send);
         }
     }
 }

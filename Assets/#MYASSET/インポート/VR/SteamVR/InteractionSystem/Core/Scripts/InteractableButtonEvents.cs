@@ -7,7 +7,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Valve.VR.InteractionSystem
+namespace valve.VR.InteractionSystem
 {
 	//-------------------------------------------------------------------------
 	[RequireComponent( typeof( Interactable ) )]
@@ -31,42 +31,42 @@ namespace Valve.VR.InteractionSystem
 
 				if ( hand.controller != null )
 				{
-					if ( hand.controller.GetPressDown( Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger ) )
+					if ( hand.controller.GetPressDown( valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger ) )
 					{
 						onTriggerDown.Invoke();
 					}
 
-					if ( hand.controller.GetPressUp( Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger ) )
+					if ( hand.controller.GetPressUp( valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger ) )
 					{
 						onTriggerUp.Invoke();
 					}
 
-					if ( hand.controller.GetPressDown( Valve.VR.EVRButtonId.k_EButton_Grip ) )
+					if ( hand.controller.GetPressDown( valve.VR.EVRButtonId.k_EButton_Grip ) )
 					{
 						onGripDown.Invoke();
 					}
 
-					if ( hand.controller.GetPressUp( Valve.VR.EVRButtonId.k_EButton_Grip ) )
+					if ( hand.controller.GetPressUp( valve.VR.EVRButtonId.k_EButton_Grip ) )
 					{
 						onGripUp.Invoke();
 					}
 
-					if ( hand.controller.GetPressDown( Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad ) )
+					if ( hand.controller.GetPressDown( valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad ) )
 					{
 						onTouchpadDown.Invoke();
 					}
 
-					if ( hand.controller.GetPressUp( Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad ) )
+					if ( hand.controller.GetPressUp( valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad ) )
 					{
 						onTouchpadUp.Invoke();
 					}
 
-					if ( hand.controller.GetTouchDown( Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad ) )
+					if ( hand.controller.GetTouchDown( valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad ) )
 					{
 						onTouchpadTouch.Invoke();
 					}
 
-					if ( hand.controller.GetTouchUp( Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad ) )
+					if ( hand.controller.GetTouchUp( valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad ) )
 					{
 						onTouchpadRelease.Invoke();
 					}

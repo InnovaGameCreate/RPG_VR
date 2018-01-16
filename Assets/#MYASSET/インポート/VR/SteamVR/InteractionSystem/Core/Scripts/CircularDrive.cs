@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
 
-namespace Valve.VR.InteractionSystem
+namespace valve.VR.InteractionSystem
 {
 
 	//-------------------------------------------------------------------------
@@ -181,7 +181,7 @@ namespace Valve.VR.InteractionSystem
 		{
 			if ( handHoverLocked )
 			{
-				ControllerButtonHints.HideButtonHint( handHoverLocked, Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger );
+				ControllerButtonHints.HideButtonHint( handHoverLocked, valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger );
 				handHoverLocked.HoverUnlock( GetComponent<Interactable>() );
 				handHoverLocked = null;
 			}
@@ -209,14 +209,14 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		private void OnHandHoverBegin( Hand hand )
 		{
-			ControllerButtonHints.ShowButtonHint( hand, Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger );
+			ControllerButtonHints.ShowButtonHint( hand, valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger );
 		}
 
 
 		//-------------------------------------------------
 		private void OnHandHoverEnd( Hand hand )
 		{
-			ControllerButtonHints.HideButtonHint( hand, Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger );
+			ControllerButtonHints.HideButtonHint( hand, valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger );
 
 			if ( driving && hand.GetStandardInteractionButton() )
 			{
@@ -247,7 +247,7 @@ namespace Valve.VR.InteractionSystem
 				ComputeAngle( hand );
 				UpdateAll();
 
-				ControllerButtonHints.HideButtonHint( hand, Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger );
+				ControllerButtonHints.HideButtonHint( hand, valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger );
 			}
 			else if ( hand.GetStandardInteractionButtonUp() )
 			{

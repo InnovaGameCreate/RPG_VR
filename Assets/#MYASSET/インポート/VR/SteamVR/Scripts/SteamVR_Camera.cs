@@ -7,7 +7,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Reflection;
-using Valve.VR;
+using valve.VR;
 
 [RequireComponent(typeof(Camera))]
 public class SteamVR_Camera : MonoBehaviour

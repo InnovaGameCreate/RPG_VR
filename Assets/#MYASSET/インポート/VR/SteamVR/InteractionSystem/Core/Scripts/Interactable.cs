@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
 
-namespace Valve.VR.InteractionSystem
+namespace valve.VR.InteractionSystem
 {
 	//-------------------------------------------------------------------------
 	public class Interactable : MonoBehaviour

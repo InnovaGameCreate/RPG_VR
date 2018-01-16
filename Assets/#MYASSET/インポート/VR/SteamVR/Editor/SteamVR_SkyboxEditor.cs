@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEditor;
 using System.Text;
 using System.Collections.Generic;
-using Valve.VR;
+using valve.VR;
 using System.IO;
 
 [CustomEditor(typeof(SteamVR_Skybox)), CanEditMultipleObjects]

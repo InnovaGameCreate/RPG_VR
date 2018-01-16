@@ -8,7 +8,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using Valve.VR;
+using valve.VR;
 
 [ExecuteInEditMode]
 public class SteamVR_RenderModel : MonoBehaviour
