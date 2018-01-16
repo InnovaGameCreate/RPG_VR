@@ -24,6 +24,12 @@ public class Buff : MonoBehaviour
         set { availableSeconds = value; }
     }
 
+    //パラメータ
+    [SerializeField]
+    private DisplayParameters add;
+    [SerializeField]
+    private DisplayParameters multi;
+
 
     // Use this for initialization
     void Start()
@@ -36,6 +42,8 @@ public class Buff : MonoBehaviour
 
         paraSingle = new Parameters();
         paraMagnification = new Parameters();
+        paraSingle = paraSingle + add;
+        paraMagnification = paraMagnification + multi;
     }
 
     // Update is called once per frame
