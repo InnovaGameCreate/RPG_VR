@@ -19,6 +19,9 @@ public class MagicPattern : MonoBehaviour
         None
     }
 
+    [SerializeField]
+    private GameObject Bullet;//発射する当たり判定
+
     private USEHAND usehand;
     // Use this for initialization
     void Start()
@@ -40,7 +43,7 @@ public class MagicPattern : MonoBehaviour
         else
             usehand = USEHAND.Right;
         no = 0;
-        if (usehand == USEHAND.Left || usehand == USEHAND.LeftAndRight)
+        if (usehand == USEHAND.Left || usehand == USEHAND.LeftAndRight)//左の魔法
             if (leftright[0].childCount != 0)
             {
                 this.grandson[0] = new GameObject[leftright[0].childCount];
@@ -53,7 +56,7 @@ public class MagicPattern : MonoBehaviour
                 }
             }
         no = 0;
-        if (usehand == USEHAND.Right || usehand == USEHAND.LeftAndRight)
+        if (usehand == USEHAND.Right || usehand == USEHAND.LeftAndRight)//右の魔法
             if (leftright[1].childCount != 0)
             {
                 this.grandson[1] = new GameObject[leftright[1].childCount];
@@ -71,13 +74,13 @@ public class MagicPattern : MonoBehaviour
     void Update()
     {
 
-        if (usehand == USEHAND.Left || usehand == USEHAND.LeftAndRight)
+        if (usehand == USEHAND.Left || usehand == USEHAND.LeftAndRight)//左の魔法
             if (leftright[0].childCount - 1 > nowpoint[0] && !grandson[0][nowpoint[0]].GetComponent<MeshRenderer>().enabled)
             {
                 grandson[0][nowpoint[0] + 1].GetComponent<MeshRenderer>().enabled = true;
                 nowpoint[0]++;
             }
-        if (usehand == USEHAND.Right || usehand == USEHAND.LeftAndRight)
+        if (usehand == USEHAND.Right || usehand == USEHAND.LeftAndRight)//右の魔法
             if (leftright[1].childCount - 1 > nowpoint[1] && !grandson[1][nowpoint[1]].GetComponent<MeshRenderer>().enabled)
             {
                 grandson[1][nowpoint[1] + 1].GetComponent<MeshRenderer>().enabled = true;
