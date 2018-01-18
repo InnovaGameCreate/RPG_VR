@@ -69,7 +69,7 @@ public class HumanEnemy : HumanBase
         Debug.Log(collision.gameObject.name);
         if (collisionForce > 0)
         {
-            GetComponent<Animator>().SetTrigger("Damage");
+            GetComponent<Animator>().SetTrigger("Damaged");
         }
     }
 
