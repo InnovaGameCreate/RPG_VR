@@ -8,6 +8,8 @@ public class HumanBase : MonoBehaviour
     //人物スーパークラス
     bool is_fighter;    //戦闘要員かどうか
     Status humanstatus;         //ステータス
+                                //一時的ステータス向上時に対応させるため base....の変数を用意
+
     public Status Status
     {
         get { return humanstatus; }
@@ -35,13 +37,19 @@ public class HumanBase : MonoBehaviour
     {
         StartCoroutine("ApplyReceiveBuff");
         humanstatus = new Status();
+        //アタッチしていないと以下向こうとなるので　一時的に除去
+        if(GetComponentInChildren<DisplayParameters>()!=null)
         humanstatus.Parameter = humanstatus.Parameter + GetComponentInChildren<DisplayParameters>();//パラメータ代入
+
+        animator = GetComponent<Animator>();
+      
     }
 
     //攻撃を受けたとき
     public void ReceiveAttack(DamageCalculate d)
     {
-        receiveBuff.AddRange(d.SendBuff);//与バフを受け取る
+        if(d.SendBuff != null)
+            receiveBuff.AddRange(d.SendBuff);//与バフを受け取る
         Status.Parameter.HP -= (d.AttackPower);
     }
 

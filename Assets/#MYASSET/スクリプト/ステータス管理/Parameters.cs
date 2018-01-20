@@ -9,11 +9,11 @@ public class Parameters {
     [SerializeField]
     int mp;     //魔力残量
     [SerializeField]
-    int maxhp;  //最大体力
+    int maxhp =100;  //最大体力
     [SerializeField]
     int maxmp;  //最大魔力
     [SerializeField]
-    int atk;    //攻撃力
+    int atk =30;    //攻撃力
     [SerializeField]
     int def;    //防御力
     [SerializeField]
@@ -28,7 +28,7 @@ public class Parameters {
     public int HP
     {
         get { return hp; }
-        set {  hp = value > 0 ? maxhp > hp ? value : maxhp : 0; }
+        set {  hp = value > 0 ? (maxhp >= hp ? value : maxhp ): 0; }
     }
     public int MP
     {

@@ -4,13 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Weapon :ItemBase
-{   //剣
+{
+    [SerializeField, TooltipAttribute("武器の持ち主（固定）")]
+    private HumanBase owner;          //武器の持ち主（固定）
+
+    //剣
     [SerializeField]
     private int endurance;  //耐久
     protected override void Start()
     {
-        ItemUse();
-   //     Debug.Log(parent.SendBuff);
+
     }
     public int Endurance
     {
@@ -22,6 +25,16 @@ public class Weapon :ItemBase
 
         return true;
     }
-        
+
+    //ダメージを受けた際のアニメーションは攻撃を受けた側(つまり人物クラス　　　ダメージ計算を呼ぶのはダメージを与えた側(つまり武器クラスから
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        if (collision.gameObject.GetComponent<HumanBase>()!=null&& collision.gameObject.GetComponent<HumanBase>()!=owner)
+        { 
+            DamageCalculate dmg = new DamageCalculate(owner.GetComponent<HumanBase>().Status);//, owner.GetComponent<HumanBase>().SendBuff, owner.GetComponent<HumanBase>().ReceiveBuff);
+            collision.gameObject.GetComponent<HumanBase>().ReceiveAttack(dmg);
+        }
+    }
 
 }

@@ -48,7 +48,7 @@ public class DamageCalculate
 
     }
     //コンストラクタ
-    public DamageCalculate(Status status, List<Buff> sendBuff, List<Buff> receiveBuff)
+    public DamageCalculate(Status status, List<Buff> sendBuff = null, List<Buff> receiveBuff= null)
     {
         _status = status;
         //この時点では値が入っている(_status.Parameter.ATK)
@@ -70,19 +70,19 @@ public class DamageCalculate
     private void CalculateAttackPower()
     {
         Buff all_receiveBuff = new Buff();
-        all_receiveBuff = _receiveBuff[0];
-        foreach (Buff s in _receiveBuff)
-        {
-            if (s == _receiveBuff[0])
-                continue;
-            all_receiveBuff = s + all_receiveBuff;
-        }
-            
-
-
         Parameters all_parameters = new Parameters();
+        //all_receiveBuff = _receiveBuff[0];
+        if (_receiveBuff != null)
+        {
+            foreach (Buff s in _receiveBuff)
+            {
 
-        all_parameters = (_status.Parameter + all_receiveBuff.ParaSingle) * all_receiveBuff.ParaMagnification;
+                all_receiveBuff = s + all_receiveBuff;
+            }
+            all_parameters = (_status.Parameter + all_receiveBuff.ParaSingle) * all_receiveBuff.ParaMagnification;
+        }
+        else
+            all_parameters = _status.Parameter;
         //Debug.Log("ATK" + all_receiveBuff.ParaMagnification.ATK);
         _attackPower = is_magic ? all_parameters.MAGICATK : all_parameters.ATK;
         

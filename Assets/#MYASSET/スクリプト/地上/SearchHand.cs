@@ -52,7 +52,7 @@ public class SearchHand : MonoBehaviour
         if (collider.gameObject.name == "Shoulder")
         {
             _SearchShoulder = true;
-            Debug.Log("抜剣可");
+
 
         }
     }

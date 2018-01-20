@@ -45,7 +45,7 @@ public class SwordMotion : MonoBehaviour
 
                 //Sword.SetActive(true);
                 isEquip = true;
-
+                GetComponent<VRTK.Examples.Sword>().Grabbed(gripEve.GetComponent<VRTK.VRTK_InteractGrab>());
                 //Sword.transform.parent = transform;
                 //Sword.transform.position = transform.position + new Vector3(-0.01f, -0.035f, -0.026f);
                 //Sword.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x - 6.421f,
@@ -72,6 +72,7 @@ public class SwordMotion : MonoBehaviour
                 Sword.transform.rotation = initSwordTrans.rotation;
                 isEquip = false;
                 coolTime = 0;
+                GetComponent<VRTK.Examples.Sword>().Ungrabbed(gripEve.GetComponent<VRTK.VRTK_InteractGrab>());
                 //Sword.SetActive(false);
                 return;
             }
