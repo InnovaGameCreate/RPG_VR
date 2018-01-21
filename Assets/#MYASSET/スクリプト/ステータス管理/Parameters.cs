@@ -9,11 +9,11 @@ public class Parameters {
     [SerializeField]
     int mp;     //魔力残量
     [SerializeField]
-    int maxhp =100;  //最大体力
+    int maxhp;  //最大体力
     [SerializeField]
     int maxmp;  //最大魔力
     [SerializeField]
-    int atk =30;    //攻撃力
+    int atk;    //攻撃力
     [SerializeField]
     int def;    //防御力
     [SerializeField]
@@ -149,15 +149,15 @@ public class Parameters {
     public static Parameters operator *(Parameters a, Buff b)
     {
         Parameters re = new Parameters();
-        re.hp = a.HP * b.HP;
-        re.mp = a.MP * b.MP;
-        re.maxhp = a.MAXHP * b.MAXHP;
-        re.maxmp = a.MAXMP * b.MAXMP;
-        re.atk = a.ATK * b.ATK;
-        re.def = a.DEF * b.DEF;
-        re.magicatk = a.MAGICDEF * b.MAGICDEF;
-        re.speed = a.SPEED * b.SPEED;
-        re.flyspeed = a.FLYSPEED * b.FLYSPEED;
+        re.hp = a.HP * b.MHP;
+        re.mp = a.MP * b.MMP;
+        re.maxhp = a.MAXHP * b.MMAXHP;
+        re.maxmp = a.MAXMP * b.MMAXMP;
+        re.atk = a.ATK * b.MATK;
+        re.def = a.DEF * b.MDEF;
+        re.magicatk = a.MAGICDEF * b.MMAGICDEF;
+        re.speed = a.SPEED * b.MSPEED;
+        re.flyspeed = a.FLYSPEED * b.MFLYSPEED;
         return re;
     }
 }   

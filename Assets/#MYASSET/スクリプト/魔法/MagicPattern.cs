@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Buff))]
 public class MagicPattern : MonoBehaviour
 {
     private GameObject[][] grandson = new GameObject[2][];
@@ -19,6 +20,15 @@ public class MagicPattern : MonoBehaviour
         None
     }
 
+
+    public GameObject HumanObj;//開発が落ち着いたらpublicをやめる
+    private List<Buff> _sendBuff = new List<Buff>();
+    private List<Buff> _receiveBuff = new List<Buff>();
+
+    [SerializeField]
+    private float Bullet_FlySpeed;
+    [SerializeField]
+    private float Bullet_BreakTime;
     [SerializeField]
     private GameObject Bullet;//発射する当たり判定
 
@@ -27,7 +37,7 @@ public class MagicPattern : MonoBehaviour
     void Start()
     {
         eye = GameObject.Find("[VRTK_SDKManager]/SDKSetups/SteamVR/[CameraRig]/Camera (eye)").transform;
-
+        HumanObj = GameObject.Find("[VRTK_Scripts]/Headset/SwordSnapPoint").gameObject;
 
         int no = 0;   //添字数え上げ用     
         foreach (Transform child in transform)
@@ -68,6 +78,8 @@ public class MagicPattern : MonoBehaviour
                     no++;
                 }
             }
+
+        _sendBuff.Add(GetComponent<Buff>());
     }
 
     // Update is called once per frame
@@ -119,9 +131,8 @@ public class MagicPattern : MonoBehaviour
             default:
                 break;
         }
-        GameObject MBullet = Instantiate(Bullet, transform.position, Quaternion.identity);
-        Bullet _bullet = MBullet.GetComponent<Bullet>();
-
+        //魔法飛ばしてる間も更新してる気がする
+        
     }
 
     // 魔法コルーチン  
@@ -129,6 +140,16 @@ public class MagicPattern : MonoBehaviour
     {
         startmagic = true;
         leftright[2].GetComponent<ParticleSystem>().Play();
+
+        GameObject MBullet = Instantiate(Bullet, transform.position, transform.rotation);
+        Bullet _bullet = MBullet.GetComponent<Bullet>();
+        _bullet.BulletStatus = HumanObj.GetComponent<HumanBase>().Status;//ステのコピー //この時点では値が存在
+        //Debug.Log("MagATK" + _bullet.BulletStatus.Parameter.MAGICATK);
+        //Debug.Log("HuATK" + HumanObj.GetComponent<HumanBase>().Status.Parameter.MAGICATK);
+        _bullet.B_SPEED = Bullet_FlySpeed;
+        _bullet.B_BREAKTIME = Bullet_BreakTime;
+        _bullet.SENDBUFF = _sendBuff;
+
         yield return new WaitForSeconds(maginfinishtime);
         leftright[2].GetComponent<ParticleSystem>().Stop();
         Destroy(this.gameObject);

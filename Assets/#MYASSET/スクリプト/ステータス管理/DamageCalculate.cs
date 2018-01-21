@@ -5,7 +5,7 @@ using UnityEngine;
 public class DamageCalculate
 {
     HumanBase parent;   //HumanBaseインスタンス　    
-    bool is_magic;      //魔法攻撃か　剣か
+    private bool is_magic;//trueなら魔法攻撃
     int _attackPower;     //実際の与ダメ
     List<Buff> _sendBuff;//与バフリスト
     List<Buff> _receiveBuff; //受バフリスト
@@ -48,12 +48,14 @@ public class DamageCalculate
 
     }
     //コンストラクタ
-    public DamageCalculate(Status status, List<Buff> sendBuff /*= null*/, List<Buff> receiveBuff/*= null*/)
+    public DamageCalculate(Status status, bool is_MAGIC,List<Buff> sendBuff = null, List<Buff> receiveBuff = null)
     {
+        is_magic = is_MAGIC;
         _status = status;
-        //この時点では値が入っている(_status.Parameter.ATK)
-        _sendBuff = sendBuff;
-        _receiveBuff = receiveBuff;
+        if (_sendBuff != null)
+            _sendBuff = sendBuff;
+        if(receiveBuff != null)
+            _receiveBuff = receiveBuff;
         CalculateAttackPower();//ダメージ計算
     }
 
@@ -71,19 +73,21 @@ public class DamageCalculate
     {
         Buff all_receiveBuff = new Buff();
         Parameters all_parameters = new Parameters();
-        //all_receiveBuff = _receiveBuff[0];
+        
         if (_receiveBuff != null)
         {
+            all_receiveBuff = _receiveBuff[0];
             foreach (Buff s in _receiveBuff)
             {
-
+                if (s == _receiveBuff[0])
+                    continue;
                 all_receiveBuff = s + all_receiveBuff;
             }
             all_parameters = (_status.Parameter + all_receiveBuff) * all_receiveBuff;
         }
         else
             all_parameters = _status.Parameter;
-        //Debug.Log("ATK" + all_receiveBuff.ParaMagnification.ATK);
+        //Debug.Log("MATK" + all_receiveBuff.MAGICATK);
         _attackPower = is_magic ? all_parameters.MAGICATK : all_parameters.ATK;
         
         Debug.Log("ALLATK"+_attackPower);
