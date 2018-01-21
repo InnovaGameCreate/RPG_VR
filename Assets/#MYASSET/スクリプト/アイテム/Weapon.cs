@@ -26,15 +26,15 @@ public class Weapon :ItemBase
         return true;
     }
 
-    //ダメージを受けた際のアニメーションは攻撃を受けた側(つまり人物クラス　　　ダメージ計算を呼ぶのはダメージを与えた側(つまり武器クラスから
-    private void OnCollisionEnter(Collision collision)
-    {
+    ////ダメージを受けた際のアニメーションは攻撃を受けた側(つまり人物クラス　　　ダメージ計算を呼ぶのはダメージを与えた側(つまり武器クラスから
+    //private void OnCollisionEnter(Collision collision)
+    //{
 
-        if (collision.gameObject.GetComponent<HumanBase>()!=null&& collision.gameObject.GetComponent<HumanBase>()!=owner)
-        { 
-            DamageCalculate dmg = new DamageCalculate(owner.GetComponent<HumanBase>().Status);//, owner.GetComponent<HumanBase>().SendBuff, owner.GetComponent<HumanBase>().ReceiveBuff);
-            collision.gameObject.GetComponent<HumanBase>().ReceiveAttack(dmg);
-        }
-    }
+    //    if (collision.gameObject.GetComponent<HumanBase>()!=null&& collision.gameObject.GetComponent<HumanBase>()!=owner)
+    //    { 
+    //        DamageCalculate dmg = new DamageCalculate(owner.GetComponent<HumanBase>().Status);//, owner.GetComponent<HumanBase>().SendBuff, owner.GetComponent<HumanBase>().ReceiveBuff);
+    //        collision.gameObject.GetComponent<HumanBase>().ReceiveAttack(dmg);
+    //    }
+    //}
 
 }

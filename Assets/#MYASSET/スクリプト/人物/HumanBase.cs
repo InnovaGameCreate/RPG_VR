@@ -20,8 +20,9 @@ public class HumanBase : MonoBehaviour
     protected Animator animator;            //アニメーターインスタンス
 
     //受バフリスト・与バフリスト　格納用　宣言
-    List<Buff> sendBuff = new List<Buff>();
-    List<Buff> receiveBuff = new List<Buff>();
+    List<Buff> sendBuff = new List<Buff>();//殴った時に送るバフ
+    List<Buff> receiveBuff = new List<Buff>();//殴られた時に受け取ったバフの格納
+    List<Buff> counterBuff = new List<Buff>();//殴られた時に相手に送るバフ
     public List<Buff> SendBuff
     {
         get { return sendBuff; }
@@ -29,6 +30,11 @@ public class HumanBase : MonoBehaviour
     public List<Buff> ReceiveBuff
     {
         get { return receiveBuff; }
+    }
+    public List<Buff> CounterBuff
+    {
+        get { return counterBuff; }
+        set { counterBuff = value; }
     }
 
     //TODO   ダメージ計算クラス

@@ -97,6 +97,7 @@ public class MagicPattern : MonoBehaviour
                 {
                     StartCoroutine("Magic");
                     magic = true;
+                    
                 }
                 break;
             case USEHAND.Right:
@@ -104,6 +105,7 @@ public class MagicPattern : MonoBehaviour
                 {
                     StartCoroutine("Magic");
                     magic = true;
+                    
                 }
                 break;
             case USEHAND.LeftAndRight:
@@ -117,7 +119,8 @@ public class MagicPattern : MonoBehaviour
             default:
                 break;
         }
-
+        GameObject MBullet = Instantiate(Bullet, transform.position, Quaternion.identity);
+        Bullet _bullet = MBullet.GetComponent<Bullet>();
 
     }
 

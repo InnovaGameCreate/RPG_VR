@@ -48,7 +48,7 @@ public class DamageCalculate
 
     }
     //コンストラクタ
-    public DamageCalculate(Status status, List<Buff> sendBuff = null, List<Buff> receiveBuff= null)
+    public DamageCalculate(Status status, List<Buff> sendBuff /*= null*/, List<Buff> receiveBuff/*= null*/)
     {
         _status = status;
         //この時点では値が入っている(_status.Parameter.ATK)
@@ -79,7 +79,7 @@ public class DamageCalculate
 
                 all_receiveBuff = s + all_receiveBuff;
             }
-            all_parameters = (_status.Parameter + all_receiveBuff.ParaSingle) * all_receiveBuff.ParaMagnification;
+            all_parameters = (_status.Parameter + all_receiveBuff) * all_receiveBuff;
         }
         else
             all_parameters = _status.Parameter;
