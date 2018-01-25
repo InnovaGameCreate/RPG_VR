@@ -13,6 +13,7 @@ public class HumanBase : MonoBehaviour
     public Status Status
     {
         get { return humanstatus; }
+        set { humanstatus = value; }
     }
 
     bool is_fly;         //飛んでるか   
