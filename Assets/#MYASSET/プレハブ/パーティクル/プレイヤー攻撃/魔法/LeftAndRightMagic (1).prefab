@@ -196,6 +196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4859574506992884}
   - component: {fileID: 114011926271873700}
+  - component: {fileID: 114653897659085500}
   m_Layer: 0
   m_Name: LeftAndRightMagic (1)
   m_TagString: Untagged
@@ -698,6 +699,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b06cb8f33acabf4f86af46fc01fb49d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maginfinishtime: 1
+  startmagic: 0
+  Human: {fileID: 0}
+  Bullet_FlySpeed: 1000
+  Bullet_BreakTime: 100
+  Bullet: {fileID: 1197562582964852, guid: 7de33b08c3303fa4188356acba9fdb5f, type: 2}
 --- !u!114 &114066507783613940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -745,6 +752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24b0b20aba3cd2448e021335a0d87cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  atk: 10
 --- !u!114 &114483927831893046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -767,6 +775,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a0087707282d254d8ce0d4bdeb5e069, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114653897659085500
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1811375082570850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76b0d350d063d7c40b4670558036e5c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 0
+  mp: 0
+  maxhp: 0
+  maxmp: 0
+  atk: 0
+  def: 0
+  magicatk: 0
+  magicdef: 0
+  speed: 0
+  flyspeed: 0
+  Mhp: 1
+  Mmp: 1
+  Mmaxhp: 1
+  Mmaxmp: 1
+  Matk: 1
+  Mdef: 1
+  Mmagicatk: 1
+  Mmagicdef: 1
+  Mspeed: 1
+  Mflyspeed: 1
 --- !u!114 &114767533746969412
 MonoBehaviour:
   m_ObjectHideFlags: 1

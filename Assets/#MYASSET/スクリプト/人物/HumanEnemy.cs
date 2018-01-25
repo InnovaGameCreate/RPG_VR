@@ -14,12 +14,12 @@ public class HumanEnemy : HumanBase
     protected override void Start()
     {
         base.Start();
-        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (Status.Parameter.HP <= 0 || Input.GetKeyDown(KeyCode.K))
         {
             animator.SetTrigger("Dead");
@@ -63,13 +63,18 @@ public class HumanEnemy : HumanBase
         //obj.AddComponent<origingravity>();
         //canvas.transform.localScale = new Vector3(0.008f, 0.008f, 0.008f);
     }
+
+    //ダメージを受けた際のアニメーションは攻撃を受けた側(つまり人物クラス　　　ダメージ計算を呼ぶのはダメージを与えた側(つまり武器クラスから
     private void OnCollisionEnter(Collision collision)
     {
-        var collisionForce = GetCollisionForce(collision);
-        Debug.Log(collision.gameObject.name);
-        if (collisionForce > 0)
+        if (collision.gameObject.GetComponent<Weapon>())
         {
-            GetComponent<Animator>().SetTrigger("Damaged");
+            Debug.Log(this.gameObject.name+"のHP  "+Status.Parameter.HP);
+            var collisionForce = GetCollisionForce(collision);
+            if (collisionForce > 0)
+            {
+                animator.SetTrigger("Damaged");
+            }
         }
     }
 

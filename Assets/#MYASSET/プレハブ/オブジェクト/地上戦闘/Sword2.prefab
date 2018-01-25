@@ -101,7 +101,6 @@ GameObject:
   - component: {fileID: 114289596626049594}
   - component: {fileID: 114602144465424698}
   - component: {fileID: 114746373536124082}
-  - component: {fileID: 114061636778795160}
   m_Layer: 0
   m_Name: Sword2
   m_TagString: Untagged
@@ -511,27 +510,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114061636778795160
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1829216984385670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c0338a8e3289104fa9e3fbf33db1d69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 1
-  mp: 1
-  maxhp: 1
-  maxmp: 1
-  atk: 1
-  def: 1
-  magicatk: 1
-  magicdef: 1
-  speed: 1
-  flyspeed: 1
 --- !u!114 &114110687856810102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -635,8 +613,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76b0d350d063d7c40b4670558036e5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  add: {fileID: 0}
-  multi: {fileID: 0}
+  hp: 0
+  mp: 0
+  maxhp: 0
+  maxmp: 0
+  atk: 0
+  def: 0
+  magicatk: 0
+  magicdef: 0
+  speed: 0
+  flyspeed: 0
+  Mhp: 1
+  Mmp: 1
+  Mmaxhp: 1
+  Mmaxmp: 1
+  Matk: 1
+  Mdef: 1
+  Mmagicatk: 1
+  Mmagicdef: 1
+  Mspeed: 1
+  Mflyspeed: 1
 --- !u!114 &114610839021629454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -721,7 +717,7 @@ MonoBehaviour:
   maxmp: 50
   atk: 10
   def: 10
-  magicatk: 5
+  magicatk: 6
   magicdef: 5
   speed: 15
   flyspeed: 15

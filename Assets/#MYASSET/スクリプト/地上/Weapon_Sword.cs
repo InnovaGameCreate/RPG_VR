@@ -118,7 +118,12 @@ public class Weapon_Sword : RPGItemObject
                 Debug.Log("fbvgsureiuheirhghhhh");
 
             _send.Add(GetComponent<Buff>());
-            DamageCalculate dam = new DamageCalculate(st, _send, _send);
+            List<Buff> _counter = null;
+            //if (coll.gameObject.GetComponent<HumanBase>().CounterBuff != null)//テストプレイ時敵にHumanBaseがアタッチされてないためつくまでコメントアウト
+            //{
+            //    _counter = coll.gameObject.GetComponent<HumanBase>().CounterBuff;
+            //}
+            DamageCalculate dam = new DamageCalculate(st, false,_send, _counter);
         }
     }
 }
