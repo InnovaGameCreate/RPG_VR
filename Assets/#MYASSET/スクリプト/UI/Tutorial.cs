@@ -48,7 +48,7 @@ public class Tutorial : MonoBehaviour
         //発動できたな
         text.text = "よし、ちゃんと発動できたな\n";
         text.text += "魔法は右手、左手、両手の3つまでセットすることが出来るから、後で見てみるといい\n";
-        yield return new WaitForSeconds(3.0f);//変更
+        yield return new WaitForSeconds(5.0f);
         //上手く当てれたみたいだな
         text.text += "次はスキルについてだ\n";
         text.text += "スキルは右の頭の上と足元の2箇所にセットすることが出来る\n";
