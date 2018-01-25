@@ -7,6 +7,7 @@ public class Tutorial : MonoBehaviour
 {
     private Text text;
     private SwordMotion swordMotion;
+    private GameObject wildBoar;
 
     // Use this for initialization
     void Start()
