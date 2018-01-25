@@ -33,6 +33,15 @@ public class MagicPattern : MonoBehaviour
     private GameObject Bullet;//発射する当たり判定
 
     private USEHAND usehand;
+
+    public bool _magic
+    {
+        get
+        {
+            return magic;
+        }
+    }
+
     // Use this for initialization
     void Start()
     {
