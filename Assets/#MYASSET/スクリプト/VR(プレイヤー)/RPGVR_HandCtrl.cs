@@ -45,7 +45,7 @@ public class RPGVR_HandCtrl : MonoBehaviour
     // --- Grabボタンを押したときの処理（中指・薬指・小指を曲げる） ------------------------
     private void DoGrabOn(object sender, ControllerInteractionEventArgs e)
     {
-        Debug.Log("swww");
+        //Debug.Log("swww");
         //targetGripRotation = maxRotation;
         hold = !hold;
     }

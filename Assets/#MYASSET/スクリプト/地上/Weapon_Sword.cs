@@ -21,6 +21,9 @@ public class Weapon_Sword : RPGItemObject
     private List<Buff> _send = new List<Buff>();
     private List<Buff> _receive = new List<Buff>();
 
+    [SerializeField]
+    private HumanBase pplay;
+
     // Use this for initialization
     //protected override void Start () {
     //       base.Start();
@@ -112,7 +115,8 @@ public class Weapon_Sword : RPGItemObject
         if (coll.gameObject.tag == "enemy")
         {
             //Debug.Log("aaaafojsegj");
-            Status st = GetComponentInParent<HumanBase>().Status;
+            //Status st = GetComponentInParent<HumanBase>().Status;
+            Status st = pplay.Status;
 
             if (!GetComponent<Buff>())
                 Debug.Log("fbvgsureiuheirhghhhh");
@@ -124,6 +128,7 @@ public class Weapon_Sword : RPGItemObject
             //    _counter = coll.gameObject.GetComponent<HumanBase>().CounterBuff;
             //}
             DamageCalculate dam = new DamageCalculate(st, false,_send, _counter);
+            coll.gameObject.GetComponent<HumanBase>().ReceiveAttack(dam);
         }
     }
 }
