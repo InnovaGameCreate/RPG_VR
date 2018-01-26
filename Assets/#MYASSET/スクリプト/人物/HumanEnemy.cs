@@ -69,7 +69,7 @@ public class HumanEnemy : HumanBase
     {
         if (collision.gameObject.GetComponent<Weapon>())
         {
-            Debug.Log(this.gameObject.name+"のHP  "+Status.Parameter.HP);
+
             var collisionForce = GetCollisionForce(collision);
             if (collisionForce > 0)
             {

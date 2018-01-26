@@ -48,9 +48,9 @@ namespace VRTK
             {
                 speed = (maximumSpeed * inputValue);
                 //タッチパッドを押した時移動しない
-                if (modifierActive)
-                    speed = 0;
-                //speed = (modifierActive ? (speed * speedMultiplier) : speed);
+              //  if (modifierActive)
+                //    speed = 0;
+                speed = (modifierActive ? (speed * speedMultiplier) : speed);
             }
             else
             {

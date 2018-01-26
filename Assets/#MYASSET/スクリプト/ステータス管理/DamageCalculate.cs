@@ -90,7 +90,7 @@ public class DamageCalculate
         //Debug.Log("MATK" + all_receiveBuff.MAGICATK);
         _attackPower = is_magic ? all_parameters.MAGICATK : all_parameters.ATK;
         
-        Debug.Log("ALLATK"+_attackPower);
+        //Debug.Log("ALLATK"+_attackPower);
 
     }
 
