@@ -36,22 +36,27 @@ public class HandAnimatorManagerVR : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if (Input.GetKeyUp (changeKey)) {
-			currentState = (currentState + 1) % (numberOfAnimations + 1);
-		}
+        if (Input.GetKeyUp(changeKey))
+        {
+            currentState = (currentState + 1) % (numberOfAnimations + 1);
+        }
 
-		if (Input.GetAxis (holdKey) > 0) {
-			hold = true;
-		} else
-			hold = false;
+        if (Input.GetAxis(holdKey) > 0)
+        {
+            hold = true;
+        }
+        else
+            hold = false;
 
-		if (Input.GetKey (actionKey)) {
-			action = true;
-		} else
-			action = false;
+        if (Input.GetKey(actionKey))
+        {
+            action = true;
+        }
+        else
+            action = false;
 
 
-		if (lastState != currentState) {
+        if (lastState != currentState) {
 			lastState = currentState;
 			handAnimator.SetInteger ("State", currentState);
 			TurnOnState (currentState);

@@ -48,9 +48,9 @@ public class SwordMotion : MonoBehaviour
                 //GetComponent<VRTK.Examples.Sword>().Grabbed(gripEve.GetComponent<VRTK.VRTK_InteractGrab>());
                 //Sword.transform.parent = transform;
                 //Sword.transform.position = transform.position + new Vector3(-0.01f, -0.035f, -0.026f);
-                //Sword.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x - 6.421f,
-                //                                            transform.rotation.eulerAngles.y + 0,
-                //                                            transform.rotation.eulerAngles.z + 0);
+                //Sword.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x,
+                //                                            transform.rotation.eulerAngles.y + 180,
+                //                                            transform.rotation.eulerAngles.z);
                 coolTime = 0;
                 return;
 
@@ -62,6 +62,9 @@ public class SwordMotion : MonoBehaviour
         {
             if (isEquip)
             {
+                //Sword.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x,
+                //                                            transform.rotation.eulerAngles.y - 180,
+                //                                            transform.rotation.eulerAngles.z);
                 //肩で押したら離す
                 swordSystem.validDrop = VRTK.VRTK_InteractableObject.ValidDropTypes.DropAnywhere;
                 //一応無理やりスクリプトを無効化
