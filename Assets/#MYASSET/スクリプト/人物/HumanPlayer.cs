@@ -9,6 +9,7 @@ public class HumanPlayer : HumanBase {
 
     private void Update()
     {
+        Debug.Log(Status.Parameter.HP);
         //体力バー計算
         float varhp = Status.Parameter.HP / (float)Status.Parameter.MAXHP;
         if (varhp > 1)

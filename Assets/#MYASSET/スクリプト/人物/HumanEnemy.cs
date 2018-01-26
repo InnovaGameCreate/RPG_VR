@@ -19,7 +19,7 @@ public class HumanEnemy : HumanBase
     // Update is called once per frame
     void Update()
     {
-
+        //Debug.Log(Status.Parameter.HP);
         if (Status.Parameter.HP <= 0 || Input.GetKeyDown(KeyCode.K))
         {
             animator.SetTrigger("Dead");

@@ -30,7 +30,7 @@ public class Weapon :ItemBase
     //ダメージを受けた際のアニメーションは攻撃を受けた側(つまり人物クラス　　　ダメージ計算を呼ぶのはダメージを与えた側(つまり武器クラスから
     private void OnCollisionEnter(Collision collision)
     {
-
+        //Debug.Log(collision.gameObject.name);
         if (collision.gameObject.GetComponent<HumanBase>() != null && collision.gameObject.GetComponent<HumanBase>() != owner)
         {
             if(!atkSe.isPlaying)

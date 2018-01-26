@@ -30,23 +30,23 @@ public class DamageCalculate
     }
 
     //　[コピー]  剣：当たった時に         魔法：発射したときに
-    public void copyFromHumanBase()
-    {
-        //Buff receive_send = GetComponent<Buff>();        //0番目が受バフ
-        Buff receive_send = new Buff();
-        _status = parent.Status;
-        _sendBuff = parent.SendBuff;
-        _receiveBuff = parent.ReceiveBuff;
+    //public void copyFromHumanBase()
+    //{
+    //    //Buff receive_send = GetComponent<Buff>();        //0番目が受バフ
+    //    Buff receive_send = new Buff();
+    //    _status = parent.Status;
+    //    _sendBuff = parent.SendBuff;
+    //    _receiveBuff = parent.ReceiveBuff;
 
-        _receiveBuff.Add(receive_send);
-        // _sendBuff.Add(receive_send[1]);
+    //    _receiveBuff.Add(receive_send);
+    //    // _sendBuff.Add(receive_send[1]);
 
-        //TODO [問題] parent.Status以降が参照できない　null
+    //    //TODO [問題] parent.Status以降が参照できない　null
 
 
-        CalculateAttackPower();
+    //    CalculateAttackPower();
 
-    }
+    //}
     //コンストラクタ
     public DamageCalculate(Status status, bool is_MAGIC,List<Buff> sendBuff = null, List<Buff> receiveBuff = null)
     {
@@ -57,6 +57,7 @@ public class DamageCalculate
         if(receiveBuff != null)
             _receiveBuff = receiveBuff;
         CalculateAttackPower();//ダメージ計算
+
     }
 
 
@@ -73,7 +74,8 @@ public class DamageCalculate
     {
         Buff all_receiveBuff = new Buff();
         Parameters all_parameters = new Parameters();
-        
+        if (_status == null)
+            Debug.Log("asfsegggrggdgffhk");
         if (_receiveBuff != null)
         {
             all_receiveBuff = _receiveBuff[0];
@@ -90,7 +92,7 @@ public class DamageCalculate
         //Debug.Log("MATK" + all_receiveBuff.MAGICATK);
         _attackPower = is_magic ? all_parameters.MAGICATK : all_parameters.ATK;
         
-        //Debug.Log("ALLATK"+_attackPower);
+        Debug.Log("ALLATK"+_attackPower);
 
     }
 

@@ -45,8 +45,10 @@ public class HumanBase : MonoBehaviour
         StartCoroutine("ApplyReceiveBuff");
         humanstatus = new Status();
         //アタッチしていないと以下向こうとなるので　一時的に除去
-        if(GetComponentInChildren<DisplayParameters>()!=null)
-        humanstatus.Parameter = humanstatus.Parameter + GetComponentInChildren<DisplayParameters>();//パラメータ代入
+        if(GetComponentInChildren<DisplayParameters>()!=null)//子
+            humanstatus.Parameter = humanstatus.Parameter + GetComponentInChildren<DisplayParameters>();//パラメータ代入
+        //if (GetComponent<DisplayParameters>() != null)//直
+        //    humanstatus.Parameter = humanstatus.Parameter + GetComponent<DisplayParameters>();//パラメータ代入
 
         animator = GetComponent<Animator>();
       
@@ -57,7 +59,11 @@ public class HumanBase : MonoBehaviour
     {
         if(d.SendBuff != null)
             receiveBuff.AddRange(d.SendBuff);//与バフを受け取る
-        Status.Parameter.HP -= (d.AttackPower);
+        if (Status.Parameter == null)
+            Debug.Log("sfgreyreh");
+        if (d == null)
+            Debug.Log("dsgdhfhhhhhhh");
+        Status.Parameter.HP = Status.Parameter.HP - (d.AttackPower);
     }
 
     //受バフの処理
