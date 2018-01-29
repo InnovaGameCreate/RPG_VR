@@ -54,6 +54,8 @@ public class Skill_Slash : SkillSystem
         {
             
             Node_Ins.transform.parent = eye;//目前に固定
+            Node_Ins.transform.localPosition = new Vector3(0.0f, 0.03f, 1.2f);
+            Node_Ins.transform.localRotation = Quaternion.Euler(0, 90, 0);
             if (Trajectory.Count == 0 || flags)
             {
                 _weapon.EasyPulseFunc(140.0f);
@@ -63,7 +65,7 @@ public class Skill_Slash : SkillSystem
                     Vector3 pos = new Vector3(eye.transform.position.x+ 5.0f, eye.transform.position.y, eye.transform.position.z);
                     //今見ている方向に対して前にしたい
                     flags2 = true;
-                    aaaa = Instantiate(_Particle, pos, eye.transform.rotation);
+                    aaaa = Instantiate(_Particle, eye.position + eye.forward * 1.0f, eye.rotation);
                     aaaa.transform.parent = null;
 
                     InitFlags();

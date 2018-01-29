@@ -674,7 +674,6 @@ GameObject:
   - component: {fileID: 114350032713892392}
   - component: {fileID: 114071036438540376}
   - component: {fileID: 95201313581916970}
-  - component: {fileID: 114074438231195370}
   m_Layer: 0
   m_Name: RightController
   m_TagString: Untagged
@@ -791,7 +790,6 @@ GameObject:
   - component: {fileID: 114709896249289196}
   - component: {fileID: 114925711958060512}
   - component: {fileID: 95194990978664588}
-  - component: {fileID: 114795026531425236}
   m_Layer: 0
   m_Name: LeftController
   m_TagString: Untagged
@@ -5989,23 +5987,6 @@ MonoBehaviour:
   canClickOnHover: 0
   autoActivatingCanvas: {fileID: 0}
   collisionClick: 0
---- !u!114 &114074438231195370
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1223735340513142}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b62d638e233d2b41a199f301465c0f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hand: 0
-  stateModels: []
-  _grabb: {fileID: 0}
-  currentState: 100
-  action: 0
-  hold: 0
 --- !u!114 &114163007321267764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6212,6 +6193,7 @@ MonoBehaviour:
   Griped: 0
   Skill1: {fileID: 114941522405103428}
   Skill2: {fileID: 114049499700264340}
+  pplay: {fileID: 0}
 --- !u!114 &114297363725578692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6443,7 +6425,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1518406341183644}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8fc9704fd3526cf42a7984b4cdcd0490, type: 3}
   m_Name: 
@@ -6950,23 +6932,6 @@ MonoBehaviour:
   _SearchL: 0
   _SearchItem: 0
   _SearchShoulder: 0
---- !u!114 &114795026531425236
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1250609091989510}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b62d638e233d2b41a199f301465c0f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hand: 0
-  stateModels: []
-  _grabb: {fileID: 0}
-  currentState: 100
-  action: 0
-  hold: 0
 --- !u!114 &114812830476055822
 MonoBehaviour:
   m_ObjectHideFlags: 1

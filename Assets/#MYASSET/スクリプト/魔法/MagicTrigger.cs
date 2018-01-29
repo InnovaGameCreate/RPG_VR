@@ -73,6 +73,6 @@ public class MagicTrigger : MonoBehaviour
         triggerd = false;
         if (magicpattern != null && !magicpatternobj.GetComponent<MagicPattern>().startmagic)
             Destroy(magicpatternobj);
-     
+
     }
 }

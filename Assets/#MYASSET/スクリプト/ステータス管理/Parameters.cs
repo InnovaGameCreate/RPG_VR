@@ -92,7 +92,8 @@ public class Parameters {
         result.maxmp = a.MAXMP + b.MAXMP;
         result.atk = a.ATK + b.ATK;
         result.def = a.DEF + b.DEF;
-        result.magicatk = a.MAGICDEF + b.MAGICDEF;
+        result.magicatk = a.MAGICATK + b.MAGICATK;
+        result.magicdef = a.MAGICDEF + b.MAGICDEF;
         result.speed = a.SPEED + b.speed;
         result.flyspeed = a.FLYSPEED + b.FLYSPEED;
         
@@ -109,7 +110,8 @@ public class Parameters {
         result.maxmp = a.MAXMP + b.MAXMP;
         result.atk = a.ATK + b.ATK;
         result.def = a.DEF + b.DEF;
-        result.magicatk = a.MAGICDEF + b.MAGICDEF;
+        result.magicatk = a.MAGICATK + b.MAGICATK;
+        result.magicdef = a.MAGICDEF + b.MAGICDEF;
         result.speed = a.SPEED + b.SPEED;
         result.flyspeed = a.FLYSPEED + b.FLYSPEED;
 
@@ -125,7 +127,8 @@ public class Parameters {
         result.maxmp = a.MAXMP * b.MAXMP;
         result.atk = a.ATK * b.ATK;
         result.def = a.DEF * b.DEF;
-        result.magicatk = a.MAGICDEF * b.MAGICDEF;
+        result.magicatk = a.MAGICATK * b.MAGICATK;
+        result.magicdef = a.MAGICDEF * b.MAGICDEF;
         result.speed = a.SPEED * b.speed;
         result.flyspeed = a.FLYSPEED * b.FLYSPEED;
 
@@ -144,7 +147,8 @@ public class Parameters {
         re.maxmp = a.MAXMP + b.MAXMP;
         re.atk = a.ATK + b.ATK;
         re.def = a.DEF + b.DEF;
-        re.magicatk = a.MAGICDEF + b.MAGICDEF;
+        re.magicatk = a.MAGICATK + b.MAGICATK;
+        re.magicdef = a.MAGICDEF + b.MAGICDEF;
         re.speed = a.SPEED + b.SPEED;
         re.flyspeed = a.FLYSPEED + b.FLYSPEED;
         return re;
@@ -159,7 +163,8 @@ public class Parameters {
         re.maxmp = a.MAXMP * b.MMAXMP;
         re.atk = a.ATK * b.MATK;
         re.def = a.DEF * b.MDEF;
-        re.magicatk = a.MAGICDEF * b.MMAGICDEF;
+        re.magicatk = a.MAGICATK * b.MMAGICATK;
+        re.magicdef = a.MAGICDEF * b.MMAGICDEF;
         re.speed = a.SPEED * b.MSPEED;
         re.flyspeed = a.FLYSPEED * b.MFLYSPEED;
         return re;

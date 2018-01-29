@@ -77,7 +77,7 @@ public abstract class SkillSystem : MonoBehaviour
 
     private void Awake()
     {
-        //eye = GameObject.Find("[VRTK_SDKManager]/SDKSetups/SteamVR/[CameraRig]/Camera (eye)").transform;
+        
         HandL = GameObject.Find("[VRTK_Scripts]/LeftController");
         HandR = GameObject.Find("[VRTK_Scripts]/RightController");
         SkillZone1 = GameObject.Find("[VRTK_Scripts]/Headset/SkillZone1");
@@ -91,7 +91,9 @@ public abstract class SkillSystem : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        
+        if (eye == null)
+            eye = GameObject.Find("[VRTK_SDKManager]/SDKSetups/SteamVR/[CameraRig]/Camera (eye)").transform;
+
         //下側スキル範囲
         SkillZone2.transform.position = new Vector3(eye.transform.position.x, 0.5f, eye.transform.position.z);//将来的にはCamera(eye)を参照に座標を決めたい
 
@@ -185,6 +187,7 @@ public abstract class SkillSystem : MonoBehaviour
     protected void InitSkill()
     {
         Node_Ins = Instantiate(NodePrefabs, eye);
+        
         foreach (Transform Node_Ins in Node_Ins.transform)
         {
             Trajectory.Add(Node_Ins.gameObject);

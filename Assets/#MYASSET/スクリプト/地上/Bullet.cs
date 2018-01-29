@@ -79,8 +79,10 @@ public class Bullet : MonoBehaviour {
             //{
             //    Debug.Log("Counter");
             //}
-            //Debug.Log("MagATK" + bulletstatus.Parameter.MAGICATK);
+            //Debug.Log("MagATK" + _send[0].MAGICATK);
+            //Debug.Log("MMM"+ AtkPower);
             DamageCalculate dam = new DamageCalculate(bulletstatus, AtkPower, true, _send, null/*coll.gameObject.GetComponent<HumanBase>().CounterBuff*/);
+            coll.gameObject.GetComponent<HumanBase>().ReceiveAttack(dam);
         }
     }
 }

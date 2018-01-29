@@ -194,7 +194,8 @@ public class Buff : MonoBehaviour
         re.maxmp = a.MAXMP + b.MAXMP;
         re.atk = a.ATK + b.ATK;
         re.def = a.DEF + b.DEF;
-        re.magicatk = a.MAGICDEF + b.MAGICDEF;
+        re.magicatk = a.MAGICATK + b.MAGICATK;
+        re.magicdef = a.MAGICDEF + b.MAGICDEF;
         re.speed = a.SPEED + b.SPEED;
         re.flyspeed = a.FLYSPEED + b.FLYSPEED;
         return re;

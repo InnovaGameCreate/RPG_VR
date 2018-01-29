@@ -88,7 +88,7 @@ public class DamageCalculate
         }
         else
             all_parameters = _status.Parameter;
-        //Debug.Log("MATK" + all_receiveBuff.MAGICATK);
+        //Debug.Log("MATK" + all_receiveBuff.MMAGICATK);
         _attackPower = is_magic ? all_parameters.MAGICATK : all_parameters.ATK;
         _attackPower = _attackPower * (BasisPower / 100);//威力計算
         Debug.Log("ALLATK"+_attackPower);
