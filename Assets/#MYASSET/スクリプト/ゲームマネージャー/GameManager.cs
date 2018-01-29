@@ -7,7 +7,13 @@ using UnityEngine.UI;
 public class GameManager : Singleton<GameManager>
 {
     
-    HumanPlayer savedPlayer;        //プレイヤーのインスタンス保存
+    private HumanPlayer savedPlayer;        //プレイヤーのインスタンス保存
+    public HumanPlayer SAVEDPLAYER
+    {
+        get { return savedPlayer; }
+        set { savedPlayer = value; }
+    }
+
     /// <summary>
     /// ゲーム状態（大枠）
     /// </summary>
@@ -50,6 +56,8 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         _CurrentState = GameState.Start;
+        SAVEDPLAYER = GameObject.Find("[VRTK_SDKManager]/SDKSetups/SteamVR/[CameraRig]/プレイヤークラス").GetComponent<HumanPlayer>();
+    
     }
 
     private void Update()
@@ -99,7 +107,7 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     private void updateInGame()
     {
-        Debug.Log(ELAPSEDTIME);
+      //  Debug.Log(ELAPSEDTIME);
         //時間切れになったら終了
         if (ELAPSEDTIME > LIMITTIME)
         {
