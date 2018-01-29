@@ -94,28 +94,28 @@
         /*トリガー*/
         protected virtual void TriggerPressedHandler2(object sender, ControllerInteractionEventArgs e)//トリガーを押したとき
         {
-            //triggerd = true;
+            triggerd = true;
 
             
         }
 
         protected virtual void TriggerReleasedHandler2(object sender, ControllerInteractionEventArgs e)//トリガーを離したとき
         {
-            //triggerd = false;
+            triggerd = false;
             
 
         }
         /*タッチパッド*/
         protected virtual void TouchPadPressedHandler2(object sender, ControllerInteractionEventArgs e)//タッチパッドを押したとき
         {
-            //Touched = true;
+            Touched = true;
 
 
         }
 
         protected virtual void TouchPadReleasedHandler2(object sender, ControllerInteractionEventArgs e)//タッチパッドを離したとき
         {
-            //Touched = false;
+            Touched = false;
 
             
         }
@@ -123,14 +123,14 @@
         /*グリップ*/
         protected virtual void GripPressedHandler2(object sender, ControllerInteractionEventArgs e)//グリップを押したとき
         {
-            //Griped = true;
+            Griped = true;
 
 
         }
 
         protected virtual void GripReleasedHandler2(object sender, ControllerInteractionEventArgs e)//グリップを離したとき
         {
-            //Griped = false;
+            Griped = false;
 
 
         }
