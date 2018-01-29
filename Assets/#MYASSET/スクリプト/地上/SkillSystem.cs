@@ -58,8 +58,8 @@ public abstract class SkillSystem : MonoBehaviour
     //スキル関係
     private bool SkillAwake;
     protected bool SkillCoolTimeFlag;
-    private float timer;
-
+    private float timer,timer2;
+    protected ParticleSystem _pati;
     //
 
     // Use this for initialization
@@ -100,7 +100,7 @@ public abstract class SkillSystem : MonoBehaviour
             eye = GameObject.Find("[VRTK_SDKManager]/SDKSetups/SteamVR/[CameraRig]/Camera (eye)").transform;
 
         //下側スキル範囲
-        SkillZone2.transform.position = new Vector3(eye.transform.position.x, 0.5f, eye.transform.position.z);//将来的にはCamera(eye)を参照に座標を決めたい
+        SkillZone2.transform.position = new Vector3(eye.transform.position.x, eye.transform.position.y - 1.0f, eye.transform.position.z);//将来的にはCamera(eye)を参照に座標を決めたい
 
         if (SkillCoolTimeFlag)//クールタイム発生なら
         {
@@ -113,6 +113,17 @@ public abstract class SkillSystem : MonoBehaviour
             else
             {
                 return;
+            }
+        }
+
+        if(_pati != null)
+        {
+            timer2 += Time.deltaTime;
+            if (timer2 >= 5.0f)
+            {
+                _pati.Stop();
+                _pati = null;
+                
             }
         }
 
