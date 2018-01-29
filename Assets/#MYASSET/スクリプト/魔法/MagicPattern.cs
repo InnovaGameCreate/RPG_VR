@@ -162,6 +162,7 @@ public class MagicPattern : MonoBehaviour
         _bullet.B_BREAKTIME = Bullet_BreakTime;
         _bullet.SENDBUFF = _sendBuff;
         _bullet.B_POWER = Bullet_Atk;
+        _bullet.B_ISMAGIC = true;
         yield return new WaitForSeconds(maginfinishtime);
         leftright[2].GetComponent<ParticleSystem>().Stop();
         //Destroy(this.gameObject);

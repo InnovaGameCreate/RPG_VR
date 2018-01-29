@@ -66,6 +66,7 @@ public class Skill_Slash : SkillSystem
                     //今見ている方向に対して前にしたい
                     flags2 = true;
                     aaaa = Instantiate(_Particle, eye.position + eye.forward * 1.0f, eye.rotation);
+                    MakeBullet();
                     aaaa.transform.parent = null;
 
                     InitFlags();

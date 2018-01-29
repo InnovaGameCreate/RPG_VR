@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour {
     private int AtkPower;//威力
     private float Speed;//弾速
     private float BreakTime;//玉の消える時間
+    private bool IsMagic;
 
     public List<Buff> SENDBUFF
     {
@@ -40,6 +41,12 @@ public class Bullet : MonoBehaviour {
     {
         get { return AtkPower; }
         set { AtkPower = value; }
+    }
+
+    public bool B_ISMAGIC
+    {
+        get { return IsMagic; }
+        set { IsMagic = value; }
     }
 
     private float timer;
@@ -81,7 +88,9 @@ public class Bullet : MonoBehaviour {
             //}
             //Debug.Log("MagATK" + _send[0].MAGICATK);
             //Debug.Log("MMM"+ AtkPower);
-            DamageCalculate dam = new DamageCalculate(bulletstatus, AtkPower, true, _send, null/*coll.gameObject.GetComponent<HumanBase>().CounterBuff*/);
+            
+            DamageCalculate dam = new DamageCalculate(bulletstatus, AtkPower, IsMagic, _send, null/*coll.gameObject.GetComponent<HumanBase>().CounterBuff*/);
+            Debug.Log(gameObject.name + ":" + dam.AttackPower);
             coll.gameObject.GetComponent<HumanBase>().ReceiveAttack(dam);
         }
     }

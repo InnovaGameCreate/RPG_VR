@@ -31,21 +31,26 @@ public abstract class SkillSystem : MonoBehaviour
     protected GameObject _Particle;//手動設定
     [SerializeField, Tooltip("パーティクルの出現位置設定")]
     protected Transform MakeParticlePos;
-    [SerializeField, Tooltip("スキル使用時周りを遅くすることができるようになるかも")]
+    [SerializeField, Tooltip("スキル使用時周りを遅くすることができるようになる")]
     protected bool CanSlowy;//使用時遅くなるかどうか
     [SerializeField]
-    private float Atk;//スキルの攻撃力
+    private int Atk;//スキルの攻撃力
     [SerializeField, Tooltip("スキル発動までのタメ(秒)")]
     protected float _Time;//発動までのため時間
-    [SerializeField, Tooltip("スキルのクールタイム(秒) 未実装")]
+    [SerializeField, Tooltip("スキルのクールタイム(秒)")]
     private float Interval;//スキルのCT
-    [SerializeField, Tooltip("消費パラメータ量 未実装")]
-    private float Consumption;//消費パラメータ量　ステータス完成次第触ること　いい単語わからんかった
+    [SerializeField, Tooltip("攻撃用プレハブ")]
+    private GameObject B_prefabs;//
+    [SerializeField]
+    private float Speed;//弾速
+    [SerializeField]
+    private float BreakTime;//玉の消える時間
 
     public GameObject NodePrefabs;//手動設定(プレハブ)
     protected GameObject Node_Ins;//インスタンス
     public List<GameObject> Trajectory = new List<GameObject>();//スキルの起動表示のためのリスト
-    
+
+    public GameObject HumanObj;//プレイヤークラス
 
     protected SearchHand whereHand1, whereHand2;
     protected RPGItemObject _weapon;
@@ -72,7 +77,7 @@ public abstract class SkillSystem : MonoBehaviour
         //eye = GameObject.Find("[VRTK_Scripts]/Headset").transform;
         //SkillZone2.transform.parent = eye;
 
-
+        HumanObj = GameObject.Find("[VRTK_SDKManager]/SDKSetups/SteamVR/[CameraRig]/プレイヤークラス").gameObject;
     }
 
     private void Awake()
@@ -111,41 +116,6 @@ public abstract class SkillSystem : MonoBehaviour
             }
         }
 
-        //if (_weapon.Touched)
-        //{
-
-        //    if (IsSkillAwakeing())
-        //    {
-        //        Node_Ins.SetActive(true);//軌道可視化
-        //        _weapon.EasyPulseFunc(120.0f);
-        //        AwakeSkill();
-        //        if (CanSlowy && !SkillCoolTimeFlag)
-        //            Time.timeScale = 0.1f;
-        //        return;
-        //    }
-
-        //    if ((whereHand1._SearchR /*|| whereHand1._SearchL*/) && SkillTYPE == skillType.Up)//上側
-        //    {
-        //        //Debug.Log("vvvvv");
-        //        _weapon.EasyPulseFunc(100.0f);
-        //        StartCoroutine("StayHand", _Time);//テスト用要テスト
-        //    }
-        //    if ((whereHand2._SearchR /*|| whereHand1._SearchL*/) && SkillTYPE == skillType.Under)//下側
-        //    {
-
-        //        StartCoroutine("StayHand", _Time);
-        //    }
-        //    if (SkillTYPE == skillType.Passive)
-        //    {
-
-        //        StartCoroutine("StayHand", _Time);
-        //    }
-        //}
-        //else
-        //{
-        //    Time.timeScale = 1.0f;
-        //    Node_Ins.SetActive(false);//軌道可視化
-        //}
     }
 
     protected abstract void AwakeSkill();//実際に発動するスキル内容の関数 オーバーライド用
@@ -200,9 +170,17 @@ public abstract class SkillSystem : MonoBehaviour
 
     }
 
-    public void Aaaaaaaaaaa()
+    public void MakeBullet()
     {
-        Debug.Log("QWE");
+        GameObject Bullet = Instantiate(B_prefabs, transform.position, transform.rotation);
+        Bullet _bullet = Bullet.GetComponent<Bullet>();
+        _bullet.BulletStatus = HumanObj.GetComponent<HumanBase>().Status;//ステのコピー
+        _bullet.B_SPEED = Speed;
+        _bullet.B_BREAKTIME = BreakTime;
+        _bullet.SENDBUFF = /*_sendBuff*/null;
+        _bullet.B_POWER = Atk;
+        _bullet.B_ISMAGIC = false;
+        //Debug.Log("QWE");
     }
 }
 
