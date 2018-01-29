@@ -112,7 +112,7 @@ public class Weapon_Sword : RPGItemObject
 
     private void OnTriggerEnter(Collider coll)
     {
-        if (coll.gameObject.tag == "enemy")
+        if (coll.gameObject.tag == "enemy" && this.enabled)
         {
             //Debug.Log("aaaafojsegj");
             //Status st = GetComponentInParent<HumanBase>().Status;
@@ -127,7 +127,7 @@ public class Weapon_Sword : RPGItemObject
             //{
             //    _counter = coll.gameObject.GetComponent<HumanBase>().CounterBuff;
             //}
-            DamageCalculate dam = new DamageCalculate(st, false,_send, _counter);
+            DamageCalculate dam = new DamageCalculate(st,100 ,false,_send, _counter);
             coll.gameObject.GetComponent<HumanBase>().ReceiveAttack(dam);
         }
     }

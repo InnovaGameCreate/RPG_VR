@@ -35,7 +35,7 @@ public class Weapon :ItemBase
         {
             if(!atkSe.isPlaying)
             atkSe.Play();
-            DamageCalculate dmg = new DamageCalculate(owner.GetComponent<HumanBase>().Status,false);//, owner.GetComponent<HumanBase>().SendBuff, owner.GetComponent<HumanBase>().ReceiveBuff);
+            DamageCalculate dmg = new DamageCalculate(owner.GetComponent<HumanBase>().Status,100,false);//, owner.GetComponent<HumanBase>().SendBuff, owner.GetComponent<HumanBase>().ReceiveBuff);
             collision.gameObject.GetComponent<HumanBase>().ReceiveAttack(dmg);
         }
     }

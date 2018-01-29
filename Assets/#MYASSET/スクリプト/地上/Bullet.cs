@@ -4,9 +4,10 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour {
 
-    private Status bulletstatus;
+    private Status bulletstatus = new Status();
     private List<Buff> _send = new List<Buff>();
     //private List<Buff> _receive = new List<Buff>();
+    private int AtkPower;//威力
     private float Speed;//弾速
     private float BreakTime;//玉の消える時間
 
@@ -34,6 +35,11 @@ public class Bullet : MonoBehaviour {
     {
         get { return BreakTime; }
         set { BreakTime = value; }
+    }
+    public int B_POWER
+    {
+        get { return AtkPower; }
+        set { AtkPower = value; }
     }
 
     private float timer;
@@ -74,7 +80,7 @@ public class Bullet : MonoBehaviour {
             //    Debug.Log("Counter");
             //}
             //Debug.Log("MagATK" + bulletstatus.Parameter.MAGICATK);
-            DamageCalculate dam = new DamageCalculate(bulletstatus,true, _send, null/*coll.gameObject.GetComponent<HumanBase>().CounterBuff*/);
+            DamageCalculate dam = new DamageCalculate(bulletstatus, AtkPower, true, _send, null/*coll.gameObject.GetComponent<HumanBase>().CounterBuff*/);
         }
     }
 }

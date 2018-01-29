@@ -25,6 +25,8 @@ public class MagicPattern : MonoBehaviour
     private List<Buff> _sendBuff = new List<Buff>();
     private List<Buff> _receiveBuff = new List<Buff>();
 
+    [SerializeField, TooltipAttribute("魔法の威力(百分率)")]
+    private int Bullet_Atk;//魔法の威力
     [SerializeField]
     private float Bullet_FlySpeed;
     [SerializeField]
@@ -46,7 +48,7 @@ public class MagicPattern : MonoBehaviour
     void Start()
     {
         eye = GameObject.Find("[VRTK_SDKManager]/SDKSetups/SteamVR/[CameraRig]/Camera (eye)").transform;
-        HumanObj = GameObject.Find("[VRTK_Scripts]/Headset/SwordSnapPoint").gameObject;
+        HumanObj = GameObject.Find("[VRTK_SDKManager]/SDKSetups/SteamVR/[CameraRig]/プレイヤークラス").gameObject;
 
         int no = 0;   //添字数え上げ用     
         foreach (Transform child in transform)
@@ -153,12 +155,13 @@ public class MagicPattern : MonoBehaviour
         GameObject MBullet = Instantiate(Bullet, transform.position, transform.rotation);
         Bullet _bullet = MBullet.GetComponent<Bullet>();
         _bullet.BulletStatus = HumanObj.GetComponent<HumanBase>().Status;//ステのコピー //この時点では値が存在
+
         //Debug.Log("MagATK" + _bullet.BulletStatus.Parameter.MAGICATK);
         //Debug.Log("HuATK" + HumanObj.GetComponent<HumanBase>().Status.Parameter.MAGICATK);
         _bullet.B_SPEED = Bullet_FlySpeed;
         _bullet.B_BREAKTIME = Bullet_BreakTime;
         _bullet.SENDBUFF = _sendBuff;
-
+        _bullet.B_POWER = Bullet_Atk;
         yield return new WaitForSeconds(maginfinishtime);
         leftright[2].GetComponent<ParticleSystem>().Stop();
         Destroy(this.gameObject);

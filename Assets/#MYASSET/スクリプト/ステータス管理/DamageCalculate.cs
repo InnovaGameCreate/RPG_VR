@@ -48,7 +48,7 @@ public class DamageCalculate
 
     //}
     //コンストラクタ
-    public DamageCalculate(Status status, bool is_MAGIC,List<Buff> sendBuff = null, List<Buff> receiveBuff = null)
+    public DamageCalculate(Status status,int BasisPower, bool is_MAGIC,List<Buff> sendBuff = null, List<Buff> receiveBuff = null)
     {
         is_magic = is_MAGIC;
         _status = status;
@@ -56,7 +56,7 @@ public class DamageCalculate
             _sendBuff = sendBuff;
         if(receiveBuff != null)
             _receiveBuff = receiveBuff;
-        CalculateAttackPower();//ダメージ計算
+        CalculateAttackPower(BasisPower);//ダメージ計算
 
     }
 
@@ -70,12 +70,11 @@ public class DamageCalculate
     //}
 
     //実ダメージ計算
-    private void CalculateAttackPower()
+    private void CalculateAttackPower(int BasisPower)
     {
         Buff all_receiveBuff = new Buff();
         Parameters all_parameters = new Parameters();
-        if (_status == null)
-            Debug.Log("asfsegggrggdgffhk");
+
         if (_receiveBuff != null)
         {
             all_receiveBuff = _receiveBuff[0];
@@ -91,7 +90,7 @@ public class DamageCalculate
             all_parameters = _status.Parameter;
         //Debug.Log("MATK" + all_receiveBuff.MAGICATK);
         _attackPower = is_magic ? all_parameters.MAGICATK : all_parameters.ATK;
-        
+        _attackPower = _attackPower * (BasisPower / 100);//威力計算
         Debug.Log("ALLATK"+_attackPower);
 
     }
