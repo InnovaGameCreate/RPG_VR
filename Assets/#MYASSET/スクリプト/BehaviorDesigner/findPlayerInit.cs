@@ -20,7 +20,8 @@ public class findPlayerInit : Conditional
     public override void OnAwake()
     {
         base.OnAwake();
-        player.Value = GameObject.Find("[VRTK_SDKManager]/SDKSetups/SteamVR/[CameraRig]/Camera (head)");
+        player.Value = GameManager.Instance.VRTKMANAGER.transform.Find("SDKSetups/SteamVR/[CameraRig]/Camera (head)").gameObject;
+
         Debug.Log(player);
     }
 

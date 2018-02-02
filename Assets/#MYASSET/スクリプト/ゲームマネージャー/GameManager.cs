@@ -3,15 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using VRTK;
 
 public class GameManager : Singleton<GameManager>
 {
-    
-    private HumanPlayer savedPlayer;        //プレイヤーのインスタンス保存
-    public HumanPlayer SAVEDPLAYER
+    [SerializeField, TooltipAttribute("[VRTK_SDKManager]を指定")]
+    GameObject vrtkManager;
+    [SerializeField, TooltipAttribute("[VRTK_Scripts]を指定")]
+    GameObject vrtkScripts;
+
+    public GameObject VRTKMANAGER
     {
-        get { return savedPlayer; }
-        set { savedPlayer = value; }
+        get { return vrtkManager; }
+    }
+    public GameObject VRTKSCRIPTS
+    {
+        get { return vrtkScripts; }
     }
 
     /// <summary>
@@ -55,9 +62,13 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     private void Start()
     {
-        _CurrentState = GameState.Start;
-        SAVEDPLAYER = GameObject.Find("[VRTK_SDKManager]/SDKSetups/SteamVR/[CameraRig]/プレイヤークラス").GetComponent<HumanPlayer>();
-    
+        SceneManager.activeSceneChanged += OnActiveSceneChanged;
+    }
+    //シーンチェンジ時に呼ばれる
+    void OnActiveSceneChanged(Scene prevScene, Scene nextScene)
+    {
+        if (nextScene.name == "魔法攻撃")
+            vrtkScripts.transform.GetComponentInChildren<VRTK_TouchpadControl>().enabled =false;
     }
 
     private void Update()

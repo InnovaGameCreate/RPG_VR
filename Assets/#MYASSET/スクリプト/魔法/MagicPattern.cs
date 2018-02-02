@@ -47,8 +47,8 @@ public class MagicPattern : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        eye = GameObject.Find("[VRTK_SDKManager]/SDKSetups/SteamVR/[CameraRig]/Camera (eye)").transform;
-        HumanObj = GameObject.Find("[VRTK_SDKManager]/SDKSetups/SteamVR/[CameraRig]/プレイヤークラス").gameObject;
+        eye = GameManager.Instance.VRTKMANAGER.transform.Find("SDKSetups/SteamVR/[CameraRig]/Camera (eye)");
+        HumanObj = GameManager.Instance.VRTKMANAGER.transform.Find("SDKSetups/SteamVR/[CameraRig]/プレイヤークラス").gameObject;
 
         int no = 0;   //添字数え上げ用     
         foreach (Transform child in transform)

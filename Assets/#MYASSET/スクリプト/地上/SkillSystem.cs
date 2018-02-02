@@ -77,16 +77,16 @@ public abstract class SkillSystem : MonoBehaviour
         //eye = GameObject.Find("[VRTK_Scripts]/Headset").transform;
         //SkillZone2.transform.parent = eye;
 
-        HumanObj = GameObject.Find("[VRTK_SDKManager]/SDKSetups/SteamVR/[CameraRig]/プレイヤークラス").gameObject;
+        HumanObj = GameManager.Instance.VRTKMANAGER.transform.Find("SDKSetups/SteamVR/[CameraRig]/プレイヤークラス").gameObject;
     }
 
     private void Awake()
     {
         
-        HandL = GameObject.Find("[VRTK_Scripts]/LeftController");
-        HandR = GameObject.Find("[VRTK_Scripts]/RightController");
-        SkillZone1 = GameObject.Find("[VRTK_Scripts]/Headset/SkillZone1");
-        SkillZone2 = GameObject.Find("[VRTK_Scripts]/SkillZone2");
+        HandL = GameManager.Instance.VRTKSCRIPTS.transform.Find("LeftController").gameObject;
+        HandR = GameManager.Instance.VRTKSCRIPTS.transform.Find("RightController").gameObject;
+        SkillZone1 = GameManager.Instance.VRTKSCRIPTS.transform.Find("Headset/SkillZone1").gameObject;
+        SkillZone2 = GameManager.Instance.VRTKSCRIPTS.transform.Find("Headset/SkillZone2").gameObject;
         Time.timeScale = 1.0f;
         //スキル用フラグ初期化
         InitSkill();
@@ -97,7 +97,7 @@ public abstract class SkillSystem : MonoBehaviour
     protected virtual void Update()
     {
         if (eye == null)
-            eye = GameObject.Find("[VRTK_SDKManager]/SDKSetups/SteamVR/[CameraRig]/Camera (eye)").transform;
+            eye = GameManager.Instance.VRTKMANAGER.transform.Find("SDKSetups/SteamVR/[CameraRig]/Camera (eye)").transform;
 
         //下側スキル範囲
         SkillZone2.transform.position = new Vector3(eye.transform.position.x, eye.transform.position.y - 1.0f, eye.transform.position.z);//将来的にはCamera(eye)を参照に座標を決めたい

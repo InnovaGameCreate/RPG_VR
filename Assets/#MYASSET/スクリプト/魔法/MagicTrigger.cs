@@ -14,9 +14,9 @@ public class MagicTrigger : MonoBehaviour
     private void Start()
     {
         if (gameObject.name == "RightController")
-            triggerdother = GameObject.Find("[VRTK_Scripts]/LeftController").GetComponent<MagicTrigger>();
+            triggerdother = GameManager.Instance.VRTKSCRIPTS.transform.Find("LeftController").GetComponent<MagicTrigger>();
         else
-            triggerdother = GameObject.Find("[VRTK_Scripts]/RightController").GetComponent<MagicTrigger>();
+            triggerdother = GameManager.Instance.VRTKSCRIPTS.transform.Find("RightController").GetComponent<MagicTrigger>();
     }
     private void OnEnable()
     {
@@ -48,7 +48,7 @@ public class MagicTrigger : MonoBehaviour
         triggerd = true;
 
         if (eye == null)
-            eye = GameObject.Find("[VRTK_SDKManager]/SDKSetups/SteamVR/[CameraRig]/Camera (eye)").transform;
+            eye = GameManager.Instance.VRTKMANAGER.transform.Find("SDKSetups/SteamVR/[CameraRig]/Camera (eye)");
 
         //リョウコントローラ魔法
         if (triggerdother.triggerd)

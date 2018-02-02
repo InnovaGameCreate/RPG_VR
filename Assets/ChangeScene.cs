@@ -17,9 +17,7 @@ public class ChangeScene : MonoBehaviour {
             if (fade.CONDITION == FadeInOut.Condition.SCENECHANGE)
             {
                 SceneManager.LoadScene(sceneName);
-                Debug.Log("aaaaaaaaaaaaaa  ");
             }
-            Debug.Log("発見  ");
         }
        
 
