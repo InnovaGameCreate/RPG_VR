@@ -3,22 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HumanPlayer : HumanBase {
-    [SerializeField, TooltipAttribute("体力バー")]
-    private Slider slider;      //体力バー
+public class HumanPlayer : HumanBase
+{
+    [SerializeField, TooltipAttribute("HPバー")]
+    private Slider hpSlider;      //体力バー
+    [SerializeField, TooltipAttribute("MPバー")]
+    private Slider mpSlider;
 
-    private void Update()
+    void calculateVar(Slider target, int now, float max)
     {
         //体力バー計算
-        float varhp = Status.Parameter.HP / (float)Status.Parameter.MAXHP;
-        if (varhp > 1)
+        float var = now / max;
+        if (var > 1)
         {
             // 最大を超えたら0に戻す
-            varhp = 0;
+            var = 0;
         }
-        if (slider != null)
+        if (hpSlider != null)
             // HPゲージに値を設定
-            slider.value = varhp;
+            target.value = var;
+    }
+    private void Update()
+    {
+        calculateVar(hpSlider, Status.Parameter.HP, (float)Status.Parameter.MAXHP);
+        calculateVar(mpSlider, Status.Parameter.MP, (float)Status.Parameter.MAXMP);
     }
 
     //攻撃を受けたときの演出

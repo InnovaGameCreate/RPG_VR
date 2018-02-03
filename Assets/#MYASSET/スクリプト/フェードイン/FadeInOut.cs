@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class FadeInOut : MonoBehaviour {
-    Image img;
     float time;
     const float finishTime = 3.0f;      //暗転が終わるまでの時間
+    [SerializeField, TooltipAttribute("フェードインアウト用イメージを選択")]
+    private Image fadeInOutImage;         
     public enum Condition
     {
         FADEIN,
@@ -19,13 +20,12 @@ public class FadeInOut : MonoBehaviour {
     public Condition CONDITION 
     {
         get { return cod; }
-        set { cod = cod != Condition.SCENECHANGE ? value : cod; }
+        set { cod = value; }
     }
 
     // Use this for initialization
     void Start () {
-        img=GetComponent<Image>();
-        img.color = new Color(0,0,0,1);
+        fadeInOutImage.color = new Color(0,0,0,1);
         cod = Condition.FADEOUT;
 
     }
@@ -34,11 +34,13 @@ public class FadeInOut : MonoBehaviour {
 	void Update () {
         if (cod != Condition.STAY && cod != Condition.SCENECHANGE)
         {
-            if (img.color.a >= 0 && img.color.a <= 1)
+            if (fadeInOutImage.color.a >= 0 && fadeInOutImage.color.a <= 1)
             {
+                //明るくなる
                 if (cod == Condition.FADEOUT)
                     time += Time.deltaTime;
-                else
+                //暗くなる
+                else if(cod == Condition.FADEIN)
                     time -= Time.deltaTime;
             }
             else
@@ -51,10 +53,11 @@ public class FadeInOut : MonoBehaviour {
                 else
                 {
                     cod = Condition.SCENECHANGE;
+                    time = 0;
                 }
             }
-          
-            img.color = new Color(0, 0, 0, 1 - time / finishTime);
+          Debug.Log("a  "+ cod);
+            fadeInOutImage.color = new Color(0, 0, 0, 1 - time / finishTime);
         }
     }
  

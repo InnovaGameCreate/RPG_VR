@@ -80,8 +80,8 @@
             base.Awake();
             //rightcontroller = GameObject.Find("/[VRTK_SDKManager] /SDKSetups/SteamVR/[CameraRig]/Controller (right)");
             //leftcontroller = GameObject.Find("/[VRTK_SDKManager] /SDKSetups/SteamVR/[CameraRig]/Controller (left)");
-            leftcontroller = GameManager.Instance.VRTKSCRIPTS.transform.Find("LeftController").gameObject;
-            rightcontroller = GameManager.Instance.VRTKSCRIPTS.transform.Find("RightController").gameObject; 
+            leftcontroller = GameManager.Instance.LEFTCONTROLLER;
+            rightcontroller = GameManager.Instance.RIGHTCONTROLLER; 
         }
 
         // Update is called once per frame

@@ -34,9 +34,9 @@ public class WaistItem : MonoBehaviour
         //rangeWaistItem = waistItem.GetComponent<SearchHand>();
 
         if (gameObject.name == "RightController")
-            grippedOther = GameManager.Instance.VRTKSCRIPTS.transform.Find("LeftController").GetComponent<WaistItem>();
+            grippedOther = GameManager.Instance.LEFTCONTROLLER.GetComponent<WaistItem>();
         else
-            grippedOther = GameManager.Instance.VRTKSCRIPTS.transform.Find("RightController").GetComponent<WaistItem>();
+            grippedOther = GameManager.Instance.RIGHTCONTROLLER.GetComponent<WaistItem>();
     }
     private void OnEnable()
     {

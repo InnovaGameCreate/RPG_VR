@@ -83,8 +83,8 @@ public abstract class SkillSystem : MonoBehaviour
     private void Awake()
     {
         
-        HandL = GameManager.Instance.VRTKSCRIPTS.transform.Find("LeftController").gameObject;
-        HandR = GameManager.Instance.VRTKSCRIPTS.transform.Find("RightController").gameObject;
+        HandL = GameManager.Instance.LEFTCONTROLLER;
+        HandR = GameManager.Instance.RIGHTCONTROLLER;
         SkillZone1 = GameManager.Instance.VRTKSCRIPTS.transform.Find("Headset/SkillZone1").gameObject;
         SkillZone2 = GameManager.Instance.VRTKSCRIPTS.transform.Find("Headset/SkillZone2").gameObject;
         Time.timeScale = 1.0f;

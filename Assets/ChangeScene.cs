@@ -13,10 +13,12 @@ public class ChangeScene : MonoBehaviour {
     private void Update()
     {
         if (fade != null)
-        {
+        { 
             if (fade.CONDITION == FadeInOut.Condition.SCENECHANGE)
             {
+     
                 SceneManager.LoadScene(sceneName);
+                fade.CONDITION = FadeInOut.Condition.FADEOUT;
             }
         }
        

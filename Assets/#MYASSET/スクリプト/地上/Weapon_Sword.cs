@@ -116,7 +116,8 @@ public class Weapon_Sword : RPGItemObject
         {
             //Debug.Log("aaaafojsegj");
             //Status st = GetComponentInParent<HumanBase>().Status;
-            Status st = pplay.Status;
+            Status st = GameManager.Instance.PLAYER.Status;
+            // Status st = pplay.Status;
 
             if (!GetComponent<Buff>())
                 Debug.Log("fbvgsureiuheirhghhhh");

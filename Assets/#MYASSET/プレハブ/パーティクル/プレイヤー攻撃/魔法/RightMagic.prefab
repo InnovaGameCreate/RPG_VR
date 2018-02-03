@@ -30,21 +30,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1086014176962070
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4999472144228138}
-  m_Layer: 0
-  m_Name: Left
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1092245412871230
 GameObject:
   m_ObjectHideFlags: 1
@@ -269,7 +254,7 @@ Transform:
   - {fileID: 4615250510218070}
   - {fileID: 4367430534292336}
   m_Father: {fileID: 4819293785579794}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4195874246362902
 Transform:
@@ -309,7 +294,7 @@ Transform:
   m_Children:
   - {fileID: 4485381149343880}
   m_Father: {fileID: 4819293785579794}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4485381149343880
 Transform:
@@ -373,10 +358,9 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1630111127098454}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.18880117, y: 0.5, z: 0.380993}
+  m_LocalPosition: {x: 2104.5002, y: 484.07266, z: -150.6942}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4999472144228138}
   - {fileID: 4121168065043538}
   - {fileID: 4439477313656488}
   m_Father: {fileID: 0}
@@ -406,19 +390,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4485381149343880}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4999472144228138
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1086014176962070}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.2038406, y: -6.1395764, z: 16.900059}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4819293785579794}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23037487385798020
@@ -693,6 +664,7 @@ MonoBehaviour:
   Bullet_FlySpeed: 1000
   Bullet_BreakTime: 100
   Bullet: {fileID: 1197562582964852, guid: 7de33b08c3303fa4188356acba9fdb5f, type: 2}
+  useMp: 20
 --- !u!114 &114692156009400702
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -37,7 +37,7 @@ public class Parameters {
     public int MP
     {
         get { return mp; }
-        set { mp = value > 0 ? maxmp > mp ? value : maxmp : 0; }
+        set { mp = value > 0 ? (maxmp >= mp ? value : maxmp) : 0; }
     }
     public int MAXHP
     {

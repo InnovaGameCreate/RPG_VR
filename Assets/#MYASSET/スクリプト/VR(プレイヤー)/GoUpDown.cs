@@ -248,8 +248,8 @@ public class GoUpDown : MonoBehaviour
     //AwakeのほうがStartより早い 
     protected virtual void Awake()
     {
-        controllerpos[0] = GameManager.Instance.VRTKSCRIPTS.transform.Find("LeftController");
-        controllerpos[1] = GameManager.Instance.VRTKSCRIPTS.transform.Find("RightController");
+        controllerpos[0] = GameManager.Instance.LEFTCONTROLLER.transform;
+        controllerpos[1] = GameManager.Instance.RIGHTCONTROLLER.transform;
         events[0] = controllerpos[0].GetComponent<VRTK_ControllerEvents>();
         events[1] = controllerpos[1].GetComponent<VRTK_ControllerEvents>();
         /*

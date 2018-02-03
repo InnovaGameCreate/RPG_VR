@@ -21,7 +21,7 @@ public class MagicPattern : MonoBehaviour
     }
 
 
-    public GameObject HumanObj;//開発が落ち着いたらpublicをやめる
+    public HumanPlayer HumanObj;//開発が落ち着いたらpublicをやめる
     private List<Buff> _sendBuff = new List<Buff>();
     private List<Buff> _receiveBuff = new List<Buff>();
 
@@ -33,7 +33,13 @@ public class MagicPattern : MonoBehaviour
     private float Bullet_BreakTime;
     [SerializeField]
     private GameObject Bullet;//発射する当たり判定
+    [SerializeField, TooltipAttribute("消費MP")]
+    private int useMp;//魔法の威力
 
+    public int USEMP
+    {
+        get { return useMp; }
+    }
     private USEHAND usehand;
 
     public bool _magic
@@ -48,7 +54,7 @@ public class MagicPattern : MonoBehaviour
     void Start()
     {
         eye = GameManager.Instance.VRTKMANAGER.transform.Find("SDKSetups/SteamVR/[CameraRig]/Camera (eye)");
-        HumanObj = GameManager.Instance.VRTKMANAGER.transform.Find("SDKSetups/SteamVR/[CameraRig]/プレイヤークラス").gameObject;
+        HumanObj = GameManager.Instance.PLAYER;
 
         int no = 0;   //添字数え上げ用     
         foreach (Transform child in transform)
@@ -57,14 +63,17 @@ public class MagicPattern : MonoBehaviour
             no++;
         }
 
-        if (leftright[0].childCount > 0 && leftright[1].childCount > 0)
+        if (transform.Find("Left") && transform.Find("Right"))
             usehand = USEHAND.LeftAndRight;
-        else if (leftright[0].childCount > 0)
+        else if (transform.Find("Left"))
             usehand = USEHAND.Left;
-        else
+        else if (transform.Find("Right"))
             usehand = USEHAND.Right;
+
+
+        Debug.Log("paatta  " + usehand);
         no = 0;
-        if (usehand == USEHAND.Left || usehand == USEHAND.LeftAndRight)//左の魔法
+        if (usehand == USEHAND.Right || usehand == USEHAND.Left || usehand == USEHAND.LeftAndRight)//左の魔法
             if (leftright[0].childCount != 0)
             {
                 this.grandson[0] = new GameObject[leftright[0].childCount];
@@ -77,7 +86,7 @@ public class MagicPattern : MonoBehaviour
                 }
             }
         no = 0;
-        if (usehand == USEHAND.Right || usehand == USEHAND.LeftAndRight)//右の魔法
+        if (usehand == USEHAND.LeftAndRight)//右の魔法
             if (leftright[1].childCount != 0)
             {
                 this.grandson[1] = new GameObject[leftright[1].childCount];
@@ -97,13 +106,13 @@ public class MagicPattern : MonoBehaviour
     void Update()
     {
 
-        if (usehand == USEHAND.Left || usehand == USEHAND.LeftAndRight)//左の魔法
+        if (usehand == USEHAND.Right || usehand == USEHAND.Left || usehand == USEHAND.LeftAndRight)//左の魔法
             if (leftright[0].childCount - 1 > nowpoint[0] && !grandson[0][nowpoint[0]].GetComponent<MeshRenderer>().enabled)
             {
                 grandson[0][nowpoint[0] + 1].GetComponent<MeshRenderer>().enabled = true;
                 nowpoint[0]++;
             }
-        if (usehand == USEHAND.Right || usehand == USEHAND.LeftAndRight)//右の魔法
+        if (usehand == USEHAND.LeftAndRight)//右の魔法
             if (leftright[1].childCount - 1 > nowpoint[1] && !grandson[1][nowpoint[1]].GetComponent<MeshRenderer>().enabled)
             {
                 grandson[1][nowpoint[1] + 1].GetComponent<MeshRenderer>().enabled = true;
@@ -120,15 +129,15 @@ public class MagicPattern : MonoBehaviour
                 {
                     StartCoroutine("Magic");
                     magic = true;
-                    
+
                 }
                 break;
             case USEHAND.Right:
-                if (!magic && leftright[1].childCount - 1 == nowpoint[1] && !grandson[1][nowpoint[1]].GetComponent<MeshRenderer>().enabled)
+                if (!magic && leftright[0].childCount - 1 == nowpoint[0] && !grandson[0][nowpoint[0]].GetComponent<MeshRenderer>().enabled)
                 {
                     StartCoroutine("Magic");
                     magic = true;
-                    
+
                 }
                 break;
             case USEHAND.LeftAndRight:
@@ -143,14 +152,18 @@ public class MagicPattern : MonoBehaviour
                 break;
         }
         //魔法飛ばしてる間も更新してる気がする
-        
+
     }
 
     // 魔法コルーチン  
     IEnumerator Magic()
     {
         startmagic = true;
-        leftright[2].GetComponent<ParticleSystem>().Play();
+        if (usehand == USEHAND.LeftAndRight)
+            leftright[2].GetComponent<ParticleSystem>().Play();
+        else
+            leftright[1].GetComponent<ParticleSystem>().Play();
+        GameManager.Instance.PLAYER.useMagic(useMp);
 
         GameObject MBullet = Instantiate(Bullet, transform.position, transform.rotation);
         Bullet _bullet = MBullet.GetComponent<Bullet>();
@@ -164,7 +177,10 @@ public class MagicPattern : MonoBehaviour
         _bullet.B_POWER = Bullet_Atk;
         _bullet.B_ISMAGIC = true;
         yield return new WaitForSeconds(maginfinishtime);
-        leftright[2].GetComponent<ParticleSystem>().Stop();
+        if (usehand == USEHAND.LeftAndRight)
+            leftright[2].GetComponent<ParticleSystem>().Stop();
+        else
+            leftright[1].GetComponent<ParticleSystem>().Stop();
         //Destroy(this.gameObject);
     }
 }

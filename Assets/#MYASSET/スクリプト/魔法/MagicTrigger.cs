@@ -14,9 +14,9 @@ public class MagicTrigger : MonoBehaviour
     private void Start()
     {
         if (gameObject.name == "RightController")
-            triggerdother = GameManager.Instance.VRTKSCRIPTS.transform.Find("LeftController").GetComponent<MagicTrigger>();
+            triggerdother = GameManager.Instance.LEFTCONTROLLER.GetComponent<MagicTrigger>();
         else
-            triggerdother = GameManager.Instance.VRTKSCRIPTS.transform.Find("RightController").GetComponent<MagicTrigger>();
+            triggerdother = GameManager.Instance.RIGHTCONTROLLER.GetComponent<MagicTrigger>();
     }
     private void OnEnable()
     {
@@ -50,21 +50,30 @@ public class MagicTrigger : MonoBehaviour
         if (eye == null)
             eye = GameManager.Instance.VRTKMANAGER.transform.Find("SDKSetups/SteamVR/[CameraRig]/Camera (eye)");
 
-        //リョウコントローラ魔法
+        //両コントローラ魔法
         if (triggerdother.triggerd)
         {
-            magicpatternobj = Instantiate(magicpattern[2], eye.position + eye.forward * 0.5f, eye.rotation);
-            multitriggerd = true;
+            if (magicpattern[2].GetComponent<MagicPattern>().USEMP < GameManager.Instance.PLAYER.Status.Parameter.MP)
+            {
+                magicpatternobj = Instantiate(magicpattern[2], eye.position + eye.forward * 0.5f, eye.rotation);
+                multitriggerd = true;
+            }
         }
 
-        //右コントローラ魔法
+        //右コントローラ魔法   左コントローラ魔法
         else
         {
+
             if (gameObject.name == "RightController")
-                magicpatternobj = Instantiate(magicpattern[1], eye.position + eye.forward * 0.5f, eye.rotation);
-            //左コントローラ魔法
+            {
+                if (magicpattern[1].GetComponent<MagicPattern>().USEMP < GameManager.Instance.PLAYER.Status.Parameter.MP)
+                    magicpatternobj = Instantiate(magicpattern[1], eye.position + eye.forward * 0.5f, eye.rotation);
+            }
             else
-                magicpatternobj = Instantiate(magicpattern[0], eye.position + eye.forward * 0.5f, eye.rotation);
+            {
+                if (magicpattern[1].GetComponent<MagicPattern>().USEMP < GameManager.Instance.PLAYER.Status.Parameter.MP)
+                    magicpatternobj = Instantiate(magicpattern[0], eye.position + eye.forward * 0.5f, eye.rotation);
+            }
         }
     }
 

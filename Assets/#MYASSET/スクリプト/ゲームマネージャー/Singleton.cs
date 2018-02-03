@@ -23,7 +23,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
     }
 
-    public void Awake()
+    public virtual void Awake()
     {
         if (this != Instance)
         {

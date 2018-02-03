@@ -8,21 +8,14 @@ public class findPlayerInit : Conditional
 {
     [SerializeField]
     private SharedGameObject player;     //追跡すべきプレイヤー
-    [SerializeField]
-    private float ArriveDistance;           //到着距離
-    [SerializeField]
-    private float WaypointPauseDuration;      //到着時の待機時間
-    private int checknum;           //パトロールで調べてる番号
-    private float waypointReachedTime;
-    private bool reach;             //ついたかどうか
 
     // 実行直後に呼ばれる。データは持ち越しのため、必ず初期化などを書く。
-    public override void OnAwake()
+    public override void OnStart()
     {
+        GameObject manager;
         base.OnAwake();
-        player.Value = GameManager.Instance.VRTKMANAGER.transform.Find("SDKSetups/SteamVR/[CameraRig]/Camera (head)").gameObject;
-
-        Debug.Log(player);
+        if (GameManager.Instance.name == "ゲームマネージャー（確定）")
+            player.Value = GameManager.Instance.HEAD;
     }
 
 }

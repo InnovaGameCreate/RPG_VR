@@ -66,6 +66,13 @@ public class HumanBase : MonoBehaviour
         Status.Parameter.HP = Status.Parameter.HP - (d.AttackPower);
     }
 
+    //mp消費
+    public void useMagic(int usemp)
+    {
+        Status.Parameter.MP = Status.Parameter.MP - usemp;
+
+    }
+
     //受バフの処理
     IEnumerator ApplyReceiveBuff()
     {
