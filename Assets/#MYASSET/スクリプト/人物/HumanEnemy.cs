@@ -20,8 +20,9 @@ public class HumanEnemy : HumanBase
     void Update()
     {
         //Debug.Log(Status.Parameter.HP);
-        if (Status.Parameter.HP <= 0 || Input.GetKeyDown(KeyCode.K))
+        if (!deaded&&(Status.Parameter.HP <= 0 || Input.GetKeyDown(KeyCode.K)))
         {
+            deaded = true;
             animator.SetTrigger("Dead");
             Destroy(GetComponent<BehaviorTree>());
             StartCoroutine("Remove");
@@ -32,9 +33,10 @@ public class HumanEnemy : HumanBase
     // モデル消滅
     IEnumerator Remove()
     {
+        dropItem();
         yield return new WaitForSeconds(60);
         Destroy(this.gameObject);
-        dropItem();
+     
     }
 
     //ドロップアイテム生成
@@ -47,14 +49,15 @@ public class HumanEnemy : HumanBase
         //canvasObject.transform.position = transform.position;
 
 
-        ////乱数用
-        //int rand = (int)Random.Range(0, dropitem.Length);
-        //if (rand == dropitem.Length)
-        //    rand = 0;
+        //乱数用
+        int rand = (int)Random.Range(0, dropitem.Length);
+        if (rand == dropitem.Length)
+            rand = 0;
 
-        //// プレハブからインスタンスを生成
-        //GameObject obj = Instantiate(dropitem[rand], Vector3.zero, Quaternion.identity);
-        //obj.GetComponent<ItemBase>().droppeditem = true;
+        // プレハブからインスタンスを生成
+        GameObject obj = Instantiate(dropitem[rand], transform.position, dropitem[rand].transform.rotation);
+        obj.GetComponent<ItemBase>().droppeditem = true;
+        obj.GetComponent<Rigidbody>().GetComponent<Rigidbody>().angularVelocity = Vector3.up * Mathf.PI;
         //// 作成したオブジェクトを子として登録
         //obj.transform.parent = canvas.transform;
 
@@ -67,7 +70,7 @@ public class HumanEnemy : HumanBase
     //ダメージを受けた際のアニメーションは攻撃を受けた側(つまり人物クラス　　　ダメージ計算を呼ぶのはダメージを与えた側(つまり武器クラスから
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.GetComponent<Weapon>())
+        if (collision.gameObject.GetComponent<Weapon_Sword>())
         {
 
             var collisionForce = GetCollisionForce(collision);
@@ -80,9 +83,9 @@ public class HumanEnemy : HumanBase
 
     private float GetCollisionForce(Collision collision)
     {
-        if ((collision.collider.name.Contains("Sword") && collision.collider.GetComponent<VRTK.Examples.Sword>().CollisionForce() > breakForce))
+        if ((collision.collider.name.Contains("Sword") && collision.collider.GetComponent<Weapon_Sword>().CollisionForce() > breakForce))
         {
-            return collision.collider.GetComponent<VRTK.Examples.Sword>().CollisionForce() * 1.2f;
+            return collision.collider.GetComponent<Weapon_Sword>().CollisionForce() * 1.2f;
 
         }
 

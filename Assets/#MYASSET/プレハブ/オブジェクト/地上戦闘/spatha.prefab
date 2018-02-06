@@ -73,7 +73,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4389836709625364}
   - component: {fileID: 33865017843197632}
-  - component: {fileID: 65914042970660962}
   m_Layer: 0
   m_Name: Blade (2)
   m_TagString: Untagged
@@ -101,7 +100,8 @@ GameObject:
   - component: {fileID: 114503575661101570}
   - component: {fileID: 114862116814458750}
   - component: {fileID: 114979220920119548}
-  m_Layer: 0
+  - component: {fileID: 65320265636611632}
+  m_Layer: 19
   m_Name: spatha
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1936523988680502}
   m_LocalRotation: {x: 0.6830127, y: 0.6830127, z: 0.18301274, w: 0.18301274}
-  m_LocalPosition: {x: 0.035, y: 0.068, z: -0.96}
+  m_LocalPosition: {x: 0.045, y: 0.064, z: -1.009}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4861253778778682}
@@ -266,7 +266,7 @@ Transform:
   m_GameObject: {fileID: 1047350601811988}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.012, y: -0.006, z: -0.832}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 4553433060328324}
   m_RootOrder: 0
@@ -291,8 +291,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1407307581756678}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0044002533, y: -0.041999876, z: 0.81499976}
-  m_LocalScale: {x: 1, y: 0.9999999, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4981512458562012}
   - {fileID: 4390554228216470}
@@ -599,6 +599,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65320265636611632
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1407307581756678}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02, y: 0.1, z: 0.64}
+  m_Center: {x: 0, y: 0, z: -0.46}
 --- !u!65 &65539527971990960
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -635,18 +647,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65914042970660962
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1154522811840970}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.23}
 --- !u!65 &65946545504452192
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -657,8 +657,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.01, y: 0.05, z: 1.4}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.09, y: 0.4, z: -0.3}
+  m_Center: {x: 0, y: 0, z: -0.82}
 --- !u!114 &114008305034043378
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -786,17 +786,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  sdkOverrides:
-  - loadedSDKSetup: {fileID: 0}
-    controllerType: 5
-    position: {x: 0, y: 0.03, z: 0}
-    rotation: {x: 40, y: 0, z: 0}
-    scale: {x: 1, y: 1, z: 1}
-  - loadedSDKSetup: {fileID: 0}
-    controllerType: 4
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0}
-    scale: {x: 0, y: 0, z: 0}
+  sdkOverrides: []
 --- !u!114 &114842394740517868
 MonoBehaviour:
   m_ObjectHideFlags: 1

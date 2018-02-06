@@ -40,7 +40,7 @@ public abstract class ItemBase : MonoBehaviour
 
     //prtected かばんクラス　kaban; //後々のかばんくらす  アイテムが回収された時に増やす
     [SerializeField, TooltipAttribute("スタック可能かどうか")]
-    public bool droppeditem;   //ステージに生成されたドロップアイテムかどうか    メニュー用とドロップ用で挙動区別するため
+    public bool droppeditem;   //ステージに生成されたドロップアイテムかどうか  生成直前でtrueへ  メニュー用とドロップ用で挙動区別するため
 
     private float time;         //ドロップアイテム回収可能かどうかの時間計測用
     private bool catch_ok;      //ドロップアイテム回収可能かどうか
@@ -48,6 +48,9 @@ public abstract class ItemBase : MonoBehaviour
     {
         playerstatus = GameObject.Find("プレイヤーステータス管理").GetComponent<PlayerStatus>();
         item_type = ItemType.None;
+        time = 0;
+        catch_ok = false;
+
     }
 
     virtual protected void Update()
@@ -69,7 +72,7 @@ public abstract class ItemBase : MonoBehaviour
     //アイテムが回収された
     private void OnTriggerEnter(Collider other)
     {
-        if (catch_ok && GetComponent<BoxCollider>() != null && other.CompareTag("Player"))
+        if (catch_ok  && (other.name == "GroundAttackpointL" || other.name == "GroundAttackpointR"))
         {
             Destroy(this.gameObject);
             //TODO   カバンクラスにアイテムを足す処理

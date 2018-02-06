@@ -56,7 +56,7 @@ public class FadeInOut : MonoBehaviour {
                     time = 0;
                 }
             }
-          Debug.Log("a  "+ cod);
+
             fadeInOutImage.color = new Color(0, 0, 0, 1 - time / finishTime);
         }
     }

@@ -47,13 +47,7 @@ public class EnemyAttack : MonoBehaviour {
         // プレハブからインスタンスを生成
         GameObject obj = Instantiate(dropitem[rand], Vector3.zero, Quaternion.identity);
         obj.GetComponent<ItemBase>().droppeditem = true;
-        // 作成したオブジェクトを子として登録
-        obj.transform.parent = canvas.transform;
-
-        obj.AddComponent<BoxCollider>();
-        obj.GetComponent<BoxCollider>().size = new Vector3(100, 100, 20);
-        obj.AddComponent<origingravity>();
-        canvas.transform.localScale = new Vector3(0.008f, 0.008f, 0.008f);
+        obj.GetComponent<Rigidbody>().angularVelocity = Vector3.up * Mathf.PI;
     }
      void dead()//死亡
     {
