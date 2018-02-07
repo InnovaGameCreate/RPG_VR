@@ -12,9 +12,9 @@
          */
         protected GameObject ParticleObject;//パーティクルオブジェクト
         [SerializeField]
-        private GameObject rightcontroller;       //右コントローラ
+        protected GameObject rightcontroller;       //右コントローラ
         [SerializeField]
-        private GameObject leftcontroller;       //左コントローラ
+        protected GameObject leftcontroller;       //左コントローラ
 
         public int ID;//アイテムID
         public bool CanStack;//アイテムがスタック可能かどうか

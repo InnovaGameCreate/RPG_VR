@@ -71,7 +71,7 @@ public class MagicPattern : MonoBehaviour
             usehand = USEHAND.Right;
 
 
-        Debug.Log("paatta  " + usehand);
+        //Debug.Log("paatta  " + usehand);
         no = 0;
         if (usehand == USEHAND.Right || usehand == USEHAND.Left || usehand == USEHAND.LeftAndRight)//左の魔法
             if (leftright[0].childCount != 0)

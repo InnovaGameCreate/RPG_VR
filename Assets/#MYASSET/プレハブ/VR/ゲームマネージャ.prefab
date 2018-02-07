@@ -15142,7 +15142,6 @@ MonoBehaviour:
   NodePrefabs: {fileID: 1833005238665762, guid: 34b83aadb81d77a419544c340a055621,
     type: 2}
   Trajectory: []
-  HumanObj: {fileID: 0}
 --- !u!114 &114117186939860752
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15817,7 +15816,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1082601947619368}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04101513ece37524797428a93f9acdc3, type: 3}
   m_Name: 
@@ -15829,8 +15828,8 @@ MonoBehaviour:
   crouchThreshold: 0.5
   crouchRewindThreshold: 0.1
   targetListPolicy: {fileID: 114117186939860752}
-  bodyPhysics: {fileID: 0}
-  headsetCollision: {fileID: 0}
+  bodyPhysics: {fileID: 114521799527997504}
+  headsetCollision: {fileID: 114790433949332938}
 --- !u!114 &114244907586767194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16406,7 +16405,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1082601947619368}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21b4bc319f4966f4faedb4f429f7c9c9, type: 3}
   m_Name: 
@@ -16414,8 +16413,8 @@ MonoBehaviour:
   timeTillFade: 0
   blinkTransitionSpeed: 0.1
   fadeColor: {r: 0, g: 0, b: 0, a: 1}
-  headsetCollision: {fileID: 0}
-  headsetFade: {fileID: 0}
+  headsetCollision: {fileID: 114790433949332938}
+  headsetFade: {fileID: 114576217829941992}
 --- !u!114 &114413902055066560
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16866,7 +16865,6 @@ MonoBehaviour:
   NodePrefabs: {fileID: 1962373687299468, guid: cc0da3a90fb1af748afb3401d75276b3,
     type: 2}
   Trajectory: []
-  HumanObj: {fileID: 0}
 --- !u!114 &114514809334923438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17205,7 +17203,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1082601947619368}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44596d094d0946345a7fc6688ba9c06c, type: 3}
   m_Name: 
@@ -18094,14 +18092,14 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1082601947619368}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 057015237f68bd74d9c6c6c28ea347e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ignoreTriggerColliders: 0
   colliderRadius: 0.1
-  targetListPolicy: {fileID: 0}
+  targetListPolicy: {fileID: 114117186939860752}
   headsetColliding: 0
   collidingWith: {fileID: 0}
 --- !u!114 &114797230740980854
@@ -18558,7 +18556,6 @@ MonoBehaviour:
   NodePrefabs: {fileID: 1568341539469010, guid: 06e5e1a4466b9914b98d6d0130fc2d82,
     type: 2}
   Trajectory: []
-  HumanObj: {fileID: 0}
 --- !u!114 &114895357641040436
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -18760,7 +18757,6 @@ MonoBehaviour:
   NodePrefabs: {fileID: 1084702788980874, guid: 9a89c240a95b371428233c553ddc6fd0,
     type: 2}
   Trajectory: []
-  HumanObj: {fileID: 0}
 --- !u!114 &114953449373715020
 MonoBehaviour:
   m_ObjectHideFlags: 1

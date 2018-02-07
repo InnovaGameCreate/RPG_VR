@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using VRTK;
 using VRTK.Examples;
 
-public class SceneChangerVR : MonoBehaviour
+public class SceneChangerVR : RPGItemObject
 {
     //シーン変更用
 
@@ -23,90 +23,67 @@ public class SceneChangerVR : MonoBehaviour
     [SerializeField]
     private UseType _Type;
 
-    private GameObject rightC, leftC;
+    private bool _contact;
 
-    private void Start()
+    //private GameObject rightC, leftC;
+
+    //private void Start()
+    //{
+    //    rightC = GameManager.Instance.RIGHTCONTROLLER;
+    //    leftC = GameManager.Instance.LEFTCONTROLLER;
+
+    //}
+
+    protected override void Update()
     {
-        rightC = GameManager.Instance.RIGHTCONTROLLER;
-        leftC = GameManager.Instance.LEFTCONTROLLER;
-
+        switch (_Type)
+        {
+            case UseType.Contact:
+                break;
+            case UseType.Grabb:
+                if (Griped)
+                {
+                    Debug.Log("どあのぶ");
+                }
+                break;
+            case UseType.TouchPad:
+                if (Touched)
+                {
+                    //Debug.Log("どあのぶ");
+                }
+                break;
+            case UseType.Trigger:
+                if (triggerd)
+                {
+                    //Debug.Log("どあのぶ");
+                }
+                break;
+        }
+        
     }
 
-    private void OnEnable()
-    {
-        if (rightC.GetComponent<VRTK_ControllerEvents>() == null)
-            return;
-        // イベントハンドラの登録
-        else
-        {
-            rightC.GetComponent<VRTK_ControllerEvents>().TriggerPressed += TriggerPressedHandler;
-            rightC.GetComponent<VRTK_ControllerEvents>().TriggerReleased += TriggerReleasedHandler;
-        }
-
-        if (leftC.GetComponent<VRTK_ControllerEvents>() == null)
-            return;
-        else
-        {
-            leftC.GetComponent<VRTK_ControllerEvents>().TriggerPressed += TriggerPressedHandler;
-            leftC.GetComponent<VRTK_ControllerEvents>().TriggerReleased += TriggerReleasedHandler;
-        }
-
-    }
-    private void OnDisable()
-    {
-        if (rightC.GetComponent<VRTK_ControllerEvents>() == null)
-            return;
-        else
-        {
-            rightC.GetComponent<VRTK_ControllerEvents>().TriggerPressed -= TriggerPressedHandler;
-            rightC.GetComponent<VRTK_ControllerEvents>().TriggerReleased -= TriggerReleasedHandler;
-        }
-
-        if (leftC.GetComponent<VRTK_ControllerEvents>() == null)
-            return;
-        else
-        {
-            leftC.GetComponent<VRTK_ControllerEvents>().TriggerPressed -= TriggerPressedHandler;
-            leftC.GetComponent<VRTK_ControllerEvents>().TriggerReleased -= TriggerReleasedHandler;
-        }
-    }
 
     private void SceneChangerFunc()
     {
         SceneManager.LoadScene(SceneName);
     }
 
-    //private void OnTriggerEnter(Collider coll)
-    //{
-    //    if (coll.gameObject.GetComponent<VRTK_InteractableObject>() != null)
-    //    {
-    //        VRTK_InteractableObject grabbobj = coll.gameObject.GetComponent<VRTK_InteractableObject>();
-    //        Debug.Log("hgdeioghigihglihlifdlikfdlih");
-    //        if (_Type == UseType.Contact)
-    //        {
-    //            Debug.Log("ふれた");
-    //        }
-    //        else if (_Type == UseType.Grabb && grabbobj.Grabbed)
-    //        {
-    //            Debug.Log("にぎった");
-    //        }
-    //        else if (_Type == UseType.Trigger && triggerd)
-    //        {
-    //            Debug.Log("ひいた");
-    //        }
-    //        else if (_Type == UseType.TouchPad && Touched)
-    //        {
-    //            Debug.Log("たっち");
-    //        }
-    //    }
-    //}
-
-    private void TriggerPressedHandler(object sender, ControllerInteractionEventArgs e)
+    private void OnTriggerEnter(Collider coll)
     {
-        Debug.Log("ひいた");
+        if (coll.gameObject == rightcontroller || coll.gameObject == leftcontroller)
+        {
+            _contact = true;
+        }
+        else
+            _contact = false;
     }
 
-    private void TriggerReleasedHandler(object sender, ControllerInteractionEventArgs e)
+    private void OnTriggerExit(Collider coll)
     {
+        if (coll.gameObject == rightcontroller || coll.gameObject == leftcontroller)
+        {
+            _contact = false;
+        }
     }
+
 }
