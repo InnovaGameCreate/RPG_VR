@@ -50,7 +50,7 @@ public abstract class SkillSystem : MonoBehaviour
     protected GameObject Node_Ins;//インスタンス
     public List<GameObject> Trajectory = new List<GameObject>();//スキルの起動表示のためのリスト
 
-    public GameObject HumanObj;//プレイヤークラス
+    //public GameObject HumanObj;//プレイヤークラス
 
     protected SearchHand whereHand1, whereHand2;
     protected RPGItemObject _weapon;
@@ -77,7 +77,7 @@ public abstract class SkillSystem : MonoBehaviour
         //eye = GameObject.Find("[VRTK_Scripts]/Headset").transform;
         //SkillZone2.transform.parent = eye;
 
-        HumanObj = GameManager.Instance.VRTKMANAGER.transform.Find("SDKSetups/SteamVR/[CameraRig]/プレイヤークラス").gameObject;
+        //HumanObj = GameManager.Instance.VRTKMANAGER.transform.Find("SDKSetups/SteamVR/[CameraRig]/プレイヤークラス").gameObject;
     }
 
     private void Awake()
@@ -86,7 +86,7 @@ public abstract class SkillSystem : MonoBehaviour
         HandL = GameManager.Instance.LEFTCONTROLLER;
         HandR = GameManager.Instance.RIGHTCONTROLLER;
         SkillZone1 = GameManager.Instance.VRTKSCRIPTS.transform.Find("Headset/SkillZone1").gameObject;
-        SkillZone2 = GameManager.Instance.VRTKSCRIPTS.transform.Find("Headset/SkillZone2").gameObject;
+        SkillZone2 = GameManager.Instance.VRTKSCRIPTS.transform.Find("SkillZone2").gameObject;
         Time.timeScale = 1.0f;
         //スキル用フラグ初期化
         InitSkill();
@@ -185,7 +185,7 @@ public abstract class SkillSystem : MonoBehaviour
     {
         GameObject Bullet = Instantiate(B_prefabs, transform.position, transform.rotation);
         Bullet _bullet = Bullet.GetComponent<Bullet>();
-        _bullet.BulletStatus = HumanObj.GetComponent<HumanBase>().Status;//ステのコピー
+        _bullet.BulletStatus = GameManager.Instance.PLAYER.Status;//ステのコピー
         _bullet.B_SPEED = Speed;
         _bullet.B_BREAKTIME = BreakTime;
         _bullet.SENDBUFF = /*_sendBuff*/null;
