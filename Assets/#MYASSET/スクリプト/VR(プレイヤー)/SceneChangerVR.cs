@@ -69,12 +69,10 @@ public class SceneChangerVR : RPGItemObject
     private void SceneChangerFunc()
     {
 
-        if (fade != null)
-        {
-            fade.CONDITION = FadeInOut.Condition.FADEIN;
-            GameManager.Instance.SceneChengeManager(SceneName, NextPosName);
-            fade.CONDITION = FadeInOut.Condition.FADEOUT;
-        }
+        //fade.CONDITION = FadeInOut.Condition.FADEIN;
+        GameManager.Instance.SceneChengeManager(SceneName, NextPosName);
+            //fade.CONDITION = FadeInOut.Condition.FADEOUT;
+
     }
 
     private void OnTriggerEnter(Collider coll)
