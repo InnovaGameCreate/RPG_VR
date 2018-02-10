@@ -11,7 +11,9 @@ public class SceneChangerVR : RPGItemObject
 
     [SerializeField]
     private string SceneName;//移動先シーン名
-
+    [SerializeField]
+    private string NextPosName;//移動先の場所名
+    private FadeInOut fade;
     private enum UseType
     {
         Grabb,
@@ -44,6 +46,7 @@ public class SceneChangerVR : RPGItemObject
                 if (Griped)
                 {
                     Debug.Log("どあのぶ");
+                    SceneChangerFunc();
                 }
                 break;
             case UseType.TouchPad:
@@ -65,11 +68,22 @@ public class SceneChangerVR : RPGItemObject
 
     private void SceneChangerFunc()
     {
-        SceneManager.LoadScene(SceneName);
+
+        if (fade != null)
+        {
+            fade.CONDITION = FadeInOut.Condition.FADEIN;
+            GameManager.Instance.SceneChengeManager(SceneName, NextPosName);
+            fade.CONDITION = FadeInOut.Condition.FADEOUT;
+        }
     }
 
     private void OnTriggerEnter(Collider coll)
     {
+        if (coll.gameObject.GetComponentInChildren<FadeInOut>())
+        {
+            fade = coll.gameObject.GetComponentInChildren<FadeInOut>();
+        }
+
         if (coll.gameObject == rightcontroller || coll.gameObject == leftcontroller)
         {
             _contact = true;

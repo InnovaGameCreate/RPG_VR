@@ -9,8 +9,8 @@ public class GameManager : Singleton<GameManager>
 {
     [SerializeField, TooltipAttribute("[VRTK_SDKManager]を指定")]
     GameObject vrtkManager;
-   [SerializeField, TooltipAttribute("[VRTK_Scripts]を指定")]
-     GameObject vrtkScripts;
+    [SerializeField, TooltipAttribute("[VRTK_Scripts]を指定")]
+    GameObject vrtkScripts;
 
     //実行後VRTK_ScriptsからVRTK_SDKManagerへ移動するためFindではなくここから呼ぶこと
     [SerializeField, TooltipAttribute("LeftControllerを指定")]
@@ -25,6 +25,9 @@ public class GameManager : Singleton<GameManager>
     [SerializeField, TooltipAttribute("プレイヤークラスのHumanPlayerインスタンスを指定")]
     HumanPlayer player;
 
+    //次に移るシーンの名前
+    private string nextSceneName;
+    private FadeInOut fade; //フェードイン・アウト用
 
     public GameObject VRTKMANAGER
     {
@@ -51,6 +54,11 @@ public class GameManager : Singleton<GameManager>
         get { return player; }
     }
 
+    public string NEXTSCENE
+    {
+        set { nextSceneName = value; }
+    }
+
     bool instanced = false;         //ゲームマネージャがすでに生成されているかどうか
     /// <summary>
     /// ゲーム状態（大枠）
@@ -63,7 +71,7 @@ public class GameManager : Singleton<GameManager>
         End,
     };
 
-   
+
 
     /// <summary>現在の状態</summary>
     private GameState _CurrentState = GameState.Start;
@@ -88,7 +96,7 @@ public class GameManager : Singleton<GameManager>
         get { return CountDownNum; }
     }
 
-   public  override void Awake()
+    public override void Awake()
     {
         base.Awake();
         if (GameObject.Find("ゲームマネージャー（確定）"))
@@ -102,16 +110,17 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         SceneManager.activeSceneChanged += OnActiveSceneChanged;
-
+        fade = gameObject.GetComponentInChildren<FadeInOut>();
     }
 
     //シーンチェンジ後のスタート位置を決定
     void setStartPosition()
     {
-        Transform startpos = GameObject.Find("スタート位置").transform;
+        Transform startpos = GameObject.Find(nextSceneName).transform;
         Transform obj = VRTKMANAGER.transform.Find("SDKSetups/SteamVR/[CameraRig]");
         obj.position = startpos.position;
-        obj.rotation = startpos.rotation;
+        obj.rotation = Quaternion.Euler(new Vector3(0, startpos.rotation.y,0));
+            ;
 
     }
 
@@ -142,10 +151,16 @@ public class GameManager : Singleton<GameManager>
     private void Update()
     {
         //デバッグ用
-        if(Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.L))
             SceneManager.LoadScene("魔法攻撃");
         if (Input.GetKeyDown(KeyCode.A))
             SceneManager.LoadScene("1月26日統合");
+        if (fade.CONDITION == FadeInOut.Condition.SCENECHANGE) 
+        {
+            fade.CONDITION = FadeInOut.Condition.FADEIN;
+            SceneManager.LoadScene(nextSceneName);
+            
+        }
     }
     /// <summary>
     /// 更新関数
@@ -189,14 +204,14 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     private void updateInGame()
     {
-      //  Debug.Log(ELAPSEDTIME);
+        //  Debug.Log(ELAPSEDTIME);
         //時間切れになったら終了
         if (ELAPSEDTIME > LIMITTIME)
         {
             _CurrentState = GameState.End;
             //Debug.Log("時間切れ");
         }
-     
+
     }
 
     /// <summary>
@@ -210,5 +225,14 @@ public class GameManager : Singleton<GameManager>
 
 
     bool IsGameEnd() { return _CurrentState == GameState.End; }
+
+    public void SceneChengeManager(string NextSecneName, string PosName)
+    {
+
+        nextSceneName = PosName;
+        fade.CONDITION = FadeInOut.Condition.FADEOUT;
+        SceneManager.LoadScene(NextSecneName);
+        //fade.CONDITION = FadeInOut.Condition.FADEIN;
+    }
 }
 

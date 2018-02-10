@@ -6,31 +6,16 @@ using UnityEngine.SceneManagement;
 public class ChangeScene : MonoBehaviour {
     [SerializeField, TooltipAttribute("移動先シーン名")]
     private string sceneName;
-    private FadeInOut fade;
+    [SerializeField, TooltipAttribute("移動先ポイント名")]
+    private string posName;
 
 
 
-    private void Update()
-    {
-        if (fade != null)
-        { 
-            if (fade.CONDITION == FadeInOut.Condition.SCENECHANGE)
-            {
-     
-                SceneManager.LoadScene(sceneName);
-                fade.CONDITION = FadeInOut.Condition.FADEOUT;
-            }
-        }
-       
-
-    }
     private void OnTriggerEnter(Collider other)
     {
-            if (other.gameObject.GetComponentInChildren<FadeInOut>())
+            if (other.CompareTag("Player"))
             {
-                 fade = other.gameObject.GetComponentInChildren<FadeInOut>();
-                fade.CONDITION = FadeInOut.Condition.FADEIN;
-        
+            GameManager.Instance.SceneChengeManager(sceneName, posName);
             }
 
     }
