@@ -10,16 +10,20 @@ public class HumanEnemy : HumanBase
     private const float breakForce = 150f;      //HP減少に必要な剣を振る速さ.
 
     protected bool deaded = false;          //死んだかどうか
+
+    private BehaviorTree tree;
+
     // Use this for initialization
     protected override void Start()
     {
         base.Start();
+        tree = GetComponent<BehaviorTree>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(Status.Parameter.HP);
+        //死んだ時
         if (!deaded&&(Status.Parameter.HP <= 0 || Input.GetKeyDown(KeyCode.K)))
         {
             deaded = true;
@@ -27,6 +31,11 @@ public class HumanEnemy : HumanBase
             Destroy(GetComponent<BehaviorTree>());
             StartCoroutine("Remove");
             return;
+        }
+        else
+        {
+            //tree.SetVariable("FreeSpeed", (int)(Status.Parameter.SPEED) );//intに丸めました
+            //tree.SetVariableValue("ChaseSpeed", (int)(Status.Parameter.SPEED));
         }
     }
 
