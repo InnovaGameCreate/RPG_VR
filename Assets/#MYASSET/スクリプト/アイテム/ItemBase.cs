@@ -10,6 +10,9 @@ public abstract class ItemBase : MonoBehaviour
     [SerializeField, TooltipAttribute("スタック可能かどうか")]
     public bool CanStack;//アイテムがスタック可能かどうか
 
+    //バック
+    private BackPack backpack;
+
     //アイテムの種類
     public enum ItemType
     {
@@ -47,6 +50,10 @@ public abstract class ItemBase : MonoBehaviour
     virtual protected void Start()
     {
         playerstatus = GameObject.Find("プレイヤーステータス管理").GetComponent<PlayerStatus>();
+        //backpack取ってくる(片方で取ってこれない場合がある)
+        backpack = GameManager.Instance.HEAD.GetComponentInChildren<BackPack>();
+        if (backpack == null)
+            backpack = GameManager.Instance.VRTKMANAGER.GetComponentInChildren<BackPack>();
         item_type = ItemType.None;
         time = 0;
         catch_ok = false;
@@ -72,11 +79,11 @@ public abstract class ItemBase : MonoBehaviour
     //アイテムが回収された
     private void OnTriggerEnter(Collider other)
     {
-        if (catch_ok  && (other.name == "GroundAttackpointL" || other.name == "GroundAttackpointR"))
+        if (catch_ok && (other.name == "GroundAttackpointL" || other.name == "GroundAttackpointR"))
         {
+            //カバンクラスにアイテムを足す処理
+            backpack.AcquireItem(GetComponent<ItemBase>());
             Destroy(this.gameObject);
-            //TODO   カバンクラスにアイテムを足す処理
-
         }
     }
 }

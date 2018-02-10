@@ -16,10 +16,18 @@ public class UIItemController : MonoBehaviour
     //アイテムボタンのプレファブ
     [SerializeField]
     private GameObject item_button_prefab;
+    //バック
+    private BackPack backpack;
+    //更新時間管理用
+    private float updateTime = 0;
 
     // Use this for initialization
     void Start()
     {
+        //backpack取ってくる(片方で取ってこれない場合がある)
+        backpack = GameManager.Instance.HEAD.GetComponentInChildren<BackPack>();
+        if (backpack == null)
+            backpack = GameManager.Instance.VRTKMANAGER.GetComponentInChildren<BackPack>();
         //各viewportの下にcontentを生成していく
         for (int i = 0; i < ItemBase.ItemTypeTotalNum; i++)
         {
@@ -31,12 +39,6 @@ public class UIItemController : MonoBehaviour
             GameObject.Find("ItemCanvas/TabPanel/Tab" + (i + 1)).GetComponent<ScrollRect>().content = contents[i].GetComponent<RectTransform>();
         }
         ResetCanvas();
-    }
-
-    //アイテムキャンバスの更新
-    void UpdateCanvas()
-    {
-
     }
 
     //キャンバスをリセットする
@@ -54,18 +56,38 @@ public class UIItemController : MonoBehaviour
     }
 
     //アイテムをキャンバスに登録する
-    private void RegisterItem()
+    private void UpdateAllItem()
     {
-        for (int i = 0; i < ItemOriginal.id_max; i++)
+        ResetCanvas();
+        int n = 0;
+        foreach (ItemBase i in backpack.has_item) // 先頭から最後まで順番に表示
         {
-            //if (BackPack.) ;
+            Debug.Log("UI:" + n);
+            GameObject obj = Instantiate(item_button_prefab, contents[0].transform);
+            obj.GetComponentInChildren<Text>().text = i.FlavorText;
+            obj.GetComponent<ItemButton>().number = n;
+            obj.GetComponent<Button>().onClick.AddListener(() => {
+                backpack.UseItem(0);//要修正
+            });
+            obj.GetComponent<Button>().onClick.AddListener(UpdateAllItem);
+            n++;
         }
+    }
+
+    private void PrintHello()
+    {
+        Debug.Log("Hello");
     }
 
     // Update is called once per frame
     void Update()
     {
-        //新しいItemButtonを作成
-        //Instantiate(item_button_prefab, contents[0].transform);
+        updateTime += Time.deltaTime;
+        if (updateTime > 1.0f)
+        {
+            ResetCanvas();
+            UpdateAllItem();
+            updateTime = 0.0f;
+        }
     }
 }
