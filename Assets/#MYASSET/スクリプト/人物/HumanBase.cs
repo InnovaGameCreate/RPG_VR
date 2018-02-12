@@ -27,10 +27,12 @@ public class HumanBase : MonoBehaviour
     public List<Buff> SendBuff
     {
         get { return sendBuff; }
+        set { sendBuff = value; }
     }
     public List<Buff> ReceiveBuff
     {
         get { return receiveBuff; }
+        set { receiveBuff = value; }
     }
     public List<Buff> CounterBuff
     {
@@ -42,13 +44,12 @@ public class HumanBase : MonoBehaviour
 
     protected virtual void Start()
     {
-        StartCoroutine("ApplyReceiveBuff");
+        StartCoroutine("ApplyReceiveBuff");//バフ処理
         humanstatus = new Status();
         //アタッチしていないと以下向こうとなるので　一時的に除去
         if(GetComponentInChildren<DisplayParameters>()!=null)//子
             humanstatus.Parameter = humanstatus.Parameter + GetComponentInChildren<DisplayParameters>();//パラメータ代入
-        //if (GetComponent<DisplayParameters>() != null)//直
-        //    humanstatus.Parameter = humanstatus.Parameter + GetComponent<DisplayParameters>();//パラメータ代入
+
 
         animator = GetComponent<Animator>();
       
@@ -57,12 +58,12 @@ public class HumanBase : MonoBehaviour
     //攻撃を受けたとき
     public void ReceiveAttack(DamageCalculate d)
     {
-        if(d.SendBuff != null)
+        if (d.SendBuff != null)
+        {
             receiveBuff.AddRange(d.SendBuff);//与バフを受け取る
-        if (Status.Parameter == null)
-            Debug.Log("sfgreyreh");
-        if (d == null)
-            Debug.Log("dsgdhfhhhhhhh");
+            //Debug.Log("sfgreyreh");
+        }
+
         Status.Parameter.HP = Status.Parameter.HP - (d.AttackPower);
     }
 
@@ -76,17 +77,23 @@ public class HumanBase : MonoBehaviour
     //受バフの処理
     IEnumerator ApplyReceiveBuff()
     {
+        bool Permanence = false;
         while (true)
         {
             foreach (Buff b in receiveBuff)
             {
                 //ステータス変更処理
+                humanstatus.Parameter = humanstatus.Parameter + b;
+                humanstatus.Parameter = humanstatus.Parameter * b;
 
                 //有効時間を減らす
                 b.AvailableSeconds--;
+                Permanence = b.PARMANENT;
             }
-            //有効時間が切れた要素の削除
-            receiveBuff.RemoveAll(i => i.AvailableSeconds <= 0);
+            if (Permanence == false) {
+                //有効時間が切れた要素の削除
+                receiveBuff.RemoveAll(i => i.AvailableSeconds <= 0);
+            }
             yield return new WaitForSeconds(1.0f);
         }
     }

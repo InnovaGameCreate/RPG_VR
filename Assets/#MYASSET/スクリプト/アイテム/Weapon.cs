@@ -15,6 +15,7 @@ public class Weapon :ItemBase
     {
         atkSe = GetComponent<AudioSource>();
         owner = GetComponentInParent<HumanBase>();
+        owner.GetComponent<HumanBase>().SendBuff.Add(GetComponent<Buff>() );
     }
     public int Endurance
     {
@@ -34,8 +35,8 @@ public class Weapon :ItemBase
         if (collision.gameObject.GetComponent<HumanBase>() != null && collision.gameObject.GetComponent<HumanBase>() != owner)
         {
             if(!atkSe.isPlaying)
-            atkSe.Play();
-            DamageCalculate dmg = new DamageCalculate(owner.GetComponent<HumanBase>().Status,100,false);//, owner.GetComponent<HumanBase>().SendBuff, owner.GetComponent<HumanBase>().ReceiveBuff);
+                atkSe.Play();
+            DamageCalculate dmg = new DamageCalculate(owner.GetComponent<HumanBase>().Status, 100, false, owner.GetComponent<HumanBase>().SendBuff, owner.GetComponent<HumanBase>().ReceiveBuff);
             collision.gameObject.GetComponent<HumanBase>().ReceiveAttack(dmg);
         }
     }

@@ -18,16 +18,18 @@ public class Weapon_Sword : RPGItemObject
     [SerializeField]
     SkillSystem Skill2;
 
-    private List<Buff> _send = new List<Buff>();
-    private List<Buff> _receive = new List<Buff>();
+    //private List<Buff> _send = new List<Buff>();
+    //private List<Buff> _receive = new List<Buff>();
 
     [SerializeField]
     private HumanBase pplay;
 
     // Use this for initialization
-    //protected override void Start () {
-    //       base.Start();
-    //}
+    protected override void Start()
+    {
+        base.Start();
+        GameManager.Instance.PLAYER.SendBuff.Add(GetComponent<Buff>());
+    }
 
     //Update is called once per frame
     void Update()
@@ -119,16 +121,13 @@ public class Weapon_Sword : RPGItemObject
             Status st = GameManager.Instance.PLAYER.Status;
             // Status st = pplay.Status;
 
-            if (!GetComponent<Buff>())
-                Debug.Log("fbvgsureiuheirhghhhh");
-
-            _send.Add(GetComponent<Buff>());
+            
             List<Buff> _counter = null;
             //if (coll.gameObject.GetComponent<HumanBase>().CounterBuff != null)//テストプレイ時敵にHumanBaseがアタッチされてないためつくまでコメントアウト
             //{
             //    _counter = coll.gameObject.GetComponent<HumanBase>().CounterBuff;
             //}
-            DamageCalculate dam = new DamageCalculate(st, 100, false, _send, _counter);
+            DamageCalculate dam = new DamageCalculate(st, 100, false, GameManager.Instance.PLAYER.SendBuff, _counter);
             coll.gameObject.GetComponent<HumanBase>().ReceiveAttack(dam);
         }
 
