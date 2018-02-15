@@ -12,9 +12,10 @@ public class UILogController : MonoBehaviour
 
 
     // 取得したログの情報を処理する
-    public void RegisterLog(string str){
+    public void RegisterLog(string str,Color color){
         Text text = Instantiate(textPrefab, gameObject.transform).GetComponent<Text>();
         text.text = str;
+        text.color = color;
         scrollbar.value = 0;//スクロールバーの位置を一番下にする
     }
 

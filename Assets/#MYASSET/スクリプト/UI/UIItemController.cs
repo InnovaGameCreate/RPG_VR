@@ -60,23 +60,27 @@ public class UIItemController : MonoBehaviour
     {
         ResetCanvas();
         int n = 0;
+        GameObject obj = null;//生成したボタンを一時的に格納
         foreach (ItemBase i in backpack.has_item) // 先頭から最後まで順番に表示
         {
-            Debug.Log("UI:" + n);
-            GameObject obj = Instantiate(item_button_prefab, contents[0].transform);
+            //装備の種類に合わせてボタンを生成するcontentを変える
+            if (i is HealItem)
+            {
+                obj = Instantiate(item_button_prefab, contents[0].transform);
+            }
+            else if (i is Weapon || i is EquipmentItem)
+            {
+                obj = Instantiate(item_button_prefab, contents[2].transform);
+            }
             obj.GetComponentInChildren<Text>().text = i.FlavorText;
             obj.GetComponent<ItemButton>().number = n;
-            obj.GetComponent<Button>().onClick.AddListener(() => {
+            obj.GetComponent<Button>().onClick.AddListener(() =>
+            {
                 backpack.UseItem(0);//要修正
             });
             obj.GetComponent<Button>().onClick.AddListener(UpdateAllItem);
             n++;
         }
-    }
-
-    private void PrintHello()
-    {
-        Debug.Log("Hello");
     }
 
     // Update is called once per frame
