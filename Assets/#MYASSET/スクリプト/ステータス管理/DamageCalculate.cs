@@ -55,14 +55,12 @@ public class DamageCalculate
         
         if (_sendBuff != null)
         {
-            Debug.Log("buffffff");
+            //Debug.Log("buffffff");
             _sendBuff = sendBuff;
         }
-        else
-            Debug.Log("NMULL");
         if (receiveBuff != null)
         {
-            Debug.Log("receive");
+            //Debug.Log("receive");
             _receiveBuff = receiveBuff;
         }
         CalculateAttackPower(BasisPower);//ダメージ計算
@@ -85,11 +83,11 @@ public class DamageCalculate
         Parameters all_parameters = new Parameters();
         if (/*_receiveBuff != null || */_receiveBuff.Count > 0)
         {
-            Debug.Log(_receiveBuff.Count);
+            //Debug.Log(_receiveBuff.Count);
             all_receiveBuff = _receiveBuff[0];
             foreach (Buff s in _receiveBuff)
             {
-                Debug.Log("buff?");
+                //Debug.Log("buff?");
                 if (s == _receiveBuff[0])
                     continue;
                 all_receiveBuff = s + all_receiveBuff;

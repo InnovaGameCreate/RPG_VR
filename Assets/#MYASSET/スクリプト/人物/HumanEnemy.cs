@@ -34,6 +34,7 @@ public class HumanEnemy : HumanBase
         }
         else
         {
+            Debug.Log(Status.Parameter.ATK);
             //tree.SetVariable("FreeSpeed", (int)(Status.Parameter.SPEED) );//intに丸めました
             //tree.SetVariableValue("ChaseSpeed", (int)(Status.Parameter.SPEED));
         }

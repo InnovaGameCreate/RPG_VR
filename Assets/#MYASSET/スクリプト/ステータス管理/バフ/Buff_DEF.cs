@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Buff_DEF : MonoBehaviour {
+public class Buff_DEF : Buff
+{
+    //バフのサブクラス
+    //防御力の上昇のバフ用
 
 	// Use this for initialization
 	void Start () {

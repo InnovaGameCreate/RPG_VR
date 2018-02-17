@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Buff : MonoBehaviour
 {
+    //バフクラススーパークラス
+    //HPの増減等,アイテムの使用等で一瞬で処理が終わるたぐいはこれを使用
     [SerializeField]
     private GameObject Particle;
     [SerializeField]

@@ -3858,7 +3858,7 @@ GameObject:
   - component: {fileID: 54213357913656220}
   - component: {fileID: 114844721202038366}
   - component: {fileID: 114075660346544746}
-  - component: {fileID: 114546444204350592}
+  - component: {fileID: 114801919739168946}
   - component: {fileID: 114759828777075560}
   - component: {fileID: 65409089031250536}
   m_Layer: 19
@@ -14680,11 +14680,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hand: 1
+  magicTrigger: {fileID: 0}
   stateModels: []
   _grabb: {fileID: 114523951763398284}
+  swordMotion: {fileID: 0}
   currentState: 100
   action: 0
   hold: 0
+  isMagic: 0
 --- !u!114 &114052320439440266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14746,6 +14749,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76b0d350d063d7c40b4670558036e5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Particle: {fileID: 0}
+  IsPermanent: 0
   hp: 0
   mp: 0
   maxhp: 0
@@ -14766,6 +14771,7 @@ MonoBehaviour:
   Mmagicdef: 1
   Mspeed: 1
   Mflyspeed: 1
+  availableSeconds: 0
 --- !u!114 &114055996692479584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15882,11 +15888,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hand: 0
+  magicTrigger: {fileID: 0}
   stateModels: []
   _grabb: {fileID: 114023340575910644}
+  swordMotion: {fileID: 0}
   currentState: 100
   action: 0
   hold: 0
+  isMagic: 0
 --- !u!114 &114283204999197466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17048,37 +17057,6 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114546444204350592
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1581184993972080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76b0d350d063d7c40b4670558036e5c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 0
-  mp: 0
-  maxhp: 0
-  maxmp: 0
-  atk: 0
-  def: 0
-  magicatk: 0
-  magicdef: 0
-  speed: 0
-  flyspeed: 0
-  Mhp: 1
-  Mmp: 1
-  Mmaxhp: 1
-  Mmaxmp: 1
-  Matk: 1
-  Mdef: 1
-  Mmagicatk: 1
-  Mmagicdef: 1
-  Mspeed: 1
-  Mflyspeed: 1
 --- !u!114 &114550933982194988
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17989,7 +17967,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1581184993972080}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c0338a8e3289104fa9e3fbf33db1d69, type: 3}
   m_Name: 
@@ -18152,6 +18130,40 @@ MonoBehaviour:
   _head: {fileID: 4959034852095774}
   _ears: {fileID: 4434905574683108}
   wireframe: 0
+--- !u!114 &114801919739168946
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1581184993972080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f221a1e1210f73543a8d44068fdfc0bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Particle: {fileID: 0}
+  IsPermanent: 0
+  hp: 0
+  mp: 0
+  maxhp: 0
+  maxmp: 0
+  atk: -15
+  def: 0
+  magicatk: 0
+  magicdef: 0
+  speed: 0
+  flyspeed: 0
+  Mhp: 1
+  Mmp: 1
+  Mmaxhp: 1
+  Mmaxmp: 1
+  Matk: 1
+  Mdef: 1
+  Mmagicatk: 1
+  Mmagicdef: 1
+  Mspeed: 1
+  Mflyspeed: 1
+  availableSeconds: 1
 --- !u!114 &114804719805242326
 MonoBehaviour:
   m_ObjectHideFlags: 1
