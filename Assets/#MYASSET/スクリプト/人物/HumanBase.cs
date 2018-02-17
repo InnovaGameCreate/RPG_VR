@@ -27,7 +27,7 @@ public class HumanBase : MonoBehaviour
 
     Buff[] AwakeBuff = new Buff[10];//実際に計算するバフ
                                     //とりあえず10枠
-                                    //0:無印,1:ATK,2;DeATK,3:DEF,4:DeDEF,
+                                    //0:無印,1:ATK,2;DeATK,3:DEF,4:DeDEF,5:HP,6:DeHP
                                     //間違えないように
     public List<Buff> SendBuff
     {
@@ -85,7 +85,7 @@ public class HumanBase : MonoBehaviour
         bool Permanence = false;
         while (true)
         {
-            //foreach (Buff b in receiveBuff)
+            //foreach (Buff b in receiveBuff)//旧版
             //{
             //    //ステータス変更処理
             //    humanstatus.Parameter = humanstatus.Parameter + b;
@@ -100,7 +100,7 @@ public class HumanBase : MonoBehaviour
             //    receiveBuff.RemoveAll(i => i.AvailableSeconds <= 0);
             //}
 
-            for(int i = 0; i < AwakeBuff.Length; i++)
+            for(int i = 0; i < AwakeBuff.Length; i++)//配列用
             {
                 if (AwakeBuff[i] == null)
                     continue;
@@ -149,6 +149,20 @@ public class HumanBase : MonoBehaviour
                     AwakeBuff[4] = b;
                 else if (AwakeBuff[4].DEF == b.DEF && AwakeBuff[4].AvailableSeconds < b.AvailableSeconds)//時間の長い方
                     AwakeBuff[4] = b;
+            }
+            else if (b.GetType() == typeof(Buff_HP))
+            {
+                if (AwakeBuff[5] == null || AwakeBuff[5].HP < b.HP)
+                    AwakeBuff[5] = b;
+                else if (AwakeBuff[5].DEF == b.DEF && AwakeBuff[5].AvailableSeconds < b.AvailableSeconds)//時間の長い方
+                    AwakeBuff[5] = b;
+            }
+            else if (b.GetType() == typeof(Buff_D_HP))
+            {
+                if (AwakeBuff[6] == null || AwakeBuff[6].HP > b.HP)
+                    AwakeBuff[6] = b;
+                else if (AwakeBuff[6].DEF == b.DEF && AwakeBuff[6].AvailableSeconds < b.AvailableSeconds)//時間の長い方
+                    AwakeBuff[6] = b;
             }
             else
             {
