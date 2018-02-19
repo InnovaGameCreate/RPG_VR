@@ -37076,7 +37076,7 @@ Prefab:
     - target: {fileID: 224966763039783684, guid: c16e9cc40f9a61d4e9d1c9f7b1fd7a0d,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 706
+      value: 850
       objectReference: {fileID: 0}
     - target: {fileID: 224966763039783684, guid: c16e9cc40f9a61d4e9d1c9f7b1fd7a0d,
         type: 2}
@@ -37153,6 +37153,11 @@ Prefab:
       propertyPath: swordMotion
       value: 
       objectReference: {fileID: 663589335}
+    - target: {fileID: 54213357913656220, guid: c16e9cc40f9a61d4e9d1c9f7b1fd7a0d,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c16e9cc40f9a61d4e9d1c9f7b1fd7a0d, type: 2}
   m_IsPrefabParent: 0

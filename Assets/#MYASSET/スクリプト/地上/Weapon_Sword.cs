@@ -23,12 +23,16 @@ public class Weapon_Sword : RPGItemObject
 
     [SerializeField]
     private HumanBase pplay;
+    private SwordMotion swordMotion;
+
 
     // Use this for initialization
     protected override void Start()
     {
         base.Start();
         GameManager.Instance.PLAYER.SendBuff.Add(GetComponent<Buff>());
+        swordMotion = GetComponent<SwordMotion>();
+
     }
 
     //Update is called once per frame
@@ -95,6 +99,8 @@ public class Weapon_Sword : RPGItemObject
         Griped = true;
         //Debug.Log("ggg");
         GetComponent<BoxCollider>().isTrigger = true;
+        swordMotion.EquipSword();//剣の着脱
+    
 
     }
 
