@@ -19,6 +19,7 @@ public class HumanPlayer : HumanBase
             {
                 exp_num = Exp - ExpSystem(LV);
                 LV++;
+                LvText.text = "Lv." + LV;
                 Exp = (exp_num / 2);
             }
         }
@@ -28,6 +29,8 @@ public class HumanPlayer : HumanBase
     private Slider hpSlider;      //体力バー
     [SerializeField, TooltipAttribute("MPバー")]
     private Slider mpSlider;
+    [SerializeField, TooltipAttribute("Lvテキスト")]
+    private Text LvText;      //体力バー
 
     private int exp_num;//一時保存
 
@@ -44,6 +47,13 @@ public class HumanPlayer : HumanBase
             // HPゲージに値を設定
             target.value = var;
     }
+
+    protected override void Start()
+    {
+        base.Start();
+        LvText.text = "Lv." + LV;
+    }
+
     private void Update()
     {
         calculateVar(hpSlider, Status.Parameter.HP, (float)Status.Parameter.MAXHP);

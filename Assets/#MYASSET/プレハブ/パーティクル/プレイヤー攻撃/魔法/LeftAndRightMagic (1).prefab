@@ -707,6 +707,7 @@ MonoBehaviour:
   Bullet_BreakTime: 100
   Bullet: {fileID: 1197562582964852, guid: 7de33b08c3303fa4188356acba9fdb5f, type: 2}
   useMp: 30
+  TargetMaterial: {fileID: 2100000, guid: 6d0f238c317d8fd45833318a973e1f1c, type: 2}
 --- !u!114 &114066507783613940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -788,6 +789,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76b0d350d063d7c40b4670558036e5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Particle: {fileID: 0}
+  IsPermanent: 0
   hp: 0
   mp: 0
   maxhp: 0
@@ -808,6 +811,7 @@ MonoBehaviour:
   Mmagicdef: 1
   Mspeed: 1
   Mflyspeed: 1
+  availableSeconds: 0
 --- !u!114 &114767533746969412
 MonoBehaviour:
   m_ObjectHideFlags: 1

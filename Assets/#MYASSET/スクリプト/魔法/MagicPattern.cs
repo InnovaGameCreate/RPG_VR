@@ -50,6 +50,9 @@ public class MagicPattern : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    private Material TargetMaterial;//触れるべきターゲットのためのマテリアル
+
     // Use this for initialization
     void Start()
     {
@@ -110,12 +113,14 @@ public class MagicPattern : MonoBehaviour
             if (leftright[0].childCount - 1 > nowpoint[0] && !grandson[0][nowpoint[0]].GetComponent<MeshRenderer>().enabled)
             {
                 grandson[0][nowpoint[0] + 1].GetComponent<MeshRenderer>().enabled = true;
+                //grandson[0][nowpoint[0] + 1].GetComponent<Renderer>().material = TargetMaterial;
                 nowpoint[0]++;
             }
         if (usehand == USEHAND.LeftAndRight)//右の魔法
             if (leftright[1].childCount - 1 > nowpoint[1] && !grandson[1][nowpoint[1]].GetComponent<MeshRenderer>().enabled)
             {
                 grandson[1][nowpoint[1] + 1].GetComponent<MeshRenderer>().enabled = true;
+                //grandson[1][nowpoint[1] + 1].GetComponent<Renderer>().material = TargetMaterial;
                 nowpoint[1]++;
             }
 
