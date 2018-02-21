@@ -11013,7 +11013,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1021721031949346}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4145733253869504}
@@ -13885,7 +13885,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -14680,10 +14680,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hand: 1
-  magicTrigger: {fileID: 0}
+  magicTrigger: {fileID: 114840678871619914}
   stateModels: []
   _grabb: {fileID: 114523951763398284}
-  swordMotion: {fileID: 0}
+  swordMotion: {fileID: 114844721202038366}
   currentState: 100
   action: 0
   hold: 0
@@ -14810,6 +14810,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fc9704fd3526cf42a7984b4cdcd0490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LV: 0
+  Exp: 0
   hpSlider: {fileID: 0}
   mpSlider: {fileID: 0}
 --- !u!114 &114060638582870990
@@ -15891,7 +15893,7 @@ MonoBehaviour:
   magicTrigger: {fileID: 0}
   stateModels: []
   _grabb: {fileID: 114023340575910644}
-  swordMotion: {fileID: 0}
+  swordMotion: {fileID: 114844721202038366}
   currentState: 100
   action: 0
   hold: 0
@@ -16263,6 +16265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gripped: 0
+  released: 0
   grippedOther: {fileID: 0}
   HeadPos: {fileID: 4956543421778882}
   Head: {fileID: 1978054456704854}
@@ -18223,6 +18226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fc9704fd3526cf42a7984b4cdcd0490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LV: 1
+  Exp: 0
   hpSlider: {fileID: 114119561911359464}
   mpSlider: {fileID: 114390470923022700}
 --- !u!114 &114827541579609076
@@ -18293,6 +18298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sword: {fileID: 1739394922550538}
   gripEve: {fileID: 1191262581429820}
+  canEquip: 0
 --- !u!114 &114840283862631232
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -18349,6 +18355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sword: {fileID: 1581184993972080}
   gripEve: {fileID: 1191262581429820}
+  canEquip: 0
 --- !u!114 &114848752664268898
 MonoBehaviour:
   m_ObjectHideFlags: 1
