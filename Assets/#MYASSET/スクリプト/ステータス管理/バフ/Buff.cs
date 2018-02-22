@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Buff : MonoBehaviour
 {
+    //バフクラススーパークラス
+    //テストや暫定使用の他には使わないように
     [SerializeField]
     private GameObject Particle;
     [SerializeField]

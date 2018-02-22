@@ -52,22 +52,38 @@ public class Parameters {
     public int ATK
     {
         get { return atk; }
-        set { atk = value; }
+        set {
+            atk = value;
+            if (atk <= 0)
+                atk = 1;
+        }
     }
     public int DEF
     {
         get { return def; }
-        set { def = value; }
+        set {
+            def = value;
+            if (def < 0)
+                def = 0;
+        }
     }
     public int MAGICATK
     {
         get { return magicatk; }
-        set { magicatk = value; }
+        set {
+            magicatk = value;
+            if (magicatk <= 0)
+                magicatk = 1;
+        }
     }
     public int MAGICDEF
     {
         get { return magicdef; }
-        set { magicdef = value; }
+        set {
+            magicdef = value;
+            if (magicdef < 0)
+                magicdef = 0;
+        }
     }
     public float SPEED
     {
@@ -86,14 +102,14 @@ public class Parameters {
     public static Parameters operator +(Parameters a, Parameters b)
     {   
         Parameters result = new Parameters();
-        result.hp = a.HP + b.HP;
-        result.mp = a.MP + b.MP;
-        result.maxhp = a.MAXHP + b.MAXHP;
+        result.HP = a.HP + b.HP;
+        result.MP = a.MP + b.MP;
+        result.maxhp = a.MAXHP + b.MAXHP;//これいる？
         result.maxmp = a.MAXMP + b.MAXMP;
-        result.atk = a.ATK + b.ATK;
-        result.def = a.DEF + b.DEF;
-        result.magicatk = a.MAGICATK + b.MAGICATK;
-        result.magicdef = a.MAGICDEF + b.MAGICDEF;
+        result.ATK = a.ATK + b.ATK;
+        result.DEF = a.DEF + b.DEF;
+        result.MAGICATK = a.MAGICATK + b.MAGICATK;
+        result.MAGICDEF = a.MAGICDEF + b.MAGICDEF;
         result.speed = a.SPEED + b.speed;
         result.flyspeed = a.FLYSPEED + b.FLYSPEED;
         
@@ -104,14 +120,14 @@ public class Parameters {
     public static Parameters operator +(Parameters a, DisplayParameters b)
     {
         Parameters result = new Parameters();
-        result.hp = a.HP + b.HP;
-        result.mp = a.MP + b.MP;
+        result.HP = a.HP + b.HP;
+        result.MP = a.MP + b.MP;
         result.maxhp = a.MAXHP + b.MAXHP;
         result.maxmp = a.MAXMP + b.MAXMP;
-        result.atk = a.ATK + b.ATK;
-        result.def = a.DEF + b.DEF;
-        result.magicatk = a.MAGICATK + b.MAGICATK;
-        result.magicdef = a.MAGICDEF + b.MAGICDEF;
+        result.ATK = a.ATK + b.ATK;
+        result.DEF = a.DEF + b.DEF;
+        result.MAGICATK = a.MAGICATK + b.MAGICATK;
+        result.MAGICDEF = a.MAGICDEF + b.MAGICDEF;
         result.speed = a.SPEED + b.SPEED;
         result.flyspeed = a.FLYSPEED + b.FLYSPEED;
 
@@ -121,14 +137,14 @@ public class Parameters {
     public static Parameters operator *(Parameters a, Parameters b)
     {
         Parameters result = new Parameters();
-        result.hp = a.HP * b.HP;
-        result.mp = a.MP * b.MP;
+        result.HP = a.HP * b.HP;
+        result.MP = a.MP * b.MP;
         result.maxhp = a.MAXHP * b.MAXHP;
         result.maxmp = a.MAXMP * b.MAXMP;
-        result.atk = a.ATK * b.ATK;
-        result.def = a.DEF * b.DEF;
-        result.magicatk = a.MAGICATK * b.MAGICATK;
-        result.magicdef = a.MAGICDEF * b.MAGICDEF;
+        result.ATK = a.ATK * b.ATK;
+        result.DEF = a.DEF * b.DEF;
+        result.MAGICATK = a.MAGICATK * b.MAGICATK;
+        result.MAGICDEF = a.MAGICDEF * b.MAGICDEF;
         result.speed = a.SPEED * b.speed;
         result.flyspeed = a.FLYSPEED * b.FLYSPEED;
 
@@ -139,16 +155,14 @@ public class Parameters {
     public static Parameters operator +(Parameters a, Buff b)
     {
         Parameters re = new Parameters();
-        //re.paraSingle = a.paraSingle + b.paraSingle;
-        //re.paraMagnification = a.paraMagnification * b.paraMagnification;
-        re.hp = a.HP + b.HP;
-        re.mp = a.MP + b.MP;
+        re.HP = a.HP + b.HP;
+        re.MP = a.MP + b.MP;
         re.maxhp = a.MAXHP + b.MAXHP;
         re.maxmp = a.MAXMP + b.MAXMP;
-        re.atk = a.ATK + b.ATK;
-        re.def = a.DEF + b.DEF;
-        re.magicatk = a.MAGICATK + b.MAGICATK;
-        re.magicdef = a.MAGICDEF + b.MAGICDEF;
+        re.ATK = a.ATK + b.ATK;
+        re.DEF = a.DEF + b.DEF;
+        re.MAGICATK = a.MAGICATK + b.MAGICATK;
+        re.MAGICDEF = a.MAGICDEF + b.MAGICDEF;
         re.speed = a.SPEED + b.SPEED;
         re.flyspeed = a.FLYSPEED + b.FLYSPEED;
         return re;
@@ -157,14 +171,14 @@ public class Parameters {
     public static Parameters operator *(Parameters a, Buff b)
     {
         Parameters re = new Parameters();
-        re.hp = a.HP * b.MHP;
-        re.mp = a.MP * b.MMP;
+        re.HP = a.HP * b.MHP;
+        re.MP = a.MP * b.MMP;
         re.maxhp = a.MAXHP * b.MMAXHP;
         re.maxmp = a.MAXMP * b.MMAXMP;
-        re.atk = a.ATK * b.MATK;
-        re.def = a.DEF * b.MDEF;
-        re.magicatk = a.MAGICATK * b.MMAGICATK;
-        re.magicdef = a.MAGICDEF * b.MMAGICDEF;
+        re.ATK = a.ATK * b.MATK;
+        re.DEF = a.DEF * b.MDEF;
+        re.MAGICATK = a.MAGICATK * b.MMAGICATK;
+        re.MAGICDEF = a.MAGICDEF * b.MMAGICDEF;
         re.speed = a.SPEED * b.MSPEED;
         re.flyspeed = a.FLYSPEED * b.MFLYSPEED;
         return re;

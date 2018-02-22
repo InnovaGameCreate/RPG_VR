@@ -7,6 +7,8 @@ public class HumanEnemy : HumanBase
 {
     [SerializeField, TooltipAttribute("ドロップアイテム")]
     public GameObject[] dropitem;
+    [SerializeField, TooltipAttribute("取得経験値量")]
+    private int Experience;
     private const float breakForce = 150f;      //HP減少に必要な剣を振る速さ.
 
     protected bool deaded = false;          //死んだかどうか
@@ -34,6 +36,7 @@ public class HumanEnemy : HumanBase
         }
         else
         {
+            //Debug.Log(Status.Parameter.ATK);
             //tree.SetVariable("FreeSpeed", (int)(Status.Parameter.SPEED) );//intに丸めました
             //tree.SetVariableValue("ChaseSpeed", (int)(Status.Parameter.SPEED));
         }
@@ -64,9 +67,13 @@ public class HumanEnemy : HumanBase
             rand = 0;
 
         // プレハブからインスタンスを生成
-        GameObject obj = Instantiate(dropitem[rand], transform.position, dropitem[rand].transform.rotation);
-        obj.GetComponent<ItemBase>().droppeditem = true;
-        obj.GetComponent<Rigidbody>().GetComponent<Rigidbody>().angularVelocity = Vector3.up * Mathf.PI;
+        //GameObject obj = Instantiate(dropitem[rand], transform.position, dropitem[rand].transform.rotation);
+        //obj.GetComponent<ItemBase>().droppeditem = true;
+        //obj.GetComponent<Rigidbody>().GetComponent<Rigidbody>().angularVelocity = Vector3.up * Mathf.PI;
+
+        //経験値の為、プレイヤークラス取得
+        GameManager.Instance.PLAYER.EXP += Experience;
+
         //// 作成したオブジェクトを子として登録
         //obj.transform.parent = canvas.transform;
 

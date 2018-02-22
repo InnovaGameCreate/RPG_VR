@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Buff_DEF : Buff
+public class Buff_D_HP : Buff
 {
     //バフのサブクラス
-    //防御力の上昇のバフ用
+    //HP低下バフはこれ
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	

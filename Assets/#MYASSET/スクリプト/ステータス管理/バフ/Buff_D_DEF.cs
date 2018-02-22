@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Buff_D_DEF : MonoBehaviour {
+public class Buff_D_DEF : Buff
+{
+    //バフのサブクラス
+    //防御力の低下のデバフ用
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	

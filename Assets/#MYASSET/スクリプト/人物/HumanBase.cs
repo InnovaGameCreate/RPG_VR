@@ -24,6 +24,11 @@ public class HumanBase : MonoBehaviour
     List<Buff> sendBuff = new List<Buff>();//殴った時に送るバフ
     List<Buff> receiveBuff = new List<Buff>();//殴られた時に受け取ったバフの格納
     List<Buff> counterBuff = new List<Buff>();//殴られた時に相手に送るバフ
+
+    Buff[] AwakeBuff = new Buff[10];//実際に計算するバフ
+                                    //とりあえず10枠
+                                    //0:無印,1:ATK,2;DeATK,3:DEF,4:DeDEF,5:HP,6:DeHP
+                                    //間違えないように
     public List<Buff> SendBuff
     {
         get { return sendBuff; }
@@ -61,7 +66,7 @@ public class HumanBase : MonoBehaviour
         if (d.SendBuff != null)
         {
             receiveBuff.AddRange(d.SendBuff);//与バフを受け取る
-            //Debug.Log("sfgreyreh");
+            BuffUpdate(d.SendBuff);
         }
 
         Status.Parameter.HP = Status.Parameter.HP - (d.AttackPower);
@@ -80,21 +85,89 @@ public class HumanBase : MonoBehaviour
         bool Permanence = false;
         while (true)
         {
-            foreach (Buff b in receiveBuff)
+            //foreach (Buff b in receiveBuff)//旧版
+            //{
+            //    //ステータス変更処理
+            //    humanstatus.Parameter = humanstatus.Parameter + b;
+            //    humanstatus.Parameter = humanstatus.Parameter * b;
+
+            //    //有効時間を減らす
+            //    b.AvailableSeconds--;
+            //    Permanence = b.PARMANENT;
+            //}
+            //if (Permanence == false) {
+            //    //有効時間が切れた要素の削除
+            //    receiveBuff.RemoveAll(i => i.AvailableSeconds <= 0);
+            //}
+
+            for(int i = 0; i < AwakeBuff.Length; i++)//配列用
             {
+                if (AwakeBuff[i] == null)
+                    continue;
                 //ステータス変更処理
-                humanstatus.Parameter = humanstatus.Parameter + b;
-                humanstatus.Parameter = humanstatus.Parameter * b;
+                humanstatus.Parameter = humanstatus.Parameter + AwakeBuff[i];
+                humanstatus.Parameter = humanstatus.Parameter * AwakeBuff[i];
 
                 //有効時間を減らす
-                b.AvailableSeconds--;
-                Permanence = b.PARMANENT;
-            }
-            if (Permanence == false) {
-                //有効時間が切れた要素の削除
-                receiveBuff.RemoveAll(i => i.AvailableSeconds <= 0);
+                AwakeBuff[i].AvailableSeconds--;
+                //Permanence = AwakeBuff[i].PARMANENT;
+                if (AwakeBuff[i].PARMANENT == false && AwakeBuff[i].AvailableSeconds <= 0)//有効時間が切れた要素の削除
+                    AwakeBuff[i] = null;
             }
             yield return new WaitForSeconds(1.0f);
+        }
+    }
+
+    void BuffUpdate(List<Buff> BUFFLIST)
+    {
+        foreach (Buff b in BUFFLIST)
+        {
+            if (b.GetType() == typeof(Buff_ATK))
+            {
+                if (AwakeBuff[1] == null || AwakeBuff[1].ATK < b.ATK)
+                    AwakeBuff[1] = b;
+                else if(AwakeBuff[1].ATK == b.ATK && AwakeBuff[1].AvailableSeconds < b.AvailableSeconds)//時間の長い方
+                    AwakeBuff[1] = b;
+            }
+            else if (b.GetType() == typeof(Buff_D_ATK))
+            { 
+                if (AwakeBuff[2] == null || AwakeBuff[2].ATK > b.ATK)
+                    AwakeBuff[2] = b;
+                else if (AwakeBuff[2].ATK == b.ATK && AwakeBuff[2].AvailableSeconds < b.AvailableSeconds)//時間の長い方
+                    AwakeBuff[2] = b;
+            }
+            else if (b.GetType() == typeof(Buff_DEF))
+            {
+                if (AwakeBuff[3] == null || AwakeBuff[3].DEF < b.DEF)
+                    AwakeBuff[3] = b;
+                else if (AwakeBuff[3].DEF == b.DEF && AwakeBuff[3].AvailableSeconds < b.AvailableSeconds)//時間の長い方
+                    AwakeBuff[3] = b;
+            }
+            else if (b.GetType() == typeof(Buff_D_DEF))
+            {
+                if (AwakeBuff[4] == null || AwakeBuff[4].DEF > b.DEF)
+                    AwakeBuff[4] = b;
+                else if (AwakeBuff[4].DEF == b.DEF && AwakeBuff[4].AvailableSeconds < b.AvailableSeconds)//時間の長い方
+                    AwakeBuff[4] = b;
+            }
+            else if (b.GetType() == typeof(Buff_HP))
+            {
+                if (AwakeBuff[5] == null || AwakeBuff[5].HP < b.HP)
+                    AwakeBuff[5] = b;
+                else if (AwakeBuff[5].DEF == b.DEF && AwakeBuff[5].AvailableSeconds < b.AvailableSeconds)//時間の長い方
+                    AwakeBuff[5] = b;
+            }
+            else if (b.GetType() == typeof(Buff_D_HP))
+            {
+                if (AwakeBuff[6] == null || AwakeBuff[6].HP > b.HP)
+                    AwakeBuff[6] = b;
+                else if (AwakeBuff[6].DEF == b.DEF && AwakeBuff[6].AvailableSeconds < b.AvailableSeconds)//時間の長い方
+                    AwakeBuff[6] = b;
+            }
+            else
+            {
+                
+            }
         }
     }
 }

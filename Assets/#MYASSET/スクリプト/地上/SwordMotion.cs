@@ -7,8 +7,10 @@ public class SwordMotion : MonoBehaviour
     public GameObject Sword;
     private SearchHand Wherehand;
     public GameObject gripEve;
+    private bool gripped;
     private bool isEquip;
     public bool IsEquip { get { return isEquip; } }
+    public bool canEquip; //装備できる条件かどうか
     private int coolTime;
     private Weapon_Sword swordSystem;
     private Transform initSwordTrans;//剣の初期位置
@@ -31,11 +33,23 @@ public class SwordMotion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        // EquipSword();//剣の着脱
+
+        if (coolTime != 100)
+            coolTime++;//着脱出来るまでのクールタイム（要はゴリ押し）
+
+
+    }
+
+    //剣の着脱
+    public void EquipSword()
+    {
         //print(swordSystem.validDrop);
         //print(coolTime);
         //肩に右手をもっていったとき(毎回クールタイムを挟むのはゴリ押し）
         //↑のやつはナシでソードが触れている状態で握ったら
-        if (/*Wherehand._SearchShoulder*/ swordSystem.enabled == true && gripEve.GetComponent<WaistItem>().gripped && coolTime == 100)
+        if (/*Wherehand._SearchShoulder*/swordSystem.enabled == true && coolTime == 100 /*&& gripEve.GetComponent<WaistItem>().gripped*/)
         {
             //装備していない状態でグリップを押したとき
             if (!isEquip)
@@ -57,8 +71,9 @@ public class SwordMotion : MonoBehaviour
             }
         }
 
+
         //離すときだけは肩の範囲を採用少しだけクールタイムでゴリ押し
-        if (Wherehand._SearchShoulder && gripEve.GetComponent<WaistItem>().gripped && coolTime == 100)
+        if (Wherehand._SearchShoulder /*&& gripEve.GetComponent<WaistItem>().gripped*/ && coolTime == 100)
         {
             if (isEquip)
             {
@@ -89,9 +104,7 @@ public class SwordMotion : MonoBehaviour
             Sword.transform.rotation = initSwordTrans.rotation;
         }
 
-        if (coolTime != 100)
-            coolTime++;//着脱出来るまでのクールタイム（要はゴリ押し）
-
+       
 
 
         if (coolTime != 100 && !isEquip)
@@ -114,7 +127,6 @@ public class SwordMotion : MonoBehaviour
         }
         //勝手にfalseにされて吹っ飛ぶので
         Sword.GetComponent<BoxCollider>().isTrigger = true;
-
 
     }
 }
