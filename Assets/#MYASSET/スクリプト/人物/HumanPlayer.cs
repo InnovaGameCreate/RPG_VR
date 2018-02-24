@@ -32,6 +32,9 @@ public class HumanPlayer : HumanBase
     [SerializeField, TooltipAttribute("Lvテキスト")]
     private Text LvText;      //体力バー
 
+    private EquipmentItem[] PlayerEquipItem = new EquipmentItem[5];//適当に5個
+                                                                   //0:武器,1:防具,*****
+
     private int exp_num;//一時保存
 
     void calculateVar(Slider target, int now, float max)
