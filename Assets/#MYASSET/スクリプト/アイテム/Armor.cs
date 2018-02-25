@@ -24,22 +24,38 @@ public class Armor : EquipmentItem {
     //[SerializeField]
     //float flyspeed;//空中時の移動速度
 
-    
+    public bool TestBool = false;//仮置き1
+    public bool TestBool2 = false;//2
 
     //防具クラス
-    void Start () {
-        
+    protected override void Start () {
+        base.Start();
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	protected override void Update () {
+        base.Update();
+
+        if (TestBool)
+        {
+            ItemUse();
+            TestBool = false;
+            
+        }
+        if (TestBool2)
+        {
+            unEquip();
+            TestBool2 = false;
+        }
 	}
     
     public override bool ItemUse()
     {
         GameManager.Instance.PLAYER.PlayerEquipItem[1] = this;//クラス登録
-        GameManager.Instance.PLAYER.EquipBuff[1] = EquipBuff;//バフ登録
+        //GameManager.Instance.PLAYER.EquipBuff[1] = EquipBuff;//バフ登録
+        GameManager.Instance.PLAYER.Status.Parameter = GameManager.Instance.PLAYER.Status.Parameter + EquipBuff;
+        if(OtherBuff != null)
+            GameManager.Instance.PLAYER.AwakeBuff[(int)Buff.BuffType.Equip_Fix] += OtherBuff;
         return true;
     }
 
@@ -47,7 +63,9 @@ public class Armor : EquipmentItem {
     {
         //永続バフリストから探索して外す
         GameManager.Instance.PLAYER.PlayerEquipItem[1] = null;
-        GameManager.Instance.PLAYER.EquipBuff[1] = null;
+        GameManager.Instance.PLAYER.Status.Parameter = GameManager.Instance.PLAYER.Status.Parameter - EquipBuff;
+        if (OtherBuff != null)
+            GameManager.Instance.PLAYER.AwakeBuff[(int)Buff.BuffType.Equip_Fix] -= OtherBuff;
         return true;
     }
 }

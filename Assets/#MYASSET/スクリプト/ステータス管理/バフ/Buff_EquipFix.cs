@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Buff_EquipFix : MonoBehaviour {
+public class Buff_EquipFix : Buff {
 
     //バフのサブクラス
     //装備品にリジェネ,スリップ等がついてるときはこっち

@@ -34,7 +34,8 @@ public class HumanPlayer : HumanBase
 
     public EquipmentItem[] PlayerEquipItem = new EquipmentItem[5];//適当に5個
                                                                    //0:武器,1:防具,*****
-    public Buff[] EquipBuff = new Buff[5];//装備品のバフ格納 上と同じ数にすること
+    //public Buff[] EquipBuff = new Buff[5];//装備品のバフ格納 上と同じ数にすること
+
 
     private int exp_num;//一時保存
 
@@ -60,6 +61,7 @@ public class HumanPlayer : HumanBase
 
     private void Update()
     {
+        Debug.Log("me" + Status.Parameter.DEF);
         calculateVar(hpSlider, Status.Parameter.HP, (float)Status.Parameter.MAXHP);
         calculateVar(mpSlider, Status.Parameter.MP, (float)Status.Parameter.MAXMP);
     }
@@ -76,35 +78,35 @@ public class HumanPlayer : HumanBase
         return 500 * (int)Mathf.Pow(1.5f , Lv);
     }
 
-    protected override IEnumerator ApplyReceiveBuff()
-    {
-        while (true)
-        {
-            for (int i = 0; i < AwakeBuff.Length; i++)//配列用
-            {
-                if (AwakeBuff[i] == null)
-                    continue;
-                //ステータス変更処理
-                humanstatus.Parameter = humanstatus.Parameter + AwakeBuff[i];
-                humanstatus.Parameter = humanstatus.Parameter * AwakeBuff[i];
+    //protected override IEnumerator ApplyReceiveBuff()
+    //{
+    //    while (true)
+    //    {
+    //        for (int i = 0; i < AwakeBuff.Length; i++)//配列用
+    //        {
+    //            if (AwakeBuff[i] == null)
+    //                continue;
+    //            //ステータス変更処理
+    //            humanstatus.Parameter = humanstatus.Parameter + AwakeBuff[i];
+    //            humanstatus.Parameter = humanstatus.Parameter * AwakeBuff[i];
 
-                //有効時間を減らす
-                AwakeBuff[i].AvailableSeconds--;
-                //Permanence = AwakeBuff[i].PARMANENT;
-                if (AwakeBuff[i].PARMANENT == false && AwakeBuff[i].AvailableSeconds <= 0)//有効時間が切れた要素の削除
-                    AwakeBuff[i] = null;
-            }
+    //            //有効時間を減らす
+    //            AwakeBuff[i].AvailableSeconds--;
+    //            //Permanence = AwakeBuff[i].PARMANENT;
+    //            if (AwakeBuff[i].PARMANENT == false && AwakeBuff[i].AvailableSeconds <= 0)//有効時間が切れた要素の削除
+    //                AwakeBuff[i] = null;
+    //        }
 
-            //装備バフ用
-            for (int i = 0; i < EquipBuff.Length; i++)
-            {
-                if (EquipBuff[i] == null)
-                    continue;
-                //ステータス変更処理
-                humanstatus.Parameter = humanstatus.Parameter + EquipBuff[i];
-                humanstatus.Parameter = humanstatus.Parameter * EquipBuff[i];
-            }
-            yield return new WaitForSeconds(1.0f);
-        }
-    }
+    //        ////装備バフ用
+    //        //for (int i = 0; i < EquipBuff.Length; i++)
+    //        //{
+    //        //    if (EquipBuff[i] == null)
+    //        //        continue;
+    //        //    //ステータス変更処理
+    //        //    humanstatus.Parameter = humanstatus.Parameter + EquipBuff[i];
+    //        //    humanstatus.Parameter = humanstatus.Parameter * EquipBuff[i];
+    //        //}
+    //        yield return new WaitForSeconds(1.0f);
+    //    }
+    //}
 }

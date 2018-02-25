@@ -2,17 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Buff))]
 public class EquipmentItem : ItemBase {
     //[SerializeField, TooltipAttribute("パラメータ上昇量")]
     //Parameters up;
 
-    protected Buff EquipBuff = new Buff();
+    [SerializeField]
+    protected Buff EquipBuff;
+    [SerializeField]
+    protected Buff OtherBuff;
 
     protected override void Start()
     {
         base.Start();
         item_type = ItemType.Equipment;
-        EquipBuff = GetComponent<Buff>();//オブジェクトについてるバフを取得
+        //EquipBuff = gameObject.GetComponent<Buff>();//オブジェクトについてるバフを取得
     }
 
     //装備を装着した

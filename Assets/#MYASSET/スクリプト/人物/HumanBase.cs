@@ -22,13 +22,13 @@ public class HumanBase : MonoBehaviour
 
     //受バフリスト・与バフリスト　格納用　宣言
     protected List<Buff> sendBuff = new List<Buff>();//殴った時に送るバフ
-    protected List<Buff> receiveBuff = new List<Buff>();//殴られた時に受け取ったバフの格納
+    //protected List<Buff> receiveBuff = new List<Buff>();//殴られた時に受け取ったバフの格納
     protected List<Buff> counterBuff = new List<Buff>();//殴られた時に相手に送るバフ
 
-    protected Buff[] AwakeBuff = new Buff[10];//実際に計算するバフ
+    public Buff[] AwakeBuff = new Buff[10];//実際に計算するバフ
                                     //とりあえず10枠
                                     //Non
-                                    //Equip_Fix
+                                    //Equip_Fix     Equipは直接操作すること
                                     //HP
                                     //DeHP
                                     //ATK
@@ -41,11 +41,11 @@ public class HumanBase : MonoBehaviour
         get { return sendBuff; }
         set { sendBuff = value; }
     }
-    public List<Buff> ReceiveBuff
-    {
-        get { return receiveBuff; }
-        set { receiveBuff = value; }
-    }
+    //public List<Buff> ReceiveBuff
+    //{
+    //    get { return receiveBuff; }
+    //    set { receiveBuff = value; }
+    //}
     public List<Buff> CounterBuff
     {
         get { return counterBuff; }
@@ -72,7 +72,7 @@ public class HumanBase : MonoBehaviour
     {
         if (d.SendBuff != null)
         {
-            receiveBuff.AddRange(d.SendBuff);//与バフを受け取る
+            //receiveBuff.AddRange(d.SendBuff);//与バフを受け取る
             BuffUpdate(d.SendBuff);
         }
 
