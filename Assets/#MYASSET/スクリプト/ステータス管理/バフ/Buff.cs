@@ -6,6 +6,22 @@ public class Buff : MonoBehaviour
 {
     //バフクラススーパークラス
     //テストや暫定使用の他には使わないように
+
+    public enum BuffType //管理しやすいように実装
+    {
+        Non,
+        Equip_Fix,
+        //Equip_Flow,
+        HP,
+        DeHP,
+        ATK,
+        DeATK,
+        DEF,
+        DeDEF
+    }
+
+    
+
     [SerializeField]
     private GameObject Particle;
     [SerializeField]
