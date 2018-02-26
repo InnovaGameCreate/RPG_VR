@@ -4,19 +4,14 @@ using UnityEngine;
 
 public class DamageCalculate
 {
-    HumanBase parent;   //HumanBaseインスタンス　    
+    //HumanBase parent;   //HumanBaseインスタンス　    
     private bool is_magic;//trueなら魔法攻撃
     int _attackPower;     //実際の与ダメ
     List<Buff> _sendBuff = new List<Buff>();//与バフリスト
     List<Buff> _receiveBuff = new List<Buff>(); //受バフリスト
     Status _status;//ステータス
 
-    //private void Start()
-    //{
-    //    is_magic = GetComponent<Weapon>() != null ? false : true;
-    //    parent = transform.root.GetComponent<HumanBase>();
-    //    copyFromHumanBase();
-    //}
+
     //攻撃力を取得
     public int AttackPower
     {
@@ -29,24 +24,6 @@ public class DamageCalculate
         get { return _sendBuff; }
     }
 
-    //　[コピー]  剣：当たった時に         魔法：発射したときに
-    //public void copyFromHumanBase()
-    //{
-    //    //Buff receive_send = GetComponent<Buff>();        //0番目が受バフ
-    //    Buff receive_send = new Buff();
-    //    _status = parent.Status;
-    //    _sendBuff = parent.SendBuff;
-    //    _receiveBuff = parent.ReceiveBuff;
-
-    //    _receiveBuff.Add(receive_send);
-    //    // _sendBuff.Add(receive_send[1]);
-
-    //    //TODO [問題] parent.Status以降が参照できない　null
-
-
-    //    CalculateAttackPower();
-
-    //}
     //コンストラクタ
     public DamageCalculate(Status status,int BasisPower, bool is_MAGIC,List<Buff> sendBuff, List<Buff> receiveBuff)
     {
@@ -68,13 +45,6 @@ public class DamageCalculate
     }
 
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    //剣のときコピー
-    //    if (!is_magic)
-    //        copyFromHumanBase();
-    //    collision.gameObject.GetComponent<HumanBase>().ReceiveAttack(this);
-    //}
 
     //実ダメージ計算
     private void CalculateAttackPower(int BasisPower)

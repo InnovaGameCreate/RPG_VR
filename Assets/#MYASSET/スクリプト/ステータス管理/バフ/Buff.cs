@@ -6,6 +6,22 @@ public class Buff : MonoBehaviour
 {
     //バフクラススーパークラス
     //テストや暫定使用の他には使わないように
+
+    public enum BuffType //管理しやすいように実装
+    {
+        Non,
+        Equip_Fix,
+        //Equip_Flow,
+        HP,
+        DeHP,
+        ATK,
+        DeATK,
+        DEF,
+        DeDEF
+    }
+
+    
+
     [SerializeField]
     private GameObject Particle;
     [SerializeField]
@@ -192,7 +208,25 @@ public class Buff : MonoBehaviour
         return re;
     }
 
-    
+    public static Buff operator -(Buff a, Buff b)
+    {
+        Buff re = new Buff();
+        if (!b)
+            Debug.Log("b");
+        re.hp = a.HP - b.HP;
+        re.mp = a.MP - b.MP;
+        re.maxhp = a.MAXHP - b.MAXHP;
+        re.maxmp = a.MAXMP - b.MAXMP;
+        re.atk = a.ATK - b.ATK;
+        re.def = a.DEF - b.DEF;
+        re.magicatk = a.MAGICATK - b.MAGICATK;
+        re.magicdef = a.MAGICDEF - b.MAGICDEF;
+        re.speed = a.SPEED - b.SPEED;
+        re.flyspeed = a.FLYSPEED - b.FLYSPEED;
+        return re;
+    }
+
+
 
 
 }

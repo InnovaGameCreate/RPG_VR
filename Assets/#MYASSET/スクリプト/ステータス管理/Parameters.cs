@@ -168,6 +168,22 @@ public class Parameters {
         return re;
     }
 
+    public static Parameters operator -(Parameters a, Buff b)
+    {
+        Parameters re = new Parameters();
+        re.HP = a.HP - b.HP;
+        re.MP = a.MP - b.MP;
+        re.maxhp = a.MAXHP - b.MAXHP;
+        re.maxmp = a.MAXMP - b.MAXMP;
+        re.ATK = a.ATK - b.ATK;
+        re.DEF = a.DEF - b.DEF;
+        re.MAGICATK = a.MAGICATK - b.MAGICATK;
+        re.MAGICDEF = a.MAGICDEF - b.MAGICDEF;
+        re.speed = a.SPEED - b.SPEED;
+        re.flyspeed = a.FLYSPEED - b.FLYSPEED;
+        return re;
+    }
+
     public static Parameters operator *(Parameters a, Buff b)
     {
         Parameters re = new Parameters();

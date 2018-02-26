@@ -19,4 +19,10 @@ public class ChangeScene : MonoBehaviour {
             }
 
     }
+
+     public void SceneChangeVillage()
+    {
+        SceneManager.LoadScene("村");
+    }
+
 }

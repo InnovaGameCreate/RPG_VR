@@ -7,7 +7,7 @@ public class HumanBase : MonoBehaviour
 {
     //人物スーパークラス
     bool is_fighter;    //戦闘要員かどうか
-    Status humanstatus;         //ステータス
+    protected Status humanstatus;         //ステータス
                                 //一時的ステータス向上時に対応させるため base....の変数を用意
 
     public Status Status
@@ -21,24 +21,31 @@ public class HumanBase : MonoBehaviour
     protected Animator animator;            //アニメーターインスタンス
 
     //受バフリスト・与バフリスト　格納用　宣言
-    List<Buff> sendBuff = new List<Buff>();//殴った時に送るバフ
-    List<Buff> receiveBuff = new List<Buff>();//殴られた時に受け取ったバフの格納
-    List<Buff> counterBuff = new List<Buff>();//殴られた時に相手に送るバフ
+    protected List<Buff> sendBuff = new List<Buff>();//殴った時に送るバフ
+    //protected List<Buff> receiveBuff = new List<Buff>();//殴られた時に受け取ったバフの格納
+    protected List<Buff> counterBuff = new List<Buff>();//殴られた時に相手に送るバフ
 
-    Buff[] AwakeBuff = new Buff[10];//実際に計算するバフ
+    public Buff[] AwakeBuff = new Buff[10];//実際に計算するバフ
                                     //とりあえず10枠
-                                    //0:無印,1:ATK,2;DeATK,3:DEF,4:DeDEF,5:HP,6:DeHP
+                                    //Non
+                                    //Equip_Fix     Equipは直接操作すること
+                                    //HP
+                                    //DeHP
+                                    //ATK
+                                    //DeATK
+                                    //DEF
+                                    //DeDEF
                                     //間違えないように
     public List<Buff> SendBuff
     {
         get { return sendBuff; }
         set { sendBuff = value; }
     }
-    public List<Buff> ReceiveBuff
-    {
-        get { return receiveBuff; }
-        set { receiveBuff = value; }
-    }
+    //public List<Buff> ReceiveBuff
+    //{
+    //    get { return receiveBuff; }
+    //    set { receiveBuff = value; }
+    //}
     public List<Buff> CounterBuff
     {
         get { return counterBuff; }
@@ -65,7 +72,7 @@ public class HumanBase : MonoBehaviour
     {
         if (d.SendBuff != null)
         {
-            receiveBuff.AddRange(d.SendBuff);//与バフを受け取る
+            //receiveBuff.AddRange(d.SendBuff);//与バフを受け取る
             BuffUpdate(d.SendBuff);
         }
 
@@ -80,9 +87,9 @@ public class HumanBase : MonoBehaviour
     }
 
     //受バフの処理
-    IEnumerator ApplyReceiveBuff()
+    protected virtual IEnumerator ApplyReceiveBuff()
     {
-        bool Permanence = false;
+        //bool Permanence = false;
         while (true)
         {
             //foreach (Buff b in receiveBuff)//旧版
@@ -120,50 +127,58 @@ public class HumanBase : MonoBehaviour
 
     void BuffUpdate(List<Buff> BUFFLIST)
     {
+        //少し複雑なのでバグ出るかも
         foreach (Buff b in BUFFLIST)
         {
             if (b.GetType() == typeof(Buff_ATK))
             {
-                if (AwakeBuff[1] == null || AwakeBuff[1].ATK < b.ATK)
-                    AwakeBuff[1] = b;
-                else if(AwakeBuff[1].ATK == b.ATK && AwakeBuff[1].AvailableSeconds < b.AvailableSeconds)//時間の長い方
-                    AwakeBuff[1] = b;
+                if (AwakeBuff[(int)Buff.BuffType.ATK] == null || AwakeBuff[(int)Buff.BuffType.ATK].ATK < b.ATK)
+                    AwakeBuff[(int)Buff.BuffType.ATK] = b;
+                else if(AwakeBuff[(int)Buff.BuffType.ATK].ATK == b.ATK && AwakeBuff[(int)Buff.BuffType.ATK].AvailableSeconds < b.AvailableSeconds)//時間の長い方
+                    AwakeBuff[(int)Buff.BuffType.ATK] = b;
             }
             else if (b.GetType() == typeof(Buff_D_ATK))
             { 
-                if (AwakeBuff[2] == null || AwakeBuff[2].ATK > b.ATK)
-                    AwakeBuff[2] = b;
-                else if (AwakeBuff[2].ATK == b.ATK && AwakeBuff[2].AvailableSeconds < b.AvailableSeconds)//時間の長い方
-                    AwakeBuff[2] = b;
+                if (AwakeBuff[(int)Buff.BuffType.DeATK] == null || AwakeBuff[(int)Buff.BuffType.DeATK].ATK > b.ATK)
+                    AwakeBuff[(int)Buff.BuffType.DeATK] = b;
+                else if (AwakeBuff[(int)Buff.BuffType.DeATK].ATK == b.ATK && AwakeBuff[(int)Buff.BuffType.DeATK].AvailableSeconds < b.AvailableSeconds)//時間の長い方
+                    AwakeBuff[(int)Buff.BuffType.DeATK] = b;
             }
             else if (b.GetType() == typeof(Buff_DEF))
             {
-                if (AwakeBuff[3] == null || AwakeBuff[3].DEF < b.DEF)
-                    AwakeBuff[3] = b;
-                else if (AwakeBuff[3].DEF == b.DEF && AwakeBuff[3].AvailableSeconds < b.AvailableSeconds)//時間の長い方
-                    AwakeBuff[3] = b;
+                if (AwakeBuff[(int)Buff.BuffType.DEF] == null || AwakeBuff[(int)Buff.BuffType.DEF].DEF < b.DEF)
+                    AwakeBuff[(int)Buff.BuffType.DEF] = b;
+                else if (AwakeBuff[(int)Buff.BuffType.DEF].DEF == b.DEF && AwakeBuff[(int)Buff.BuffType.DEF].AvailableSeconds < b.AvailableSeconds)//時間の長い方
+                    AwakeBuff[(int)Buff.BuffType.DEF] = b;
             }
             else if (b.GetType() == typeof(Buff_D_DEF))
             {
-                if (AwakeBuff[4] == null || AwakeBuff[4].DEF > b.DEF)
-                    AwakeBuff[4] = b;
-                else if (AwakeBuff[4].DEF == b.DEF && AwakeBuff[4].AvailableSeconds < b.AvailableSeconds)//時間の長い方
-                    AwakeBuff[4] = b;
+                if (AwakeBuff[(int)Buff.BuffType.DeDEF] == null || AwakeBuff[(int)Buff.BuffType.DeDEF].DEF > b.DEF)
+                    AwakeBuff[(int)Buff.BuffType.DeDEF] = b;
+                else if (AwakeBuff[(int)Buff.BuffType.DeDEF].DEF == b.DEF && AwakeBuff[(int)Buff.BuffType.DeDEF].AvailableSeconds < b.AvailableSeconds)//時間の長い方
+                    AwakeBuff[(int)Buff.BuffType.DeDEF] = b;
             }
             else if (b.GetType() == typeof(Buff_HP))
             {
-                if (AwakeBuff[5] == null || AwakeBuff[5].HP < b.HP)
-                    AwakeBuff[5] = b;
-                else if (AwakeBuff[5].DEF == b.DEF && AwakeBuff[5].AvailableSeconds < b.AvailableSeconds)//時間の長い方
-                    AwakeBuff[5] = b;
+                if (AwakeBuff[(int)Buff.BuffType.HP] == null || AwakeBuff[(int)Buff.BuffType.HP].HP < b.HP)
+                    AwakeBuff[(int)Buff.BuffType.HP] = b;
+                else if (AwakeBuff[(int)Buff.BuffType.HP].DEF == b.DEF && AwakeBuff[(int)Buff.BuffType.HP].AvailableSeconds < b.AvailableSeconds)//時間の長い方
+                    AwakeBuff[(int)Buff.BuffType.HP] = b;
             }
             else if (b.GetType() == typeof(Buff_D_HP))
             {
-                if (AwakeBuff[6] == null || AwakeBuff[6].HP > b.HP)
-                    AwakeBuff[6] = b;
-                else if (AwakeBuff[6].DEF == b.DEF && AwakeBuff[6].AvailableSeconds < b.AvailableSeconds)//時間の長い方
-                    AwakeBuff[6] = b;
+                if (AwakeBuff[(int)Buff.BuffType.DeHP] == null || AwakeBuff[(int)Buff.BuffType.DeHP].HP > b.HP)
+                    AwakeBuff[(int)Buff.BuffType.DeHP] = b;
+                else if (AwakeBuff[(int)Buff.BuffType.DeHP].DEF == b.DEF && AwakeBuff[(int)Buff.BuffType.DeHP].AvailableSeconds < b.AvailableSeconds)//時間の長い方
+                    AwakeBuff[(int)Buff.BuffType.DeHP] = b;
             }
+            //else if (b.GetType() == typeof(Buff_EquipFix))
+            //{
+            //    if(AwakeBuff[(int)Buff.BuffType.Equip_Fix] == null)
+            //        AwakeBuff[(int)Buff.BuffType.Equip_Fix] = b;
+            //    else
+            //        AwakeBuff[(int)Buff.BuffType.Equip_Fix] += b;
+            //}
             else
             {
                 

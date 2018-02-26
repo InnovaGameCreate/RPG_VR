@@ -2922,7 +2922,6 @@ GameObject:
   - component: {fileID: 114824196897070708}
   - component: {fileID: 54878737516116886}
   - component: {fileID: 114965872141285574}
-  - component: {fileID: 114715633551496202}
   - component: {fileID: 65956754528847836}
   - component: {fileID: 114476512644520040}
   m_Layer: 0
@@ -17038,27 +17037,6 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114715633551496202
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1452517839794648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c0338a8e3289104fa9e3fbf33db1d69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 100
-  mp: 50
-  maxhp: 100
-  maxmp: 50
-  atk: 10
-  def: 5
-  magicatk: 5
-  magicdef: 5
-  speed: 10
-  flyspeed: 10
 --- !u!114 &114720138634310020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17423,11 +17401,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fc9704fd3526cf42a7984b4cdcd0490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AwakeBuff:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   LV: 1
   Exp: 0
   hpSlider: {fileID: 114119561911359464}
   mpSlider: {fileID: 114390470923022700}
   LvText: {fileID: 114159295590276678}
+  PlayerEquipItem:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114827541579609076
 MonoBehaviour:
   m_ObjectHideFlags: 1
