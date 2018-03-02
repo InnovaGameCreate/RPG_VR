@@ -905,6 +905,7 @@ GameObject:
   - component: {fileID: 114493760281108756}
   - component: {fileID: 114756606493128424}
   - component: {fileID: 195724979275882030}
+  - component: {fileID: 114174424428068218}
   m_Layer: 15
   m_Name: FAT_OGRE_PBR
   m_TagString: enemy
@@ -2083,6 +2084,27 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114174424428068218
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1889343582669180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c0338a8e3289104fa9e3fbf33db1d69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 3000
+  mp: 0
+  maxhp: 3000
+  maxmp: 0
+  atk: 60
+  def: 30
+  magicatk: 0
+  magicdef: 10
+  speed: 5
+  flyspeed: 0
 --- !u!114 &114493760281108756
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2094,7 +2116,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7c423947afaf134ebabfc9b8de41a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AwakeBuff:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   dropitem: []
+  Experience: 0
 --- !u!114 &114585932987609696
 MonoBehaviour:
   m_ObjectHideFlags: 1
