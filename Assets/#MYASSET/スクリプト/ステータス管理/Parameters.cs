@@ -199,4 +199,20 @@ public class Parameters {
         re.flyspeed = a.FLYSPEED * b.MFLYSPEED;
         return re;
     }
+
+    public static Parameters operator /(Parameters a, Buff b)
+    {
+        Parameters re = new Parameters();
+        re.HP = a.HP / b.MHP;
+        re.MP = a.MP / b.MMP;
+        re.maxhp = a.MAXHP / b.MMAXHP;
+        re.maxmp = a.MAXMP / b.MMAXMP;
+        re.ATK = a.ATK / b.MATK;
+        re.DEF = a.DEF / b.MDEF;
+        re.MAGICATK = a.MAGICATK / b.MMAGICATK;
+        re.MAGICDEF = a.MAGICDEF / b.MMAGICDEF;
+        re.speed = a.SPEED / b.MSPEED;
+        re.flyspeed = a.FLYSPEED / b.MFLYSPEED;
+        return re;
+    }
 }   

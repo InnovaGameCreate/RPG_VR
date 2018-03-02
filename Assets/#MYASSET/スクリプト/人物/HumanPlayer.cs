@@ -8,19 +8,28 @@ public class HumanPlayer : HumanBase
     [SerializeField, TooltipAttribute("現在のLV")]
     private int LV;
     [SerializeField, TooltipAttribute("現在の経験値")]
-    private int Exp;
+    private int Exp;//今の経験値量
+    private int num = 0;
     public int EXP
     {
         get { return Exp; }
         set
         {
             Exp = value;
-            if (Exp >= ExpSystem(LV) )//レベル上昇処理
-            {
-                exp_num = Exp - ExpSystem(LV);
-                LV++;
-                LvText.text = "Lv." + LV;
-                Exp = (exp_num / 2);
+            while (true) {
+                if (Exp >= ExpSystem(LV))//レベル上昇処理
+                {
+                    num = Exp - ExpSystem(LV);
+                    LV++;
+                    LvText.text = "Lv." + LV;
+                    Exp = num;
+                }
+                else
+                {
+                    Exp = num;
+                    break;
+                }
+                    
             }
         }
     }
@@ -37,7 +46,7 @@ public class HumanPlayer : HumanBase
     //public Buff[] EquipBuff = new Buff[5];//装備品のバフ格納 上と同じ数にすること
 
 
-    private int exp_num;//一時保存
+
 
     void calculateVar(Slider target, int now, float max)
     {

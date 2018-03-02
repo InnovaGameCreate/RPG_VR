@@ -15,6 +15,16 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
         [Tooltip("The GameObject that the agent is pursuing")]
         public SharedGameObject target;
 
+        //à»â∫êVãKí«â¡
+        private Animator animator;
+        private GameObject prevGameObject;
+
+        [Tooltip("The GameObject that the task operates on. If null the task GameObject is used.")]
+        public SharedGameObject targetGameObject;
+        [Tooltip("The name of the parameter")]
+        public SharedString stayparamaterName;
+        public SharedString moveparamaterName;
+
         // The position of the target at the last frame
         private Vector3 targetPosition;
 
@@ -24,6 +34,14 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
 
             targetPosition = target.Value.transform.position;
             SetDestination(Target());
+
+            //à»â∫êVãKí«â¡
+            var currentGameObject = GetDefaultGameObject(targetGameObject.Value);
+            if (currentGameObject != prevGameObject)
+            {
+                animator = currentGameObject.GetComponent<Animator>();
+                prevGameObject = currentGameObject;
+            }
         }
 
         // Pursue the destination. Return success once the agent has reached the destination.
@@ -31,8 +49,10 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
         public override TaskStatus OnUpdate()
         {
             if (HasArrived()) {
+                animator.SetTrigger(stayparamaterName.Value);
                 return TaskStatus.Success;
-            }
+            }else
+                animator.SetTrigger(moveparamaterName.Value);
 
             // Target will return the predicated position
             SetDestination(Target());
