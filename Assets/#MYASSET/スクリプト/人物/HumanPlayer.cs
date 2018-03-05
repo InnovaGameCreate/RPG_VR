@@ -61,7 +61,7 @@ public class HumanPlayer : HumanBase
 
     private void Update()
     {
-        Debug.Log("me" + Status.Parameter.DEF);
+        //Debug.Log("me" + Status.Parameter.DEF);
         calculateVar(hpSlider, Status.Parameter.HP, (float)Status.Parameter.MAXHP);
         calculateVar(mpSlider, Status.Parameter.MP, (float)Status.Parameter.MAXMP);
     }

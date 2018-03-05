@@ -32,6 +32,8 @@ public class HumanEnemy : HumanBase
             animator.SetTrigger("Dead");
             Destroy(GetComponent<BehaviorTree>());
             StartCoroutine("Remove");
+            //敵の場合親の名前を引数に渡す
+            GameManager.Instance.QMANAGER.CheckQuestAchievement(transform.parent.name);
             return;
         }
         else

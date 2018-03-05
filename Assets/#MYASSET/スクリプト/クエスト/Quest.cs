@@ -3,15 +3,43 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
+[System.Serializable]
 public class Quest : MonoBehaviour
 {
     [SerializeField, TooltipAttribute("クエストタイプ")]
     public QuestType questType;
 
     [SerializeField, TooltipAttribute("達成規定数：討伐数 or 採集数")]
-    public int ClearNum = 10;
+    private int ClearNum = 10;          
 
-    public int achieveCount;      //達成数
+    private int achieveCount;      //達成数
+
+    public ClearItemData[] reward;
+
+    [System.Serializable]
+    public class ClearItemData
+    {
+        public GameObject Item;
+        public int ItemNum;
+    }
+
+
+    public int CLEARNUM
+    {
+        get { return ClearNum; }
+        set { ClearNum = value; }
+    }
+    public int ACHIEVECOUNT
+    {
+
+        get { return achieveCount; }
+    }
+
+    //達成率
+    public int ACHIEVEPERCENT
+    {
+        get { return (int)((float)ACHIEVECOUNT / (float)CLEARNUM * 100); }
+    }
 
     private bool isClear;       //クリアしたかどうか
 
@@ -22,6 +50,15 @@ public class Quest : MonoBehaviour
     [Multiline]
     public string questText;//説明文
 
+
+
+   public struct ItemSet
+    {
+        GameObject item;
+        int num;
+    }
+    [SerializeField, TooltipAttribute("報酬アイテム")]
+    public int[] ClearItem;
     //クエストタイプ
     public enum QuestType
     {
@@ -44,19 +81,17 @@ public class Quest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
-        if (Input.GetKeyDown(KeyCode.K))
-            checkTarget("ゴブリン");
+        if (questType == QuestType.FIGHT && ISCLEAR)
+            Debug.Log(target.name+" 討伐クエストCLEAR!!");
     }
 
     //ターゲットなら達成数を増やす  
     //TODO 敵を倒したとき　　アイテムを入手したときにこの関数を呼ぶ
-    void checkTarget(string tName)
+    public void checkTarget(string tName)
     {
         // 手に入れたアイテム　or 倒した敵　がtargetと一致してるかどうか
         var myRegExp = new Regex(target.name);
-        if (myRegExp.IsMatch(tName))
+        if (myRegExp.IsMatch(tName) && !ISCLEAR)
             achieveCount++;
         if (achieveCount >= ClearNum)
             isClear = true;
