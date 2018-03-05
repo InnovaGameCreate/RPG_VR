@@ -112,14 +112,23 @@ public class HumanBase : MonoBehaviour
                 if (AwakeBuff[i] == null)
                     continue;
                 //ステータス変更処理
-                humanstatus.Parameter = humanstatus.Parameter + AwakeBuff[i];
-                humanstatus.Parameter = humanstatus.Parameter * AwakeBuff[i];
+                //humanstatus.Parameter = humanstatus.Parameter + AwakeBuff[i];
+                //humanstatus.Parameter = humanstatus.Parameter * AwakeBuff[i];
+
+                //毎回確認するのはバフの時間とHP,MPのみに
+                humanstatus.Parameter.HP = humanstatus.Parameter.HP + AwakeBuff[i].HP;
+                humanstatus.Parameter.MP = humanstatus.Parameter.MP + AwakeBuff[i].MP;
+
 
                 //有効時間を減らす
                 AwakeBuff[i].AvailableSeconds--;
                 //Permanence = AwakeBuff[i].PARMANENT;
                 if (AwakeBuff[i].PARMANENT == false && AwakeBuff[i].AvailableSeconds <= 0)//有効時間が切れた要素の削除
+                {
+                    humanstatus.Parameter = humanstatus.Parameter - AwakeBuff[i];
+                    humanstatus.Parameter = humanstatus.Parameter / AwakeBuff[i];
                     AwakeBuff[i] = null;
+                }
             }
             yield return new WaitForSeconds(1.0f);
         }
@@ -128,49 +137,106 @@ public class HumanBase : MonoBehaviour
     void BuffUpdate(List<Buff> BUFFLIST)
     {
         //少し複雑なのでバグ出るかも
+        //Debug.Log("aaaaa");
         foreach (Buff b in BUFFLIST)
         {
             if (b.GetType() == typeof(Buff_ATK))
             {
                 if (AwakeBuff[(int)Buff.BuffType.ATK] == null || AwakeBuff[(int)Buff.BuffType.ATK].ATK < b.ATK)
+                {
                     AwakeBuff[(int)Buff.BuffType.ATK] = b;
-                else if(AwakeBuff[(int)Buff.BuffType.ATK].ATK == b.ATK && AwakeBuff[(int)Buff.BuffType.ATK].AvailableSeconds < b.AvailableSeconds)//時間の長い方
+                    humanstatus.Parameter = humanstatus.Parameter + AwakeBuff[(int)Buff.BuffType.ATK];
+                    humanstatus.Parameter = humanstatus.Parameter * AwakeBuff[(int)Buff.BuffType.ATK];
+                }
+
+                else if (AwakeBuff[(int)Buff.BuffType.ATK].ATK == b.ATK && AwakeBuff[(int)Buff.BuffType.ATK].AvailableSeconds < b.AvailableSeconds)//時間の長い方
+                {
                     AwakeBuff[(int)Buff.BuffType.ATK] = b;
+                    humanstatus.Parameter = humanstatus.Parameter + AwakeBuff[(int)Buff.BuffType.ATK];
+                    humanstatus.Parameter = humanstatus.Parameter * AwakeBuff[(int)Buff.BuffType.ATK];
+                }
             }
             else if (b.GetType() == typeof(Buff_D_ATK))
-            { 
+            {
+                //Debug.Log("bbb");
                 if (AwakeBuff[(int)Buff.BuffType.DeATK] == null || AwakeBuff[(int)Buff.BuffType.DeATK].ATK > b.ATK)
+                {
                     AwakeBuff[(int)Buff.BuffType.DeATK] = b;
+                    humanstatus.Parameter = humanstatus.Parameter + AwakeBuff[(int)Buff.BuffType.DeATK];
+                    humanstatus.Parameter = humanstatus.Parameter * AwakeBuff[(int)Buff.BuffType.DeATK];
+                }
                 else if (AwakeBuff[(int)Buff.BuffType.DeATK].ATK == b.ATK && AwakeBuff[(int)Buff.BuffType.DeATK].AvailableSeconds < b.AvailableSeconds)//時間の長い方
+                {
                     AwakeBuff[(int)Buff.BuffType.DeATK] = b;
+                    humanstatus.Parameter = humanstatus.Parameter + AwakeBuff[(int)Buff.BuffType.DeATK];
+                    humanstatus.Parameter = humanstatus.Parameter * AwakeBuff[(int)Buff.BuffType.DeATK];
+                }
             }
             else if (b.GetType() == typeof(Buff_DEF))
             {
                 if (AwakeBuff[(int)Buff.BuffType.DEF] == null || AwakeBuff[(int)Buff.BuffType.DEF].DEF < b.DEF)
+                {
                     AwakeBuff[(int)Buff.BuffType.DEF] = b;
+                    humanstatus.Parameter = humanstatus.Parameter + AwakeBuff[(int)Buff.BuffType.DEF];
+                    humanstatus.Parameter = humanstatus.Parameter * AwakeBuff[(int)Buff.BuffType.DEF];
+                }
+
                 else if (AwakeBuff[(int)Buff.BuffType.DEF].DEF == b.DEF && AwakeBuff[(int)Buff.BuffType.DEF].AvailableSeconds < b.AvailableSeconds)//時間の長い方
+                {
                     AwakeBuff[(int)Buff.BuffType.DEF] = b;
+                    humanstatus.Parameter = humanstatus.Parameter + AwakeBuff[(int)Buff.BuffType.DEF];
+                    humanstatus.Parameter = humanstatus.Parameter * AwakeBuff[(int)Buff.BuffType.DEF];
+                }
             }
             else if (b.GetType() == typeof(Buff_D_DEF))
             {
                 if (AwakeBuff[(int)Buff.BuffType.DeDEF] == null || AwakeBuff[(int)Buff.BuffType.DeDEF].DEF > b.DEF)
+                {
                     AwakeBuff[(int)Buff.BuffType.DeDEF] = b;
+                    humanstatus.Parameter = humanstatus.Parameter + AwakeBuff[(int)Buff.BuffType.DeDEF];
+                    humanstatus.Parameter = humanstatus.Parameter * AwakeBuff[(int)Buff.BuffType.DeDEF];
+                }
+
                 else if (AwakeBuff[(int)Buff.BuffType.DeDEF].DEF == b.DEF && AwakeBuff[(int)Buff.BuffType.DeDEF].AvailableSeconds < b.AvailableSeconds)//時間の長い方
+                {
                     AwakeBuff[(int)Buff.BuffType.DeDEF] = b;
+                    humanstatus.Parameter = humanstatus.Parameter + AwakeBuff[(int)Buff.BuffType.DeDEF];
+                    humanstatus.Parameter = humanstatus.Parameter * AwakeBuff[(int)Buff.BuffType.DeDEF];
+                }
+
             }
             else if (b.GetType() == typeof(Buff_HP))
             {
                 if (AwakeBuff[(int)Buff.BuffType.HP] == null || AwakeBuff[(int)Buff.BuffType.HP].HP < b.HP)
+                {
                     AwakeBuff[(int)Buff.BuffType.HP] = b;
+                    humanstatus.Parameter = humanstatus.Parameter + AwakeBuff[(int)Buff.BuffType.HP];
+                    humanstatus.Parameter = humanstatus.Parameter * AwakeBuff[(int)Buff.BuffType.HP];
+                }
+
+
                 else if (AwakeBuff[(int)Buff.BuffType.HP].DEF == b.DEF && AwakeBuff[(int)Buff.BuffType.HP].AvailableSeconds < b.AvailableSeconds)//時間の長い方
+                {
                     AwakeBuff[(int)Buff.BuffType.HP] = b;
+                    humanstatus.Parameter = humanstatus.Parameter + AwakeBuff[(int)Buff.BuffType.HP];
+                    humanstatus.Parameter = humanstatus.Parameter * AwakeBuff[(int)Buff.BuffType.HP];
+                }
             }
             else if (b.GetType() == typeof(Buff_D_HP))
             {
                 if (AwakeBuff[(int)Buff.BuffType.DeHP] == null || AwakeBuff[(int)Buff.BuffType.DeHP].HP > b.HP)
+                {
                     AwakeBuff[(int)Buff.BuffType.DeHP] = b;
+                    humanstatus.Parameter = humanstatus.Parameter + AwakeBuff[(int)Buff.BuffType.DeHP];
+                    humanstatus.Parameter = humanstatus.Parameter * AwakeBuff[(int)Buff.BuffType.DeHP];
+                }
+
                 else if (AwakeBuff[(int)Buff.BuffType.DeHP].DEF == b.DEF && AwakeBuff[(int)Buff.BuffType.DeHP].AvailableSeconds < b.AvailableSeconds)//時間の長い方
+                {
                     AwakeBuff[(int)Buff.BuffType.DeHP] = b;
+                    humanstatus.Parameter = humanstatus.Parameter + AwakeBuff[(int)Buff.BuffType.DeHP];
+                    humanstatus.Parameter = humanstatus.Parameter * AwakeBuff[(int)Buff.BuffType.DeHP];
+                }
             }
             //else if (b.GetType() == typeof(Buff_EquipFix))
             //{
@@ -181,7 +247,7 @@ public class HumanBase : MonoBehaviour
             //}
             else
             {
-                
+                //Debug.Log("why");
             }
         }
     }

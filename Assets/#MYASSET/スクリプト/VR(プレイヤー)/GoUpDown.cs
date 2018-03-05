@@ -301,7 +301,7 @@ public class GoUpDown : MonoBehaviour
         //    if (sender == events[i])
         //        axisx[i] = e.touchpadAxis.x;
         //}
-        if (sender == events[0])
+        if (sender == events[1])
                 axisx[0] = e.touchpadAxis.x;
     }
     //タッチパッド離した
@@ -312,7 +312,7 @@ public class GoUpDown : MonoBehaviour
         //    if (sender == events[i])
         //        axisx[i] = 0;
         //}
-        if (sender == events[0])
+        if (sender == events[1])
             axisx[0] = 0;
     }
     //タッチパッド触れた
