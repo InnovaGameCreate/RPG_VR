@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028355, g: 0.22571373, b: 0.30692255, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -184,15 +184,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4752291365812240, guid: c16e9cc40f9a61d4e9d1c9f7b1fd7a0d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 23.701235
+      value: 3.9
       objectReference: {fileID: 0}
     - target: {fileID: 4752291365812240, guid: c16e9cc40f9a61d4e9d1c9f7b1fd7a0d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -5.8609204
+      value: 13.7
       objectReference: {fileID: 0}
     - target: {fileID: 4752291365812240, guid: c16e9cc40f9a61d4e9d1c9f7b1fd7a0d, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 26.461992
+      value: -2.6
       objectReference: {fileID: 0}
     - target: {fileID: 4752291365812240, guid: c16e9cc40f9a61d4e9d1c9f7b1fd7a0d, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2710,13 +2710,14 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1219440699}
+  - component: {fileID: 1219440700}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1219440699
 Transform:
   m_ObjectHideFlags: 0
@@ -2730,6 +2731,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1219440700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1219440698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60d1c9f23142afd488d661b5153c2954, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questType: 0
+  ClearNum: 10
+  reward:
+  - Item: {fileID: 0}
+    ItemNum: 0
+  - Item: {fileID: 0}
+    ItemNum: 0
+  target: {fileID: 0}
+  questText: 
+  ClearItem: 
 --- !u!1001 &1279325822
 Prefab:
   m_ObjectHideFlags: 0
