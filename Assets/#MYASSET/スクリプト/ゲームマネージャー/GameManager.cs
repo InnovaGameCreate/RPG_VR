@@ -25,6 +25,9 @@ public class GameManager : Singleton<GameManager>
     [SerializeField, TooltipAttribute("プレイヤークラスのHumanPlayerインスタンスを指定")]
     HumanPlayer player;
 
+    [SerializeField, TooltipAttribute("クエストマネージャ インスタンスを指定")]
+    QuestManager qManager;
+
     //次に移るシーンの名前
     private string nextSceneName;
     private FadeInOut fade; //フェードイン・アウト用
@@ -58,6 +61,11 @@ public class GameManager : Singleton<GameManager>
     {
         set { nextSceneName = value; }
     }
+    public QuestManager QMANAGER
+    {
+        get { return qManager; }
+    }
+
 
     bool instanced = false;         //ゲームマネージャがすでに生成されているかどうか
     /// <summary>
@@ -111,6 +119,7 @@ public class GameManager : Singleton<GameManager>
     {
         SceneManager.activeSceneChanged += OnActiveSceneChanged;
         fade = gameObject.GetComponentInChildren<FadeInOut>();
+    
     }
 
     //シーンチェンジ後のスタート位置を決定
@@ -153,14 +162,15 @@ public class GameManager : Singleton<GameManager>
         //デバッグ用
         if (Input.GetKeyDown(KeyCode.L))
             SceneManager.LoadScene("魔法攻撃");
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.H))
             SceneManager.LoadScene("1月26日統合");
+        if(fade !=null)
         if (fade.CONDITION == FadeInOut.Condition.SCENECHANGE) 
         {
             fade.CONDITION = FadeInOut.Condition.FADEIN;
-            SceneManager.LoadScene(nextSceneName);
-            
+            SceneManager.LoadScene(nextSceneName);          
         }
+
     }
     /// <summary>
     /// 更新関数
