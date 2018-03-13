@@ -39,7 +39,7 @@ public class HumanPlayer : HumanBase
     [SerializeField, TooltipAttribute("MPバー")]
     private Slider mpSlider;
     [SerializeField, TooltipAttribute("Lvテキスト")]
-    private Text LvText;      //体力バー
+    private Text LvText;      
 
     public EquipmentItem[] PlayerEquipItem = new EquipmentItem[5];//適当に5個
                                                                    //0:武器,1:防具,*****
