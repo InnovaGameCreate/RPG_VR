@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HumanEnemy : HumanBase
 {
@@ -13,7 +14,11 @@ public class HumanEnemy : HumanBase
 
     protected bool deaded = false;          //死んだかどうか
 
+
     private BehaviorTree tree;
+
+    [SerializeField, TooltipAttribute("HPバー")]
+    private Slider hpSlider;      //体力バー
 
     // Use this for initialization
     protected override void Start()
@@ -21,6 +26,21 @@ public class HumanEnemy : HumanBase
         base.Start();
         tree = GetComponent<BehaviorTree>();
     }
+
+    void calculateVar(Slider target, int now, float max)
+    {
+        //体力バー計算
+        float var = now / max;
+        if (var > 1)
+        {
+            // 最大を超えたら0に戻す
+            var = 0;
+        }
+        if (hpSlider != null)
+            // HPゲージに値を設定
+            target.value = var;
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -34,6 +54,7 @@ public class HumanEnemy : HumanBase
             StartCoroutine("Remove");
             //敵の場合親の名前を引数に渡す
             GameManager.Instance.QMANAGER.CheckQuestAchievement(transform.parent.name);
+            Destroy(hpSlider.transform.parent.gameObject);
             return;
         }
         else
@@ -42,6 +63,8 @@ public class HumanEnemy : HumanBase
             //tree.SetVariable("FreeSpeed", (int)(Status.Parameter.SPEED) );//intに丸めました
             //tree.SetVariableValue("ChaseSpeed", (int)(Status.Parameter.SPEED));
         }
+        calculateVar(hpSlider, Status.Parameter.HP, (float)Status.Parameter.MAXHP);
+        Status.Parameter.HP = Status.Parameter.HP - (1);
     }
 
     // モデル消滅
