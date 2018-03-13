@@ -12,6 +12,7 @@ public class HumanEnemy : HumanBase
     private int Experience;
     private const float breakForce = 150f;      //HP減少に必要な剣を振る速さ.
 
+    private Transform initpos;              //初期位置　りスポーン位置になる
     protected bool deaded = false;          //死んだかどうか
 
 
@@ -20,11 +21,20 @@ public class HumanEnemy : HumanBase
     [SerializeField, TooltipAttribute("HPバー")]
     private Slider hpSlider;      //体力バー
 
+    [SerializeField, TooltipAttribute("チェックで復活不可")]
+    bool notRevive;
+
+    public bool NOTREVIVE
+    {
+       get{ return notRevive; }
+    }
+
     // Use this for initialization
     protected override void Start()
     {
         base.Start();
         tree = GetComponent<BehaviorTree>();
+        initpos = transform;
     }
 
     void calculateVar(Slider target, int now, float max)
@@ -40,13 +50,19 @@ public class HumanEnemy : HumanBase
             // HPゲージに値を設定
             target.value = var;
     }
+    public void InstantiateGameObject()
+    {
+        //　ランダムな位置とランダムな角度でインスタンス化（Random.rotationの代わりにRandom.rotationUniformでも出来る）
+        var obj = Instantiate(transform.parent.gameObject, initpos) as GameObject;
+        obj.transform.parent = null;
+    }
 
 
     // Update is called once per frame
     void Update()
     {
         //死んだ時
-        if (!deaded&&(Status.Parameter.HP <= 0 || Input.GetKeyDown(KeyCode.K)))
+        if (!deaded&&Status.Parameter.HP <= 0  || Input.GetKeyDown(KeyCode.P))
         {
             deaded = true;
             animator.SetTrigger("Dead");
@@ -63,8 +79,8 @@ public class HumanEnemy : HumanBase
             //tree.SetVariable("FreeSpeed", (int)(Status.Parameter.SPEED) );//intに丸めました
             //tree.SetVariableValue("ChaseSpeed", (int)(Status.Parameter.SPEED));
         }
+
         calculateVar(hpSlider, Status.Parameter.HP, (float)Status.Parameter.MAXHP);
-        Status.Parameter.HP = Status.Parameter.HP - (1);
     }
 
     // モデル消滅
@@ -72,7 +88,7 @@ public class HumanEnemy : HumanBase
     {
         dropItem();
         yield return new WaitForSeconds(60);
-        Destroy(this.gameObject);
+        Destroy(transform.parent.gameObject);
      
     }
 

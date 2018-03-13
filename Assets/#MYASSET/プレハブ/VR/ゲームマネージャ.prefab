@@ -9715,7 +9715,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1450357813525960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3.9, y: 13.7, z: -2.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4280382527888306}
@@ -14423,8 +14423,8 @@ MonoBehaviour:
   throwMultiplier: 1
   createRigidBodyWhenNotTouching: 0
   controllerAttachPoint: {fileID: 54408373654029560}
-  controllerEvents: {fileID: 0}
-  interactTouch: {fileID: 0}
+  controllerEvents: {fileID: 114598862309831468}
+  interactTouch: {fileID: 114017986749819842}
 --- !u!114 &114040525336434940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16434,8 +16434,8 @@ MonoBehaviour:
   throwMultiplier: 1
   createRigidBodyWhenNotTouching: 0
   controllerAttachPoint: {fileID: 54721893620911060}
-  controllerEvents: {fileID: 0}
-  interactTouch: {fileID: 0}
+  controllerEvents: {fileID: 114674996394171562}
+  interactTouch: {fileID: 114353566482754748}
 --- !u!114 &114525210171603318
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16707,12 +16707,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoPopulateObjectReferences: 1
-  actualBoundaries: {fileID: 0}
-  actualHeadset: {fileID: 0}
-  actualLeftController: {fileID: 0}
-  actualRightController: {fileID: 0}
-  modelAliasLeftController: {fileID: 0}
-  modelAliasRightController: {fileID: 0}
+  actualBoundaries: {fileID: 1900886296128864}
+  actualHeadset: {fileID: 1379196500549854}
+  actualLeftController: {fileID: 1686857019217902}
+  actualRightController: {fileID: 1017833313117122}
+  modelAliasLeftController: {fileID: 1845065858319942}
+  modelAliasRightController: {fileID: 1519728397386350}
   cachedSystemSDKInfo:
     baseTypeName: VRTK.SDK_BaseSystem
     fallbackTypeName: VRTK.SDK_FallbackSystem

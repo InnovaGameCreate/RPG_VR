@@ -317,7 +317,7 @@ GameObject:
   - component: {fileID: 4267889154227272}
   m_Layer: 15
   m_Name: "\u4E00\u3064\u76EE"
-  m_TagString: enemy
+  m_TagString: enemy(parent)
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1591,7 +1591,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1873643077281634}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.297325, y: 1.01, z: 14.286428}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4624698489078034}
@@ -2269,6 +2269,7 @@ MonoBehaviour:
   dropitem: []
   Experience: 0
   hpSlider: {fileID: 114313781917326256}
+  notRevive: 0
 --- !u!114 &114872675535572324
 MonoBehaviour:
   m_ObjectHideFlags: 1
