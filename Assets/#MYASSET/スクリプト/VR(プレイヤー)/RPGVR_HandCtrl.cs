@@ -100,7 +100,7 @@ public class RPGVR_HandCtrl : MonoBehaviour
             isMagic = magicTrigger.magicpattern[1].GetComponent<MagicPattern>()._magic;
             if (isMagic)
                 handAnimator.SetTrigger("Magic");
-            Debug.Log(isMagic);
+
 
         }
         
