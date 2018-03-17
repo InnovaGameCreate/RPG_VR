@@ -46,6 +46,9 @@ public class Quest : MonoBehaviour
     //ターゲット　　モンスター or アイテム
     public GameObject target;
 
+    [SerializeField, TooltipAttribute("クエスト名")]
+    public string questName;//クエスト名
+
     [SerializeField, TooltipAttribute("クエスト説明")]
     [Multiline]
     public string questText;//説明文
@@ -81,19 +84,29 @@ public class Quest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (questType == QuestType.FIGHT && ISCLEAR)
-            Debug.Log(target.name+" 討伐クエストCLEAR!!");
+
     }
 
     //ターゲットなら達成数を増やす  
     //TODO 敵を倒したとき　　アイテムを入手したときにこの関数を呼ぶ
-    public void checkTarget(string tName)
+    public bool checkTarget(string tName)
     {
         // 手に入れたアイテム　or 倒した敵　がtargetと一致してるかどうか
         var myRegExp = new Regex(target.name);
-        if (myRegExp.IsMatch(tName) && !ISCLEAR)
-            achieveCount++;
-        if (achieveCount >= ClearNum)
-            isClear = true;
+        if (!ISCLEAR)
+        {
+            if (myRegExp.IsMatch(tName))
+                achieveCount++;
+            if (achieveCount >= ClearNum)
+            {
+                isClear = true;
+                if (questType == QuestType.FIGHT)
+                    GameManager.Instance.UMANAGER.LOGCONTROLLER.RegisterLog("[討伐クエスト]　「" + questName + "」　クリア", Color.white);
+                else if (questType == QuestType.COLLECT)
+                    GameManager.Instance.UMANAGER.LOGCONTROLLER.RegisterLog("[採取クエスト]　「" + questName + "」　クリア", Color.white);
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -20,7 +20,7 @@ public class QuestEdit : Editor
         Quest obj = target as Quest;
 
         obj.questType = (Quest.QuestType)EditorGUILayout.EnumPopup("QuestType", obj.questType);
-
+        obj.questName = EditorGUILayout.TextField("クエスト名" , obj.questName);
         //共通の注記 
 
         EditorGUI.indentLevel++;    //インデントを入れる

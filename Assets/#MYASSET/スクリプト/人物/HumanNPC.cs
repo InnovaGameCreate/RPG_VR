@@ -2,15 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HumanNPC : HumanBase {
+public class HumanNPC : HumanBase
+{
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private bool questing;  //プレイヤーにクエストを与えているかどうか
+
+
+    //プレイヤーと会話したときに呼ぶ
+    void talkWithPlayer()
+    {
+        if (questing)
+            if (GameManager.Instance.QMANAGER.talkNPC(GetComponent<Quest>()))
+                questing = false;
+    }
+
+    //TODO  QuestManager の AddQuest関数で　クエストを受ける
+    //引数にクエストを入れるが GetComponent<Quest>()で入れること
+    //NPCがクエスト複数持ちの際　一番上のクエストから一つずつ引き受けることにする
+    //プレイヤーにクエストを与える
+    void sendQuest()
+    {
+        if (!questing)
+        {
+            GameManager.Instance.QMANAGER.AddQuest(GetComponent<Quest>());
+            questing = true;
+        }
+    }
 }

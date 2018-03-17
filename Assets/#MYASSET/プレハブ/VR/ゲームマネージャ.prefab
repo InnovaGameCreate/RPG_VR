@@ -2924,6 +2924,7 @@ GameObject:
   - component: {fileID: 114965872141285574}
   - component: {fileID: 65956754528847836}
   - component: {fileID: 114476512644520040}
+  - component: {fileID: 114484192477260316}
   m_Layer: 0
   m_Name: "\u30D7\u30EC\u30A4\u30E4\u30FC\u30AF\u30E9\u30B9"
   m_TagString: Untagged
@@ -5246,6 +5247,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1846428659093114
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4679241377131670}
+  - component: {fileID: 114173911582735050}
+  m_Layer: 0
+  m_Name: "UI\u30DE\u30CD\u30FC\u30B8\u30E3"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1852452170766558
 GameObject:
   m_ObjectHideFlags: 1
@@ -7021,7 +7038,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4752291365812240}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4175406895928108
 Transform:
@@ -9340,6 +9357,19 @@ Transform:
   m_Father: {fileID: 4374989901475160}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4679241377131670
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1846428659093114}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.479393, y: 1.2104112, z: 0.8521794}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4752291365812240}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4680443408886888
 Transform:
   m_ObjectHideFlags: 1
@@ -9715,11 +9745,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1450357813525960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.9, y: 13.7, z: -2.6}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4280382527888306}
   - {fileID: 4994420401906884}
+  - {fileID: 4679241377131670}
   - {fileID: 4175114843634944}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -15109,6 +15140,18 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
   m_ChildControlHeight: 1
+--- !u!114 &114173911582735050
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1846428659093114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532dd01ece9e3644091c175626fe2e78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logController: {fileID: 0}
 --- !u!114 &114176691221163556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16194,6 +16237,7 @@ MonoBehaviour:
   Head: {fileID: 1427900594745466}
   player: {fileID: 114824196897070708}
   qManager: {fileID: 114760118346908912}
+  uManager: {fileID: 114173911582735050}
   LimitTime: 60
 --- !u!114 &114475920842734814
 MonoBehaviour:
@@ -16239,6 +16283,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114484192477260316
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1452517839794648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc5fd44e3045cf7478dff3b269663e91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  has_item: []
 --- !u!114 &114490030174934746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17186,7 +17242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeda6d41317f444b900e374895f14e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoPopulateObjectReferences: 0
+  autoPopulateObjectReferences: 1
   actualBoundaries: {fileID: 1990450274005046}
   actualHeadset: {fileID: 1150719351493802}
   actualLeftController: {fileID: 1417176657153702}
@@ -17224,8 +17280,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97a61b6562135814f83ba1f982ac9932, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questList:
-  - {fileID: 0}
+  questList: []
+  questClearList: []
 --- !u!114 &114764866039749202
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -28,6 +28,9 @@ public class GameManager : Singleton<GameManager>
     [SerializeField, TooltipAttribute("クエストマネージャ インスタンスを指定")]
     QuestManager qManager;
 
+    [SerializeField, TooltipAttribute("UIマネージャ インスタンスを指定")]
+    UIManager uManager;
+
     //次に移るシーンの名前
     private string nextSceneName;
     private FadeInOut fade; //フェードイン・アウト用
@@ -65,7 +68,10 @@ public class GameManager : Singleton<GameManager>
     {
         get { return qManager; }
     }
-
+    public UIManager UMANAGER
+    {
+        get { return uManager; }
+    }
 
     bool instanced = false;         //ゲームマネージャがすでに生成されているかどうか
     /// <summary>
