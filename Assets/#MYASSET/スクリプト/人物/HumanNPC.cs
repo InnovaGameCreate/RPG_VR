@@ -7,7 +7,11 @@ public class HumanNPC : HumanBase
 
     private bool questing;  //プレイヤーにクエストを与えているかどうか
 
+    private void Update()
+    {
 
+
+    }
     //プレイヤーと会話したときに呼ぶ
     void talkWithPlayer()
     {

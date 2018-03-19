@@ -7,7 +7,7 @@ public class GoUpDown : MonoBehaviour
 {
     //上昇下降関連
     [Tooltip("上昇or下降速度")]
-    public float risingspeed = 1;
+    public float risingspeed = 2;
     [SerializeField]
     public bool flymode;  //飛行状態かどうか
     [SerializeField]
@@ -17,13 +17,13 @@ public class GoUpDown : MonoBehaviour
     private VRTK_ControllerEvents[] events = new VRTK_ControllerEvents[2];      //左右コントローラコンポーネント
     private int checkcontroler = -1;            //タッチパッドに触れた状態でタッチパッドが押されたコントローラ
     protected bool touchpadTouched;             //タッチパッドを押したかどうか
-   
+
 
 
     //飛行モードアクション関連
     private const float flystartrange_y = 0.05f;                   //必要な羽ばたき幅（0.1秒間における一方向への)
     private const int samplenum = 30;                            //キャリブレーション数
-    private const float startflyupspeed = 1;              //はじめに上昇する際の速度
+    private const float startflyupspeed = 3;              //はじめに上昇する際の速度
     private List<float> precontrollerposL = new List<float>();   //過去の左コントローラの位置
     private List<float> precontrollerposR = new List<float>();   //過去の右コントローラの位置
 
@@ -83,7 +83,7 @@ public class GoUpDown : MonoBehaviour
         //左コントローラ
         for (int i = 0; i < precontrollerposL.Count - 1; i++)
         {
-        
+
             switch (checkmode[0])
             {
                 case Checkmode.UP:
@@ -117,7 +117,7 @@ public class GoUpDown : MonoBehaviour
         //右コントローラ
         for (int i = 0; i < precontrollerposR.Count - 1; i++)
         {
-          
+
             switch (checkmode[1])
             {
                 case Checkmode.UP:
@@ -148,7 +148,7 @@ public class GoUpDown : MonoBehaviour
                 updownsetcount[1]++;
             }
         }
-        
+
     }
     //コントローラのy軸における上下遷移を調べる
     private void changeSimple()
@@ -203,7 +203,7 @@ public class GoUpDown : MonoBehaviour
                 undertofly = true;
                 GetComponent<Rigidbody>().useGravity = false;
             }
-          
+
 
             changeSimple();
             yield return new WaitForSeconds(0.1f);  //毎ループここで0.1秒停止する
@@ -212,7 +212,7 @@ public class GoUpDown : MonoBehaviour
     //上昇下降
     void flyMove()
     {
-    
+
         //押されたタッチパッドが左右のどちらか
         for (int i = 0; i < axisx.Length; i++)
         {
@@ -234,6 +234,9 @@ public class GoUpDown : MonoBehaviour
                 transform.Translate(0, -risingspeed * Time.deltaTime, 0);
         }
     }
+
+    public LayerMask mask;
+
     // Update is called once per frame
     void Update()
     {
@@ -241,8 +244,37 @@ public class GoUpDown : MonoBehaviour
             flyMove();
         else
             startFlyMode();
-       
-       
+
+        Ray ray = new Ray(transform.position, -transform.up);
+        // Rayが衝突したコライダーの情報を得る
+        RaycastHit hit;
+        Debug.DrawRay(ray.origin, ray.direction * 10, Color.green, 5, false);
+
+        // Rayが衝突したかどうか
+        if (Physics.Raycast(ray, out hit, 20.0f, mask))
+        {
+            // Rayの原点から衝突地点までの距離を得る
+            float dis = hit.distance;
+            Debug.Log("dis  " + dis);
+            if (dis > 8)
+            {
+                if (!flymode)
+                {
+                    flymode = true;
+                    undertofly = false;
+                }
+            }
+            else if (dis <= 2)
+            {
+                if (flymode)
+                {
+                    flymode = false;
+                    GetComponent<Rigidbody>().useGravity = true;
+                }
+            }
+
+        }
+
     }
 
     //AwakeのほうがStartより早い 
@@ -302,7 +334,7 @@ public class GoUpDown : MonoBehaviour
         //        axisx[i] = e.touchpadAxis.x;
         //}
         if (sender == events[1])
-                axisx[0] = e.touchpadAxis.x;
+            axisx[0] = e.touchpadAxis.x;
     }
     //タッチパッド離した
     protected virtual void DoTouchpadUnclicked(object sender, ControllerInteractionEventArgs e)
