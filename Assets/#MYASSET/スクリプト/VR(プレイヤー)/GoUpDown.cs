@@ -255,7 +255,6 @@ public class GoUpDown : MonoBehaviour
         {
             // Rayの原点から衝突地点までの距離を得る
             float dis = hit.distance;
-            Debug.Log("dis  " + dis);
             if (dis > 8)
             {
                 if (!flymode)
