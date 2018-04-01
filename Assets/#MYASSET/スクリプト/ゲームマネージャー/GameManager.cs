@@ -31,6 +31,10 @@ public class GameManager : Singleton<GameManager>
     [SerializeField, TooltipAttribute("UIマネージャ インスタンスを指定")]
     UIManager uManager;
 
+    [SerializeField, TooltipAttribute("ボイスマネージャ インスタンスを指定")]
+    VoiceEvent voiceEvent;
+
+
     //次に移るシーンの名前
     private string nextSceneName;
     private FadeInOut fade; //フェードイン・アウト用
@@ -125,7 +129,8 @@ public class GameManager : Singleton<GameManager>
     {
         SceneManager.activeSceneChanged += OnActiveSceneChanged;
         fade = gameObject.GetComponentInChildren<FadeInOut>();
-    
+        //  Debug.Log(fade);
+
     }
 
     //シーンチェンジ後のスタート位置を決定
@@ -134,8 +139,8 @@ public class GameManager : Singleton<GameManager>
         Transform startpos = GameObject.Find(nextSceneName).transform;
         Transform obj = VRTKMANAGER.transform.Find("SDKSetups/SteamVR/[CameraRig]");
         obj.position = startpos.position;
-        obj.rotation = Quaternion.Euler(new Vector3(0, startpos.rotation.y,0));
-            ;
+        obj.rotation = Quaternion.Euler(new Vector3(0, startpos.rotation.y, 0));
+
 
     }
 
@@ -150,6 +155,7 @@ public class GameManager : Singleton<GameManager>
             RightController.GetComponentInChildren<VRTK_TouchpadControl>().enabled = false;
         }
         //移動可能シーンの時
+
         else
         {
             LeftController.GetComponentInChildren<VRTK_TouchpadControl>().enabled = true;
@@ -170,11 +176,26 @@ public class GameManager : Singleton<GameManager>
             SceneManager.LoadScene("魔法攻撃");
         if (Input.GetKeyDown(KeyCode.H))
             SceneManager.LoadScene("1月26日統合");
-        if(fade !=null)
-        if (fade.CONDITION == FadeInOut.Condition.SCENECHANGE) 
+        if (fade != null)
+            if (fade.CONDITION == FadeInOut.Condition.SCENECHANGE)
+            {
+                fade.CONDITION = FadeInOut.Condition.FADEIN;
+                SceneManager.LoadScene(nextSceneName);
+            }
+
+
+        //ボイスイベントの動き制御
+        if (voiceEvent.ControlIsMove())
         {
-            fade.CONDITION = FadeInOut.Condition.FADEIN;
-            SceneManager.LoadScene(nextSceneName);          
+            Debug.Log("動けるぞ");
+            LeftController.GetComponentInChildren<VRTK_TouchpadControl>().enabled = true;
+            RightController.GetComponentInChildren<VRTK_TouchpadControl>().enabled = true;
+        }
+        else if (!voiceEvent.ControlIsMove())
+        {
+            Debug.Log("動けnzo!");
+            LeftController.GetComponentInChildren<VRTK_TouchpadControl>().enabled = false;
+            RightController.GetComponentInChildren<VRTK_TouchpadControl>().enabled = false;
         }
 
     }
@@ -246,8 +267,10 @@ public class GameManager : Singleton<GameManager>
     {
 
         nextSceneName = PosName;
-        fade.CONDITION = FadeInOut.Condition.FADEOUT;
+        // fade.CONDITION = FadeInOut.Condition.FADEOUT;//NULLなのでコメントしといた
         SceneManager.LoadScene(NextSecneName);
+        Debug.Log("あたったぞ");
+
         //fade.CONDITION = FadeInOut.Condition.FADEIN;
     }
 }

@@ -17,20 +17,37 @@ public class VoiceEvent : MonoBehaviour
 
     private float deltaTime = 0;//再生時間との比較(再生終了判定に使う）
     public GameObject player;
+    public bool isEventHappen = false;//イベントが起こったかどうか
     public int villageVoiceState = 0;
 
-    private List<AudioClip> clipList = new List<AudioClip>();
 
-    private string voiceFolder = "Assets/#MYASSET/セリフ/";
-    private string[] voiceName = new string[8]
+    public enum VoiceKind
     {
-        "オベロン/オベロン/主人公の夢.mp3",
-        "エルフィ/エルフィ/夢から覚めた時.mp3",
-        "エルフィ/エルフィ/チュートリアル前エルフィ.mp3",
+        MY_DREAM,
+        WAKE_UP,
+        T_B_ELFY,//チュートリアル前エルフィ
+        T_B_THOMAS,
+        T_A_THOMAS,//チュートリアル後トーまマス
+        T_A_THOMAS2,
+        BACK_B_THOMAS,
+        BACK_OBERON,
+        BACK_A_THOMAS,
+
+    };
+
+    public VoiceKind nowVoiceNo;//現在のボイス番号
+    private List<AudioClip> clipList = new List<AudioClip>();
+    private string voiceFolder = "Assets/#MYASSET/セリフ/";
+    private string[] voiceName = new string[9]
+    {
+        "オベロン/オベロン/主人公の夢.wav",
+        "エルフィ/エルフィ/夢から覚めた時.wav",
+        "エルフィ/エルフィ/チュートリアル前エルフィ.wav",
         "トーマス/トーマス/チュートリアル前トーマス.wav",
         "トーマス/トーマス/チュートリアル後トーマス.wav",
         "トーマス/トーマス/チュートリアル後2.wav",
         "トーマス/トーマス/回想1.wav",
+        "オベロン/オベロン/主人公の夢.wav",
         "トーマス/トーマス/回想後.wav",
 
     };
@@ -49,16 +66,17 @@ public class VoiceEvent : MonoBehaviour
         //nowAudioState.clip = null;
         //Debug.Log(AssetDatabase.LoadAssetAtPath<AudioClip>(voiceFolder + voiceName[4]));
 
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 9; i++)
         {
             clipList.Add(AssetDatabase.LoadAssetAtPath<AudioClip>(voiceFolder + voiceName[i]));
         }
 
-        nowAudioState.clip = clipList[0];
+
+        nowAudioState.clip = clipList[(int)VoiceKind.MY_DREAM];
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
 
        // Debug.Log(isPlay);
@@ -90,17 +108,22 @@ public class VoiceEvent : MonoBehaviour
                 nowAudioState.Play();
                 StopAllCoroutines();
                 isPlay = false;//複数回再生防止
+                nowVoiceNo = VoiceEvent.VoiceKind.MY_DREAM;
+                isMove = false;
             }
 
             if (IsFinished(nowAudioState))
             {
                 //シーンを民家に
+                nowAudioState.clip = null;
+                nowVoiceNo = VoiceEvent.VoiceKind.WAKE_UP;
                 finishFlag = false;
                 isPlaying = false;
-                SceneManager.LoadScene("民家1");
+                isMove = true;
+                GameManager.Instance.SceneChengeManager("民家1", "Myhouse/bed/Bed_Child_Size_Module_1A (1)/Bed_Child_Size_1A");
                 //次のセリフロード（夢から覚めた時)
                 //isLoadAudio = true;
-                nowAudioState.clip = clipList[1];
+                nowAudioState.clip = clipList[(int)VoiceKind.WAKE_UP];
             }
         }
         //＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
@@ -134,11 +157,13 @@ public class VoiceEvent : MonoBehaviour
             {
                 //Debug.Log("終了");
                 isMove = true;//動けるように（仮で変数定義）
+                nowAudioState.clip = null;
                 finishFlag = false;
-                nowAudioState.clip = clipList[2];
+                nowVoiceNo = VoiceEvent.VoiceKind.T_B_ELFY;
+                nowAudioState.clip = clipList[(int)VoiceKind.T_B_ELFY];
                 isPlaying = false;
                 //デバッグ用
-                SceneManager.LoadScene("村");
+                GameManager.Instance.SceneChengeManager("村", "家の前");
                 //isLoadAudio = true;
             }
 
@@ -159,7 +184,7 @@ public class VoiceEvent : MonoBehaviour
         {
            // Debug.Log(isPlay);
 
-            if (Input.GetMouseButtonDown(0) && !nowAudioState.isPlaying && !isPlaying)
+            if (isEventHappen && !nowAudioState.isPlaying && !isPlaying)
             {
                 StartCoroutine(DelayTalk(2.0f));
             }
@@ -206,9 +231,12 @@ public class VoiceEvent : MonoBehaviour
             //セリフ終了したら
             if (IsFinished(nowAudioState))
             {
+                isEventHappen = false;
+                nowAudioState.clip = null;
                 isPlaying = false;
                 finishFlag = false;
-                nowAudioState.clip = clipList[3];//トーマス
+                nowVoiceNo = VoiceEvent.VoiceKind.T_B_THOMAS;
+                nowAudioState.clip = clipList[(int)VoiceKind.T_B_THOMAS];//トーマス
                 isPlay = true;
 
             }
@@ -229,9 +257,13 @@ public class VoiceEvent : MonoBehaviour
             //セリフ終了したら
             if (IsFinished(nowAudioState))
             {
+
+
+                nowAudioState.clip = null;
                 finishFlag = false;
                 isPlaying = false;
-                nowAudioState.clip = clipList[4];//トーマス
+                nowVoiceNo = VoiceEvent.VoiceKind.T_A_THOMAS;
+                nowAudioState.clip = clipList[(int)VoiceKind.T_A_THOMAS];//トーマス
                 isMove = true;
                 SceneManager.LoadScene("チュートリアル");
 
@@ -284,8 +316,13 @@ public class VoiceEvent : MonoBehaviour
             //セリフ終了したら
             if (IsFinished(nowAudioState))
             {
+
+
+
+                nowAudioState.clip = null;
                 //SceneManager.LoadScene("民家1");
-                nowAudioState.clip = clipList[5];
+                nowVoiceNo = VoiceEvent.VoiceKind.T_A_THOMAS2;
+                nowAudioState.clip = clipList[(int)VoiceKind.T_A_THOMAS2];
                 isPlaying = false;
                 finishFlag = false;
                 isMove = true;
@@ -313,11 +350,12 @@ public class VoiceEvent : MonoBehaviour
             //セリフ終了したら
             if (IsFinished(nowAudioState))
             {
-
+                nowAudioState.clip = null;
                 isPlaying = false;
                 finishFlag = false;
                 isMove = true;
-                nowAudioState.clip = clipList[6];
+                nowVoiceNo = VoiceEvent.VoiceKind.BACK_B_THOMAS;
+                nowAudioState.clip = clipList[(int)VoiceKind.BACK_B_THOMAS];
                 Debug.Log("終了してます");
                 //デバッグ用
                 SceneManager.LoadScene("民家1");
@@ -350,6 +388,7 @@ public class VoiceEvent : MonoBehaviour
             if (IsFinished(nowAudioState))
             {
 
+
                 isPlaying = false;
                 finishFlag = false;
 
@@ -380,10 +419,12 @@ public class VoiceEvent : MonoBehaviour
             if (IsFinished(nowAudioState))
             {
 
+                nowAudioState.clip = null;
                 isPlaying = false;
                 finishFlag = false;
                 SceneManager.LoadScene("民家1");
-                nowAudioState.clip = clipList[7];
+                nowVoiceNo = VoiceEvent.VoiceKind.BACK_A_THOMAS;
+                nowAudioState.clip = clipList[(int)VoiceKind.BACK_A_THOMAS];
             }
         }
 
@@ -419,7 +460,7 @@ public class VoiceEvent : MonoBehaviour
     }
 
     //指定された時間とめてセリフを話す
-    private IEnumerator DelayTalk(float waitTime)
+    public IEnumerator DelayTalk(float waitTime)
     {
         isPlaying = true;
         yield return new WaitForSeconds(waitTime);
@@ -479,7 +520,9 @@ public class VoiceEvent : MonoBehaviour
     public bool IsFinished(AudioSource audio)
     {
 
-        if (Input.GetMouseButtonDown(1))
+
+        //デバッグ用右クリックで再生終了判定（たぶん上手く動いていない）
+        if (Input.GetMouseButtonUp(1))
             return true;
 
         //Debug.Log((audio.time));
@@ -505,15 +548,15 @@ public class VoiceEvent : MonoBehaviour
         //float endTime = audio.clip.length * Time.timeScale
         //if(audio.time == endTime)
 
-        if (finishFlag)
-        {
-            //Debug.Log("成功");
-            if (audio.time == 0.0f && !audio.isPlaying)
-            {
+        //if (finishFlag)
+        //{
+        //    //Debug.Log("成功");
+        //    if (audio.time == 0.0f && !audio.isPlaying)
+        //    {
 
-                return true;
-            }
-        }
+        //        return true;
+        //    }
+        //}
 
 
 
@@ -523,5 +566,14 @@ public class VoiceEvent : MonoBehaviour
 
 
     }
+
+    public bool ControlIsMove()
+    {
+        if (isMove)
+            return true;
+        else
+            return false;
+    }
+
 
 }

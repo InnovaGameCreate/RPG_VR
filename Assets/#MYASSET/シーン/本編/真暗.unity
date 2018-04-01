@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.000017291733, g: 0.00000002721428, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.000017291772, g: 0.00000002721428, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -175,6 +175,53 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -71.396, y: 99.489006, z: -130.19301}
+--- !u!1001 &307610370
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4752291365812240, guid: c16e9cc40f9a61d4e9d1c9f7b1fd7a0d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752291365812240, guid: c16e9cc40f9a61d4e9d1c9f7b1fd7a0d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752291365812240, guid: c16e9cc40f9a61d4e9d1c9f7b1fd7a0d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752291365812240, guid: c16e9cc40f9a61d4e9d1c9f7b1fd7a0d, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752291365812240, guid: c16e9cc40f9a61d4e9d1c9f7b1fd7a0d, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752291365812240, guid: c16e9cc40f9a61d4e9d1c9f7b1fd7a0d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752291365812240, guid: c16e9cc40f9a61d4e9d1c9f7b1fd7a0d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752291365812240, guid: c16e9cc40f9a61d4e9d1c9f7b1fd7a0d, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114475637049264922, guid: c16e9cc40f9a61d4e9d1c9f7b1fd7a0d,
+        type: 2}
+      propertyPath: voiceEvent
+      value: 
+      objectReference: {fileID: 1612435676}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: c16e9cc40f9a61d4e9d1c9f7b1fd7a0d, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &743601249
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,7 +337,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 172fbc240d605214f814919eae708236, type: 3}
+  m_audioClip: {fileID: 8300000, guid: fb52ff99d30634646a303eb7ad836c9d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -386,4 +433,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  isEventHappen: 0
   villageVoiceState: 0
+  nowVoiceNo: 0
