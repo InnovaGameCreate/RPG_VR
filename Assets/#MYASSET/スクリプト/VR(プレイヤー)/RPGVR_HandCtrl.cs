@@ -40,6 +40,7 @@ public class RPGVR_HandCtrl : MonoBehaviour
         //GetComponent<VRTK_InteractGrab>().GrabButtonReleased += DoGrabOff;
         _grabb.GrabButtonPressed += DoGrabOn;
         _grabb.GrabButtonReleased += DoGrabOff;
+       
         //GetComponent<VRTK_InteractUse>().UseButtonPressed += DoUseOn;
         //GetComponent<VRTK_InteractUse>().UseButtonReleased += DoUseOff;
 
@@ -70,6 +71,8 @@ public class RPGVR_HandCtrl : MonoBehaviour
         }
       
     }
+
+    
 
     // --- Useボタンを押したときの処理（人差し指を曲げる） ------------------------
     //private void DoUseOn(object sender, ControllerInteractionEventArgs e)

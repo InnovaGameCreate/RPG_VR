@@ -187,13 +187,13 @@ public class GameManager : Singleton<GameManager>
         //ボイスイベントの動き制御
         if (voiceEvent.ControlIsMove())
         {
-            Debug.Log("動けるぞ");
+            //Debug.Log("動けるぞ");
             LeftController.GetComponentInChildren<VRTK_TouchpadControl>().enabled = true;
             RightController.GetComponentInChildren<VRTK_TouchpadControl>().enabled = true;
         }
         else if (!voiceEvent.ControlIsMove())
         {
-            Debug.Log("動けnzo!");
+            //Debug.Log("動けnzo!");
             LeftController.GetComponentInChildren<VRTK_TouchpadControl>().enabled = false;
             RightController.GetComponentInChildren<VRTK_TouchpadControl>().enabled = false;
         }
@@ -267,9 +267,9 @@ public class GameManager : Singleton<GameManager>
     {
 
         nextSceneName = PosName;
-        // fade.CONDITION = FadeInOut.Condition.FADEOUT;//NULLなのでコメントしといた
+        fade.CONDITION = FadeInOut.Condition.FADEOUT;//NULLなのでコメントしといた
         SceneManager.LoadScene(NextSecneName);
-        Debug.Log("あたったぞ");
+        //Debug.Log("あたったぞ");
 
         //fade.CONDITION = FadeInOut.Condition.FADEIN;
     }
