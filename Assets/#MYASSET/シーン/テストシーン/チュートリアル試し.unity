@@ -376,7 +376,7 @@ Prefab:
     - target: {fileID: 224086620900960206, guid: 7e6bbbdbaab7ef548b69cf053a7b2bbb,
         type: 2}
       propertyPath: m_RootOrder
-      value: 15
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 224086620900960206, guid: 7e6bbbdbaab7ef548b69cf053a7b2bbb,
         type: 2}
@@ -1287,7 +1287,7 @@ MonoBehaviour:
   hp: 100
   atk: 10
   dropitem:
-  - {fileID: 1227717364344042, guid: 7781a8a79ec34f44984bb1987e991737, type: 2}
+  - {fileID: 0}
 --- !u!4 &649387776 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400004, guid: a7a8508d4b61c064394c756733fd9bbd, type: 3}
@@ -2382,6 +2382,16 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 224302191998244568, guid: 112a412b0fbe2e948b2add5343f97e6f,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224302191998244568, guid: 112a412b0fbe2e948b2add5343f97e6f,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 112a412b0fbe2e948b2add5343f97e6f, type: 2}
   m_IsPrefabParent: 0
@@ -2633,7 +2643,7 @@ Prefab:
     - target: {fileID: 224563515446924280, guid: 335e22e0556e7c04ab68df104d278058,
         type: 2}
       propertyPath: m_RootOrder
-      value: 16
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 224563515446924280, guid: 335e22e0556e7c04ab68df104d278058,
         type: 2}
@@ -3896,6 +3906,16 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 224520891809772980, guid: fdfe6ef04c37c7c478df608ab2d5f4e1,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224520891809772980, guid: fdfe6ef04c37c7c478df608ab2d5f4e1,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fdfe6ef04c37c7c478df608ab2d5f4e1, type: 2}
   m_IsPrefabParent: 0
@@ -3927,7 +3947,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fc9704fd3526cf42a7984b4cdcd0490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 0}
+  AwakeBuff:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  LV: 0
+  Exp: 0
+  hpSlider: {fileID: 0}
+  mpSlider: {fileID: 0}
+  LvText: {fileID: 0}
+  PlayerEquipItem:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &1329798655
 Transform:
   m_ObjectHideFlags: 0
@@ -4323,7 +4364,7 @@ Prefab:
     - target: {fileID: 224925940309958666, guid: 93745e783ea1f5941baa45171a1dd824,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 836
+      value: 747
       objectReference: {fileID: 0}
     - target: {fileID: 224925940309958666, guid: 93745e783ea1f5941baa45171a1dd824,
         type: 2}
@@ -5966,6 +6007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc5fd44e3045cf7478dff3b269663e91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  has_item: []
 --- !u!1 &2125808372
 GameObject:
   m_ObjectHideFlags: 0
@@ -6020,7 +6062,7 @@ MonoBehaviour:
   hp: 100
   atk: 10
   dropitem:
-  - {fileID: 1227717364344042, guid: 7781a8a79ec34f44984bb1987e991737, type: 2}
+  - {fileID: 0}
 --- !u!114 &2125808375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6212,7 +6254,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4460071438415950, guid: dd6bc97e77efe234d8a00af1b81dba28, type: 2}
       propertyPath: m_RootOrder
-      value: 17
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd6bc97e77efe234d8a00af1b81dba28, type: 2}

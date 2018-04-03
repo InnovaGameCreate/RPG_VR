@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class Tutorial : MonoBehaviour
 {
@@ -78,6 +80,9 @@ public class Tutorial : MonoBehaviour
         yield return new WaitForSeconds(10.0f);
         text.text = "以上だ";
         //Application.LoadLevel("maincamera");//LoadSceneが何故か使えないので旧形式で
+        yield return new WaitForSeconds(3.0f);
+        GameManager.Instance.SceneChengeManager("村", "EventColider");
+
     }
 
     //剣を握ればtrue

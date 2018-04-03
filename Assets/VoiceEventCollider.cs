@@ -34,6 +34,9 @@ public class VoiceEventCollider : MonoBehaviour
                     Debug.Log("あたったぞ3");
                     voiceEvent.isEventHappen = true;
                     break;
+                case VoiceEvent.VoiceKind.T_A_THOMAS:
+                    voiceEvent.isEventHappen = true;
+                    break;
             }
 
         }
