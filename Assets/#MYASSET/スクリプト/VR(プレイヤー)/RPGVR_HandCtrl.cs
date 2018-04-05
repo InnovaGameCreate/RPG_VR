@@ -19,6 +19,8 @@ public class RPGVR_HandCtrl : MonoBehaviour
     public StateModel[] stateModels;
     [SerializeField]
     private VRTK_InteractGrab _grabb;
+    [SerializeField]
+    private VRTK_ControllerEvents ctrl;
     private Animator handAnimator;
     public SwordMotion swordMotion;
 
@@ -26,6 +28,7 @@ public class RPGVR_HandCtrl : MonoBehaviour
     public int currentState = 100;
     int lastState = -1;
 
+    public bool isTrigger;
     public bool action = false;
     public bool hold = false;
     public bool isMagic = false;
@@ -40,15 +43,38 @@ public class RPGVR_HandCtrl : MonoBehaviour
         //GetComponent<VRTK_InteractGrab>().GrabButtonReleased += DoGrabOff;
         _grabb.GrabButtonPressed += DoGrabOn;
         _grabb.GrabButtonReleased += DoGrabOff;
-       
+
+
+
+        ctrl.TriggerPressed += TriggerPressed;
+        ctrl.TriggerReleased += TriggerReleased;
+        
+
         //GetComponent<VRTK_InteractUse>().UseButtonPressed += DoUseOn;
         //GetComponent<VRTK_InteractUse>().UseButtonReleased += DoUseOff;
 
 
     }
+
+    // ----トリガーを押したときの処理
+    private void TriggerPressed(object sender, ControllerInteractionEventArgs e)
+    {
+        isTrigger = true;
+        Debug.Log("トリガーダウン");
+    }
+
+    //　---トリガーを離したときの処理
+    private void TriggerReleased(object sender, ControllerInteractionEventArgs e)
+    {
+        isTrigger = false;
+        Debug.Log("トリガーアップ");
+
+    }
+
     // --- Grabボタンを押したときの処理（中指・薬指・小指を曲げる） ------------------------
     private void DoGrabOn(object sender, ControllerInteractionEventArgs e)
     {
+
         //Debug.Log("swww");
         //targetGripRotation = maxRotation;
         hold = true;

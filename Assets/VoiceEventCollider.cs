@@ -24,6 +24,7 @@ public class VoiceEventCollider : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
+        Debug.Log("あたったぞ1");
 
         if (other.CompareTag("Player"))
         {

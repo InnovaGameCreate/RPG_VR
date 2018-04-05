@@ -33,6 +33,11 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField, TooltipAttribute("ボイスマネージャ インスタンスを指定")]
     VoiceEvent voiceEvent;
+    //[SerializeField, TooltipAttribute("右手")]
+    public GameObject rightHand;
+    //[SerializeField, TooltipAttribute("左手")]
+    public GameObject leftHand;
+
 
 
     //次に移るシーンの名前
@@ -198,6 +203,21 @@ public class GameManager : Singleton<GameManager>
             RightController.GetComponentInChildren<VRTK_TouchpadControl>().enabled = false;
         }
 
+
+        //魔法が使えるかどうかの制御
+        if (RightController.GetComponent<MagicTrigger>().IsMagicTrigger())
+        {
+            RightController.GetComponent<MagicTrigger>().enabled = true;
+            LeftController.GetComponent<MagicTrigger>().enabled = true;
+
+        }
+        else
+        {
+            RightController.GetComponent<MagicTrigger>().enabled = false;
+            LeftController.GetComponent<MagicTrigger>().enabled = false;
+
+        }
+
     }
     /// <summary>
     /// 更新関数
@@ -267,7 +287,7 @@ public class GameManager : Singleton<GameManager>
     {
 
         nextSceneName = PosName;
-        fade.CONDITION = FadeInOut.Condition.FADEOUT;//NULLなのでコメントしといた
+       // fade.CONDITION = FadeInOut.Condition.FADEOUT;//NULLなのでコメントしといた
         SceneManager.LoadScene(NextSecneName);
         //Debug.Log("あたったぞ");
 

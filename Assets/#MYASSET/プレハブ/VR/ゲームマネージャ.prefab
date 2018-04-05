@@ -5750,6 +5750,7 @@ GameObject:
   - component: {fileID: 223139376406715414}
   - component: {fileID: 114600042277803506}
   - component: {fileID: 114162216953872854}
+  - component: {fileID: 114371926972326248}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -14571,8 +14572,10 @@ MonoBehaviour:
   magicTrigger: {fileID: 114840678871619914}
   stateModels: []
   _grabb: {fileID: 114523951763398284}
+  ctrl: {fileID: 114674996394171562}
   swordMotion: {fileID: 114844721202038366}
   currentState: 100
+  isTrigger: 0
   action: 0
   hold: 0
   isMagic: 0
@@ -15546,8 +15549,10 @@ MonoBehaviour:
   magicTrigger: {fileID: 0}
   stateModels: []
   _grabb: {fileID: 114023340575910644}
+  ctrl: {fileID: 114598862309831468}
   swordMotion: {fileID: 114844721202038366}
   currentState: 100
+  isTrigger: 0
   action: 0
   hold: 0
   isMagic: 0
@@ -15871,6 +15876,18 @@ MonoBehaviour:
   _head: {fileID: 4959034852095774}
   _ears: {fileID: 4434905574683108}
   wireframe: 0
+--- !u!114 &114371926972326248
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1939149329184868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c03ebcf7ba145a4a86652bee591384d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeInOutImage: {fileID: 114848752664268898}
 --- !u!114 &114379667895528724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16368,6 +16385,8 @@ MonoBehaviour:
   qManager: {fileID: 114760118346908912}
   uManager: {fileID: 114173911582735050}
   voiceEvent: {fileID: 0}
+  rightHand: {fileID: 1692447207394694}
+  leftHand: {fileID: 1276363191714032}
   LimitTime: 60
 --- !u!114 &114475920842734814
 MonoBehaviour:
@@ -16849,7 +16868,7 @@ MonoBehaviour:
   grabToggleButton: 7
   useToggleButton: 3
   uiClickButton: 3
-  menuToggleButton: 14
+  menuToggleButton: 15
   axisFidelity: 2
   triggerClickThreshold: 1
   triggerForceZeroThreshold: 0.01
@@ -17090,7 +17109,7 @@ MonoBehaviour:
   grabToggleButton: 7
   useToggleButton: 3
   uiClickButton: 3
-  menuToggleButton: 14
+  menuToggleButton: 15
   axisFidelity: 2
   triggerClickThreshold: 1
   triggerForceZeroThreshold: 0.01

@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using VRTK;
+
 
 public class MagicTrigger : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class MagicTrigger : MonoBehaviour
     public bool triggerd;          //トリガーを引いたかどうか
     private bool multitriggerd;
     private MagicTrigger triggerdother;          //逆のコントローラのトリガーを引いたかどうか
+
+
     private void Start()
     {
         if (gameObject.name == "RightController")
@@ -82,6 +86,15 @@ public class MagicTrigger : MonoBehaviour
         triggerd = false;
         if (magicpattern != null && !magicpatternobj.GetComponent<MagicPattern>().startmagic)
             Destroy(magicpatternobj);
+
+    }
+
+    //魔法が使える状態かどうか判定
+    public bool IsMagicTrigger()
+    {
+        //チュートリアルかフィールドにいれば使える
+        return SceneManager.GetActiveScene().name == "チュートリアル試し" 
+            || SceneManager.GetActiveScene().name == "フィールド";
 
     }
 }
