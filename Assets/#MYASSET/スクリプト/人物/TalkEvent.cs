@@ -3,87 +3,101 @@ using System.Collections.Generic;
 using UnityEngine;
 using VRTK;
 
-public class TalkEvent : MonoBehaviour {
+public class TalkEvent : MonoBehaviour
+{
 
     float deltaTime;
-    bool isPlaying;
-    AudioSource[] talkAudio;
-    [SerializeField]
+    protected bool isPlaying;
+    protected AudioSource[] talkAudio;
     RPGVR_HandCtrl rightCtrl;
-    [SerializeField]
     RPGVR_HandCtrl leftCtrl;
-    public GameObject test;
+    VoiceEvent mainEvent;
+    protected int talkNum;
+    protected bool isTalk;
+
+    [SerializeField]
+    private GameObject uiObj;
 
     //List<AudioSource> playerAudioList = new List<AudioSource>();
 
     // Use this for initialization
-    void Awake() {
+    void Awake()
+    {
         talkAudio = GetComponents<AudioSource>();
-        //test = GameObject.Find("ゲームマネージャ/[VRTK_SDKManager]/SteamVR/Controller (right)/RightHand");
-        //test = GameObject.Find("ゲームマネージャー（確定）/[VRTK_SDKManager]/SDKSetups/SteamVR/Controller (right)/RightHand");
+
         rightCtrl = GameObject.Find("ゲームマネージャー（確定）/[VRTK_SDKManager]/SDKSetups/SteamVR/[CameraRig]/Controller (right)/RightHand").GetComponent<RPGVR_HandCtrl>();
         leftCtrl = GameObject.Find("ゲームマネージャー（確定）/[VRTK_SDKManager]/SDKSetups/SteamVR/[CameraRig]/Controller (left)/LeftHand").GetComponent<RPGVR_HandCtrl>();
-
+        //mainEvent = GameObject.Find("VoiceEvent").GetComponent<VoiceEvent>();
+        Debug.Log(rightCtrl || leftCtrl);
     }
 
     // Update is called once per frame
-    void Update() {
-        //if (rightCtrl.isTrigger)
-        //{
-        //Debug.Log("あたって");
-        //    Talk(0);
-        //}
-        //rightCtrl = GameObject.Find("ゲームマネージャー（確定）/[VRTK_SDKManager]/SteamVR/[CameraRig]/Controller (right)/RightHand")
-        //   .GetComponent<RPGVR_HandCtrl>();
-    }
-
-    private void OnCollisionEnter(Collision collision)
+    void Update()
     {
-        //Debug.Log("tes");
+
     }
 
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            if (rightCtrl.isTrigger)
+            //Debug.Log("あたって");
+
+            //UIが表示されていないつまり誰とも話していない状態で
+            //どっちかのトリガーを引けば
+            if (!uiObj.activeSelf)
+                if (rightCtrl.isTrigger || leftCtrl.isTrigger)
                 {
-            Debug.Log("あたって");
-                Talk(0);
+                    //Debug.Log("あたって);
+                    //Talk(talkNo);
+                    isTalk = true;
+                    isPlaying = true;
                 }
+                else
+                    isTalk = false;
+
+
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        isTalk = false;
+        isPlaying = false;
+        uiObj.SetActive(false);
+
     }
 
     private void OnTrigger(Collider other)
     {
-      
+
     }
 
     //話してないならば
-    private void Talk(int talklNo)
+    public void Talk(int _talklNo)
     {
-        if(!talkAudio[talklNo].isPlaying)
-        talkAudio[talklNo].PlayOneShot(talkAudio[talklNo].clip);
+
+        for (int i = 0; i < talkNum; i++)
+        {
+            if (talkAudio[i].isPlaying)
+                return;
+
+        }
+        talkAudio[_talklNo].PlayOneShot(talkAudio[_talklNo].clip);
+    }
+
+    public bool IsTalk()
+    {
+        return isTalk;
     }
 
     //再生終了判定
     public bool IsFinished(AudioSource audio)
     {
-
-
-        //デバッグ用右クリックで再生終了判定（たぶん上手く動いていない）
-        if (Input.GetMouseButtonUp(1))
-            return true;
-
-        //Debug.Log((audio.time));
-        // Debug.Log(audio.clip.length);
-        //再生終了直前で終了フラグを立てる（フラグを立てないと再生していない時にもtrueが返ってしまう）
-
-
         //今のところこれだとうまくいく・・・？
         if (isPlaying)
             deltaTime += Time.deltaTime;
-        if (audio.clip.length + 2.0f <= deltaTime)//間隔考量した２秒
+        if (audio.clip.length + 0.5f <= deltaTime)//間隔考量
         {
             deltaTime = 0;
             return true;
@@ -91,10 +105,22 @@ public class TalkEvent : MonoBehaviour {
 
 
 
+
         return false;
 
+    }
 
+    public AudioSource TalkAudioSource(int no)
+    {
+        return talkAudio[no];
+    }
+
+    //選択画面表示
+    public void PrintSelectUI()
+    {
+        uiObj.SetActive(true);
 
     }
-    
+
+  
 }

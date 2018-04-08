@@ -669,5 +669,10 @@ public class VoiceEvent : MonoBehaviour
             return false;
     }
 
+    public VoiceKind EventNo()
+    {
+        return nowVoiceNo;
+    }
+
 
 }
