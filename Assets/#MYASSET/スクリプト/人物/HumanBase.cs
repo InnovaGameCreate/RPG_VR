@@ -27,7 +27,7 @@ public class HumanBase : MonoBehaviour
 
     public Buff[] AwakeBuff = new Buff[10];//実際に計算するバフ
                                     //とりあえず10枠
-                                    //Non
+                                    //None
                                     //Equip_Fix     Equipは直接操作すること
                                     //HP
                                     //DeHP

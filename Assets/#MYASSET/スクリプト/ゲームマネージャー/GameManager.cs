@@ -44,6 +44,16 @@ public class GameManager : Singleton<GameManager>
     private string nextSceneName;
     private FadeInOut fade; //フェードイン・アウト用
 
+    public GameObject RIGHTHAND
+    {
+        get { return rightHand; }
+    }
+
+    public GameObject LEFTHAND
+    {
+        get { return leftHand; }
+    }
+
     public GameObject VRTKMANAGER
     {
         get { return vrtkManager; }

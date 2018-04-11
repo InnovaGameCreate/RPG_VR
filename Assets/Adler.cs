@@ -30,9 +30,10 @@ public class Adler : TalkEvent
     bool[] talkFlag = new bool[(int)EVENT_NO.eEventNum];
 
     // Use this for initialization
-    void Start()
+    protected override void Start()
     {
         //Array.Resize(ref talkFlag, (int)TALK_NO.eTalkNum);
+        base.Start();
         talkNum = (int)TALK_NO.eTalkNum;
 
     }

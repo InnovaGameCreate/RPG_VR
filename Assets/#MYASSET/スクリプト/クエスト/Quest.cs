@@ -66,7 +66,8 @@ public class Quest : MonoBehaviour
     public enum QuestType
     {
         FIGHT,          //討伐
-        COLLECT         //採集
+        COLLECT,       //採集
+        TALK           //会話
     }
 
     public bool ISCLEAR
@@ -88,7 +89,7 @@ public class Quest : MonoBehaviour
     }
 
     //ターゲットなら達成数を増やす  
-    //TODO 敵を倒したとき　　アイテムを入手したときにこの関数を呼ぶ
+    //TODO 敵を倒したとき　　アイテムを入手したときにこの関数を呼ぶ //話した時も
     public bool checkTarget(string tName)
     {
         // 手に入れたアイテム　or 倒した敵　がtargetと一致してるかどうか
@@ -104,6 +105,9 @@ public class Quest : MonoBehaviour
                     GameManager.Instance.UMANAGER.LOGCONTROLLER.RegisterLog("[討伐クエスト]　「" + questName + "」　クリア", Color.white);
                 else if (questType == QuestType.COLLECT)
                     GameManager.Instance.UMANAGER.LOGCONTROLLER.RegisterLog("[採取クエスト]　「" + questName + "」　クリア", Color.white);
+                else if(questType == QuestType.TALK)
+                    GameManager.Instance.UMANAGER.LOGCONTROLLER.RegisterLog("[会話クエスト]　「" + questName + "」　クリア", Color.white);
+
                 return true;
             }
         }

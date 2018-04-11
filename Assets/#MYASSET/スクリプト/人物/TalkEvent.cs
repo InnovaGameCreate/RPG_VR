@@ -21,12 +21,22 @@ public class TalkEvent : MonoBehaviour
     //List<AudioSource> playerAudioList = new List<AudioSource>();
 
     // Use this for initialization
-    void Awake()
+   protected virtual void Awake()
     {
         talkAudio = GetComponents<AudioSource>();
 
-        rightCtrl = GameObject.Find("ゲームマネージャー（確定）/[VRTK_SDKManager]/SDKSetups/SteamVR/[CameraRig]/Controller (right)/RightHand").GetComponent<RPGVR_HandCtrl>();
-        leftCtrl = GameObject.Find("ゲームマネージャー（確定）/[VRTK_SDKManager]/SDKSetups/SteamVR/[CameraRig]/Controller (left)/LeftHand").GetComponent<RPGVR_HandCtrl>();
+        
+        Debug.Log(talkAudio);
+    }
+
+    protected virtual void Start()
+    {
+        Debug.Log(rightCtrl || leftCtrl);
+
+        rightCtrl = GameManager.Instance.RIGHTHAND.GetComponent<RPGVR_HandCtrl>();
+        leftCtrl = GameManager.Instance.LEFTHAND.GetComponent<RPGVR_HandCtrl>();
+        //rightCtrl = GameObject.Find("ゲームマネージャー（確定）/[VRTK_SDKManager]/SDKSetups/SteamVR/[CameraRig]/Controller (right)/RightHand").GetComponent<RPGVR_HandCtrl>();
+        //leftCtrl = GameObject.Find("ゲームマネージャー（確定）/[VRTK_SDKManager]/SDKSetups/SteamVR/[CameraRig]/Controller (left)/LeftHand").GetComponent<RPGVR_HandCtrl>();
         //mainEvent = GameObject.Find("VoiceEvent").GetComponent<VoiceEvent>();
         Debug.Log(rightCtrl || leftCtrl);
     }
@@ -45,6 +55,7 @@ public class TalkEvent : MonoBehaviour
 
             //UIが表示されていないつまり誰とも話していない状態で
             //どっちかのトリガーを引けば
+           
             if (!uiObj.activeSelf)
                 if (rightCtrl.isTrigger || leftCtrl.isTrigger)
                 {
