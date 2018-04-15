@@ -39,7 +39,27 @@ public class SwordMotion : MonoBehaviour
         if (coolTime != 100)
             coolTime++;//着脱出来るまでのクールタイム（要はゴリ押し）
 
+        Sword.GetComponent<BoxCollider>().isTrigger = true;
+        if (!isEquip)
+        {
 
+            Sword.transform.position = initSwordTrans.position;
+            Sword.transform.rotation = initSwordTrans.rotation;
+        }
+
+        if (coolTime != 100 && !isEquip)
+        {
+            //Sword.SetActive(false);
+            //クールタイム中は掴めない
+            swordSystem.GetComponent<Weapon_Sword>().isGrabbable = false;
+
+        }
+
+        if (coolTime == 100)
+        {
+            //Sword.SetActive(true);
+            swordSystem.GetComponent<Weapon_Sword>().isGrabbable = true;
+        }
     }
 
     //剣の着脱

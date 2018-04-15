@@ -27,13 +27,14 @@ public class Children : TalkEvent
         eRUDI2,
         eROLF,
         eROLF2,
+        eSERIF2_END,
         eEventNum,
         eEventNone,
     };
 
-    bool[] talkFlag = new bool[(int)EVENT_NO.eEventNum];
+    public static bool[] talkFlag = new bool[(int)EVENT_NO.eEventNum];
     private EVENT_NO nextEventNum;
-
+    private EVENT_NO beforeEvent;
 
     // Use this for initialization
     protected override void Start()
@@ -41,7 +42,7 @@ public class Children : TalkEvent
         base.Start();
         talkNum = (int)TALK_NO.eTalkNum;
         nextEventNum = EVENT_NO.eEventNone;
-
+        beforeEvent = EVENT_NO.eEventNone;
     }
 
     // Update is called once per frame
@@ -58,12 +59,28 @@ public class Children : TalkEvent
 
 
         //ロルフ→ルディ→ニーナ
+        //第二セリフをそれぞれが言い終わると次からは第一セリフだけを繰り返す
         //最初にしゃべるセリフ
         if (IsTalk())
         {
             //talkFlag[(int)EVENT_NO.eROLF] = true;
-            if(nextEventNum == EVENT_NO.eEventNone)
-            nextEventNum = EVENT_NO.eROLF;
+
+            //一度も会話したことのない場合
+            if (beforeEvent == EVENT_NO.eEventNone && nextEventNum == EVENT_NO.eEventNone)
+                nextEventNum = EVENT_NO.eROLF;
+
+
+            if (beforeEvent == EVENT_NO.eNINA)
+            {
+
+                //セリフ２は一度聞いているならば
+                if (talkFlag[(int)EVENT_NO.eSERIF2_END])
+                    nextEventNum = EVENT_NO.eROLF;
+                else
+                    nextEventNum = EVENT_NO.eROLF2;
+
+            }
+
 
         }
 
@@ -96,10 +113,40 @@ public class Children : TalkEvent
                     Talk((int)TALK_NO.eSerif_NI);
                     isTalk = false;
                     isPlaying = true;
+                    beforeEvent = nextEventNum;//直前のイベントを保存
+                    nextEventNum = EVENT_NO.eEventNone;
+                }
+                break;
+
+            //一度だけ呼ばれるセリフ
+            case EVENT_NO.eROLF2:
+
+                Talk((int)TALK_NO.eSerif2_RO);
+                nextEventNum = EVENT_NO.eRUDI2;
+                isTalk = false;
+                isPlaying = true;
+
+                break;
+
+            case EVENT_NO.eRUDI2:
+                if (IsFinished(TalkAudioSource((int)TALK_NO.eSerif_RO)))
+                {
+                    Talk((int)TALK_NO.eSerif2_RU);
+                    nextEventNum = EVENT_NO.eNINA2;
+                    isTalk = false;
+                    isPlaying = true;
+
+                }
+                break;
+            case EVENT_NO.eNINA2:
+                if (IsFinished(TalkAudioSource((int)TALK_NO.eSerif_RU)))
+                {
+                    Talk((int)TALK_NO.eSerif2_NI);
+                    isTalk = false;
+                    isPlaying = true;
                     //nextEventNum = EVENT_NO.eRUDI;
-                    nextEventNum = EVENT_NO.eROLF;
-
-
+                    nextEventNum = EVENT_NO.eEventNone;
+                    talkFlag[(int)EVENT_NO.eSERIF2_END] = true;
                 }
                 break;
 
