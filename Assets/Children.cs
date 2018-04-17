@@ -84,7 +84,7 @@ public class Children : TalkEvent
 
         }
 
-        Debug.Log(nextEventNum);
+        //Debug.Log(nextEventNum);
 
         switch (nextEventNum)
         {

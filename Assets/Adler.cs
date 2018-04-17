@@ -28,6 +28,8 @@ public class Adler : TalkEvent
 
 
     bool[] talkFlag = new bool[(int)EVENT_NO.eEventNum];
+    [SerializeField]
+    private GameObject yesNoUi;
 
     // Use this for initialization
     protected override void Start()
@@ -43,8 +45,11 @@ public class Adler : TalkEvent
     {
 
         //普通の会話終了で選択画面描画
-        if (IsFinished(TalkAudioSource((int)EVENT_NO.eNormal)))
+        if (IsFinished(TalkAudioSource((int)TALK_NO.eSerif))||
+            IsFinished(TalkAudioSource((int)TALK_NO.eSerif2))||
+           IsFinished(TalkAudioSource((int)TALK_NO.eSerif3)))
         {
+            Debug.Log("しゅりょ0");
             isTalk = false;
             isPlaying = false;
             PrintSelectUI();
@@ -56,7 +61,7 @@ public class Adler : TalkEvent
 
         if (talkFlag[(int)EVENT_NO.eNormal])
         {
-            Debug.Log("tanasu12");
+            //Debug.Log("tanasu12");
 
             //ランダムで話す内容を変える
             talkFlag[(int)EVENT_NO.eNormal] = false;
@@ -67,8 +72,17 @@ public class Adler : TalkEvent
         if (talkFlag[(int)EVENT_NO.eQuest])
         {
             talkFlag[(int)EVENT_NO.eQuest] = false;
-
             Talk((int)TALK_NO.eQuest);
+        }
+
+        //クエスト１の発言終了で
+        if (IsFinished(talkAudio[(int)TALK_NO.eQuest]))
+        {
+            Debug.Log("しゅりょ");
+            isPlaying = false;
+
+            DestroyUIObj();
+            yesNoUi.SetActive(true);
         }
 
         if (false /*クエスト2の依頼を受けた時*/)

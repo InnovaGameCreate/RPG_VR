@@ -62,7 +62,6 @@ public class TalkEvent : MonoBehaviour
                     //Debug.Log("あたって);
                     //Talk(talkNo);
                     isTalk = true;
-                    isPlaying = true;
                 }
                 else
                     isTalk = false;
@@ -94,6 +93,7 @@ public class TalkEvent : MonoBehaviour
                 return;
 
         }
+        isPlaying = true;
         talkAudio[_talklNo].PlayOneShot(talkAudio[_talklNo].clip);
     }
 
@@ -105,12 +105,20 @@ public class TalkEvent : MonoBehaviour
     //再生終了判定
     public bool IsFinished(AudioSource audio)
     {
+        //まずその音声が再生中でないならここで止める
+        if (!audio.isPlaying)
+            return false;
+
         //今のところこれだとうまくいく・・・？
         if (isPlaying)
             deltaTime += Time.deltaTime;
-        if (audio.clip.length + 0.5f <= deltaTime)//間隔考量
+        else
+            deltaTime = 0;
+        if (audio.clip.length <= deltaTime)
         {
             deltaTime = 0;
+            isPlaying = false;
+            Debug.Log("しゅうりょう");
             return true;
         }
 
@@ -131,6 +139,11 @@ public class TalkEvent : MonoBehaviour
     {
         uiObj.SetActive(true);
 
+    }
+
+    public void DestroyUIObj()
+    {
+        uiObj.SetActive(false);
     }
 
   
