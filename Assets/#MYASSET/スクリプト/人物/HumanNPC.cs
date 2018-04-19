@@ -24,7 +24,7 @@ public class HumanNPC : HumanBase
     //引数にクエストを入れるが GetComponent<Quest>()で入れること
     //NPCがクエスト複数持ちの際　一番上のクエストから一つずつ引き受けることにする
     //プレイヤーにクエストを与える
-    void sendQuest()
+    public void sendQuest()
     {
         if (!questing)
         {

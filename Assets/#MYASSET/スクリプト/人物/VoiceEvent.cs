@@ -113,6 +113,8 @@ public class VoiceEvent : MonoBehaviour
                 Voice();
                 if (nowVoiceNo == VoiceKind.T_A_THOMAS)
                     GameManager.Instance.SceneChengeManager("チュートリアル試し", "box");
+                if(Input.GetMouseButtonDown(1))
+                    GameManager.Instance.SceneChengeManager("村", "家の前");
 
                 break;
             case VoiceKind.T_A_THOMAS:
@@ -138,7 +140,9 @@ public class VoiceEvent : MonoBehaviour
                 break;
             case VoiceKind.BACK_A_THOMAS:
                 Voice();
-                break;
+                if (nowVoiceNo == VoiceKind.NONE)
+                    GetComponent<HumanNPC>().sendQuest();
+                    break;
             case VoiceKind.NONE:
                 break;
 
