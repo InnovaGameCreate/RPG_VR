@@ -31,7 +31,7 @@ public class TalkEvent : MonoBehaviour
 
     protected virtual void Start()
     {
-        Debug.Log(rightCtrl || leftCtrl);
+        //Debug.Log(rightCtrl || leftCtrl);
 
         rightCtrl = GameManager.Instance.RIGHTHAND.GetComponent<RPGVR_HandCtrl>();
         leftCtrl = GameManager.Instance.LEFTHAND.GetComponent<RPGVR_HandCtrl>();

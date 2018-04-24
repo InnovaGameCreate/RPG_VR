@@ -6,6 +6,15 @@ using UnityEngine;
 [System.Serializable]
 public class Quest : MonoBehaviour
 {
+
+    //クエストタイプ
+    public enum QuestType
+    {
+        FIGHT,          //討伐
+        COLLECT,       //採集
+        TALK           //会話
+    }
+
     [SerializeField, TooltipAttribute("クエストタイプ")]
     public QuestType questType;
 
@@ -62,13 +71,7 @@ public class Quest : MonoBehaviour
     }
     [SerializeField, TooltipAttribute("報酬アイテム")]
     public int[] ClearItem;
-    //クエストタイプ
-    public enum QuestType
-    {
-        FIGHT,          //討伐
-        COLLECT,       //採集
-        TALK           //会話
-    }
+ 
 
     public bool ISCLEAR
     {
@@ -88,7 +91,8 @@ public class Quest : MonoBehaviour
 
     }
 
-    //ターゲットなら達成数を増やす  
+    //ターゲットなら達成数を増やす 
+    //引数に対象の名前を入れてやる
     //TODO 敵を倒したとき　　アイテムを入手したときにこの関数を呼ぶ //話した時も
     public bool checkTarget(string tName)
     {

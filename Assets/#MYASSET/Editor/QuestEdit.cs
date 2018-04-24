@@ -42,6 +42,12 @@ public class QuestEdit : Editor
                 obj.CLEARNUM = EditorGUILayout.IntField("採集数", obj.CLEARNUM);
 
                 break;
+            case Quest.QuestType.TALK:
+                EditorGUILayout.HelpBox("対象アイテムにはプレハブから\nドラッグアンドドロップで当てはめる\n採集クエストの場合、対象アイテムの採集数", MessageType.Info, true);
+
+                obj.target = (GameObject)EditorGUILayout.ObjectField("会話対象", obj.target, typeof(GameObject), false);
+                obj.CLEARNUM = EditorGUILayout.IntField("会話回数", obj.CLEARNUM);
+                break;
         }
         // obj.target = EditorGUILayout.PropertyField(prop, new GUIContent( “array1” ), true);
 

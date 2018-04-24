@@ -17,7 +17,7 @@ public class VoiceEvent : MonoBehaviour
 
     private float deltaTime = 0;//再生時間との比較(再生終了判定に使う）
     public GameObject player;
-    public bool isEventHappen = false;//イベントが起こったかどうか
+    public bool isEventHappen = false;//イベントが起こったかどうか(VoiceEventColliderで変更）
     public int villageVoiceState = 0;
 
 
@@ -32,6 +32,7 @@ public class VoiceEvent : MonoBehaviour
         BACK_B_THOMAS,
         BACK_OBERON,
         BACK_A_THOMAS,
+        GOBLIN_DESTROYED,
         VOICE_NUM,
         NONE,
 
@@ -141,10 +142,24 @@ public class VoiceEvent : MonoBehaviour
             case VoiceKind.BACK_A_THOMAS:
                 Voice();
                 if (nowVoiceNo == VoiceKind.NONE)
-                    GetComponent<HumanNPC>().sendQuest();
+                {
+                    GameObject.Find("トーマス").GetComponent<HumanNPC>().sendQuest();//トーマスのイベント開始
+                    nowVoiceNo = VoiceKind.GOBLIN_DESTROYED;
+                }
                     break;
+            case VoiceKind.GOBLIN_DESTROYED:
+                if (GameObject.Find("トーマス").GetComponent<Quest>().ISCLEAR)//クエストクリアなら
+                {
+                    
+                    Voice();
+
+                }
+                break;
             case VoiceKind.NONE:
                 break;
+
+
+            
 
         }
 

@@ -13,7 +13,7 @@ public class HumanNPC : HumanBase
 
     }
     //プレイヤーと会話したときに呼ぶ
-    void talkWithPlayer()
+   public void talkWithPlayer()
     {
         if (questing)
             if (GameManager.Instance.QMANAGER.talkNPC(GetComponent<Quest>()))
@@ -30,6 +30,7 @@ public class HumanNPC : HumanBase
         {
             GameManager.Instance.QMANAGER.AddQuest(GetComponent<Quest>());
             questing = true;
+            Debug.Log("クエスト送信しました");
         }
     }
 }

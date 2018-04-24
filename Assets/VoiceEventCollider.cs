@@ -38,6 +38,9 @@ public class VoiceEventCollider : MonoBehaviour
                 case VoiceEvent.VoiceKind.T_A_THOMAS:
                     voiceEvent.isEventHappen = true;
                     break;
+                case VoiceEvent.VoiceKind.GOBLIN_DESTROYED:
+                    voiceEvent.isEventHappen = true;
+                    break;
             }
 
         }
