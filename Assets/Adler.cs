@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Adler : TalkEvent
 {
-
+    //セリフ
     enum TALK_NO
     {
         eSerif,//ランダムセリフ
@@ -17,6 +17,7 @@ public class Adler : TalkEvent
         eTalkNum,
     };
 
+    //イベントの種類
     enum EVENT_NO
     {
         eNormal,
@@ -28,49 +29,56 @@ public class Adler : TalkEvent
 
 
     bool[] talkFlag = new bool[(int)EVENT_NO.eEventNum];
-    [SerializeField]
-    private GameObject yesNoUi;
+    
 
     // Use this for initialization
     protected override void Start()
     {
-        //Array.Resize(ref talkFlag, (int)TALK_NO.eTalkNum);
         base.Start();
         talkNum = (int)TALK_NO.eTalkNum;
+        GetComponent<HumanNPC>().sendQuest();//クエスト受注
 
+    }
+
+    private bool NormalEventEnd()
+    {
+        return IsFinished(TalkAudioSource((int)TALK_NO.eSerif)) ||
+            IsFinished(TalkAudioSource((int)TALK_NO.eSerif2)) ||
+           IsFinished(TalkAudioSource((int)TALK_NO.eSerif3));
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        Delta();
         //普通の会話終了で選択画面描画
-        if (IsFinished(TalkAudioSource((int)TALK_NO.eSerif))||
-            IsFinished(TalkAudioSource((int)TALK_NO.eSerif2))||
-           IsFinished(TalkAudioSource((int)TALK_NO.eSerif3)))
+        if (NormalEventEnd())
         {
-            Debug.Log("しゅりょ0");
             isTalk = false;
             isPlaying = false;
             PrintSelectUI();
+
         }
         if (IsTalk())
             talkFlag[(int)EVENT_NO.eNormal] = true;
 
 
 
+        //通常会話であるならば
         if (talkFlag[(int)EVENT_NO.eNormal])
         {
             //Debug.Log("tanasu12");
-
+            SetInputDevice(false);//リモコン操作停止
             //ランダムで話す内容を変える
             talkFlag[(int)EVENT_NO.eNormal] = false;
             Talk(Random.Range((int)TALK_NO.eSerif, (int)TALK_NO.eSerif3 + 1));
 
         }
 
+        //クエスト１の会話状態であるならば
         if (talkFlag[(int)EVENT_NO.eQuest])
         {
+            //クエスト１セリフ開始
             talkFlag[(int)EVENT_NO.eQuest] = false;
             Talk((int)TALK_NO.eQuest);
         }
@@ -78,11 +86,12 @@ public class Adler : TalkEvent
         //クエスト１の発言終了で
         if (IsFinished(talkAudio[(int)TALK_NO.eQuest]))
         {
-            Debug.Log("しゅりょ");
+            //発言終了で再生終了を通知し
+            //選択肢UIを表示
             isPlaying = false;
+            SetUIObj(false);
+            YesNoUI.SetActive(true);
 
-            DestroyUIObj();
-            yesNoUi.SetActive(true);
         }
 
         if (false /*クエスト2の依頼を受けた時*/)
@@ -90,10 +99,22 @@ public class Adler : TalkEvent
             Talk((int)TALK_NO.eQuest2);
         }
 
-        if (false/*断った時*/)
+       
+
+        if(talkFlag[(int)EVENT_NO.eDecline])
         {
+            //会話発生フラグを戻して会話
+            talkFlag[(int)EVENT_NO.eDecline] = false;
             Talk((int)TALK_NO.eDecline);
         }
+
+        if (IsFinished(talkAudio[(int)TALK_NO.eDecline]))
+        {
+            YesNoUI.SetActive(false);
+            SetInputDevice(true);//リモコン操作解除
+
+        }
+
     }
 
 
@@ -104,13 +125,32 @@ public class Adler : TalkEvent
 
     public void SetNormalTalk()
     {
+        SetInputDevice(false);//リモコン操作停止
         talkFlag[(int)EVENT_NO.eNormal] = true;
     }
 
     public void SetQuest1()
     {
+
+        SetInputDevice(false);//リモコン操作停止
         talkFlag[(int)EVENT_NO.eQuest] = true;
 
+    }
+
+    public void SetDecline()
+    {
+        SetInputDevice(false);//リモコン操作停止
+        talkFlag[(int)EVENT_NO.eDecline] = true;
+
+
+    }
+
+    public void YesSelect()
+    {
+
+        GetComponent<HumanNPC>().sendQuest();//クエスト受注
+        YesNoUI.SetActive(false);
+        IsMove = true;
     }
 }
 

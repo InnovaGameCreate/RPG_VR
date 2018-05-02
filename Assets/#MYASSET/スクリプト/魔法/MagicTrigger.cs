@@ -95,7 +95,7 @@ public class MagicTrigger : MonoBehaviour
         //チュートリアルかフィールドにいれば使える
         return SceneManager.GetActiveScene().name == "チュートリアル試し" 
             || SceneManager.GetActiveScene().name == "フィールド"
-            || SceneManager.GetActiveScene().name == "村";
+            || SceneManager.GetActiveScene().name == "森";
 
 
     }

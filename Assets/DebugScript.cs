@@ -13,6 +13,7 @@ public class DebugScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        //左クリックでゴブリン倒した判定
         if (Input.GetMouseButtonDown(0))
         {
             //これを使えばいいのでは！？

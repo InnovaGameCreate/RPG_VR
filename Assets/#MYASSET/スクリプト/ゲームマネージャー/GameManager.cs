@@ -33,6 +33,7 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField, TooltipAttribute("ボイスマネージャ インスタンスを指定")]
     VoiceEvent voiceEvent;
+    
     //[SerializeField, TooltipAttribute("右手")]
     public GameObject rightHand;
     //[SerializeField, TooltipAttribute("左手")]
@@ -199,14 +200,28 @@ public class GameManager : Singleton<GameManager>
             }
 
 
-        //ボイスイベントの動き制御
-        if (voiceEvent.ControlIsMove())
+        ////ボイスイベントの動き制御
+        //if (voiceEvent.ControlIsMove() && TalkEvent.IsMove)
+        //{
+        //    //Debug.Log("動けるぞ");
+        //    LeftController.GetComponentInChildren<VRTK_TouchpadControl>().enabled = true;
+        //    RightController.GetComponentInChildren<VRTK_TouchpadControl>().enabled = true;
+        //}
+        //else if (!voiceEvent.ControlIsMove() || !TalkEvent.IsMove)
+        //{
+        //    //Debug.Log("動けnzo!");
+        //    LeftController.GetComponentInChildren<VRTK_TouchpadControl>().enabled = false;
+        //    RightController.GetComponentInChildren<VRTK_TouchpadControl>().enabled = false;
+        //}
+
+        //デバッグ用（シーンが中途の場合はこれを）
+        if (TalkEvent.IsMove)
         {
             //Debug.Log("動けるぞ");
             LeftController.GetComponentInChildren<VRTK_TouchpadControl>().enabled = true;
             RightController.GetComponentInChildren<VRTK_TouchpadControl>().enabled = true;
         }
-        else if (!voiceEvent.ControlIsMove())
+        else if (!TalkEvent.IsMove)
         {
             //Debug.Log("動けnzo!");
             LeftController.GetComponentInChildren<VRTK_TouchpadControl>().enabled = false;
@@ -235,7 +250,6 @@ public class GameManager : Singleton<GameManager>
     private void FixedUpdate()
     {
         ElapsedTime += Time.deltaTime;
-
         switch (_CurrentState)
         {
             case GameState.Start:

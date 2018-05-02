@@ -36,15 +36,33 @@ public class Yurika : TalkEvent
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-
+        base.Update();
         //普通の会話終了で選択画面描画
         if (IsFinished(TalkAudioSource((int)EVENT_NO.eNormal)))
         {
             isTalk = false;
             isPlaying = false;
             PrintSelectUI();
+        }
+
+        if (IsFinished(TalkAudioSource((int)EVENT_NO.eQuest)))
+        {
+            isTalk = false;
+            isPlaying = false;
+            TalkAudioSource((int)EVENT_NO.eQuest).Stop();//次にいった時上手く行かないので
+            talkFlag[(int)EVENT_NO.eQuest2] = true;
+            
+
+        }
+
+        if (IsFinished(TalkAudioSource((int)EVENT_NO.eQuest2)))
+        {
+            isTalk = false;
+            isPlaying = false;
+            GameManager.Instance.QMANAGER.CheckQuestAchievement("ユリカ");
+
         }
         if (IsTalk())
             talkFlag[(int)EVENT_NO.eNormal] = true;
@@ -69,12 +87,14 @@ public class Yurika : TalkEvent
         if (talkFlag[(int)EVENT_NO.eQuest])
         {
             talkFlag[(int)EVENT_NO.eQuest] = false;
-
             Talk((int)TALK_NO.eQuest);
         }
 
-        if (false /*クエスト2のセリフを言う時*/)
+
+        if (talkFlag[(int)EVENT_NO.eQuest2])
         {
+            Debug.Log(isPlaying);
+            talkFlag[(int)EVENT_NO.eQuest2] = false;
             Talk((int)TALK_NO.eQuest2);
         }
 
@@ -82,7 +102,10 @@ public class Yurika : TalkEvent
     }
 
     public void SetNormalTalk2()
-    {
-        talkFlag[(int)EVENT_NO.eNormal2] = true;
+    {   //ユリカと話すクエストを受けていれば
+        if (GameManager.Instance.QMANAGER.IsReceiveQuest("ユリカ"))
+            talkFlag[(int)EVENT_NO.eQuest] = true;//クエストのイベント発生
+        else
+            talkFlag[(int)EVENT_NO.eNormal2] = true;
     }
 }
