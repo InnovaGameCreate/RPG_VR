@@ -36,7 +36,7 @@ public class Adler : TalkEvent
     {
         base.Start();
         talkNum = (int)TALK_NO.eTalkNum;
-        GetComponent<HumanNPC>().sendQuest();//クエスト受注
+        //GetComponent<HumanNPC>().sendQuest();//クエスト受注
 
     }
 
@@ -147,7 +147,6 @@ public class Adler : TalkEvent
 
     public void YesSelect()
     {
-
         GetComponent<HumanNPC>().sendQuest();//クエスト受注
         YesNoUI.SetActive(false);
         IsMove = true;

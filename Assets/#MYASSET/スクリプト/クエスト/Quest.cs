@@ -100,17 +100,18 @@ public class Quest : MonoBehaviour
         var myRegExp = new Regex(target.name);
         if (!ISCLEAR)
         {
+            Debug.Log("quest " + achieveCount);
             if (myRegExp.IsMatch(tName))
                 achieveCount++;
             if (achieveCount >= ClearNum)
             {
                 isClear = true;
-                if (questType == QuestType.FIGHT)
-                    GameManager.Instance.UMANAGER.LOGCONTROLLER.RegisterLog("[討伐クエスト]　「" + questName + "」　クリア", Color.white);
-                else if (questType == QuestType.COLLECT)
-                    GameManager.Instance.UMANAGER.LOGCONTROLLER.RegisterLog("[採取クエスト]　「" + questName + "」　クリア", Color.white);
-                else if(questType == QuestType.TALK)
-                    GameManager.Instance.UMANAGER.LOGCONTROLLER.RegisterLog("[会話クエスト]　「" + questName + "」　クリア", Color.white);
+                //if (questType == QuestType.FIGHT)
+                //    GameManager.Instance.UMANAGER.LOGCONTROLLER.RegisterLog("[討伐クエスト]　「" + questName + "」　クリア", Color.white);
+                //else if (questType == QuestType.COLLECT)
+                //    GameManager.Instance.UMANAGER.LOGCONTROLLER.RegisterLog("[採取クエスト]　「" + questName + "」　クリア", Color.white);
+                //else if(questType == QuestType.TALK)
+                //    GameManager.Instance.UMANAGER.LOGCONTROLLER.RegisterLog("[会話クエスト]　「" + questName + "」　クリア", Color.white);
 
                 return true;
             }

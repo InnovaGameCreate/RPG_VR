@@ -41,6 +41,10 @@ public class VoiceEventCollider : MonoBehaviour
                 case VoiceEvent.VoiceKind.GOBLIN_DESTROYED:
                     voiceEvent.isEventHappen = true;
                     break;
+                case VoiceEvent.VoiceKind.OAK_DESTROYED:
+                    voiceEvent.isEventHappen = true;
+                    break;
+
             }
 
         }

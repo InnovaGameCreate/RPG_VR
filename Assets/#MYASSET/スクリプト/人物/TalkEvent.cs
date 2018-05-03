@@ -39,6 +39,7 @@ public class TalkEvent : MonoBehaviour
         IsMove = true;//最初はtrueで
         
         Debug.Log(talkAudio);
+
     }
 
     protected virtual void Start()
@@ -77,6 +78,7 @@ public class TalkEvent : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+
         if (other.CompareTag("Player"))
         {
             //Debug.Log("あたって");
@@ -147,8 +149,6 @@ public class TalkEvent : MonoBehaviour
     //再生終了判定
     public bool IsFinished(AudioSource audio)
     {
-
-
         //まずその音声が再生中でないならここで止める
         if (!audio.isPlaying)
             return false;

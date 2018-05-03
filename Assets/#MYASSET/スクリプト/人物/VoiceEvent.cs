@@ -33,15 +33,16 @@ public class VoiceEvent : MonoBehaviour
         BACK_OBERON,
         BACK_A_THOMAS,
         GOBLIN_DESTROYED,
-        VOICE_NUM,
+        OAK_DESTROYED,
         NONE,
+        VOICE_NUM,
 
     };
 
     public VoiceKind nowVoiceNo;//現在のボイス番号
     private List<AudioClip> clipList = new List<AudioClip>();
     private string voiceFolder = "Assets/#MYASSET/セリフ/";
-    private string[] voiceName = new string[9]
+    private string[] voiceName = new string[11]
     {
         "オベロン/オベロン/主人公の夢.wav",
         "エルフィ/エルフィ/夢から覚めた時.wav",
@@ -50,8 +51,10 @@ public class VoiceEvent : MonoBehaviour
         "トーマス/トーマス/チュートリアル後トーマス.wav",
         "トーマス/トーマス/チュートリアル後2.wav",
         "トーマス/トーマス/回想1.wav",
-        "トーマス/トーマス/回想1.wav",
+        "オベロン/オベロン/イワムラ夢のお告①.wav",
         "トーマス/トーマス/回想後.wav",
+        "トーマス/トーマス/ゴブリン討伐後.wav",
+        "トーマス/トーマス/オーク討伐後.wav",
 
     };
 
@@ -61,7 +64,11 @@ public class VoiceEvent : MonoBehaviour
     {
         DontDestroyOnLoad(this);
         nowAudioState = GetComponent<AudioSource>();
-        nowVoiceNo = VoiceEvent.VoiceKind.MY_DREAM;
+        //nowVoiceNo = VoiceEvent.VoiceKind.MY_DREAM;
+        
+        //ここは変えて
+        nowVoiceNo = VoiceEvent.VoiceKind.BACK_A_THOMAS;
+
         //foreach (AudioSource test in audioClip) {
         //    audioClip.Add(test);
         //        }
@@ -69,13 +76,17 @@ public class VoiceEvent : MonoBehaviour
         //nowAudioState.clip = null;
         //Debug.Log(AssetDatabase.LoadAssetAtPath<AudioClip>(voiceFolder + voiceName[4]));
 
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < 11; i++)
         {
             clipList.Add(AssetDatabase.LoadAssetAtPath<AudioClip>(voiceFolder + voiceName[i]));
         }
 
 
-        nowAudioState.clip = clipList[(int)VoiceKind.MY_DREAM];
+       // nowAudioState.clip = clipList[(int)VoiceKind.MY_DREAM];
+
+        //ここも変えて（デバッグに合わせてシーンを変更）
+        nowAudioState.clip = clipList[(int)VoiceKind.BACK_A_THOMAS];
+
     }
 
     // Update is called once per frame
@@ -114,11 +125,11 @@ public class VoiceEvent : MonoBehaviour
                 Voice();
                 if (nowVoiceNo == VoiceKind.T_A_THOMAS)
                     GameManager.Instance.SceneChengeManager("チュートリアル試し", "box");
-                if(Input.GetMouseButtonDown(1))
-                    GameManager.Instance.SceneChengeManager("村", "家の前");
-
                 break;
             case VoiceKind.T_A_THOMAS:
+                if (Input.GetMouseButtonDown(0))
+                    GameManager.Instance.SceneChengeManager("村", "家の前");
+
                 if (isEventHappen)
                     Voice();
 
@@ -141,25 +152,77 @@ public class VoiceEvent : MonoBehaviour
                 break;
             case VoiceKind.BACK_A_THOMAS:
                 Voice();
-                if (nowVoiceNo == VoiceKind.NONE)
+                if (nowVoiceNo == VoiceKind.GOBLIN_DESTROYED)
                 {
-                    GameObject.Find("トーマス").GetComponent<HumanNPC>().sendQuest();//トーマスのイベント開始
-                    nowVoiceNo = VoiceKind.GOBLIN_DESTROYED;
+                    // GameManager.Instance.SceneChengeManager("村", "家の前");
+                    GameObject.Find("トマス").GetComponent<HumanNPC>().sendQuest();//トーマスのイベント開始
                 }
-                    break;
+                break;
             case VoiceKind.GOBLIN_DESTROYED:
-                if (GameObject.Find("トーマス").GetComponent<Quest>().ISCLEAR)//クエストクリアなら
+                if (Input.GetMouseButtonDown(1))
+                    GameObject.Find("トマス").GetComponent<HumanNPC>().sendQuest();//トーマスのイベント開始
+
+                if (Input.GetMouseButtonDown(0))
                 {
-                    
-                    Voice();
+                    Debug.Log("gobrin");
+                    GameManager.Instance.QMANAGER.CheckQuestAchievement("ゴブリン");
+                }
+
+                if (GameObject.Find("トマス").GetComponent<Quest>().ISCLEAR)//クエストクリアなら
+                {
+                    if (isEventHappen)
+                    {
+                        Voice();
+
+                    }
+                }
+
+                if (nowVoiceNo == VoiceKind.OAK_DESTROYED)
+                {
+                    GameObject.Find("トマス").GetComponent<HumanNPC>().talkWithPlayer();
+                    // GameObject.Find("トマス").GetComponent<HumanNPC>().sendQuest();//トーマスのイベント開始
+                    StartCoroutine(DelayQuest("トマス"));
+                }
+                break;
+
+            case VoiceKind.OAK_DESTROYED:
+                if (Input.GetMouseButtonDown(0))
+                {
+                    Debug.Log("oak");
+                    GameManager.Instance.QMANAGER.CheckQuestAchievement("オーク");
+
+                    Debug.Log(GameManager.Instance.QMANAGER.IsReceiveQuest("オーク"));
+                    //Debug.Log(GameObject.Find("トマス").GetComponent<Quest>().ISCLEAR);
+                }
+
+                if (Input.GetMouseButtonDown(1))
+                {
+                    GameObject.Find("トマス").GetComponent<HumanNPC>().sendQuest();//トーマスのイベント開始
 
                 }
+
+
+                if (GameObject.Find("トマス").GetComponent<Quest>().ISCLEAR)//クエストクリアなら
+                {
+                    Debug.Log("オーク倒したじゃ！");
+
+                    if (isEventHappen)
+                    {
+                        Voice();
+                    }
+                }
+
+                if (nowVoiceNo == VoiceKind.NONE)
+                {
+                    GameObject.Find("トマス").GetComponent<HumanNPC>().talkWithPlayer();
+                }
+
                 break;
             case VoiceKind.NONE:
                 break;
 
 
-            
+
 
         }
 
@@ -172,6 +235,14 @@ public class VoiceEvent : MonoBehaviour
         isPlaying = true;
         yield return new WaitForSeconds(waitTime);
         isPlay = true;
+    }
+
+    //クエスト削除と追加の速度による問題があるのでこれで送信します
+    public IEnumerator DelayQuest(string character)
+    {
+        yield return new WaitForSeconds(1);
+        GameObject.Find(character).GetComponent<HumanNPC>().sendQuest();
+        StopCoroutine("DelayQuest");
     }
 
 
@@ -297,7 +368,7 @@ public class VoiceEvent : MonoBehaviour
 
 
 
-        if (IsFinished(nowAudioState))
+        if (IsFinished(nowAudioState) || VoiceStop())
         {
             //シーンを民家に
             nowAudioState.clip = null;
@@ -306,11 +377,22 @@ public class VoiceEvent : MonoBehaviour
             isPlaying = false;
             isMove = true;
             isEventHappen = false;
-            //次のセリフロード（夢から覚めた時)
+            deltaTime = 0;
+            //次のセリフロード
             //isLoadAudio = true;
             nowAudioState.clip = clipList[(int)nowVoiceNo];
         }
 
+    }
+
+    public bool VoiceStop()
+    {
+        if (Input.GetKeyUp("space"))
+        {
+            nowAudioState.Stop();
+            return true;
+        }
+        return false;
     }
 
     public bool ControlIsMove()

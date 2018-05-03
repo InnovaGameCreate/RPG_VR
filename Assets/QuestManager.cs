@@ -19,6 +19,7 @@ public class QuestManager : MonoBehaviour
     {
         foreach (var the_quest in questList)
         {
+
             if (the_quest.checkTarget(tName))
             {
                 questClearList.Add(the_quest);
