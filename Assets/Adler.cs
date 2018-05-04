@@ -48,9 +48,8 @@ public class Adler : TalkEvent
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        Delta();
         //普通の会話終了で選択画面描画
         if (NormalEventEnd())
         {

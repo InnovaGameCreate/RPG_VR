@@ -146,6 +146,7 @@ public class GameManager : Singleton<GameManager>
         SceneManager.activeSceneChanged += OnActiveSceneChanged;
         fade = gameObject.GetComponentInChildren<FadeInOut>();
         //  Debug.Log(fade);
+        TalkEvent.IsMove = true;//最初は動ける
 
     }
 

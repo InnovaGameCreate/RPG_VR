@@ -86,4 +86,11 @@ public abstract class ItemBase : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    //選択したアイテムを購入する
+    public void PurchaseItem()
+    {
+        backpack.AcquireItem(GetComponent<ItemBase>());
+
+    }
 }
