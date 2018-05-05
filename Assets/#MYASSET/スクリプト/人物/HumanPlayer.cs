@@ -9,7 +9,20 @@ public class HumanPlayer : HumanBase
     private int LV;
     [SerializeField, TooltipAttribute("現在の経験値")]
     private int Exp;//今の経験値量
+    [SerializeField, TooltipAttribute("現在の所持金")]
+    private int Money;
+
     private int num = 0;
+
+    public int MONEY
+    {
+        get { return Money; }
+        set
+        {
+            Money = value;
+        }
+    }
+
     public int EXP
     {
         get { return Exp; }

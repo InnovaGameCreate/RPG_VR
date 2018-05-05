@@ -94,6 +94,8 @@ public class PlayerStatus : MonoBehaviour
         if (this.nowhp == this.basemaxhp)
             return true;
 
+        Debug.Log(nowhp);
+
         this.nowhp += hp;
         if (this.nowhp > basemaxhp)
             this.nowhp = basemaxhp;

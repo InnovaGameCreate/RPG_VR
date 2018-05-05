@@ -88,9 +88,19 @@ public abstract class ItemBase : MonoBehaviour
     }
 
     //選択したアイテムを購入する
-    public void PurchaseItem()
+    public void PurchaseItem(int price)
     {
-        backpack.AcquireItem(GetComponent<ItemBase>());
+        if (GameManager.Instance.PLAYER.MONEY >= price)
+        {
+            backpack.AcquireItem(GetComponent<ItemBase>());
+            GameManager.Instance.PLAYER.MONEY -= price;
+            Debug.Log("アイテムを購入しました");
+
+        }
+        else
+        {
+            Debug.Log("所持金が足りません");
+        }
 
     }
 }

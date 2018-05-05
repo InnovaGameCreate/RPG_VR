@@ -65,10 +65,10 @@ public class TalkEvent : MonoBehaviour
     //trueに強制更新されます・・・
     public void SetInputDevice(bool value)
     {
-        rightCtrl.enabled = value;
-        leftCtrl.enabled = value;
-        rightPad.enabled = value;
-        leftPad.enabled = value;
+        //rightCtrl.enabled = value;
+        //leftCtrl.enabled = value;
+        //rightPad.enabled = value;
+        //leftPad.enabled = value;
         IsMove = value;
         Debug.Log(IsMove);
         

@@ -32,6 +32,8 @@ public class RPGVR_HandCtrl : MonoBehaviour
     public bool action = false;
     public bool hold = false;
     public bool isMagic = false;
+    public bool isMenuButtonDown = false;//メニューボタンを押した瞬間
+    public bool isMenuButton = false;//メニューボタンを押すたびに状態が反転
     private GameObject test;
     private void Start()
     {
@@ -46,8 +48,16 @@ public class RPGVR_HandCtrl : MonoBehaviour
 
 
 
+
+
+        //メニューボタンを押した場合のイベント
+        //StartMenuでもなければButtonOneでもなく下記のButtonTwoです
+        ctrl.ButtonTwoPressed += MenuPressed;
+        ctrl.ButtonTwoReleased += MenuReleased;
+
         ctrl.TriggerPressed += TriggerPressed;
         ctrl.TriggerReleased += TriggerReleased;
+
         
 
         //GetComponent<VRTK_InteractUse>().UseButtonPressed += DoUseOn;
@@ -68,6 +78,22 @@ public class RPGVR_HandCtrl : MonoBehaviour
     {
         isTrigger = false;
         Debug.Log("トリガーアップ");
+
+    }
+
+
+    private void MenuPressed(object sender, ControllerInteractionEventArgs e)
+    {
+        isMenuButtonDown = true;
+        isMenuButton = !isMenuButton;//押すたびに状態が反転する
+        Debug.Log("メニューボタンダウン");
+
+
+    }
+    private void MenuReleased(object sender, ControllerInteractionEventArgs e)
+    {
+        isMenuButtonDown = false;
+        Debug.Log("メニューボタンアップ");
 
     }
 

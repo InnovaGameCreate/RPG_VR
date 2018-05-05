@@ -10,6 +10,8 @@ public class HumanEnemy : HumanBase
     public GameObject[] dropitem;
     [SerializeField, TooltipAttribute("取得経験値量")]
     private int Experience;
+    [SerializeField, TooltipAttribute("取得金額")]
+    private int Money;
     private const float breakForce = 150f;      //HP減少に必要な剣を振る速さ.
 
     private Transform initpos;              //初期位置　りスポーン位置になる
@@ -114,6 +116,9 @@ public class HumanEnemy : HumanBase
 
         //経験値の為、プレイヤークラス取得
         GameManager.Instance.PLAYER.EXP += Experience;
+        //所持金更新のためプレイヤークラス取得
+        GameManager.Instance.PLAYER.MONEY += Money;
+        Debug.Log("金取得!：" + GameManager.Instance.PLAYER.MONEY);
 
         //// 作成したオブジェクトを子として登録
         //obj.transform.parent = canvas.transform;
@@ -153,5 +158,6 @@ public class HumanEnemy : HumanBase
 
         return 0f;
     }
+
 
 }

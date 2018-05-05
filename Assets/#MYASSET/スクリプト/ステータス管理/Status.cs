@@ -24,6 +24,7 @@ public class Status  {
 
     float NextExperiencePoint;//次のレベルまでの経験値量
     float Experience;//現在経験値
+    float Money;//持ってるお金
 
     //private void Start()
     //{

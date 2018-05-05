@@ -22,6 +22,7 @@ public class HealItem : ItemBase
         if (usedtime + IntervalTime > Time.deltaTime)
             return false;
         usedtime = Time.deltaTime;
+        Debug.Log("アイテム使用");
         playerstatus.recoveryHp(heal);
         return true;
     }
