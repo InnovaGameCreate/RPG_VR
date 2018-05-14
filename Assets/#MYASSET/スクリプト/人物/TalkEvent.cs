@@ -142,7 +142,7 @@ public class TalkEvent : MonoBehaviour
 
     public void Delta()
     {
-        Debug.Log(deltaTime);
+        //Debug.Log(deltaTime);
 
     }
 

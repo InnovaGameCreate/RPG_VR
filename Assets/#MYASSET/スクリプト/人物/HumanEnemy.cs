@@ -61,7 +61,7 @@ public class HumanEnemy : HumanBase
 
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         //死んだ時
         if (!deaded&&Status.Parameter.HP <= 0  || Input.GetKeyDown(KeyCode.P))

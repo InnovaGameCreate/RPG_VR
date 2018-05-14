@@ -24,6 +24,8 @@ public class Weapon_Sword : RPGItemObject
     [SerializeField]
     private HumanBase pplay;
     private SwordMotion swordMotion;
+    private AudioSource atkSe;        //攻撃ヒット時効果音
+    private BoxCollider atkCollider;
 
 
     // Use this for initialization
@@ -32,6 +34,7 @@ public class Weapon_Sword : RPGItemObject
         base.Start();
         GameManager.Instance.PLAYER.SendBuff.Add(GetComponent<Buff>());
         swordMotion = GetComponent<SwordMotion>();
+        atkSe = GetComponent<AudioSource>();
 
     }
 
@@ -116,18 +119,22 @@ public class Weapon_Sword : RPGItemObject
         base.OnDisable();
 
         GetComponent<BoxCollider>().isTrigger = false;
+        Object.Destroy(atkCollider);
+        atkCollider = null;
     }
 
     private void OnCollisionEnter(Collision coll)
     {
         if (coll.gameObject.tag == "enemy" && this.enabled)
         {
+        Debug.Log("ifjoadhfiuoajfkodhf");
             //Debug.Log("aaaafojsegj");
             //Status st = GetComponentInParent<HumanBase>().Status;
             Status st = GameManager.Instance.PLAYER.Status;
             // Status st = pplay.Status;
+            if (!atkSe.isPlaying)
+                atkSe.Play();
 
-            
             List<Buff> _counter = null;
             //if (coll.gameObject.GetComponent<HumanBase>().CounterBuff != null)//テストプレイ時敵にHumanBaseがアタッチされてないためつくまでコメントアウト
             //{
@@ -176,6 +183,8 @@ public class Weapon_Sword : RPGItemObject
     protected override void OnEnable()
     {
         base.OnEnable();
+        if (atkCollider == null)
+            atkCollider = gameObject.AddComponent<BoxCollider>();
         controllerReference = null;
         interactableRigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
     }

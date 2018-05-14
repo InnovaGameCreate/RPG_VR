@@ -2,23 +2,30 @@
 using UnityEditor;
 using System;
 using System.IO;
+using System.Collections.Generic;
 
 namespace MORPH3D {
     [InitializeOnLoad]
     public class MCSUpgrade : Editor
     {
+        public static string pathToInstallScript = "Assets/MORPH3D/Content/Packages/Editor/MCSUpgrader.cs";
         public static string pathToPackages = "Assets/MORPH3D/Content/Packages";
         public static string pathToPackagesCore = "Assets/MORPH3D/Content/Packages/Core.unitypackage";
-        public static string pathToPackagesBase = "Assets/MORPH3D/Content/Packages/M3DBaseContent.unitypackage";
+        public static string pathToPackagesFemale = "Assets/MORPH3D/Content/Packages/M3DFemale.unitypackage";
+        public static string pathToPackagesMale = "Assets/MORPH3D/Content/Packages/M3DMale.unitypackage";
         protected static string pathToConfig = "Assets/MORPH3D/MCSUpgrade.json";
+
+        protected static MCSUpgradeWindow window = null;
 
         [Serializable]
         public struct UpgradeMeta
         {
             [SerializeField]
+            public bool disabled;
+            [SerializeField]
             public bool hideOneDotSixPopup;
             [SerializeField]
-            public bool autoInstallPackages;
+            public string[] installed;
         }
 
         public static UpgradeMeta GetMeta()
@@ -62,9 +69,57 @@ namespace MORPH3D {
             //Have we shown the popup for 1.0->1.6?
             UpgradeMeta meta = GetMeta();
 
-            if (!meta.hideOneDotSixPopup)
+            bool shouldShowPopup = !meta.disabled && !meta.hideOneDotSixPopup;
+
+            if(meta.installed != null && meta.installed.Length != 3)
             {
-                MCSUpgradeWindow window = MCSUpgradeWindow.Instance;
+                //we might have pending packages
+                string[] paths = Directory.GetFiles(pathToPackages, "*.unitypackage", SearchOption.TopDirectoryOnly);
+
+                if(meta.installed == null)
+                {
+                    meta.installed = new string[] { };
+                }
+
+                List<string> pending = new List<string>();
+
+                for(int i = 0; i < paths.Length; i++)
+                {
+                    string basePath = Application.dataPath;
+                    string path = paths[i].Replace(@"\",@"/").Replace(basePath,"");
+
+                    bool newPackage = true;
+
+
+                    for(int j = 0; j < meta.installed.Length; j++)
+                    {
+                        if (meta.installed[j].Equals(path))
+                        {
+                            newPackage = false;
+                            break;
+                        }
+                    }
+
+                    if (newPackage)
+                    {
+                        UnityEngine.Debug.Log("Need to install: " + path);
+                        pending.Add(path);
+                    }
+
+                }
+
+                if (pending.Count > 0)
+                {
+                    window = MCSUpgradeWindow.Instance;
+                    window.packageQueue = pending;
+                    window.deleteQueue = new List<string>();
+                }
+            }
+
+
+            if (shouldShowPopup)
+            {
+                window = MCSUpgradeWindow.Instance;
             }
         }
 
@@ -72,38 +127,14 @@ namespace MORPH3D {
         {
             UpgradeMeta meta = GetMeta();
             meta.hideOneDotSixPopup = true;
-            meta.autoInstallPackages = true;
             SaveMeta(meta);
-            if (File.Exists(pathToPackagesCore))
-            {
-                AssetDatabase.ImportPackage(pathToPackagesCore, false);
-            }
-            if (File.Exists(pathToPackagesBase))
-            {
-                AssetDatabase.ImportPackage(pathToPackagesBase, false);
-            }
 
-            if (InstallPackage(pathToPackagesCore) == false)
-            {
-                UnityEngine.Debug.LogError("Failed to install critical code package: " + pathToPackagesCore);
-                return;
-            }
-            if(InstallPackage(pathToPackagesBase) == false)
-            {
-                UnityEngine.Debug.LogError("Failed to install critical base package: " + pathToPackagesCore);
-                return;
-            }
+            window.packageQueue = new List<string>();
+            window.deleteQueue = new List<string>();
 
-            string[] paths = Directory.GetFiles(pathToPackages, "*.unitypackage", SearchOption.AllDirectories);
-            foreach(string path in paths)
-            {
-                if(path.Contains(pathToPackagesCore) || path.Contains(pathToPackagesBase))
-                {
-                    continue;
-                }
-
-                InstallPackage(path);
-            }
+            window.packageQueue.Add(pathToPackagesCore);
+            window.packageQueue.Add(pathToPackagesFemale);
+            window.packageQueue.Add(pathToPackagesMale);
         }
 
         public static bool? InstallPackage(string path)
@@ -117,7 +148,7 @@ namespace MORPH3D {
             try
             {
                 AssetDatabase.ImportPackage(path, false);
-                AssetDatabase.DeleteAsset(path);
+                //UnityEngine.Debug.Log("Triggering refresh");
             } catch(Exception e)
             {
                 UnityEngine.Debug.LogException(e);
@@ -130,13 +161,114 @@ namespace MORPH3D {
         [MenuItem("MORPH 3D/Show 1.0 to 1.6 Upgrade Window")]
         public static void MenuItemShowUpgradeWindow()
         {
-           MCSUpgradeWindow window = MCSUpgradeWindow.Instance;
+           window = MCSUpgradeWindow.Instance;
         }
 
     }
 
     public class MCSUpgradeWindow : EditorWindow
     {
+        public List<string> packageQueue = null;
+        public List<string> deleteQueue = null;
+        protected bool refresh = false;
+        Int32 lastTime = 0;
+
+        public void Update()
+        {
+
+            if (refresh)
+            {
+                refresh = false;
+                lastTime = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+                AssetDatabase.Refresh(ImportAssetOptions.Default | ImportAssetOptions.ForceUpdate | ImportAssetOptions.ImportRecursive);
+                return;
+            }
+
+            if( (packageQueue == null || packageQueue.Count <= 0) && (deleteQueue == null || deleteQueue.Count <= 0))
+            {
+                return;
+            }
+
+            Int32 currentTime = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+
+            Int32 delta = currentTime - lastTime;
+
+            if (delta < 5)
+            {
+                //wait for later
+                return;
+            }
+
+            lastTime = currentTime;
+
+            if (packageQueue.Count > 0)
+            {
+                string path = packageQueue[0];
+                packageQueue.RemoveAt(0);
+                bool? result = MCSUpgrade.InstallPackage(path);
+                if (result == false)
+                {
+                    UnityEngine.Debug.LogError("Aborting package install as: " + path + " failed to install");
+                    packageQueue.Clear();
+                }
+                else
+                {
+                    if(result == true)
+                    {
+                        MCSUpgrade.UpgradeMeta meta = MCSUpgrade.GetMeta();
+                        if(meta.installed == null)
+                        {
+                            meta.installed = new string[] { };
+                        }
+                        List<string> installed = new List<string>(meta.installed);
+                        installed.Add(path);
+                        meta.installed = installed.ToArray();
+                        MCSUpgrade.SaveMeta(meta);
+                    }
+
+                    deleteQueue.Add(path);
+                }
+                refresh = true;
+
+                //wait until later
+                return;
+            }
+
+            if (deleteQueue.Count > 0)
+            {
+
+                try
+                {
+                    foreach (string path in deleteQueue)
+                    {
+                        if (!path.EndsWith(".unitypackage") || !File.Exists(path) || !path.Contains(MCSUpgrade.pathToPackages))
+                        {
+                            UnityEngine.Debug.Log("Skipping: " + path);
+                            continue;
+                        }
+                        UnityEngine.Debug.Log("Removing install file: " + path);
+                        AssetDatabase.DeleteAsset(path);
+                    }
+
+                } catch (Exception e)
+                {
+                    UnityEngine.Debug.LogError("Unable to remove all install packages");
+                    UnityEngine.Debug.LogException(e);
+                }
+
+                deleteQueue.Clear();
+
+                if (File.Exists(MCSUpgrade.pathToInstallScript))
+                {
+                    UnityEngine.Debug.Log("Removing installer script");
+                    AssetDatabase.DeleteAsset(MCSUpgrade.pathToInstallScript);
+                }
+
+
+                Close();
+            }
+
+        }
 
         public void OnGUI()
         {
@@ -169,7 +301,6 @@ namespace MORPH3D {
             if (GUILayout.Button("Install, I'm ready to upgrade.\nDo not warn me again.",style))
             {
                 MCSUpgrade.AcceptInstall();
-                Close();
                 return;
             }
             EditorGUILayout.EndHorizontal();
@@ -200,40 +331,6 @@ namespace MORPH3D {
         void OnDisable()
         {
             _instance = null;
-        }
-    }
-
-    public class MCSUpgradePackageImporter : AssetPostprocessor
-    {
-        static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
-        {
-            bool hasPacakgesToInstall = false;
-            
-            foreach(string path in importedAssets)
-            {
-                if (path.Contains(MCSUpgrade.pathToPackages))
-                {
-                    hasPacakgesToInstall = true;
-                    break;
-                }
-            }
-
-            if (hasPacakgesToInstall)
-            {
-                MCSUpgrade.UpgradeMeta meta = MCSUpgrade.GetMeta();
-                if (meta.autoInstallPackages)
-                {
-                    foreach(string path in importedAssets)
-                    {
-                        if (!path.Contains(MCSUpgrade.pathToPackages))
-                        {
-                            continue;
-                        }
-
-                        MCSUpgrade.InstallPackage(path);
-                    }
-                }
-            }
         }
     }
 }

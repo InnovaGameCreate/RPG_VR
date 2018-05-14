@@ -70,6 +70,7 @@ public class HumanBase : MonoBehaviour
     //攻撃を受けたとき
     public void ReceiveAttack(DamageCalculate d)
     {
+        Debug.Log("切られ切る");
         if (d.SendBuff != null)
         {
             //receiveBuff.AddRange(d.SendBuff);//与バフを受け取る

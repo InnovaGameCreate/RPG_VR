@@ -1086,7 +1086,7 @@ GameObject:
   - component: {fileID: 4943403677791196}
   m_Layer: 15
   m_Name: "\u30B4\u30D6\u30EA\u30F3"
-  m_TagString: enemy(parent)
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1171,7 +1171,7 @@ GameObject:
   - component: {fileID: 114045061329905978}
   m_Layer: 15
   m_Name: GOBLIN_PBR
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2185,7 +2185,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1893606686335442}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.47, y: 1.2252459e-16, z: 0.82}
+  m_LocalPosition: {x: 0.11692369, y: 1.2252459e-16, z: -5.518017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4857185906558214}
@@ -2870,6 +2870,7 @@ MonoBehaviour:
   - {fileID: 1087296291502662, guid: 5246481f80bd726419bb08269e1dcb05, type: 2}
   - {fileID: 1574502646967200, guid: 17db7346342e6de4b8a126a7382f395b, type: 2}
   Experience: 1000
+  Money: 0
   hpSlider: {fileID: 114455491481210704}
   notRevive: 0
 --- !u!114 &114106726972549628
@@ -3321,14 +3322,14 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1887543069931192}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224203783808332116}
   m_Father: {fileID: 4857185906558214}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -2.3874236e-10, y: 1.8180004}
