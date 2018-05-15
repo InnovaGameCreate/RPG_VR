@@ -17,7 +17,9 @@ public class HumanNPC : HumanBase
     {
         if (questing)
             if (GameManager.Instance.QMANAGER.talkNPC(GetComponent<Quest>()))
+            {
                 questing = false;
+            }
     }
 
     //TODO  QuestManager の AddQuest関数で　クエストを受ける

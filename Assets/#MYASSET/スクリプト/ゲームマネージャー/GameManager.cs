@@ -189,10 +189,10 @@ public class GameManager : Singleton<GameManager>
     private void Update()
     {
         //デバッグ用
-        if (Input.GetKeyDown(KeyCode.L))
-            SceneManager.LoadScene("魔法攻撃");
-        if (Input.GetKeyDown(KeyCode.H))
-            SceneManager.LoadScene("1月26日統合");
+        //if (Input.GetKeyDown(KeyCode.L))
+        //    SceneManager.LoadScene("魔法攻撃");
+        //if (Input.GetKeyDown(KeyCode.H))
+        //    SceneManager.LoadScene("1月26日統合");
         if (fade != null)
             if (fade.CONDITION == FadeInOut.Condition.SCENECHANGE)
             {

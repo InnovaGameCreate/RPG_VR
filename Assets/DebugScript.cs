@@ -4,6 +4,9 @@ using UnityEngine;
 
 
 //クエストのデバッグ用で作りました（いつか消します）
+/// <summary>
+/// クエストのデバッグ用クラスｐ
+/// </summary>
 public class DebugScript : MonoBehaviour {
 
 	// Use this for initialization
@@ -19,5 +22,8 @@ public class DebugScript : MonoBehaviour {
             //これを使えばいいのでは！？
             GameManager.Instance.QMANAGER.CheckQuestAchievement("ゴブリン");
         }
+
+        if (GetComponent<Quest>().ISCLEAR)
+            GetComponent<HumanNPC>().talkWithPlayer();
 	}
 }

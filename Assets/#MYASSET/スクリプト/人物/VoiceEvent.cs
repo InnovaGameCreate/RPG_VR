@@ -41,7 +41,7 @@ public class VoiceEvent : MonoBehaviour
 
     public VoiceKind nowVoiceNo;//現在のボイス番号
     private List<AudioClip> clipList = new List<AudioClip>();
-    private string voiceFolder = "Assets/#MYASSET/セリフ/";
+    private string voiceFolder = "Assets/#MYASSET/セリフ/Resources/";
     private string[] voiceName = new string[11]
     {
         "オベロン/オベロン/主人公の夢.wav",
@@ -66,8 +66,8 @@ public class VoiceEvent : MonoBehaviour
         nowAudioState = GetComponent<AudioSource>();
         //nowVoiceNo = VoiceEvent.VoiceKind.MY_DREAM;
         
-        //ここは変えて
-        nowVoiceNo = VoiceEvent.VoiceKind.BACK_A_THOMAS;
+        //ここは変えて（最初に始まるセリフをここでいじるので）
+        nowVoiceNo = VoiceEvent.VoiceKind.MY_DREAM;
 
         //foreach (AudioSource test in audioClip) {
         //    audioClip.Add(test);
@@ -79,13 +79,16 @@ public class VoiceEvent : MonoBehaviour
         for (int i = 0; i < 11; i++)
         {
             clipList.Add(AssetDatabase.LoadAssetAtPath<AudioClip>(voiceFolder + voiceName[i]));
+
+            //clipList.Add(Resources.Load(voiceName[i]) as AudioClip);
+            Debug.Log(clipList[i]);
         }
 
 
        // nowAudioState.clip = clipList[(int)VoiceKind.MY_DREAM];
 
         //ここも変えて（デバッグに合わせてシーンを変更）
-        nowAudioState.clip = clipList[(int)VoiceKind.BACK_A_THOMAS];
+        nowAudioState.clip = clipList[(int)VoiceKind.MY_DREAM];
 
     }
 
@@ -155,20 +158,20 @@ public class VoiceEvent : MonoBehaviour
                 if (nowVoiceNo == VoiceKind.GOBLIN_DESTROYED)
                 {
                     // GameManager.Instance.SceneChengeManager("村", "家の前");
-                    GameObject.Find("トマス").GetComponent<HumanNPC>().sendQuest();//トーマスのイベント開始
+                    GameObject.Find("トーマス").GetComponent<HumanNPC>().sendQuest();//トーマスのイベント開始
                 }
                 break;
             case VoiceKind.GOBLIN_DESTROYED:
                 if (Input.GetMouseButtonDown(1))
-                    GameObject.Find("トマス").GetComponent<HumanNPC>().sendQuest();//トーマスのイベント開始
+                    GameObject.Find("トーマス").GetComponent<HumanNPC>().sendQuest();//トーマスのイベント開始
 
-                if (Input.GetMouseButtonDown(0))
-                {
-                    Debug.Log("gobrin");
-                    GameManager.Instance.QMANAGER.CheckQuestAchievement("ゴブリン");
-                }
+                //if (Input.GetMouseButtonDown(0))
+                //{
+                //    Debug.Log("gobrin");
+                //    GameManager.Instance.QMANAGER.CheckQuestAchievement("ゴブリン");
+                //}
 
-                if (GameObject.Find("トマス").GetComponent<Quest>().ISCLEAR)//クエストクリアなら
+                if (GameObject.Find("トーマス").GetComponent<Quest>().ISCLEAR)//クエストクリアなら
                 {
                     if (isEventHappen)
                     {
@@ -179,30 +182,30 @@ public class VoiceEvent : MonoBehaviour
 
                 if (nowVoiceNo == VoiceKind.OAK_DESTROYED)
                 {
-                    GameObject.Find("トマス").GetComponent<HumanNPC>().talkWithPlayer();
-                    // GameObject.Find("トマス").GetComponent<HumanNPC>().sendQuest();//トーマスのイベント開始
-                    StartCoroutine(DelayQuest("トマス"));
+                    GameObject.Find("トーマス").GetComponent<HumanNPC>().talkWithPlayer();
+                    // GameObject.Find("トーマス").GetComponent<HumanNPC>().sendQuest();//トーマスのイベント開始
+                    StartCoroutine(DelayQuest("トーマス"));
                 }
                 break;
 
             case VoiceKind.OAK_DESTROYED:
-                if (Input.GetMouseButtonDown(0))
-                {
-                    Debug.Log("oak");
-                    GameManager.Instance.QMANAGER.CheckQuestAchievement("オーク");
+                //if (Input.GetMouseButtonDown(0))
+                //{
+                //    Debug.Log("oak");
+                //    GameManager.Instance.QMANAGER.CheckQuestAchievement("オーク");
 
-                    Debug.Log(GameManager.Instance.QMANAGER.IsReceiveQuest("オーク"));
-                    //Debug.Log(GameObject.Find("トマス").GetComponent<Quest>().ISCLEAR);
-                }
+                //    Debug.Log(GameManager.Instance.QMANAGER.IsReceiveQuest("オーク"));
+                //    //Debug.Log(GameObject.Find("トーマス").GetComponent<Quest>().ISCLEAR);
+                //}
 
-                if (Input.GetMouseButtonDown(1))
-                {
-                    GameObject.Find("トマス").GetComponent<HumanNPC>().sendQuest();//トーマスのイベント開始
+                //if (Input.GetMouseButtonDown(1))
+                //{
+                //    GameObject.Find("トーマス").GetComponent<HumanNPC>().sendQuest();//トーマスのイベント開始
 
-                }
+                //}
 
 
-                if (GameObject.Find("トマス").GetComponent<Quest>().ISCLEAR)//クエストクリアなら
+                if (GameObject.Find("トーマス").GetComponent<Quest>().ISCLEAR)//クエストクリアなら
                 {
                     Debug.Log("オーク倒したじゃ！");
 
@@ -214,7 +217,7 @@ public class VoiceEvent : MonoBehaviour
 
                 if (nowVoiceNo == VoiceKind.NONE)
                 {
-                    GameObject.Find("トマス").GetComponent<HumanNPC>().talkWithPlayer();
+                    GameObject.Find("トーマス").GetComponent<HumanNPC>().talkWithPlayer();
                 }
 
                 break;

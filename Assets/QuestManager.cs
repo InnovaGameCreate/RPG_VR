@@ -71,10 +71,29 @@ public class QuestManager : MonoBehaviour
         {
             if (hasQ == the_quest)
             {
+
+                BackPack backpack = GameManager.Instance.HEAD.GetComponentInChildren<BackPack>(); Destroy(hasQ);
+                //backpack取ってくる(片方で取ってこれない場合がある)
+                backpack = GameManager.Instance.HEAD.GetComponentInChildren<BackPack>();
+                if (backpack == null)
+                    backpack = GameManager.Instance.VRTKMANAGER.GetComponentInChildren<BackPack>();
+
+                //報酬受取作業
+                foreach(var back in hasQ.reward)
+                {
+                    //してされた個数だけ入手
+                    for (int i = 0; i < back.ItemNum; i++) 
+                    backpack.AcquireItem(back.Item.GetComponent<ItemBase>());
+
+                }
+
+
                 Destroy(hasQ);
+
                 questClearList.Remove(the_quest);
                 return true;
                 //TODO　報酬を受け取る
+                
             }
         }
         return false;

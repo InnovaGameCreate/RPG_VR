@@ -695,9 +695,10 @@ GameObject:
   - component: {fileID: 54700496633030760}
   - component: {fileID: 65599711671595802}
   - component: {fileID: 65816709015973510}
-  - component: {fileID: 114461479735536934}
   - component: {fileID: 114046709746542084}
   - component: {fileID: 114576016258791662}
+  - component: {fileID: 114898464311589858}
+  - component: {fileID: 114768431799671326}
   m_Layer: 15
   m_Name: Giant_hornet_style3
   m_TagString: enemy
@@ -1913,7 +1914,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1910996437514464}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.7797284, y: -4.30598e-17, z: 1.9392408}
+  m_LocalPosition: {x: -3.0081596, y: 6.58, z: 4.411865}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4766280429584506}
@@ -2280,32 +2281,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114461479735536934
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1594891189259204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7c423947afaf134ebabfc9b8de41a06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AwakeBuff:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  dropitem: []
-  Experience: 0
-  hpSlider: {fileID: 114871096937052414}
-  notRevive: 0
 --- !u!114 &114576016258791662
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2353,6 +2328,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fca241e4be227748a43851ac4ea5d8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114768431799671326
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1594891189259204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c0338a8e3289104fa9e3fbf33db1d69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 10000
+  mp: 0
+  maxhp: 100
+  maxmp: 0
+  atk: 5
+  def: 1
+  magicatk: 0
+  magicdef: 1
+  speed: 5
+  flyspeed: 3
 --- !u!114 &114871096937052414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2401,6 +2397,33 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114898464311589858
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1594891189259204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfebb52b3ae0aee4aa27a9df772a9306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AwakeBuff:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  dropitem: []
+  Experience: 100
+  Money: 1000
+  hpSlider: {fileID: 114871096937052414}
+  notRevive: 0
 --- !u!114 &114975504397696418
 MonoBehaviour:
   m_ObjectHideFlags: 1

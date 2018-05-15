@@ -35,6 +35,7 @@ public class Quest : MonoBehaviour
 
     public int CLEARNUM
     {
+        
         get { return ClearNum; }
         set { ClearNum = value; }
     }

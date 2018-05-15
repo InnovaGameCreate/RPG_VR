@@ -17,7 +17,7 @@ public class HumanBase : MonoBehaviour
     }
 
     bool is_fly;         //飛んでるか   
-    BackPack bag;       //持ち物クラス
+    protected BackPack backpack;       //持ち物クラス
     protected Animator animator;            //アニメーターインスタンス
 
     //受バフリスト・与バフリスト　格納用　宣言
@@ -62,7 +62,10 @@ public class HumanBase : MonoBehaviour
         if(GetComponentInChildren<DisplayParameters>()!=null)//子
             humanstatus.Parameter = humanstatus.Parameter + GetComponentInChildren<DisplayParameters>();//パラメータ代入
 
-
+        //backpack取ってくる(片方で取ってこれない場合がある)
+        backpack = GameManager.Instance.HEAD.GetComponentInChildren<BackPack>();
+        if (backpack == null)
+            backpack = GameManager.Instance.VRTKMANAGER.GetComponentInChildren<BackPack>();
         animator = GetComponent<Animator>();
       
     }

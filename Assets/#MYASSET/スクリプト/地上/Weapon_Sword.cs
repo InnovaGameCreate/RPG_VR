@@ -172,6 +172,12 @@ public class Weapon_Sword : RPGItemObject
     {
         base.Grabbed(grabbingObject);
         controllerReference = VRTK_ControllerReference.GetControllerReference(grabbingObject.controllerEvents.gameObject);
+        if (atkCollider == null)
+        {
+            atkCollider = gameObject.AddComponent<BoxCollider>();
+            atkCollider.center = new Vector3(0.01f, 0f, -0.43f);
+            atkCollider.size = new Vector3(0.0551f, 0.0648f, 0.567f);
+        }
     }
 
     public override void Ungrabbed(VRTK_InteractGrab previousGrabbingObject)
@@ -183,8 +189,7 @@ public class Weapon_Sword : RPGItemObject
     protected override void OnEnable()
     {
         base.OnEnable();
-        if (atkCollider == null)
-            atkCollider = gameObject.AddComponent<BoxCollider>();
+       
         controllerReference = null;
         interactableRigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
     }
