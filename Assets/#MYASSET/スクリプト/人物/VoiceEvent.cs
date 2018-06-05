@@ -58,6 +58,23 @@ public class VoiceEvent : MonoBehaviour
 
     };
 
+    //↓拡張子書くとResourceLoadでうまくいかないみたいです！！！
+    private string[] voiceName_ = new string[11]
+    {
+        "オベロン/オベロン/主人公の夢",
+        "エルフィ/エルフィ/夢から覚めた時",
+        "エルフィ/エルフィ/チュートリアル前エルフィ",
+        "トーマス/トーマス/チュートリアル前トーマス",
+        "トーマス/トーマス/チュートリアル後トーマス",
+        "トーマス/トーマス/チュートリアル後2",
+        "トーマス/トーマス/回想1",
+        "オベロン/オベロン/イワムラ夢のお告①",
+        "トーマス/トーマス/回想後",
+        "トーマス/トーマス/ゴブリン討伐後",
+        "トーマス/トーマス/オーク討伐後",
+    };
+
+
 
     // Use this for initialization
     void Start()
@@ -78,7 +95,9 @@ public class VoiceEvent : MonoBehaviour
 
         for (int i = 0; i < 11; i++)
         {
-            clipList.Add(AssetDatabase.LoadAssetAtPath<AudioClip>(voiceFolder + voiceName[i]));
+            //clipList.Add(AssetDatabase.LoadAssetAtPath<AudioClip>(voiceFolder + voiceName[i]));
+            clipList.Add(Resources.Load(voiceName_[i]) as AudioClip); 
+
 
             //clipList.Add(Resources.Load(voiceName[i]) as AudioClip);
             Debug.Log(clipList[i]);
