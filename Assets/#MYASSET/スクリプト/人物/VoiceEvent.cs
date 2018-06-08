@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEditor;
 
 
-public class VoiceEvent : MonoBehaviour
+public class VoiceEvent : Singleton<VoiceEvent>
 {
 
     private AudioSource nowAudioState;//現在の再生される音声
@@ -86,6 +86,9 @@ public class VoiceEvent : MonoBehaviour
         //ここは変えて（最初に始まるセリフをここでいじるので）
         nowVoiceNo = VoiceEvent.VoiceKind.MY_DREAM;
 
+        //nowVoiceNo = VoiceEvent.VoiceKind.T_B_ELFY;
+
+
         //foreach (AudioSource test in audioClip) {
         //    audioClip.Add(test);
         //        }
@@ -108,6 +111,9 @@ public class VoiceEvent : MonoBehaviour
 
         //ここも変えて（デバッグに合わせてシーンを変更）
         nowAudioState.clip = clipList[(int)VoiceKind.MY_DREAM];
+
+        //nowAudioState.clip = clipList[(int)VoiceKind.T_B_ELFY];
+
 
     }
 
