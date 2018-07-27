@@ -53,6 +53,7 @@ public class Karura : TalkEvent
         {
             isTalk = false;
             isPlaying = false;
+            SetUIObj(true);
             PrintSelectUI();
 
         }
@@ -148,4 +149,7 @@ public class Karura : TalkEvent
         YesNoUI.SetActive(false);
         IsMove = true;
     }
+
+
+    
 }

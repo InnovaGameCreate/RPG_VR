@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class Children : TalkEvent
 {
@@ -36,6 +37,15 @@ public class Children : TalkEvent
     private EVENT_NO nextEventNum;
     private EVENT_NO beforeEvent;
 
+    public NavMeshAgent nina;
+    public NavMeshAgent Roruhu;
+    public NavMeshAgent rudy;
+
+    public Animator ninaAnimator;
+    public Animator roruhuAnimator;
+    public Animator rudyAnimator;
+
+
     // Use this for initialization
     protected override void Start()
     {
@@ -64,6 +74,18 @@ public class Children : TalkEvent
         if (IsTalk())
         {
             //talkFlag[(int)EVENT_NO.eROLF] = true;
+
+            //ナビを止める
+            nina.isStopped = true;
+            Roruhu.isStopped = true;
+            rudy.isStopped = true;
+
+            //アニメーションをstandにする
+            ninaAnimator.SetBool("isTalk",true);
+            roruhuAnimator.SetBool("isTalk", true);
+            rudyAnimator.SetBool("isTalk", true);
+
+
 
             //一度も会話したことのない場合
             if (beforeEvent == EVENT_NO.eEventNone && nextEventNum == EVENT_NO.eEventNone)
@@ -98,8 +120,10 @@ public class Children : TalkEvent
                 break;
 
             case EVENT_NO.eRUDI:
+                Debug.Log("rudy1");
                 if (IsFinished(TalkAudioSource((int)TALK_NO.eSerif_RO)))
                 {
+                    Debug.Log("rudy2");
                     Talk((int)TALK_NO.eSerif_RU);
                     nextEventNum = EVENT_NO.eNINA;
                     isTalk = false;
@@ -108,8 +132,12 @@ public class Children : TalkEvent
                 }
                 break;
             case EVENT_NO.eNINA:
+                Debug.Log("nina1");
                 if (IsFinished(TalkAudioSource((int)TALK_NO.eSerif_RU)))
                 {
+                    Debug.Log("nina2");
+
+
                     Talk((int)TALK_NO.eSerif_NI);
                     isTalk = false;
                     isPlaying = true;
@@ -129,7 +157,7 @@ public class Children : TalkEvent
                 break;
 
             case EVENT_NO.eRUDI2:
-                if (IsFinished(TalkAudioSource((int)TALK_NO.eSerif_RO)))
+                if (IsFinished(TalkAudioSource((int)TALK_NO.eSerif2_RO)))
                 {
                     Talk((int)TALK_NO.eSerif2_RU);
                     nextEventNum = EVENT_NO.eNINA2;
@@ -139,7 +167,7 @@ public class Children : TalkEvent
                 }
                 break;
             case EVENT_NO.eNINA2:
-                if (IsFinished(TalkAudioSource((int)TALK_NO.eSerif_RU)))
+                if (IsFinished(TalkAudioSource((int)TALK_NO.eSerif2_RU)))
                 {
                     Talk((int)TALK_NO.eSerif2_NI);
                     isTalk = false;
@@ -148,6 +176,20 @@ public class Children : TalkEvent
                     nextEventNum = EVENT_NO.eEventNone;
                     talkFlag[(int)EVENT_NO.eSERIF2_END] = true;
                 }
+                break;
+
+                //イベントがないときや終了したらここに移動する
+            case EVENT_NO.eEventNone:
+                Debug.Log("noneEventChildren");
+                nina.isStopped = false;
+                Roruhu.isStopped = false;
+                rudy.isStopped = false;
+
+
+                //アニメーションをrunにする
+                ninaAnimator.SetBool("isTalk", false);
+                roruhuAnimator.SetBool("isTalk", false);
+                rudyAnimator.SetBool("isTalk", false);
                 break;
 
         }

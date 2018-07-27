@@ -97,6 +97,7 @@ public class MagicTrigger : MonoBehaviour
             || SceneManager.GetActiveScene().name == "フィールド"
             || SceneManager.GetActiveScene().name == "森"
             || SceneManager.GetActiveScene().name == "UI-森山";
+          
 
 
     }

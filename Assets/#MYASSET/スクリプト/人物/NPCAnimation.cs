@@ -7,17 +7,22 @@ using UnityEngine.AI;
 public class NPCAnimation : MonoBehaviour
 {
     [SerializeField] NavMeshAgent agent;
-    [SerializeField] Animator animator;
+    [SerializeField] Animator animatorRun;
+    
 
     void Reset()
     {
         agent = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
+        animatorRun = GetComponent<Animator>();
+       
     }
 
 
     void Update()
     {
-        animator.SetFloat("Speed", agent.velocity.sqrMagnitude);
+        
+            animatorRun.SetFloat("Speed", agent.velocity.sqrMagnitude);
+        
+        
     }
 }
