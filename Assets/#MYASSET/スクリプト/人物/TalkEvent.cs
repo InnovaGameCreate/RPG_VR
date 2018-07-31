@@ -150,6 +150,7 @@ public class TalkEvent : MonoBehaviour
     public bool IsFinished(AudioSource audio)
     {
         //まずその音声が再生中でないならここで止める
+        //7/31子供を喋らせるためにコメントアウト
         if (!audio.isPlaying)
             return false;
 
@@ -160,6 +161,9 @@ public class TalkEvent : MonoBehaviour
             deltaTime = 0;
         //経過時間と再生時間比較し
         //再生時間より長くなれば
+        //Debug.Log(audio.clip.length);
+        //Debug.Log(deltaTime);
+
         if (audio.clip.length <= deltaTime)
         {
             deltaTime = 0;
@@ -171,6 +175,34 @@ public class TalkEvent : MonoBehaviour
 
     }
 
+    //再生終了判定（子供のみ）
+    public bool IsChildrenFinished(AudioSource audio)
+    {
+        //まずその音声が再生中でないならここで止める
+        //7/31子供を喋らせるためにコメントアウト
+        //if (!audio.isPlaying)
+        //    return false;
+
+        //今のところこれだとうまくいく・・・？
+        if (isPlaying)
+            deltaTime += Time.deltaTime;
+        else
+            deltaTime = 0;
+        //経過時間と再生時間比較し
+        //再生時間より長くなれば
+        //Debug.Log(audio.clip.length);
+        //Debug.Log(deltaTime);
+
+        if (audio.clip.length + 2.0f <= deltaTime)
+        {
+            deltaTime = 0;
+            isPlaying = false;
+            return true;
+        }
+
+        return false;
+
+    }
     public AudioSource TalkAudioSource(int no)
     {
         return talkAudio[no];

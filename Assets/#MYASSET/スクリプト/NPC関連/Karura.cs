@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Karura : TalkEvent
 {
+
+    public int count = 0;
     //セリフ
     enum TALK_NO
     {
@@ -65,11 +67,19 @@ public class Karura : TalkEvent
         //通常会話であるならば
         if (talkFlag[(int)EVENT_NO.eNormal])
         {
+            
             //Debug.Log("tanasu12");
             SetInputDevice(false);//リモコン操作停止
             //ランダムで話す内容を変える
             talkFlag[(int)EVENT_NO.eNormal] = false;
-            Talk(Random.Range((int)TALK_NO.eSerif, (int)TALK_NO.eSerif2 + 1));
+            //Talk(Random.Range((int)TALK_NO.eSerif, (int)TALK_NO.eSerif2 + 1));
+            Talk((int)TALK_NO.eSerif+count++);
+
+            if(count >= 2)
+            {
+                count = 0;
+            }
+
 
         }
 
@@ -143,6 +153,13 @@ public class Karura : TalkEvent
 
     }
 
+    public void EndTalk()
+    {
+        IsMove = true;
+        SetUIObj(false);
+
+
+    }
     public void YesSelect()
     {
         GetComponent<HumanNPC>().sendQuest();//クエスト受注
